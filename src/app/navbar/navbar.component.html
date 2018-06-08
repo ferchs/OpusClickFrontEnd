@@ -1,0 +1,155 @@
+<div *ngIf="!loggedIn">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top 
+d-none d-md-flex d-lg-flex d-xl-flex">
+  <a class="navbar-brand mx-4" [routerLink]="['']">
+    <img src="../../assets/OpusClickLogo.svg" width="120" height="120">
+  </a>
+  <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+    <li class="nav-item">
+      <a class="nav-link ml-4" [routerLink]="['/entrar']">ENTRAR<span class="sr-only">(current)</span></a>
+    </li>
+  </ul>
+  <form class="form-inline ml-4 my-2 my-lg-0">
+    <button class="btn btn-outline-provider" 
+    type="button" 
+    [routerLink]="['/soy_experto']">
+    SOY UN EXPERTO
+  </button>
+  <div class="mx-2"></div>
+  <button class="btn btn-outline-user" 
+  type="button" 
+  [routerLink]="['/quiero_contratar']">
+  QUIERO CONTRATAR
+</button>
+</form>
+</nav>
+
+<!-- Navbar para dispositivos móviles landscape-->
+<nav class="navbar navbar-light bg-light fixed-top d-none d-sm-flex d-md-none">
+    <a class="mobile-navbar-brand" [routerLink]="['']">
+        <img src="../../assets/OpusClickLogo.svg" width="90" height="90">
+    </a>
+    <a class="mobile-navbar-brand" [routerLink]="['/entrar']">
+      <img src="../../assets/login.svg" width="30" height="30">
+      <p>Entrar</p>
+    </a>
+    <a class="mobile-navbar-brand" [routerLink]="['/soy_experto']">
+      <img src="../../assets/expert.svg" width="35" height="35">
+      <p class="centered">Soy Un Experto</p>
+    </a>
+    <a class="mobile-navbar-brand" [routerLink]="['/quiero_contratar']">
+      <img src="../../assets/handshake.svg" width="37" height="37">
+      <p>Quiero Contratar</p>
+    </a>
+</nav>
+
+<!-- Navbar para dispositivos móviles Portrait-->
+<nav class="navbar navbar-light fixed-top bg-light d-flex d-sm-none">
+    <a class="mobile-navbar-brand" [routerLink]="['']">
+        <img src="../../assets/OpusClickLogo.svg" width="80" height="80">
+    </a>
+    <a class="portrait-mobile-navbar-brand" [routerLink]="['/entrar']">
+      <img src="../../assets/login.svg" width="30" height="30">
+      <p>Entrar</p>
+    </a>
+    <a class="portrait-mobile-navbar-brand" [routerLink]="['/soy_experto']">
+      <img src="../../assets/expert.svg" width="33" height="33">
+      <p class="centered">Soy Un</p>
+      <p class="centered">Experto</p>
+    </a>
+    <a class="portrait-mobile-navbar-brand" [routerLink]="['/quiero_contratar']">
+      <img src="../../assets/handshake.svg" width="35" height="35">
+      <p class="centered">Quiero</p>
+      <p class="centered">Contratar</p>
+    </a>
+</nav>
+</div>
+
+<!--Navbar cuando se está logueado-->
+<div *ngIf="loggedIn">
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top 
+    d-none d-md-flex d-lg-flex d-xl-flex">
+      <a class="navbar-brand mx-4" [routerLink]="['']">
+        <img src="../../assets/OpusClickLogo.svg" width="120" height="120">
+      </a>
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="coins-navbar-brand mr-1" href="">
+            <img src="../../assets/coin.svg" width="45" height="45">
+          </a>
+        </li>
+        <li class="nav-item">
+              <div class="col-lg-12 navbar-space">
+                  <div class="space"></div>
+                  <span style="font-size:13px">10</span>
+              </div>
+              <div class="col-lg-12 navbar-space">
+                  <span style="font-size:11px">OpusCoins</span>
+              </div>
+      </li>
+      </ul>
+      <div class="navbar-nav">
+          <a class="nav-item nav-link" (click)="goToDashboard()">CUENTA</a>
+      </div>
+      <form class="form-inline ml-4 my-2 my-lg-0">
+        <div class="mx-1"></div>
+          <button class="btn btn-outline-exit" 
+            type="button"
+            (click)="exit()">
+            SALIR
+          </button>
+          </form>
+    </nav>
+
+    <!-- Navbar para dispositivos móviles landscape-->
+    <nav class="navbar navbar-light bg-light fixed-top d-none d-sm-flex d-md-none">
+        <a class="mobile-navbar-brand" [routerLink]="['']">
+          <img src="../../assets/OpusClickLogo.svg" width="120" height="120">
+        </a>
+        <ul class="d-block navbar-nav ml-auto">
+            <li class="nav-item mt-4">
+              <a class="coins-navbar-brand mr-1" href="">
+                <img src="../../assets/coin.svg" width="40" height="40">
+              </a>
+            </li>
+        </ul>
+        <div class="ml-1 mr-2">
+        <div class="space-big"></div>
+        <span style="font-size:13px" class="block-display">10</span>
+        <span style="font-size:11px" class="block-display">OpusCoins</span>
+        </div>
+        <a class="mobile-navbar-brand mr-4 ml-3" (click)="goToDashboard()">
+          <img src="../../assets/dashboard.svg" width="48" height="48">
+          <p class="centered">Cuenta</p>
+        </a>
+        <a class="mobile-navbar-brand" (click)="exit()">
+          <img src="../../assets/logout.svg" width="43" height="43">
+          <p>Salir</p>
+        </a>
+    </nav>
+
+    <!-- Navbar para dispositivos móviles Portrait-->
+    <nav class="navbar navbar-light fixed-top bg-light d-flex d-sm-none">
+        <a class="portrait-mobile-navbar-brand" [routerLink]="['']">
+            <img src="../../assets/OpusClickLogo.svg" width="80" height="80">
+        </a>
+        <div class="display-text-image">
+        <!--<div class="space-big"></div>-->
+        <a class="coins-navbar-brand mr-0 mt-1" href="">
+            <img src="../../assets/coin.svg" class="coin-image-left">
+        </a>
+        <div class="text-image">
+          <span style="font-size:12px" class="text-image-item">10</span>
+          <span style="font-size:9px" class="text-image-item">OpusCoins</span>
+        </div>
+        </div>
+        <a class="portrait-mobile-navbar-brand mr-2 ml-1" (click)="goToDashboard()">
+          <img src="../../assets/dashboard.svg" width="32" height="32">
+          <p class="centered">Cuenta</p>
+        </a>
+        <a class="portrait-mobile-navbar-brand" (click)="exit()">
+          <img src="../../assets/logout.svg" width="32" height="32">
+          <p>Salir</p>
+        </a>
+    </nav>
+</div>

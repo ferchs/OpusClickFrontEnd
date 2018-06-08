@@ -1,0 +1,27 @@
+<!--Observable Answer-->
+<div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      
+      <div *ngFor="let answer of answers$ | async">
+          <div class="radios checkbox-group">
+              <div class="col-lg-12">
+                 <input [formControlName]="answer.controlName" [id]="answer.id" type="radio" [value]="answer.label">
+                 <label [for]="answer.id" class="button-label">
+                  {{answer.label}}                  
+                </label>
+              </div>
+          </div>
+      </div>
+    </form>
+    <button (click)="onSubmit()" type="button">Imprimir</button>
+</div>
+
+<!--Not Observable Answer-->
+<!--<div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <div *ngFor="let answer of answers">
+        <input [formControlName]="answer.controlName" [id]="answer.id" type="radio" [value]="answer.label">{{answer.label}}
+      </div>
+    </form>
+    <button (click)="onSubmit()" type="button">Imprimir</button>
+</div>-->

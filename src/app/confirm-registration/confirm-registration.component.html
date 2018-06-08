@@ -1,0 +1,49 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+<div class="space" *ngIf="sucess">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="../../assets/success.svg" class="center">
+            </div>
+            <div class="col-lg-1">
+              </div>
+          <div class="col-lg-6">  
+              <h4> ¡Cuenta confirmada! Ahora ya puedes <a [routerLink]="['/entrar']">Iniciar Sesión</a> .</h4>
+          </div>
+        <div class="col-lg-1">
+          </div>
+      </div>
+    </div>
+</div>
+<div class="space" *ngIf="expired">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="../../assets/warning.svg" class="center">
+            </div>
+            <div class="col-lg-1">
+              </div>
+          <div class="col-lg-6">
+              <h4> ¡Te has tardado en confirmar tu cuenta! se ha reenviado un nuevo correo de confirmación, revisa tu bandeja de entrada.</h4>
+          </div>
+        <div class="col-lg-1">
+          </div>
+      </div>
+    </div>
+</div>
+<div class="space" *ngIf="error">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="../../assets/error.svg" class="center">
+            </div>
+            <div class="col-lg-1">
+              </div>
+          <div class="col-lg-6">
+              <h4> ¡Ocurrió un error! Intenta confirmar tu cuenta mas tarde.</h4>
+          </div>
+        <div class="col-lg-1">
+          </div>
+      </div>
+    </div>
+</div>

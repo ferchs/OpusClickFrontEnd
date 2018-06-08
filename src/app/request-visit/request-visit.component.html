@@ -1,0 +1,159 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+  <div class="col-lg-3">
+    <div class="mx-3"></div>
+  </div>
+  <div class="col-lg-6">
+      <div class="progress">
+          <div class="progress-bar" role="progressbar" [style.width]="percentageCompletion + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      <div >
+        <p *ngIf="actualPage===1">¿Cúando quieres que el experto te visite?</p>
+        <p *ngIf="actualPage===2">¿Dónde quieres que el experto te visite?</p>
+        <p *ngIf="actualPage===3">¿Qué necesitas?</p>
+        <p *ngIf="actualPage===4">Resumen</p>
+      </div>
+      <hr>
+      <form #requestVisitForm="ngForm" (ngSubmit)="onSubmit()">
+          <div [hidden]="actualPage!==1" class="form-group">
+          <label for="inputDate">Fecha de visita</label>
+          <my-date-picker
+          id="inputDate"
+          placeholder="Selecciona una fecha"
+          [options]="myDatePickerOptions"
+          required 
+          [(ngModel)]="mVisitDate" 
+          name="visitDate"
+          #visitDate="ngModel">
+         </my-date-picker>
+         <small *ngIf="visitDate.untouched || visitDate.valid && visitDate.touched" id="dateHelp" class="form-text text-muted">Haz click sobre el icóno del calendario para seleccionar una fecha.</small>
+         <small *ngIf="visitDate.invalid && visitDate.touched" class="form-text text-muted-error">¡Debes seleccionar una fecha válida! Haz click sobre el icóno del calendario</small>
+        </div>
+        <div [hidden]="actualPage!==1" class="form-group">
+            <label for="schedule">Hora de visita</label>
+            <select 
+            id="schedule"
+            name="schedule" 
+            class="form-control"
+            required 
+            [(ngModel)]="mSchedule" 
+            #schedule="ngModel"
+            [ngClass]="{'is-valid': schedule.valid && schedule.touched, 'is-invalid': schedule.invalid && schedule.touched}">
+                <option value="" selected disabled>Seleccione una hora para la visita</option>
+                <option>Entre las 08:00 AM - 08:30 AM</option>
+                <option>Entre las 08:30 AM - 09:00 AM</option>
+                <option>Entre las 09:00 AM - 09:30 AM</option>
+                <option>Entre las 09:30 AM - 10:00 AM</option>
+                <option>Entre las 10:00 AM - 10:30 AM</option>
+                <option>Entre las 10:30 AM - 11:00 AM</option>
+                <option>Entre las 11:00 AM - 11:30 AM</option>
+                <option>Entre las 11:30 AM - 12:00 PM</option>
+                <option>Entre las 12:00 PM - 12:30 PM</option>
+                <option>Entre las 12:30 PM - 01:00 AM</option>
+                <option>Entre las 01:00 PM - 01:30 PM</option>
+                <option>Entre las 01:30 PM - 02:00 PM</option>
+                <option>Entre las 02:00 PM - 02:30 PM</option>
+                <option>Entre las 02:30 PM - 03:00 PM</option>
+                <option>Entre las 03:00 PM - 03:30 PM</option>
+                <option>Entre las 03:30 PM - 04:00 PM</option>
+                <option>Entre las 04:00 PM - 04:30 PM</option>
+                <option>Entre las 04:30 PM - 05:00 PM</option>
+                <option>Entre las 05:00 PM - 05:30 PM</option>
+                <option>Entre las 05:30 PM - 06:00 PM</option>
+            </select>
+            <small *ngIf="schedule.untouched || schedule.valid && schedule.touched" class="form-text text-muted">Asegúrate de encontrarte en tu hogar a la hora seleccionada.</small>
+            <small *ngIf="schedule.invalid && schedule.touched" class="form-text text-muted-error">¡Debes seleccionar alguna de las opciones!</small>
+          </div>
+          <div [hidden]="actualPage!==2" class="form-group">
+              <label for="address">Dirección</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="address" 
+                aria-describedby="emailHelp" 
+                placeholder="Ingresa la dirección donde se requiere el servicio"
+                required 
+                [(ngModel)]="mAddress" 
+                name="address"
+                #address="ngModel"
+                [ngClass]="{'is-valid': address.valid && address.touched, 'is-invalid': address.invalid && address.touched}">
+              <small *ngIf="address.untouched || address.valid && address.touched" class="form-text text-muted">La dirección es fundamental, asegurate que sea la correcta.</small>
+              <small *ngIf="address.invalid && address.touched" class="form-text text-muted-error">Debes ingresar una dirección válida</small>
+          </div>
+          <div [hidden]="actualPage!==2" class="form-group">
+              <label for="exampleInputEmail1">Barrio</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="exampleInputEmail1" 
+                aria-describedby="emailHelp" 
+                placeholder="Ingresa el nombre del barrio"
+                required 
+                [(ngModel)]="mNeighborhood" 
+                name="neighborhood"
+                #neighborhood="ngModel"
+                [ngClass]="{'is-valid': neighborhood.valid && neighborhood.touched, 'is-invalid': neighborhood.invalid && neighborhood.touched}">
+              <small *ngIf="neighborhood.untouched || neighborhood.valid && neighborhood.touched" class="form-text text-muted">El barrio nos ayuda a ubicar mejor a nuestros expertos.</small>
+              <small *ngIf="neighborhood.invalid && neighborhood.touched" class="form-text text-muted-error">Debes ingresar un barrio</small>
+          </div>
+          <div [hidden]="actualPage!==3" class="form-group">
+              <label for="description">Descripción del trabajo</label>
+              <textarea 
+                class="form-control" 
+                id="description" 
+                rows="3"
+                required 
+                [(ngModel)]="mWorkDescription" 
+                name="workDescription"
+                #workDescription="ngModel"
+                [ngClass]="{'is-valid': workDescription.valid && workDescription.touched, 'is-invalid': workDescription.invalid && workDescription.touched}">
+              </textarea>
+              <small *ngIf="workDescription.untouched || workDescription.valid && workDescription.touched" class="form-text text-muted">Se conciso en la descripción, esto ayuda a nuestros expertos a estar preparados el día de la visita.</small>
+              <small *ngIf="workDescription.invalid && workDescription.touched" class="form-text text-muted-error">Debes describir el trabajo a realizar</small>
+          </div>
+            <div class="summary" *ngIf="actualPage===totalPage">
+                <strong>Fecha de visita</strong>
+                <span>{{mVisitDate.formatted}}</span>
+                <strong>Hora de visita</strong>
+                <span>{{mSchedule}}</span>
+                <strong>Dirección</strong>
+                <span>{{mAddress}}</span>
+                <strong>Barrio</strong>
+                <span>{{mNeighborhood}}</span>
+                <strong>Descripción</strong>
+                <span>{{mWorkDescription}}</span>
+                <hr>
+            </div>
+            <div class="my-4"></div>
+            <div class="text-center">
+              <button 
+                [disabled]="actualPage==1"
+                (click)='back()' 
+                class="btn btn btn-outline-secondary">
+                Atrás
+              </button>
+              <button 
+                [disabled]="((visitDate.invalid || schedule.invalid) && actualPage==1) 
+                || ((address.invalid || neighborhood.invalid) && actualPage==2)
+                || ((workDescription.invalid) && actualPage==3)"
+                [hidden]="actualPage===totalPage"
+                (click)='next()'
+                class="btn btn-outline-secondary">
+                Siguiente
+              </button>
+              <button 
+                [disabled]="requestVisitForm.invalid"
+                [hidden]="actualPage!==totalPage"
+                type="submit"
+                class="btn btn-outline-success">
+                Enviar Solicitud
+              </button>
+            </div>
+      </form>
+  </div>
+  <div class="col-lg-3">
+      <div class="mx-3"></div>
+  </div>
+</div>
+</div>

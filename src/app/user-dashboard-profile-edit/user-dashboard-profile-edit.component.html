@@ -1,0 +1,165 @@
+<div class="space">
+  <div class="container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px' }"></ngx-loading>
+  <div class="row">
+    <div class="col-lg-3">
+      <button class="button-style center">
+        <span class="span-style">
+          <div class="display-margin">
+            <img src="../../assets/technology.svg" width="20" height="20">
+          </div>
+        <span>Cambiar Imagen</span>
+        </span>
+          <input type="file" class="css-1u2oed9 eehmg7h4" (change)="onFileChange($event)" #fileInput>
+      </button>
+      <div class="profile-image center" [style.background-image]="makeTrustedImage(image)"></div>
+      <div class="row">
+          <div class="col-lg-12">
+            <div class="progress" style="height: 20px;">
+              <div class="progress-bar bg-success" role="progressbar" [style.width]="globalSatisfactionLevel + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{globalSatisfactionLevel}}%</div>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 centered">
+          <div class="small-space"></div>
+          <p style="text-align:center;font-weight:300;">Nivel de satisfacción de clientes</p>
+        </div>
+      </div>
+    </div>
+      <div class="col-lg-9 centered">
+        <div class="row">
+          <div class="col-md-8 mb-3">
+            <h4 class="mb-3">Mi información</h4>
+          </div>
+          <div class="col-md-4 mb-3 dis-inln">
+            <button type="button" class="btn btn-outline-dark" (click)="cancel();">Cancelar</button>
+            <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Guardar Cambios</button>
+          </div>
+          <form class="col-md-12" (ngSubmit)="onSubmit()" #providerInfoForm="ngForm">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="identification">Número de identificación</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="identification" 
+                    placeholder="" 
+                    value={{idNumber}} 
+                    required="false" 
+                    disabled>
+                </div>
+                <div class="form-group col-md-6"></div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label for="firstName">Nombre</label>
+                      <input 
+                      type="text" 
+                      class="form-control" 
+                      id="firstName" 
+                      placeholder="Nombre"
+                      value="" 
+                      required
+                      minlength="3"
+                      pattern="[a-zA-Zóáéíú ]*"
+                      [(ngModel)]="mName"
+                      name="name" 
+                      #name="ngModel"
+                      [ngClass]="{'is-valid': name.valid && name.touched, 'is-invalid': name.invalid && name.touched}">
+                      <small *ngIf="name.invalid && name.touched" class="form-text text-muted-error">El nombre ingresado no es válido</small>
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="lastName">Apellidos</label>
+                      <input class="form-control"
+                      type="text" 
+                      placeholder="Apellidos" 
+                      required 
+                      minlength="3"
+                      pattern="[a-zA-Zóáéíú ]*"
+                      [(ngModel)]="mLastname" 
+                      name="lastname" 
+                      #lastname="ngModel"
+                      [ngClass]="{'is-valid': lastname.valid && lastname.touched, 'is-invalid': lastname.invalid && lastname.touched}">
+                      <small *ngIf="lastname.invalid && lastname.touched" class="form-text text-muted-error">El apellido ingresado no es válido</small>
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label for="address">Dirección</label>
+                      <input 
+                      type="text" 
+                      class="form-control" 
+                      id="address" 
+                      placeholder="Dirección"
+                      value="" 
+                      required
+                      minlength="7"
+                      [(ngModel)]="mAddress"
+                      name="address" 
+                      #address="ngModel"
+                      [ngClass]="{'is-valid': address.valid && address.touched, 'is-invalid': address.invalid && address.touched}">
+                      <small *ngIf="address.invalid && address.touched" class="form-text text-muted-error">La dirección ingresada no es válida</small>
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="cellphone">Celular</label>
+                      <input class="form-control"
+                      type="text"
+                      placeholder="Celular" 
+                      required
+                      [textMask]="{mask: mask, guide: false}"
+                      minlength="14"
+                      maxlength="14"
+                      [(ngModel)]="mCellphone"
+                      [ngModelOptions]="{standalone: true}" 
+                      cellphone="cellphone" 
+                      #cellphone="ngModel"
+                      [ngClass]="{'is-valid': cellphone.valid && cellphone.touched, 'is-invalid': cellphone.invalid && cellphone.touched}">
+                      <small *ngIf="cellphone.invalid && cellphone.touched && cellphone.pristine" class="form-text text-muted-error">¡Debes ingresar un celular de contacto!</small>
+                      <small *ngIf="cellphone.invalid && cellphone.touched && cellphone.dirty" class="form-text text-muted-error">Número no válido</small>
+                  </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="profession">Profesión</label>
+                  <select 
+                    class="form-control"
+                    name="profession" 
+                    required 
+                    [(ngModel)]="mProfession"
+                    #profession="ngModel"
+                    [ngClass]="{'is-valid': profession.valid && profession.touched, 'is-invalid': profession.invalid && profession.touched}">
+                      <option [ngValue]="null" disabled>Selecciona una profesión...</option>
+                      <option *ngFor="let item of proffesions" [ngValue]="item"> {{ item.name }} </option>
+                    </select>
+                    <small *ngIf="profession.invalid && profession.touched" class="form-text text-muted-error">!Debes seleccionar una profesión!</small>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="city">Ciudad</label>
+                  <select 
+                    class="form-control" 
+                    name="city" 
+                    required 
+                    [(ngModel)]="mCity"
+                    #city="ngModel"
+                    [ngClass]="{'is-valid': city.valid && city.touched, 'is-invalid': city.invalid && city.touched}">
+                      <option [ngValue]="null" disabled>Selecciona una ciudad...</option>
+                      <option *ngFor="let item of cities" [ngValue]="item" [selected]="mCity"> {{ item.name }} </option>
+                  </select>
+                  <small *ngIf="city.invalid && city.touched" class="form-text text-muted-error">!Debes seleccionar una ciudad!</small>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="email">Email</label>
+                  <input type="text" class="form-control" id="email" placeholder="" value={{email}} required="false" disabled>
+                </div>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

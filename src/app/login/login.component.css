@@ -1,0 +1,144 @@
+h3{
+  font-size: 2rem;
+}
+
+small{
+  text-align: left;
+}
+
+.text-muted-error{
+  color: #FF3741!important;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {  
+  .hello {
+    padding-top: 30%;
+    padding-bottom: 15%;
+    background: url('../../assets/jaroslaw-ceborski-250955-unsplash.jpg') no-repeat;  
+    background-size: cover;  
+  }  
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  .hello {
+    padding-top: 14%;
+    padding-bottom: 4%;
+    background: url('../../assets/jaroslaw-ceborski-250955-unsplash.jpg') no-repeat;  
+    background-size: cover;  
+  }  
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  .hello {
+    padding-top: 16%;
+    padding-bottom: 8%;
+    background: url('../../assets/jaroslaw-ceborski-250955-unsplash.jpg') no-repeat;  
+    background-size: cover;  
+  }  
+ }
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+  .hello {
+    padding-top: 11%;
+    padding-bottom: 3%;
+    background: url('../../assets/jaroslaw-ceborski-250955-unsplash.jpg') no-repeat;  
+    background-size: cover;  
+  }  
+ }
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+  .hello {
+    padding-top: 11%;
+    padding-bottom: 8%;
+    background: url('../../assets/jaroslaw-ceborski-250955-unsplash.jpg') no-repeat;  
+    background-size: cover;  
+  }  
+ }
+  
+
+.form {
+  position: relative;
+  margin: 0 auto;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 330px;
+  min-width: 270px;
+  padding-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form div{
+  margin: 0 0 18px;
+}
+
+.form button.user-selector{
+  background: #008d98;
+  border-color:#008d98;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+.form button.user-selector.focus, .form button.user-selector:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(0,141,152,0.5);
+  box-shadow: 0 0 0 0.2rem rgba(0,141,152,0.5);
+}
+
+.form button.provider-selector{
+  background: #294664;
+  border-color:#294664;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+.form button.provider-selector.focus, .form button.provider-selector:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(41,70,101,.5);
+  box-shadow: 0 0 0 0.2rem rgba(41,70,101,.5);
+}
+
+.form button.unselect-selector{
+  background: rgb(207, 207, 207);
+  border-color:rgb(207, 207, 207);
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+.form button.user-login{
+  background: #008d98;
+  border-color: #008d98;
+  color: #fff;
+}
+
+.form button.user-login.focus, .form button.user-login:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(0,141,152,0.5);
+  box-shadow: 0 0 0 0.2rem rgba(0,141,152,0.5);
+}
+
+.form button.provider-login{
+  background: #294664;  
+  border-color: #294664;
+  color: #fff;
+}
+
+.form button.provider-login.focus, .form button.provider-login:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(41,70,101,.5);
+  box-shadow: 0 0 0 0.2rem rgba(41,70,101,.5);
+}
+
+.form button.disable{
+  background: rgb(204, 204, 204);
+  border-color: rgb(204, 204, 204);
+}
+
+.alert-properties{
+  text-align: center;
+  margin: 0 0 4px;
+}
+

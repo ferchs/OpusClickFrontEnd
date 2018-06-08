@@ -1,0 +1,86 @@
+<div class="space">
+  <div class="container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px' }"></ngx-loading>
+    <div class="row">
+      <div class="col-lg-3">
+        <button class="button-style center">
+          <span class="span-style">
+            <div class="display-margin">
+              <img src="../../assets/technology.svg" width="20" height="20">
+            </div>
+          <span>Cambiar Imagen</span>
+          </span>
+            <input type="file" class="css-1u2oed9 eehmg7h4" (change)="onFileChange($event)" #fileInput>
+        </button>
+        <div class="profile-image center" [style.background-image]="makeTrustedImage(image)"></div>
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="progress" style="height: 20px;">
+                <div class="progress-bar bg-success" role="progressbar" [style.width]="globalSatisfactionLevel + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{globalSatisfactionLevel}}%</div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 centered">
+            <div class="small-space"></div>
+            <p style="text-align:center;font-weight:300;">Nivel de satisfacción de clientes</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9 centered">
+          <div class="row">
+            <div class="col-md-9 mb-3">
+              <h4 class="mb-3">Mi información</h4>
+            </div>
+            <div class="col-md-3 mb-3">
+              <button type="button" class="btn btn-outline-dark" (click)="editInformation();">Cambiar Información</button>
+            </div>
+            <div class="col-md-6 mb-1">
+              <label for="firstName">Número de identificación</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value={{idNumber}} required="false" disabled>
+            </div>
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6 mb-1">
+              <label for="firstName">Nombre</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value={{name}} required="false" disabled>
+            </div>
+            <div class="col-md-6">
+              <label for="lastName">Apellidos</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value={{lastname}} required="false" disabled>
+            </div>
+            <div class="col-md-6 mb-1">
+              <label for="address">Dirección</label>
+              <input type="text" class="form-control" id="address" placeholder="" value={{address}} required="false" disabled>
+            </div>
+            <div class="col-md-6">
+              <label for="cellphone">Celular</label>
+              <input type="text" class="form-control" id="cellPhone" placeholder="" value={{cellphone}} required="false" disabled>
+            </div>
+            <div class="col-md-6 mb-1">
+              <label for="profession">Profesión</label>
+              <select class="form-control" id="profession" disabled>
+                <option>{{profession}}</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6 mb-1">
+                <label for="city">Ciudad</label>
+                <select class="form-control" id="city" disabled>
+                  <option>{{city}}</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6 mb-1">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id="email" placeholder="" value={{email}} required="false" disabled>
+            </div>
+            <div class="col-md-6">
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

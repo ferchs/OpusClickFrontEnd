@@ -1,0 +1,165 @@
+<app-navbar [loggedIn]=loggedIn></app-navbar>
+<div class="hello">
+    <div class="container">
+            <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+        <div class="row">
+            <div class="col-lg-6 centered">
+            </div>
+            <div class="col-lg-6">
+                <div class="form">
+                    <h2>Regístrate</h2>
+                    <hr/>
+                    <form (ngSubmit)="onSubmit()" #providerRegisterForm="ngForm">
+                        <div>
+                        <input class="form-control form-control-sm"
+                        type="text" 
+                        placeholder="Nombre" 
+                        required 
+                        minlength="3" 
+                        pattern="[a-zA-Zóáéíú ]*"
+                        [(ngModel)]="dto.name"
+                        name="name" 
+                        #name="ngModel"
+                        [ngClass]="{'is-valid': name.valid && name.touched, 'is-invalid': name.invalid && name.touched}">
+                        <small *ngIf="name.invalid && name.touched" class="form-text text-muted-error">El nombre ingresado no es válido</small>
+                        </div>
+                        <div>
+                                <input class="form-control form-control-sm"
+                                type="text" 
+                                placeholder="Apellido" 
+                                required 
+                                minlength="3"
+                                pattern="[a-zA-Zóáéíú ]*"
+                                [(ngModel)]="dto.lastname" 
+                                name="lastname" 
+                                #lastname="ngModel"
+                                [ngClass]="{'is-valid': lastname.valid && lastname.touched, 'is-invalid': lastname.invalid && lastname.touched}">
+                                <small *ngIf="lastname.invalid && lastname.touched"
+                                class="form-text text-muted-error">
+                                    El apellido ingresado no es válido
+                                </small>
+                        </div>
+                        <div>
+                            <input class="form-control form-control-sm"
+                            type="email" 
+                            placeholder="Email" 
+                            required 
+                            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                            [(ngModel)]="dto.email"
+                            (ngModelChange)="valuechange($event)"
+                            name="email" 
+                            #email="ngModel"
+                            [ngClass]="{'is-valid': email.valid && email.touched, 'is-invalid': email.invalid && email.touched}">
+                            <small *ngIf="email.invalid && email.touched && email.pristine"
+                            class="form-text text-muted-error">
+                            ¡Debes ingresar una dirección email!
+                            </small>
+                            <small *ngIf="email.invalid && email.touched && email.dirty"
+                            class="form-text text-muted-error">
+                            Email no válido
+                            </small>
+                            <small *ngIf="registeredEmailError"
+                            class="form-text text-muted-error">
+                            Ya se ha registrado una cuenta con este correo.
+                            </small>
+                        </div>
+                        <div>
+                            <input class="form-control form-control-sm"
+                            type="text"
+                            placeholder="Celular" 
+                            required
+                            [textMask]="{mask: mask, guide: false}"
+                            minlength="14"
+                            maxlength="14"
+                            [(ngModel)]="dto.providerPhone"
+                            [ngModelOptions]="{standalone: true}" 
+                            cellphone="dto.providerPhone" 
+                            #cellphone="ngModel"
+                            [ngClass]="{'is-valid': cellphone.valid && cellphone.touched, 'is-invalid': cellphone.invalid && cellphone.touched}">
+                            <small *ngIf="cellphone.invalid && cellphone.touched && cellphone.pristine"
+                            class="form-text text-muted-error">
+                            ¡Debes ingresar un celular de contacto!
+                            </small>
+                            <small *ngIf="cellphone.invalid && cellphone.touched && cellphone.dirty"
+                            class="form-text text-muted-error">
+                            Número no válido
+                            </small>
+                        </div>
+                        <div>
+                            <select 
+                            class="form-control form-control-sm"
+                            name="profession" 
+                            required 
+                            [(ngModel)]="mProffesion"
+                            #profession="ngModel"
+                            [ngClass]="{'is-valid': profession.valid && profession.touched, 'is-invalid': profession.invalid && profession.touched}">
+                            <option [ngValue]="null" disabled  selected>Selecciona una profesión</option>
+                            <option *ngFor="let item of proffesions" [ngValue]="item"> {{ item.name }} </option>
+                            </select>
+                            <small *ngIf="profession.invalid && profession.touched"
+                            class="form-text text-muted-error">
+                                    !Debes seleccionar una profesión!
+                            </small>
+                        </div>
+                        <div>
+                            <select 
+                            class="form-control form-control-sm" 
+                            name="city" 
+                            required 
+                            [(ngModel)]="mCity"
+                            #city="ngModel"
+                            [ngClass]="{'is-valid': city.valid && city.touched, 'is-invalid': city.invalid && city.touched}">
+                                    <option [ngValue]="null" disabled  selected>Selecciona una ciudad</option>
+                                    <option *ngFor="let item of cities" [ngValue]="item"> {{ item.name }} </option>
+                            </select>
+                            <small *ngIf="city.invalid && city.touched"
+                            class="form-text text-muted-error">
+                                    !Debes seleccionar una ciudad!
+                            </small>
+                        </div>
+                        <div>
+                            <input class="form-control form-control-sm"
+                            type="password" 
+                            placeholder="Contraseña" 
+                            required
+                            minlength="6"
+                            validateEqual="confirmPassword" 
+                            reverse="true" 
+                            [(ngModel)]="dto.password" 
+                            name="password" 
+                            #password="ngModel"
+                            [ngClass]="{'is-valid': password.valid && password.touched, 'is-invalid': password.invalid && password.touched}">
+                            <small *ngIf="password.invalid && password.touched || password.pristine && password.touched"
+                            class="form-text text-muted-error">
+                            La contraseña es requerida
+                        </small>
+                        </div>
+                        <div>
+                            <input class="form-control form-control-sm"
+                            type="password" 
+                            placeholder="Confirmar contraseña" 
+                            required 
+                            validateEqual="password" 
+                            reverse="false" 
+                            [(ngModel)]="dto.matchingPassword" 
+                            name="confirmPassword" 
+                            #confirmPassword="ngModel"
+                            [ngClass]="{'is-valid': confirmPassword.valid && confirmPassword.touched, 'is-invalid': confirmPassword.invalid && confirmPassword.touched}">
+                            <small [hidden]="confirmPassword.valid || (confirmPassword.pristine)" class="form-text text-muted-error">
+                            La contraseña debe coincidir
+                            </small>
+                        </div>                
+                        <button type="submit"
+                        class="btn btn-md btn-block"
+                        [ngClass]="{enable: providerRegisterForm.form.valid, disable: !providerRegisterForm.form.valid}" 
+                        [disabled]="!providerRegisterForm.form.valid">
+                        Registrarse
+                        </button>
+                        <hr/>
+                        <a [routerLink]="['/entrar']">¿Ya estas registrado?</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

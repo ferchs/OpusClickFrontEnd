@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~offcanvas-bootstrap/dist/css/bootstrap.offcanvas.min.css";
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+body{
+    /*font-family: 'Nunito', sans-serif;*/
+    font-family: 'Nunito', sans-serif;
+    color:#484848;
+}

@@ -1,0 +1,116 @@
+h2{
+  font-size: 28px;
+}
+
+small{
+  text-align: left;
+}
+
+.space{
+  height: 8px
+}
+
+.text-muted-error{
+  color: #FF3741!important;
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {  
+  .hello {
+    padding-top: 29%;
+    padding-bottom: 15%;
+    background: url('../../assets/Handyman.jpg') no-repeat;  
+    background-size: cover;  
+  }      
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  .hello {
+    padding-top: 13%;
+    padding-bottom: 4%;
+    padding-bottom: 100% auto;
+    background: url('../../assets/Handyman.jpg') no-repeat;  
+    background-size: cover;  
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  .hello {
+    padding-top: 13%;
+    padding-bottom: 8%;
+    background: url('../../assets/Handyman.jpg') no-repeat;  
+    background-size:cover;  
+  }
+ }
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+  .hello {
+    padding-top: 9%;
+    padding-bottom: 3%;
+    background: url('../../assets/Handyman.jpg') no-repeat;  
+    background-size:cover; 
+  }
+ }
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+  .hello {
+    padding-top: 7%;
+    padding-bottom: 2%;
+    background: url('../../assets/Handyman.jpg') no-repeat;  
+    background-size:cover;
+  }
+ }
+
+.form {
+  position: relative;
+  margin: 0 auto;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 330px;
+  min-width: 270px;
+  padding-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form div{
+  margin: 0 0 8px;
+}
+
+.form div input {
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form div select {
+  width: 100%;
+  font-size: 14px;
+}
+
+.form button.enable{
+  background: #294664;  
+  border-color: #294664;
+  color: #FFFFFF;
+}
+
+.form button.enable.focus, .form button.enable:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(41,70,101,.5);
+  box-shadow: 0 0 0 0.2rem rgba(41,70,101,.5);
+}
+
+.form button.disable{
+  background: rgb(204, 204, 204);
+  border-color: rgb(204, 204, 204);
+}
+
+.alert-properties{
+  text-align: center;
+  margin: 0 0 4px;
+}

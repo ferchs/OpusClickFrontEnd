@@ -1,0 +1,57 @@
+<div [formGroup]="form">
+  <!-- <label [attr.for]="question.key">{{question.label}}</label>-->
+ 
+   <div [ngSwitch]="answer.controlType">
+ 
+     <!--<input *ngSwitchCase="'textbox'" [formControlName]="answer.id"
+             [id]="answer.id" [type]="answer.type">-->
+             
+            
+     <div class="radios checkbox-group">
+       <div [hidden]="!(currentQuestion.id===answer.parent)" *ngSwitchCase="'radio'" class="col-lg-12">
+          <input [formControlName]="answer.controlName" [id]="answer.id" type="radio" [value]="answer.label">
+          <label [for]="answer.id" class="button-label">
+           {{answer.label}}                  
+         </label>
+       </div>
+     </div>
+ 
+     <!--<div *ngSwitchCase="'file'" class="col-lg-12">
+         <div class="custom-file">
+           <input [type]="answer.type" class="custom-file-input" [id]="answer.id" required>
+           <label class="custom-file-label" for="validatedCustomFile">Elige una imagen...</label>
+           <div class="invalid-feedback">Example invalid custom file feedback</div>
+         </div>
+       </div>
+ 
+       <div *ngSwitchCase="'textarea'" class="col-lg-12">
+           <label for="description">Modificaciones al diseño</label>
+           <textarea 
+             class="form-control" 
+             id="description" 
+             rows="2"
+             required  
+             name="workDescription"
+             [ngClass]="{'is-valid': workDescription.valid && workDescription.touched, 'is-invalid': workDescription.invalid && workDescription.touched}">
+           </textarea>
+           <small *ngIf="workDescription.untouched || workDescription.valid && workDescription.touched" class="form-text text-muted">Se conciso en la descripción, esto ayuda a nuestros expertos a estar preparados el día de la visita.</small>
+           <small *ngIf="workDescription.invalid && workDescription.touched" class="form-text text-muted-error">Debes describir el trabajo a realizar</small>
+       </div>
+ 
+       <div *ngSwitchCase="'text'" class="col-lg-12">
+           <div class="form-row">
+               <div class="col-md-4 mb-3">
+                 <label for="validationTooltip04">Largo</label>
+                 <input type="text" class="form-control" id="validationTooltip04" placeholder="Largo en cm" required>
+               </div>
+           </div>
+       </div>
+ 
+     <select [id]="answer.id" *ngSwitchCase="'dropdown'" [formControlName]="answer.id">
+       <option *ngFor="let opt of answer.options" [value]="opt.id">{{opt.value}}</option>
+     </select>
+ 
+   </div> 
+ 
+   <div class="errorMessage" *ngIf="!isValid">{{answer.label}} is required</div>-->
+ </div>

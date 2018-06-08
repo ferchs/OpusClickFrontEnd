@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+<div class="list-page">
+  <!--hasta aqui-->
+  <div class="row">
+    <div class="input-group mb-3 col-lg-12">
+        <input type="text" 
+        class="form-control" 
+        placeholder="{{placeholder}}" 
+        aria-label="¿Qué experto necesitas?" 
+        aria-describedby="basic-addon2"
+        autocomplete="off"
+        [(ngModel)]="mSearch"
+        name="search" 
+        #search="ngModel"
+        (click)='toggleDropDown()'
+        clickOutside (clickOutside)="closeDropDown()">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="find()">Buscar</button>
+        </div>
+        <div *ngIf='showDropDown' class="container-dropdown">
+            <div>
+                <div (click)='selectValue(exp)' class='dropdown-content' *ngFor='let exp of experts | searchFilter:getSearchValue()'>
+                    {{exp.name}}
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+      <div class="row">
+        <div class="col-lg-3 title">Raúl García Méndez</div>
+        <div class="col-lg-7"></div>
+        <div class="col-lg-3">
+          <img src="../../assets/Caras/mario.png">
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-12">
+                  <p>Nivel de satisfacción de clientes</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">90%</div>
+                  </div>
+                </div>
+            </div>
+            <div class="my-4"></div>
+            <div class="row">
+                <div style="text-align:center" class="col-6 col-sm-6 col-md-6 col-lg-6">
+                  <strong>96%</strong>
+                  <img class="simbol" src="../../assets/like.svg" height="30" width="30">
+                  <div class="description">
+                    <span>
+                      De sus clientes lo recomiendan
+                    </span>
+                  </div>
+                </div>
+                <div style="text-align:center" class="col-6 col-sm-6 col-md-6 col-lg-6">
+                  <strong>4%</strong>
+                  <img class="simbol" src="../../assets/dislike.svg" height="30" width="30">
+                  <div class="description">
+                    <span>
+                      De sus clientes no lo recomiendan
+                    </span>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 center-items">
+          <div class="my-4"></div>
+          <button class="btn btn-outline-provider" 
+          type="button" 
+          [routerLink]="['/soy_experto']">
+          Cotización en línea
+          </button>
+          <div class="my-2"></div>
+          <button class="centered btn btn-outline-user" 
+          type="button" 
+          [routerLink]="['/visitas']">
+          Planear una visita
+          </button>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+      </div>
+      <hr>
+</div>
+

@@ -1,0 +1,73 @@
+<app-navbar [loggedIn]=loggedIn></app-navbar>
+<div class="hello">
+<div class="container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+  <div class="form">
+    <h3>Inicia Sesión</h3>
+    <div class="space"></div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button"
+        [ngClass]="{'user-selector': userLogin , 'unselect-selector': !userLogin }" 
+        class="btn"
+        (click)="userClick()">
+        Usuarios
+      </button>
+      <button 
+        type="button"
+        [ngClass]="{'provider-selector': !userLogin , 'unselect-selector': userLogin }"  
+        class="btn"
+        (click)="providerClick()">
+        Expertos
+      </button>
+    </div>
+    <div *ngIf="error" class="alert alert-danger alert-properties">
+        {{errorMessage}}
+    </div>
+    <hr/>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div>
+        <input class="form-control form-control-md"
+              type="email" 
+              placeholder="Email" 
+              required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+              [(ngModel)]="mEmail"
+              (ngModelChange)="valuechange($event)"
+              name="email" 
+              #email="ngModel"
+              [ngClass]="{'is-valid': email.valid && email.touched, 'is-invalid': email.invalid && email.touched}">
+        <small *ngIf="email.invalid && email.touched && email.pristine" class="form-text text-muted-error">
+          ¡Debes ingresar una dirección email!
+        </small>
+        <small *ngIf="email.invalid && email.touched && email.dirty" class="form-text text-muted-error">
+          Email no válido
+        </small>
+        <small *ngIf="emailNotFound" class="form-text text-muted-error">
+          {{errorMessage}}
+        </small>
+      </div> 
+      <div>
+        <input class="form-control form-control-md"
+              type="password" 
+              placeholder="Contraseña" 
+              required minlength="6" 
+              [(ngModel)]="mPassword" 
+              name="password" 
+              #password="ngModel"
+              [ngClass]="{'is-valid': password.valid && password.touched, 'is-invalid': password.invalid && password.touched}">
+              <small *ngIf="password.invalid && password.touched" class="form-text text-muted-error">
+                Debes ingresar una contraseña válida
+              </small>
+      </div>
+      <button type="submit" 
+        class="btn btn-md btn-block"
+        [ngClass]="{'user-login': loginForm.form.valid && userLogin, 'provider-login': loginForm.form.valid && !userLogin, 'disable': !loginForm.form.valid}" 
+        [disabled]="!loginForm.form.valid">
+        Ingresar
+      </button>
+        <hr/>
+        <a [routerLink]="['/olvide_contraseña']">¿Has olvidado tu contraseña?</a>
+  </form>
+  </div>
+</div>
+</div>
+
