@@ -22,6 +22,7 @@ export class ProviderDashboardMenuComponent implements OnInit {
 
   exit(){
     this.authService.logout();
+    localStorage.removeItem("email_provider");
     this.router.navigate(['']);
   }
 

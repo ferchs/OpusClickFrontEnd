@@ -26,6 +26,7 @@ export class ProviderRegistryComponent implements OnInit {
   cities:City[];
   mCity:City;
   registeredEmailError:boolean;
+  registeredPhoneError:boolean;
   loading:boolean;
   public loggedIn:boolean;
 
@@ -40,6 +41,7 @@ export class ProviderRegistryComponent implements OnInit {
     this.cityService.getAllCities().subscribe(allCities=>this.cities=allCities);
     this.professionService.getAllProfessions().subscribe(allProfessions=>this.proffesions=allProfessions);
     this.registeredEmailError=false;
+    this.registeredPhoneError=false;
     this.loading=false;
   }
 
@@ -58,8 +60,15 @@ export class ProviderRegistryComponent implements OnInit {
      },
      error=> {
       this.loading = false;
-       if(error===409){
-        this.registeredEmailError=true;
+       if(error.status===409){
+         let errorCode:string=error.error;
+         errorCode=errorCode.replace(/"/g,'');
+         if(errorCode==="409-1"){
+          this.registeredEmailError=true;
+         }
+         if(errorCode==="409-2"){
+          this.registeredPhoneError=true;
+         }
        }
      });
     }

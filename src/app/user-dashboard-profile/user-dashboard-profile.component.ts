@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { BrowserModule, DomSanitizer } from '@angular/platform-browser'
-import { Provider } from "../_models/provider";
+import { DomSanitizer} from '@angular/platform-browser'
 import { Location } from "../_models/location";
+import { UserInformationDto } from "../_dtos/userInformationDto";
 import { DataService } from "../_services/data.service";
-import { DataProviderService } from "../_services/data-provider.service";
-import { ProviderService } from "../_services/provider.service";
-import { map, catchError } from 'rxjs/operators';
+import { UserService } from "../_services/user.service";
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-user-dashboard-profile',
@@ -14,41 +13,43 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-dashboard-profile.component.css']
 })
 export class UserDashboardProfileComponent implements OnInit {
+
+  userDto:UserInformationDto;
   photo:File;
+  location:Location;
   email:string;
-  idNumber:string;
-  name:string;
-  lastname:string;
-  address:string;
-  cellphone:string;
-  profession:string;
-  city:string;
   image:any;
   imageToShow: any;
-  globalSatisfactionLevel:number;
   loading:boolean;
 
-  constructor(private dataService:DataService, private dataProviderService:DataProviderService, 
-    private providerService:ProviderService,private router: Router, private domSanitizer: DomSanitizer) { }
+  constructor(private dataService:DataService, private userService:UserService,
+    private router: Router, private domSanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.image="../../assets/profile.svg";
-    this.globalSatisfactionLevel=100;
     this.loading=true;
-    this.dataService.currentMessage.subscribe(message =>{
-      this.loading=false;
-      this.email = message
-      this.dataProviderService.currentMessage.subscribe((provider:Provider)=>{
-        this.idNumber=provider.identificationNumber;
-        this.name=provider.account.name;
-        this.lastname=provider.account.lastname;
-        this.address=provider.location.address;
-        this.cellphone=provider.phone;
-        this.image=provider.photo;
-        this.profession=provider.profession.name;
-        this.city=provider.location.city.name;
-        this.globalSatisfactionLevel=provider.globalRating.globalSatisfactionLevel;
+    this.location= new Location();
+    this.userDto= new UserInformationDto();
+    this.image="../../assets/profile.svg";
+    this.dataService.currentMessage.subscribe(emailUser =>{
+      if(emailUser==="default message"){
+        this.dataService.changeMessage(localStorage.getItem('email_user'));
+        this.email=localStorage.getItem('email_user');
+        this.userService.getUser(localStorage.getItem('email_user')).subscribe((userInformationDto:UserInformationDto)=>{
+          this.userDto=userInformationDto;
+          this.image= this.userDto.photo;
+          this.location=userInformationDto.locations.pop();
+          this.loading=false;
+        })
+      }
+      else{
+      this.userService.getUser(emailUser).subscribe((userInformationDto:UserInformationDto)=>{
+        this.email=localStorage.getItem('email_user');
+        this.userDto=userInformationDto;
+        this.location=userInformationDto.locations.pop();
+        this.image= this.userDto.photo;
+        this.loading=false;
       })
+    }
     });
   }
 
@@ -65,9 +66,10 @@ export class UserDashboardProfileComponent implements OnInit {
       reader.readAsDataURL(this.photo);
       reader.onload = (event: any) => {
         this.image=event.target.result;
-        this.providerService.setProviderPhoto(this.photo,this.email)
+        this.userService.setUserPhoto(this.photo,this.email)
         .subscribe((url:string)=>{
           this.image=url;
+          this.userDto.photo=url;
           this.loading=false;
         });
       }
@@ -75,7 +77,7 @@ export class UserDashboardProfileComponent implements OnInit {
   }
   
   editInformation(){
-    this.router.navigateByUrl('/dashboard_experto/perfil/editar');
+    this.router.navigateByUrl('/dashboard_usuario/perfil/editar');
   }
 
 }

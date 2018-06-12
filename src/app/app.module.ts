@@ -56,6 +56,7 @@ import { ProviderDashboardQuotationComponent } from './provider-dashboard-quotat
 import { ProviderDashboardNegotiationComponent } from './provider-dashboard-negotiation/provider-dashboard-negotiation.component';
 import { UserDashboardNegotiationComponent } from './user-dashboard-negotiation/user-dashboard-negotiation.component';
 import { UserDashboardQuotationComponent } from './user-dashboard-quotation/user-dashboard-quotation.component';
+import { UserDashboardHomeComponent } from './user-dashboard-home/user-dashboard-home.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { UserDashboardQuotationComponent } from './user-dashboard-quotation/user
     ProviderDashboardQuotationComponent,
     ProviderDashboardNegotiationComponent,
     UserDashboardNegotiationComponent,
-    UserDashboardQuotationComponent
+    UserDashboardQuotationComponent,
+    UserDashboardHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -114,7 +116,8 @@ import { UserDashboardQuotationComponent } from './user-dashboard-quotation/user
       multi: true
     },
     AccountService, UserService, ProviderService, CityService, DataService,
-    DataProviderService, ProfessionService, SearchService, AuthGuard, AuthService],
+    DataProviderService,ProfessionService, SearchService, 
+    AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

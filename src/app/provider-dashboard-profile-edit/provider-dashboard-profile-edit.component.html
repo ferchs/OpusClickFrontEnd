@@ -149,7 +149,7 @@
                       #city="ngModel"
                       [ngClass]="{'is-valid': city.valid && city.touched, 'is-invalid': city.invalid && city.touched}">
                         <option [ngValue]="null" disabled>Selecciona una ciudad...</option>
-                        <option *ngFor="let item of cities" [ngValue]="item" [selected]="mCity"> {{ item.name }} </option>
+                        <option *ngFor="let item of cities" [ngValue]="item"> {{ item.name }} </option>
                     </select>
                     <small *ngIf="city.invalid && city.touched" class="form-text text-muted-error">!Debes seleccionar una ciudad!</small>
                   </div>

@@ -4,6 +4,7 @@ import { SearchService } from '../_services/search.service';
 import { Profession } from '../_models/profession';
 import { Search } from '../_models/search';
 import { AuthService } from '../_services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { AuthService } from '../_services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  experts:Profession[];
+  professions:Profession[];
   profession:Profession;
   placeholder:string;
   mSearch:string;
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private professionService: ProfessionService, private searchService: SearchService,
-    private authService: AuthService) { }
+    private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.loggedIn=this.authService.isLoggedIn();
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
     profession.setName("Otra...");
     this.professionService.getAllProfessions().subscribe(allProfessions=>{
       allProfessions.push(profession);
-      this.experts=allProfessions
+      this.professions=allProfessions
     });
     this.profession=new Profession();
     this.mSearch="";
@@ -71,7 +72,7 @@ export class HomeComponent implements OnInit {
       this.searchService.saveAnother(search);
     }
     else{
-      
+      this.router.navigate(['expertos'],{ queryParams: { profession: this.mSearch } })
     }
   }
 

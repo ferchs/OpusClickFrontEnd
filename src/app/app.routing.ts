@@ -11,6 +11,7 @@ import { AccountCreatedComponent } from './account-created/account-created.compo
 import { ConfirmRegistrationComponent } from './confirm-registration/confirm-registration.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserDashboardProfileComponent } from './user-dashboard-profile/user-dashboard-profile.component';
+import { UserDashboardHomeComponent } from './user-dashboard-home/user-dashboard-home.component';
 import { UserDashboardProfileEditComponent } from './user-dashboard-profile-edit/user-dashboard-profile-edit.component';
 
 import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
@@ -27,7 +28,7 @@ import { AuthGuard } from './_guards/auth.guard';
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
     {path:'quiero_contratar', component: UserRegistryComponent},
-    {path:'v1/providerslist', component: ProviderListComponent, canActivate: [AuthGuard]},      
+    {path:'expertos', component: ProviderListComponent, canActivate: [AuthGuard]},      
     {path:'soy_experto', component: ProviderRegistryComponent},
     {path:'olvide_contraseña', component: ForgetPasswordComponent},
     {path:'cuenta_creada', component: AccountCreatedComponent},   
@@ -36,7 +37,7 @@ const appRoutes: Routes = [
     {path:'confirmar_registro', component: ConfirmRegistrationComponent},
     {path:'dashboard_usuario', component: UserDashboardComponent,
         children: [
-            { path: '', component: ProviderDashboardHomeComponent },
+            { path: '', component: UserDashboardHomeComponent },
             { path: 'perfil', component:  UserDashboardProfileComponent},
             { path: 'perfil/editar', component: UserDashboardProfileEditComponent}
         ]

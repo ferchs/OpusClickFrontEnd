@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Provider } from "../_models/provider";
 import { ProviderUpdateProfileDto } from "../_dtos/providerUpdateDto";
+import { ProviderByProfessionDto} from "../_dtos/providerByProfession";
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
@@ -16,7 +17,7 @@ export class ProviderService {
   constructor(private http: HttpClient) {
   }
 
-  getProviderInfo(email:string){
+  getProvider(email:string){
     return this.http.get<Provider>(this.apiUrl+"/"+email)
     .pipe(
       map((provider:Provider)=> { 
@@ -50,16 +51,19 @@ export class ProviderService {
 
   getProviderPhoto(email:string){
     return this.http.get(this.apiUrl+"/"+email+"/images", {responseType: "blob"});
-    /*return this.http.get<Blob>(this.apiUrl+"/"+id+"/images")
-    .pipe(
-      map((photo:Blob)=> { 
-        return photo;
-      }),
-      catchError(this.handleError)
-    );*/
   }
 
-  /*
+  getProvidersByProfession(profession:string){
+    let params = new HttpParams().set('profession',profession);
+    return this.http.get<ProviderByProfessionDto[]>(this.apiUrl,{params: params});
+  }
+
+    private handleError (error: Response) {
+      console.log("Se esta manejando un error");
+        return Observable.throw(error.status);        
+    }
+
+    /*
   getProviderInfo(id:string){
     let idParam = new HttpParams().set('id', id);
     return this.http.get<Provider>(this.apiUrl,{ params: idParam })
@@ -71,8 +75,4 @@ export class ProviderService {
     );
   }
 */
-    private handleError (error: Response) {
-      console.log("Se esta manejando un error");
-        return Observable.throw(error.status);        
-    }
 }

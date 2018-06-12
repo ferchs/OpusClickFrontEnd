@@ -29,13 +29,13 @@ export class AccountService {
       const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});          
       return this.http.post(this.apiUrl+"/provider", provider, {headers: headers, observe: 'response', responseType: 'text'})
       .pipe(
-        map(response => { return response.status;}),
+        map(response => { return response;}),
         catchError(this.handleError)
       );
       }
 
     private handleError (error: Response) {
       console.log("Se esta manejando un error");
-        return Observable.throw(error.status);        
+        return Observable.throw(error);        
     }
 }

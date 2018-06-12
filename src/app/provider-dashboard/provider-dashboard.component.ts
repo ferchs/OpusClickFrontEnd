@@ -21,13 +21,12 @@ export class ProviderDashboardComponent implements OnInit {
     this.dataService.currentMessage.subscribe(idProvider =>{
       if(idProvider==="default message"){
         this.dataService.changeMessage(localStorage.getItem('email_provider'));
-        this.providerService.getProviderInfo(localStorage.getItem('email_provider')).subscribe((provider:Provider)=>{
+        this.providerService.getProvider(localStorage.getItem('email_provider')).subscribe((provider:Provider)=>{
           this.dataProviderService.changeMessage(provider);
-          console.log(provider);
         })
       }
       else{
-      this.providerService.getProviderInfo(idProvider).subscribe((provider:Provider)=>{
+      this.providerService.getProvider(idProvider).subscribe((provider:Provider)=>{
         this.dataProviderService.changeMessage(provider);
       })
     }

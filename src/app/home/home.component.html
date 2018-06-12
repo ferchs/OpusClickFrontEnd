@@ -30,8 +30,8 @@
                 </div>
                 <div *ngIf='showDropDown' class="container-dropdown">
                     <div>
-                        <div (click)='selectValue(exp)' class='dropdown-content' *ngFor='let exp of experts | searchFilter:getSearchValue()'>
-                            {{exp.name}}
+                        <div (click)='selectValue(pro)' class='dropdown-content' *ngFor='let pro of professions | searchFilter:getSearchValue()'>
+                            {{pro.name}}
                         </div>
                     </div>
                 </div>

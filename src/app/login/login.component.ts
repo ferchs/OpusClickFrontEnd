@@ -46,10 +46,11 @@ export class LoginComponent implements OnInit {
       this.error=false;
       this.dataService.changeMessage(this.mEmail);
       if(this.userLogin){
+        localStorage.setItem('email_user', this.mEmail);
         this.router.navigate(['dashboard_usuario'])
       }else{
-        this.router.navigate(['dashboard_experto'])
         localStorage.setItem('email_provider', this.mEmail);
+        this.router.navigate(['dashboard_experto'])
       }
      },
      error=> {

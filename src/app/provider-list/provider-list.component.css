@@ -1,47 +1,117 @@
 @media (max-width: 575.98px) {  
-  .list-page {
-    padding-top: 24%;
-    margin-left: 10%;
-    margin-right: 10%;
-  } 
+  .search-bar-container {
+    width: 95%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 21%;
+    padding-top: 1%;
+    background-color:#ffffff;
+  }
+
+  .result-container {
+    margin-top: 33%;
+    padding-top:10px;
+  }
+
+  .profile-image {
+    width: 130px;
+    height: 130px;
+    text-align: center;
+    line-height: 130px;
+    background-color: rgb(236, 237, 239);
+    background-size:  130px 130px;
+    border-color: rgb(217, 219, 224);
+    border-image: initial;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.title{
+  text-align: center;
+  font-size:16px;
+  color: #333;
+  display: block;
+  padding: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+  line-height: 1;
+}
 }
 
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) and (max-width: 767.98px) { 
-  .list-page {
-    padding-top: 14%;
-    margin-left: 10%;
-    margin-right: 10%;
-  }  
+  .search-bar-container {
+    width: 95%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 6%;
+    padding-top: 1%;
+    background-color:#ffffff;
+  }
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) and (max-width: 991.98px) { 
-  .list-page {
-    padding-top: 7%;
-    margin-left: 10%;
-    margin-right: 10%;
+  .search-bar-container {
+    width: 95%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 6%;
+    padding-top: 1%;
+    background-color:#ffffff;
   }
  }
 
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) and (max-width: 1199.98px) { 
-  .list-page {
-    padding-top: 7%;
-    margin-left: 10%;
-    margin-right: 10%;
+  .search-bar-container {
+    width: 95%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 6%;
+    padding-top: 1%;
+    background-color:#ffffff;
   }
  }
 
 /*Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) { 
-  .list-page {
-    padding-top: 7%;
-    margin-left: 10%;
-    margin-right: 10%;
+  .search-bar-container {
+    width: 95%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 6%;
+    padding-top: 1%;
+    background-color:#ffffff;
   }
- }
 
+  .result-container {
+    margin-top: 10%;
+    padding-top:10px;
+  }
+
+  .profile-image {
+    width: 140px;
+    height: 140px;
+    text-align: center;
+    line-height: 140px;
+    background-color: rgb(236, 237, 239);
+    background-size:  140px 140px;
+    border-color: rgb(217, 219, 224);
+    border-image: initial;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 .title{
   text-align: center;
   font-size:18px;
@@ -51,6 +121,11 @@
   margin-bottom: 20px;
   font-weight: 600;
   line-height: 1;
+}
+ }
+
+ .search-content{
+  overflow-y: auto;
 }
 
 .progress {
@@ -155,4 +230,30 @@ img{
 .btn-outline-provider.focus, .btn-outline-provider:focus {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(41,70,101,.5);
   box-shadow: 0 0 0 0.2rem rgba(41,70,101,.5);
+}
+
+/*.container-fluid {
+	background-color: rgb(255, 255, 255);
+	border-bottom: 1px solid #e9eced;
+	padding-top: 5rem;
+}*/
+.container-dropdown{
+	position: absolute;
+	top:39px;
+	left: 15px;
+	z-index: 10;
+	width: 92%;
+	max-height: 190px;
+	background:white;
+	overflow-y: auto;
+}
+
+.dropdown-content{
+	padding: 10px;
+	color:black;
+	text-align: left;
+}
+
+.dropdown-content:hover{
+	background: #999999;
 }

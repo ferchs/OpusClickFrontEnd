@@ -84,6 +84,10 @@
                             class="form-text text-muted-error">
                             Número no válido
                             </small>
+                            <small *ngIf="registeredPhoneError"
+                            class="form-text text-muted-error">
+                            Ya se ha registrado una cuenta con este celular.
+                            </small>
                         </div>
                         <div>
                             <select 

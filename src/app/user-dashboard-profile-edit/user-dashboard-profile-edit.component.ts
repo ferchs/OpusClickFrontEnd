@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { BrowserModule, DomSanitizer } from '@angular/platform-browser'
-import { Router } from '@angular/router';
-import { DataProviderService } from "../_services/data-provider.service";
-import { ProviderService } from '../_services/provider.service';
+import { DomSanitizer} from '@angular/platform-browser'
+import { UserInformationDto } from "../_dtos/userInformationDto";
+import { DataService } from "../_services/data.service";
+import { UserService } from "../_services/user.service";
 import { ProfessionService } from '../_services/profession.service';
 import { CityService } from '../_services/city.service';
-import { Provider } from '../_models/provider';
 import { City } from '../_models/city';
 import { Location } from '../_models/location';
 import { Profession } from '../_models/profession';
-//import { UpdateProviderProfileDto } from "../_dtos/updateProviderProfileDto";
+import { UserUpdateProfileDto } from "../_dtos/userUpdateDto";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-dashboard-profile-edit',
@@ -17,56 +17,61 @@ import { Profession } from '../_models/profession';
   styleUrls: ['./user-dashboard-profile-edit.component.css']
 })
 export class UserDashboardProfileEditComponent implements OnInit {
-
-  provider:Provider;
-  //dto:UpdateProviderProfileDto;
+  userInformation:UserInformationDto;
+  dto:UserUpdateProfileDto;
   email:string;
   public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  mIdentification:string;
-  mName:string;
-  mLastname:string;
-  mCellphone:string;
-  mAddress:string;
   proffesions:Profession[];
-  mProfession:Profession;
   cities:City[];
-  mCity:City;
   image:any;
   photo:File;
-  globalSatisfactionLevel:number;
+  location:Location;
   loading:boolean;
   
-  constructor(private router: Router, private dataProviderService:DataProviderService, 
+  constructor(private dataService:DataService, private userService:UserService,
     private cityService: CityService, private professionService: ProfessionService,
-    private providerService:ProviderService, private domSanitizer: DomSanitizer) { }
+    private router: Router, private domSanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.image="../../assets/profile.svg";
-    this.globalSatisfactionLevel=100;
-    this.mProfession= new Profession();
-    this.mCity= new City();
-    this.dataProviderService.currentMessage.subscribe((provider:Provider)=>{
-    this.provider=provider;
-    this.email=provider.account.email;
-    this.mName=provider.account.name;
-    this.mLastname=provider.account.lastname;
-    this.mCellphone=provider.phone;
-    this.mAddress=provider.location.address;
-    this.image=provider.photo;
-    this.globalSatisfactionLevel=provider.globalRating.globalSatisfactionLevel;
-    this.mCity=provider.location.city;
-    this.cityService.getAllCities().subscribe(allCities=>
-      {
-        this.cities=allCities;
-        this.mCity=allCities.find(city=>city.name===provider.location.city.name);
-      });
-    this.professionService.getAllProfessions().subscribe(allProfessions=>
-      {
-      this.proffesions=allProfessions;
-      this.mProfession=allProfessions.find(profession=>profession.name===provider.profession.name);
-      });
-    this.loading=false;
-    })
+    this.loading=true;
+    this.location= new Location();
+    this.userInformation= new UserInformationDto();
+    this.image="../../assets/profile.svg";
+    this.dataService.currentMessage.subscribe(emailUser =>{
+      if(emailUser==="default message"){
+        this.dataService.changeMessage(localStorage.getItem('email_user'));
+        this.email=localStorage.getItem('email_user');
+        this.userService.getUser(localStorage.getItem('email_user')).subscribe((userInformation:UserInformationDto)=>{
+          this.userInformation=userInformation;
+          this.image= this.userInformation.photo;
+          this.location=userInformation.locations.pop();
+          console.log(this.location)
+          this.cityService.getAllCities().subscribe(allCities=>
+            {
+              this.cities=allCities;
+              this.location.city=allCities.find(city=>city.name===this.location.city.name);
+            });
+          this.loading=false;
+        })
+      }
+      else{
+      this.userService.getUser(emailUser).subscribe((userInformation:UserInformationDto)=>{
+        this.email=localStorage.getItem('email_user');
+        this.userInformation=userInformation;
+        this.image= this.userInformation.photo;
+        this.location=userInformation.locations.pop();
+        console.log(this.location)
+        this.cityService.getAllCities().subscribe(allCities=>
+          {
+            this.cities=allCities;
+            this.location.city=allCities.find(city=>city.name===this.location.city.name);
+          });
+        this.loading=false;
+      })
+    }
+    });
+    
   }
 
   makeTrustedImage(item) {
@@ -75,35 +80,31 @@ export class UserDashboardProfileEditComponent implements OnInit {
   }
 
   onSubmit(){
-    /*
     this.loading=true;
-    this.dto= new UpdateProviderProfileDto();
-    this.dto.providerId=this.email;
-    this.dto.accountName=this.mName;
-    this.dto.accountLastname=this.mLastname;
-    this.dto.identificationNumber=this.mIdentification;
-    this.dto.phone=this.mCellphone;
-    this.dto.profession=this.mProfession;
-    this.provider.location.city=this.mCity;
-    this.provider.location.address=this.mAddress;
-    this.dto.location= this.provider.location;
-    this.providerService.updateProvider(this.dto)
+    this.dto= new UserUpdateProfileDto();
+    this.dto.id=this.userInformation.id;
+    this.dto.accountEmail=this.email;
+    this.dto.accountName=this.userInformation.accountName;
+    this.dto.accountLastname=this.userInformation.accountLastname;
+    this.dto.identificationNumber=this.userInformation.identificationNumber;
+    this.dto.phone=this.userInformation.phone;
+    let locationsTmp:Array<Location>= new Array<Location>();
+    locationsTmp.push(this.location);
+    this.dto.locations= locationsTmp;
+    this.userService.updateUser(this.dto)
     .subscribe(httpCode => {
       this.loading = false;
-      this.router.navigate(['dashboard_experto/perfil'])
+      this.router.navigate(['dashboard_usuario/perfil'])
      },
      error=> {
       this.loading = false;
        });
-
-       */
     }
     
   savechanges(){
   }
 
   cancel(){
-    this.router.navigateByUrl('/dashboard_experto/perfil');
+    this.router.navigateByUrl('/dashboard_usuario/perfil');
   }
-
 }
