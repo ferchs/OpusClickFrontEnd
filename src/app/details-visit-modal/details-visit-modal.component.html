@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <strong>Código:</strong><p>{{visit.code}}</p>
+    <strong>Pin de seguridad:</strong><p>{{visit.securityPin}}</p>
+    <strong>Fecha:</strong><p>{{visit.date | date:'MM/dd/yyyy'}}</p>
+    <strong>Hora:</strong><p>{{visit.lowerLimit}}</p>
+    <strong>Fecha alternativa:</strong><p>{{visit.alternativeDate | date:'MM/dd/yyyy'}}</p>
+    <strong>Hora alternativa:</strong><p>{{visit.alternativeLowerLimit}}</p>
+    <strong>Dirección:</strong><p>{{visit.address}}</p>
+    <strong>Barrio:</strong><p>{{visit.neighborhood}}</p>
+    <strong>Descripción:</strong><p>{{visit.description}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">OK</button>
+  </div>

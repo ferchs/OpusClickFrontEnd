@@ -1,0 +1,120 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form #postponeVisitForm="ngForm">
+          <div class="form-group">
+              <label for="inputDate">Fecha de visita</label>
+              <my-date-picker
+              id="inputDate"
+              placeholder="Selecciona una fecha"
+              [options]="myDatePickerOptions"
+              required 
+              [(ngModel)]="mDate" 
+              name="visitDate"
+              #visitDate="ngModel">
+             </my-date-picker>
+             <small *ngIf="visitDate.untouched || visitDate.valid && visitDate.touched" id="dateHelp" class="form-text text-muted">Haz click sobre el icóno del calendario para seleccionar una fecha.</small>
+             <small *ngIf="visitDate.invalid && visitDate.touched" class="form-text text-muted-error">¡Debes seleccionar una fecha válida! Haz click sobre el icóno del calendario</small>
+            </div>
+            <div class="form-group">
+                <label for="schedule">Horario de visita </label>
+                <div id="schedule" class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="startTime">De:</label>
+                      <select 
+                        id="startTime"
+                        name="startTime" 
+                        class="form-control"
+                        required 
+                        [(ngModel)]="mStartTime" 
+                        #startTime="ngModel"
+                        (ngModelChange)="selectLimit($event)"
+                        [ngClass]="{'is-valid': startTime.valid && startTime.touched, 'is-invalid': startTime.invalid && startTime.touched}">
+                        <option [ngValue]="null" disabled  selected>Hora Inicial</option>
+                        <option *ngFor="let schedule of schedules" [ngValue]="schedule"> {{schedule.getDescription()}} </option>                
+                      </select>
+                      <small *ngIf="startTime.invalid && startTime.touched" class="form-text text-muted-error">¡Debes seleccionar alguna de las opciones!</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="endTime">Hasta:</label>
+                        <select 
+                          id="endTime"
+                          name="endTime" 
+                          class="form-control"
+                          required 
+                          [(ngModel)]="mEndTime" 
+                          #endTime="ngModel"
+                          [ngClass]="{'is-valid': endTime.valid && endTime.touched, 'is-invalid': endTime.invalid && endTime.touched}">
+                          <option [ngValue]="null" disabled  selected>Hora Final</option>
+                          <option *ngFor="let schedule of schedules" 
+                          [ngValue]="schedule"
+                          [disabled]="mSelectedStartLimit > ((schedule.getNumberHour()*60)+schedule.getNumberMinute())"> {{schedule.getDescription()}} </option>               
+                        </select>
+                        <small *ngIf="endTime.invalid && endTime.touched" class="form-text text-muted-error">¡Debes seleccionar alguna de las opciones!</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="inputDate">Fecha alternativa de visita</label>
+              <my-date-picker
+              (click)="updateAlternativeDate()"
+              id="inputDate"
+              placeholder="Selecciona una fecha alternativa"
+              [options]="altMyDatePickerOptions"
+              required 
+              [(ngModel)]="mAlternativeDate" 
+              name="visitAlternativeDate"
+              #visitAlternativeDate="ngModel">
+             </my-date-picker>
+             <small *ngIf="visitAlternativeDate.untouched || visitAlternativeDate.valid && visitAlternativeDate.touched" id="dateHelp" class="form-text text-muted">Haz click sobre el icóno del calendario para seleccionar una fecha.</small>
+             <small *ngIf="visitAlternativeDate.invalid && visitAlternativeDate.touched" class="form-text text-muted-error">¡Debes seleccionar una fecha válida! Haz click sobre el icóno del calendario</small>
+            </div>
+            <div class="form-group">
+                <label for="alternativeSchedule">Horario de visita </label>
+                <div id="alternativeSchedule" class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="alternativeStartTime">De:</label>
+                      <select 
+                        id="alternativeStartTime"
+                        name="alternativeStartTime" 
+                        class="form-control"
+                        required 
+                        [(ngModel)]="mAlternativeStartTime" 
+                        #alternativeStartTime="ngModel"
+                        (ngModelChange)="selectAlternativeLimit($event)"
+                        [ngClass]="{'is-valid': alternativeStartTime.valid && alternativeStartTime.touched, 'is-invalid': alternativeStartTime.invalid && alternativeStartTime.touched}">
+                        <option [ngValue]="null" disabled  selected>Hora Inicial</option>
+                        <option *ngFor="let schedule of schedules" [ngValue]="schedule"> {{schedule.getDescription()}} </option>                
+                      </select>
+                      <small *ngIf="alternativeStartTime.invalid && alternativeStartTime.touched" class="form-text text-muted-error">¡Debes seleccionar alguna de las opciones!</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="alternativeEndTime">Hasta:</label>
+                        <select 
+                          id="alternativeEndTime"
+                          name="alternativeEndTime" 
+                          class="form-control"
+                          required 
+                          [(ngModel)]="mAlternativeEndTime" 
+                          #alternativeEndTime="ngModel"
+                          [ngClass]="{'is-valid': alternativeEndTime.valid && alternativeEndTime.touched, 'is-invalid': alternativeEndTime.invalid && alternativeEndTime.touched}">
+                          <option [ngValue]="null" disabled  selected>Hora Final</option>
+                          <option *ngFor="let schedule of schedules" 
+                          [ngValue]="schedule"
+                          [disabled]="mAlternativeSelectedStartLimit > ((schedule.getNumberHour()*60)+schedule.getNumberMinute())">
+                            {{schedule.getDescription()}} </option>                   
+                        </select>
+                        <small *ngIf="alternativeEndTime.invalid && alternativeEndTime.touched" class="form-text text-muted-error">¡Debes seleccionar alguna de las opciones!</small>
+                    </div>
+                </div>
+            </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+      <button [disabled]="postponeVisitForm.invalid" type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click');confirm()">Confirmar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancelar</button>
+  </div>

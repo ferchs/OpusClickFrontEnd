@@ -20,6 +20,7 @@ import { DataProviderService } from './_services/data-provider.service';
 import { SearchService } from './_services/search.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './_services/auth.service';
+import { VisitService } from './_services/visit.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AccountCreatedComponent } from './account-created/account-created.component';
@@ -57,6 +58,19 @@ import { ProviderDashboardNegotiationComponent } from './provider-dashboard-nego
 import { UserDashboardNegotiationComponent } from './user-dashboard-negotiation/user-dashboard-negotiation.component';
 import { UserDashboardQuotationComponent } from './user-dashboard-quotation/user-dashboard-quotation.component';
 import { UserDashboardHomeComponent } from './user-dashboard-home/user-dashboard-home.component';
+import { UserDashboardVisitPendingComponent } from './user-dashboard-visit-pending/user-dashboard-visit-pending.component';
+import { UserDashboardVisitAcceptedComponent } from './user-dashboard-visit-accepted/user-dashboard-visit-accepted.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PostponeModalComponent } from './postpone-modal/postpone-modal.component';
+import { ProviderDashboardVisitAcceptedComponent } from './provider-dashboard-visit-accepted/provider-dashboard-visit-accepted.component';
+import { ProviderDashboardVisitPendingComponent } from './provider-dashboard-visit-pending/provider-dashboard-visit-pending.component';
+import { DetailsVisitModalComponent } from './details-visit-modal/details-visit-modal.component';
+import { AcceptVisitModalComponent } from './accept-visit-modal/accept-visit-modal.component';
+import { AlertComponent } from './alert/alert.component';
+import { UserDashboardVisitUnfulfilledComponent } from './user-dashboard-visit-unfulfilled/user-dashboard-visit-unfulfilled.component';
+import { ProviderDashboardVisitUnfulfilledComponent } from './provider-dashboard-visit-unfulfilled/provider-dashboard-visit-unfulfilled.component';
+import { UnfulfilledModalComponent } from './unfulfilled-modal/unfulfilled-modal.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +109,19 @@ import { UserDashboardHomeComponent } from './user-dashboard-home/user-dashboard
     ProviderDashboardNegotiationComponent,
     UserDashboardNegotiationComponent,
     UserDashboardQuotationComponent,
-    UserDashboardHomeComponent
+    UserDashboardHomeComponent,
+    UserDashboardVisitPendingComponent,
+    UserDashboardVisitAcceptedComponent,
+    ConfirmModalComponent,
+    PostponeModalComponent,
+    ProviderDashboardVisitAcceptedComponent,
+    ProviderDashboardVisitPendingComponent,
+    DetailsVisitModalComponent,
+    AcceptVisitModalComponent,
+    AlertComponent,
+    UserDashboardVisitUnfulfilledComponent,
+    ProviderDashboardVisitUnfulfilledComponent,
+    UnfulfilledModalComponent
   ],
   imports: [
     BrowserModule,
@@ -107,8 +133,15 @@ import { UserDashboardHomeComponent } from './user-dashboard-home/user-dashboard
     routing,
     TextMaskModule,
     LoadingModule,
-    MyDatePickerModule
+    MyDatePickerModule,
+    NgbModule.forRoot()
   ],
+  entryComponents: [
+    ConfirmModalComponent,
+    PostponeModalComponent, 
+    DetailsVisitModalComponent,
+    AcceptVisitModalComponent,
+    UnfulfilledModalComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -117,7 +150,7 @@ import { UserDashboardHomeComponent } from './user-dashboard-home/user-dashboard
     },
     AccountService, UserService, ProviderService, CityService, DataService,
     DataProviderService,ProfessionService, SearchService, 
-    AuthGuard, AuthService],
+    AuthGuard, AuthService,VisitService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,9 +10,9 @@ export class Location {
 
   constructor(){
     this.id=0;
-    this.address="";
-    this.zipCode="";
-    this.zone="";
+    this.address=null;
+    this.zipCode=null;
+    this.zone=null;
     this.city= new City();
   }
 }

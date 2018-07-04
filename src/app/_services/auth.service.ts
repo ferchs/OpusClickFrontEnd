@@ -8,6 +8,8 @@ import * as moment from "moment";
 
 interface Token {
     expiresIn: number;
+    userId: number;
+    providerId: number;
 }
 
 @Injectable()
@@ -19,7 +21,7 @@ export class AuthService {
         return this.http.post('http://localhost:8083/login',{email, password, userLogin},{observe: 'response'})
         .pipe(
             map((res:HttpResponse<Token>) => {  
-                this.setSession(res);
+                this.setSession(res,userLogin);
                 return res.status;
             }),
             catchError(this.handleError)
@@ -31,10 +33,15 @@ export class AuthService {
           return Observable.throw(error.status);        
       }
 
-    private setSession(authResult:HttpResponse<Token>) {
+    private setSession(authResult:HttpResponse<Token>,userLogin:boolean) {
         const expiresAt = moment().add(authResult.body.expiresIn,'milliseconds');
         localStorage.setItem('id_token', authResult.headers.get('Authorization'));
         localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+        if(userLogin){
+            localStorage.setItem("id_user", JSON.stringify(authResult.body.userId.valueOf()));
+        }else{
+            localStorage.setItem("id_provider", JSON.stringify(authResult.body.providerId.valueOf()));
+        }
     }
 
 /*
@@ -52,6 +59,8 @@ export class AuthService {
     logout() {
         localStorage.removeItem("id_token");
         localStorage.removeItem("expires_at");
+        localStorage.removeItem("id_user");
+        localStorage.removeItem("id_provider");
     }
 
     public isLoggedIn() {

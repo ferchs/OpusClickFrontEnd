@@ -29,16 +29,18 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Negociaciones</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">En curso</a>
-            <a class="dropdown-item" href="#">Terminadas</a>
+            <a class="dropdown-item" href="#">Pendientes</a>
+            <a class="dropdown-item" href="#">En Curso</a>
+            <a class="dropdown-item" href="#">Rechazadas</a>
+            <a class="dropdown-item" href="#">Aceptadas</a>
           </div>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Visitas</a>
+            <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Visitas</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Pendientes</a>
-              <a class="dropdown-item" href="#">En curso</a>
-              <a class="dropdown-item" href="#">Completadas</a>
+              <a class="dropdown-item" [routerLink]="['visitas/pendientes']" (click)="toggle()">En Espera</a>
+              <a class="dropdown-item" [routerLink]="['visitas/aceptadas']" (click)="toggle()">Aceptadas</a>
+              <a class="dropdown-item" [routerLink]="['visitas/incumplidas']" (click)="toggle()">Reportar Incumplimiento</a>
             </div>
         </li>
         <li class="nav-item">

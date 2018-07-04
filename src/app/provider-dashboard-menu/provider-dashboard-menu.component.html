@@ -36,9 +36,9 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Visitas</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Pendientes</a>
-              <a class="dropdown-item" href="#">En curso</a>
-              <a class="dropdown-item" href="#">Completadas</a>
+                <a class="dropdown-item" [routerLink]="['visitas/nuevas']" (click)="toggle()">Nuevas</a>
+                <a class="dropdown-item" [routerLink]="['visitas/aceptadas']" (click)="toggle()">Aceptadas</a>
+                <a class="dropdown-item" [routerLink]="['visitas/incumplidas']" (click)="toggle()">Reportar Incumplimiento</a>
             </div>
         </li>
         <li class="nav-item">

@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form #unfulfilledVisitForm="ngForm">
+        <div>
+            <select 
+            class="form-control" 
+            name="cause" 
+            required 
+            [(ngModel)]="mCause"
+            #cause="ngModel"
+            [ngClass]="{'is-valid': cause.valid && cause.touched, 'is-invalid': cause.invalid && cause.touched}">
+                <option [ngValue]="null" disabled  selected>Selecciona una opción...</option>
+                <option *ngFor="let item of causes" [ngValue]="item"> {{ item }} </option>
+            </select>
+            <small *ngIf="cause.invalid && cause.touched"
+                class="form-text text-muted-error">
+                    !Debes seleccionar una opción!
+            </small>
+            <div class="my-2"></div>
+            <div [hidden]='mCause!="Otra"' class="form-group">
+                    <label for="description">Describe de la causa</label>
+                    <textarea 
+                      class="form-control" 
+                      id="description" 
+                      rows="3"
+                      required 
+                      [(ngModel)]="mOther" 
+                      name="causeDescription"
+                      #causeDescription="ngModel"
+                      [ngClass]="{'is-valid': causeDescription.valid && causeDescription.touched, 'is-invalid': causeDescription.invalid && causeDescription.touched}">
+                    </textarea>
+                    <small *ngIf="causeDescription.untouched || causeDescription.valid && causeDescription.touched" class="form-text text-muted">Se conciso en la descripción.</small>
+                    <small *ngIf="causeDescription.invalid && causeDescription.touched" class="form-text text-muted-error">¡Debes describir la causa!</small>
+            </div>
+        </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+      <button [disabled]='cause.invalid || unfulfilledVisitForm.invalid && mCause=="Otra"' type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click');report()">Reportar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancelar</button>
+  </div>

@@ -21,18 +21,22 @@ export class ProviderListComponent implements OnInit {
   placeholder:string;
   mSearch:string;
   showDropDown:boolean;
+  userId:number;
+  loading:boolean;
 
   constructor(private providerService: ProviderService, private activatedRoute: ActivatedRoute,
      private router: Router, private professionService: ProfessionService, 
      private searchService: SearchService) { }
 
   ngOnInit() {
-    console.log("Mensaje Clave");
+    this.loading=true;
+    this.userId=+localStorage.getItem("id_user");
     this.providers= new Array<ProviderByProfessionDto>();
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.mSearch= params['profession'];
       this.providerService.getProvidersByProfession(this.mSearch).subscribe(result=>{
         this.providers=result;
+        this.loading=false;
       });
     });
     let profession= new Profession();
@@ -78,7 +82,9 @@ export class ProviderListComponent implements OnInit {
       this.searchService.saveAnother(search);
     }
     else{
+      this.loading=true;
       this.router.navigate(['expertos'],{ queryParams: { profession: this.mSearch } })
+      this.loading=false;
     }
   }
 

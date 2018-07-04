@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { DataService } from "../_services/data.service";
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,10 +18,18 @@ export class LoginComponent implements OnInit {
   emailNotFound:boolean;
   errorMessage:string;
   public loggedIn:boolean;
+  previousUrl:string;
 
-  constructor(private authService: AuthService, private dataService:DataService, private router: Router) { }
+  constructor(private authService: AuthService, private dataService:DataService, 
+    private router: Router, private activatedRoute: ActivatedRoute) { }
   
   ngOnInit() {
+    this.loading=true;
+    this.previousUrl=null;
+    this.activatedRoute.queryParams.subscribe((params: Params) => {
+      this.previousUrl=params['redirect'];
+      this.loading=false;
+    });
     this.loggedIn=this.authService.isLoggedIn();
     this.mEmail="";
     this.mPassword="";
@@ -47,10 +55,20 @@ export class LoginComponent implements OnInit {
       this.dataService.changeMessage(this.mEmail);
       if(this.userLogin){
         localStorage.setItem('email_user', this.mEmail);
-        this.router.navigate(['dashboard_usuario'])
+        if(this.previousUrl==null){
+          this.router.navigate(['dashboard_usuario'])
+        }
+        else{
+          this.router.navigate([this.previousUrl])
+        }
       }else{
         localStorage.setItem('email_provider', this.mEmail);
-        this.router.navigate(['dashboard_experto'])
+        if(this.previousUrl==null){
+          this.router.navigate(['dashboard_experto'])
+        }
+        else{
+          this.router.navigate([this.previousUrl])
+        }
       }
      },
      error=> {

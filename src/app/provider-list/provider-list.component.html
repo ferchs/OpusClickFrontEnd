@@ -1,5 +1,6 @@
 <div class="container-fluid fixed-top w-100 p-0">
     <app-navbar></app-navbar>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
     <div class="search-bar-container">
       <div class="row">
           <div class="input-group col-lg-12">
@@ -73,16 +74,16 @@
           <div class="col-lg-3 center-items">
             <div class="my-4"></div>
             <button class="btn btn-outline-provider" 
-            type="button" 
-            [routerLink]="['/soy_experto']">
+            type="button"
+            [routerLink]="['/soy_experto']" [queryParams]="{user:userId,provider: provider.id}">
             Cotización en línea
             </button>
             <div class="my-2"></div>
             <button class="centered btn btn-outline-user" 
-            type="button" 
-            [routerLink]="['/visitas']">
+            type="button"
+            [routerLink]="['/visitas']" [queryParams]="{user:userId,provider: provider.id}">
             Planear una visita
-            </button>
+          </button>
           </div>
         <hr class="col-lg-12">
         </div>

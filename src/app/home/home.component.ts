@@ -4,7 +4,7 @@ import { SearchService } from '../_services/search.service';
 import { Profession } from '../_models/profession';
 import { Search } from '../_models/search';
 import { AuthService } from '../_services/auth.service';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',

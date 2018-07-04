@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>{{message}}</p>
+    <div>
+      <form #acceptVisitForm="ngForm">
+        <select 
+        class="form-control" 
+        name="visit" 
+        required 
+        [(ngModel)]="alternative"
+        #visit="ngModel"
+        [ngClass]="{'is-valid': visit.valid && visit.touched, 'is-invalid': visit.invalid && visit.touched}">
+            <option [ngValue]="null" disabled  selected>Selecciona una fecha</option>
+            <option *ngFor="let item of alternatives" [ngValue]="item" [disabled]="0 > item.date - now.getTime()"> {{ item.description }} </option>
+        </select>
+        <small *ngIf="visit.invalid && visit.touched"
+        class="form-text text-muted-error">
+                !Debes seleccionar una fecha
+        </small>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+      <button [disabled]="acceptVisitForm.invalid" type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click');confirm()">Confirmar</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+  </div>

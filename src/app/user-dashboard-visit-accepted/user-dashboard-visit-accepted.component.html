@@ -1,0 +1,38 @@
+<div class="space"></div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+    <div class="container">
+        <app-alert [dismissible]="true" [type]="notificationType" [message]="notificationMessage" [(staticAlertClosed)]="hideNotification"></app-alert>
+      <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Pin</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let visit of acceptedVisits'>
+                <td *ngIf="visit.alternativeDate-now.getTime() > 0">{{visit.code}}</td>
+                <td *ngIf="visit.alternativeDate-now.getTime() > 0">{{visit.securityPin}}</td>
+                <td *ngIf="visit.alternativeDate-now.getTime() > 0">{{visit.description}}</td>
+                <td *ngIf="visit.alternativeDate-now.getTime() > 0" class="d-options">
+                  <button type="button" class="btn btn-outline-dark" (click)="detailsVisit(visit)">Ver Detalles</button>
+                  <div class="my-1"></div>
+                  <div class="mx-1"></div>
+                  <button type="button" 
+                  *ngIf='visit.state=="ACCEPTED_BY_PROVIDER" || visit.state=="ACCEPTED_BY_USER"'
+                  class="btn btn-outline-warning"
+                  [disabled]="720 > (visit.date - (now.getTime()))/60000" 
+                  (click)="postponeVisit(visit)">Posponer</button>
+                  <div class="my-1"></div>
+                  <div class="mx-1"></div>
+                  <button type="button" 
+                  class="btn btn-outline-danger" (click)="cancelVisit(visit)">Cancelar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
