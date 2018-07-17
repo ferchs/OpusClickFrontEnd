@@ -1,4 +1,6 @@
-<div class="container">
+<div class="space"></div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+<div *ngIf="submitted===false" class="container">
   <div class="row">
   <div class="col-lg-2">
     <div class="mx-2"></div>
@@ -12,74 +14,91 @@
       </div>
       <hr> 
       <div>
-          <form (ngSubmit)="onSubmit()" [formGroup]="form">
-            <div *ngFor="let answer of answers$ | async">
-
-                <div [ngSwitch]="answer.controlType">
-
-                  <div *ngSwitchCase="'radio'">
-                    <div class="radios checkbox-group">
-                      <div [hidden]="!(currentQuestion.id===answer.parent)" class="col-lg-12">
-                        <input [formControlName]="answer.controlName" [id]="answer.id" type="radio" [value]="answer.label" (click)="radioButtonClick(answer.child)">
-                        <label [for]="answer.id" class="button-label">
-                          {{answer.label}}                  
-                        </label>
-                      </div>
-                    </div>
+        <form [formGroup]="form">
+          <div *ngFor="let answer of answers$ | async">
+            <div [ngSwitch]="answer.controlType">
+              <div *ngSwitchCase="'radio'">
+                <div class="radios checkbox-group">
+                  <div [hidden]="!(currentQuestion.id===answer.parent)" class="col-lg-12">
+                    <input [formControlName]="answer.controlName" [id]="answer.id" type="radio" [value]="answer.label" (click)="next(null,answer.child)">
+                      <label [for]="answer.id" class="button-label">
+                        {{answer.label}}  
+                        {{answer.id}}                    
+                      </label>
                   </div>
-                  <div *ngSwitchCase="'radio_texbox'">
-                    <div class="radios checkbox-group">
-                      <div [hidden]="!(currentQuestion.id===answer.parent)" class="col-lg-12">
-                        <input [formControlName]="answer.controlName" [id]="answer.id" type="radio" (click)="showTextbox ? showTextbox = false : showTextbox = true;">
-                        <label [for]="answer.id" class="button-label">
-                          {{answer.label}}                  
-                        </label>
-                      </div>
-                    </div>
-                    <div [hidden]="!(currentQuestion.id===answer.parent)" class="input-group mb-3 col-lg-12">
-                      <input [hidden]="!showTextbox" type="text" class="form-control" placeholder="¿Cual?" [formControlName]="answer.controlName" [id]="answer.id">
-                      <div class="input-group-append">
-                        <button [hidden]="!showTextbox" class="btn btn-outline-secondary" type="button" (click)="radioButtonClick(answer.child)">Siguiente</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!--<div class="col-lg-12">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                      <label class="custom-file-label" for="validatedCustomFile">Elige una imagen...</label>
-                      <div class="invalid-feedback">Example invalid custom file feedback</div>
-                    </div>
-                  </div>
-                  <div class="my-4"></div>
-                  <div class="col-lg-12">
-                    <label for="description">Modificaciones al diseño</label>
-                    <textarea 
-                      class="form-control" 
-                      id="description" 
-                      rows="2"
-                      required 
-                      [(ngModel)]="mWorkDescription" 
-                      name="workDescription"
-                      #workDescription="ngModel"
-                      [ngClass]="{'is-valid': workDescription.valid && workDescription.touched, 'is-invalid': workDescription.invalid && workDescription.touched}">
-                    </textarea>
-                    <small *ngIf="workDescription.untouched || workDescription.valid && workDescription.touched" class="form-text text-muted">Se conciso en la descripción, esto ayuda a nuestros expertos a estar preparados el día de la visita.</small>
-                    <small *ngIf="workDescription.invalid && workDescription.touched" class="form-text text-muted-error">Debes describir el trabajo a realizar</small>
-                </div>-->
-
                 </div>
-
+              </div>
+              <div *ngSwitchCase="'radio_texbox'">
+                <div class="radios checkbox-group">
+                  <div [hidden]="!(currentQuestion.id===answer.parent)" class="col-lg-12">
+                    <input [formControlName]="answer.controlName" [id]="answer.id" type="radio" (click)="showTextbox ? showTextbox = false : showTextbox = true;">
+                      <label [for]="answer.id" class="button-label">
+                        {{answer.label}}  
+                        {{answer.id}}                                    
+                      </label>
+                  </div>
+                </div>
+                  <div [hidden]="!(currentQuestion.id===answer.parent)" class="input-group mb-3 col-lg-12">
+                    <input [hidden]="!showTextbox" type="text" class="form-control" [placeholder]="answer.placeholder" [formControlName]="answer.controlName" [id]="answer.id">
+                      <div class="input-group-append">
+                        <button [hidden]="!showTextbox" class="btn btn-outline-secondary" type="button" (click)="next(null,answer.child)">Siguiente</button>
+                      </div>
+                  </div>
+              </div>
+              <div *ngSwitchCase="'file'">
+                <div [hidden]="!(currentQuestion.id===answer.parent)" class="col-lg-12">
+                    <div class="form-group">
+                        <label [for]="answer.id">{{answer.label}}</label>
+                        <div class="custom-file">
+                            <input [formControlName]="answer.controlName" type="file" class="custom-file-input" [id]="answer.id" lang="es" (change)="onFileChange($event)" #fileInput>
+                            <label class="custom-file-label" for="customFileLang">{{fileName}}</label>
+                        </div>
+                        <div *ngIf="answer.required===true">
+                          <small *ngIf="form.get(answer.controlName).status=='INVALID'" class="form-text text-muted-error">Debes tener una imagen de referencia para poder continuar</small>
+                        </div>
+                    </div>
+                  <div class="my-4"></div>
+                </div>
+              </div>    
+              <div *ngSwitchCase="'textbox'" [hidden]="!(currentQuestion.id===answer.parent)" class="col-md-6 mb-3">
+                <label [for]="answer.id">{{answer.label}}</label>
+                <input [formControlName]="answer.controlName" type="text" class="form-control" [id]="answer.id" [placeholder]="answer.placeholder">
+              </div>
+              <div *ngSwitchCase="'textbox_next'" [hidden]="!(currentQuestion.id===answer.parent)">
+                <div class="col-md-6 mb-3">
+                  <label [for]="answer.id">{{answer.label}}</label>
+                  <input [formControlName]="answer.controlName" type="text" class="form-control" [id]="answer.id" [placeholder]="answer.placeholder">
+                </div>
+                <div class="my-4"></div>
+                <div class="text-center">
+                  <button
+                    (click)='next(answer.validations,answer.next)'
+                    class="btn btn-outline-secondary">
+                    Siguiente
+                  </button>
+                </div>
+              </div>
+              <div *ngSwitchCase="'textarea'">
+                <div class="form-group col-lg-12" [hidden]="!(currentQuestion.id===answer.parent)">
+                  <label for="description">{{answer.label}}</label>
+                  <textarea [formControlName]="answer.controlName" class="form-control" id="description" rows="3"></textarea>
+                </div>
+                    <!--[ngClass]="{'is-valid': workDescription.valid && workDescription.touched, 'is-invalid': workDescription.invalid && workDescription.touched}"
+                    <small *ngIf="workDescription.untouched || workDescription.valid && workDescription.touched" class="form-text text-muted">Se conciso en la descripción, esto ayuda a nuestros expertos a estar preparados el día de la visita.</small>
+                    <small *ngIf="workDescription.invalid && workDescription.touched" class="form-text text-muted-error">Debes describir el trabajo a realizar</small>-->
+                <div class="my-4"></div>
+              </div>
             </div>
+          </div>
             <!--<div class="form-row">
               <button type="submit" [disabled]="!form.valid">Save</button>
             </div>-->
-          </form>
+        </form>
         
           <!--<div *ngIf="payLoad" class="form-row">
             <strong>Saved the following values</strong><br>{{payLoad}}
           </div>-->
-        </div>
+      </div>
       <!--<div class="col-lg-12">
           <div class="custom-file">
             <input type="file" class="custom-file-input" id="validatedCustomFile" required>
@@ -138,21 +157,16 @@
       <div class="my-4"></div>
       <div class="text-center">
         <button 
-          [disabled]="actualPage==1"
                 (click)='back()' 
                 class="btn btn btn-outline-secondary">
                 Atrás
               </button>
-              <button
-                [hidden]="actualPage===totalPage"
-                (click)='next()'
-                class="btn btn-outline-secondary">
-                Siguiente
-              </button>
               <button 
                 [hidden]="actualPage!==totalPage"
+                [disabled]="form.invalid"
                 type="submit"
-                class="btn btn-outline-success">
+                class="btn btn-outline-success"
+                (click)="onSubmit()">
                 Enviar Solicitud
               </button>
             </div>
@@ -161,4 +175,7 @@
       <div class="mx-2"></div>
   </div>
 </div>
+</div>
+<div *ngIf="submitted===true" class="container centered">
+  <h3>¡Se ha enviado la cotización!</h3>
 </div>

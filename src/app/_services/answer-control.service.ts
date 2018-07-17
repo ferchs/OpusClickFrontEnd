@@ -9,7 +9,6 @@ export class AnswerControlService {
 
   toFormGroup(answers: AnswerBase<any>[] ) {
     let group: any = {};
-
     answers.forEach(answer => {
       group[answer.controlName] = answer.required ? new FormControl(answer.value || '', Validators.required)
                                               : new FormControl(answer.value || '');

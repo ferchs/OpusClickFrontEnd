@@ -71,6 +71,18 @@ import { AlertComponent } from './alert/alert.component';
 import { UserDashboardVisitUnfulfilledComponent } from './user-dashboard-visit-unfulfilled/user-dashboard-visit-unfulfilled.component';
 import { ProviderDashboardVisitUnfulfilledComponent } from './provider-dashboard-visit-unfulfilled/provider-dashboard-visit-unfulfilled.component';
 import { UnfulfilledModalComponent } from './unfulfilled-modal/unfulfilled-modal.component';
+import { UserDashboardNegotiationPendingComponent } from './user-dashboard-negotiation-pending/user-dashboard-negotiation-pending.component';
+import { UserDashboardNegotiationConcretedComponent } from './user-dashboard-negotiation-concreted/user-dashboard-negotiation-concreted.component';
+import { ProviderDashboardNegotiationConcretedComponent } from './provider-dashboard-negotiation-concreted/provider-dashboard-negotiation-concreted.component';
+import { ProviderDashboardNegotiationPendingComponent } from './provider-dashboard-negotiation-pending/provider-dashboard-negotiation-pending.component';
+import { AgreementModalComponent } from './agreement-modal/agreement-modal.component';
+import { DetailsWorkModalComponent } from './details-work-modal/details-work-modal.component';
+import { UserOnlineQuoteComponent } from './user-online-quote/user-online-quote.component';
+import { ProviderOnlineQuoteComponent } from './provider-online-quote/provider-online-quote.component';
+import { DetailsContractModalComponent } from './details-contract-modal/details-contract-modal.component';
+import { UserManageContractComponent } from './user-manage-contract/user-manage-contract.component';
+import { ProviderManageContractComponent } from './provider-manage-contract/provider-manage-contract.component';
+import { ExtensionModalComponent } from './extension-modal/extension-modal.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +133,19 @@ import { UnfulfilledModalComponent } from './unfulfilled-modal/unfulfilled-modal
     AlertComponent,
     UserDashboardVisitUnfulfilledComponent,
     ProviderDashboardVisitUnfulfilledComponent,
-    UnfulfilledModalComponent
+    UnfulfilledModalComponent,
+    UserDashboardNegotiationPendingComponent,
+    UserDashboardNegotiationConcretedComponent,
+    ProviderDashboardNegotiationConcretedComponent,
+    ProviderDashboardNegotiationPendingComponent,
+    AgreementModalComponent,
+    DetailsWorkModalComponent,
+    UserOnlineQuoteComponent,
+    ProviderOnlineQuoteComponent,
+    DetailsContractModalComponent,
+    UserManageContractComponent,
+    ProviderManageContractComponent,
+    ExtensionModalComponent
   ],
   imports: [
     BrowserModule,

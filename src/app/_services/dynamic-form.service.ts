@@ -3,17 +3,26 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { DropdownQuestion } from '../_shared/answer-dropdown';
 import { AnswerBase }     from '../_shared/answer-base';
 import { TextboxQuestion }  from '../_shared/answer-textbox';
+import { TextboxButtonsQuestion }  from '../_shared/answer-textbox-buttons';
 import { RadioQuestion }  from '../_shared/answer-radio';
 import { RadioTextboxQuestion }  from '../_shared/answer-radio-textbox';
+import { FileQuestion }  from '../_shared/answer-file';
+import { TextareaQuestion }  from '../_shared/answer-textarea';
 import { Question } from '../_models/question';
 import { Subject } from 'rxjs/Subject';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Observable';
+import { map, catchError } from 'rxjs/operators';
+import { QuoteDto } from "../_dtos/quoteDto";
 
 @Injectable()
 export class DynamicFormService {
 
+  private apiUrl = environment.devApiUrl+"/quotes";
   total:number;
 
-  constructor(private firebase:AngularFireDatabase){
+  constructor(private firebase:AngularFireDatabase, private http:HttpClient){
   }
   
   getFirebaseMetadata(idForm:string){
@@ -70,7 +79,6 @@ export class DynamicFormService {
             controlName: item.controlName,
             id: item.id,
             label: item.label,
-            name: item.name,
             value: item.value,
             parent: item.parent,
             child: item.child,
@@ -84,19 +92,73 @@ export class DynamicFormService {
             controlName: item.controlName,
             id: item.id,
             label: item.label,
-            name: item.name,
             value: item.value,
+            placeholder: item.placeholder,
             parent: item.parent,
             child: item.child,
             required: item.required,
             order: item.order
           }));
           break;
-          case "text":
-          console.log("text");
+          case "file":
+          answers.push(
+            new FileQuestion({
+              controlName: item.controlName,
+              id: item.id,
+              label: item.label,
+              name: item.name,
+              value: item.value,
+              parent: item.parent,
+              child: item.child,
+              required: item.required,
+              order: item.order
+            }));
           break;
           case "textarea":
-          console.log("textarea");
+          answers.push(
+            new TextareaQuestion({
+              controlName: item.controlName,
+              id: item.id,
+              label: item.label,
+              name: item.name,
+              value: item.value,
+              parent: item.parent,
+              child: item.child,
+              required: item.required,
+              order: item.order
+            }));
+          break;
+          case "textbox":
+          answers.push(
+            new TextboxQuestion({
+              controlName: item.controlName,
+              id: item.id,
+              label: item.label,
+              name: item.name,
+              placeholder: item.placeholder,
+              value: item.value,
+              parent: item.parent,
+              child: item.child,
+              required: item.required,
+              order: item.order
+            }));
+          break;
+          case "textbox_next":
+          answers.push(
+            new TextboxButtonsQuestion({
+              controlName: item.controlName,
+              id: item.id,
+              label: item.label,
+              name: item.name,
+              placeholder: item.placeholder,
+              value: item.value,
+              parent: item.parent,
+              child: item.child,
+              required: item.required,
+              order: item.order,
+              next: item.next,
+              validations: item.validations
+            }));
           break;
           default: 
           console.log("default");
@@ -167,5 +229,39 @@ export class DynamicFormService {
       return questions.sort((a, b) => a.order - b.order);*/
   }
 
+
+  createQuote(dto:QuoteDto, userId?:string, providerId?:string, workId?:string){
+    const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'}); 
+    if(userId!=null && providerId!=null){
+      return this.http.post(this.apiUrl+"?user="+userId+"&provider="+providerId, dto, {headers: headers, observe: 'response', responseType: 'text'})
+      .pipe(
+        map(response => {return response}),
+        catchError(this.handleError)
+      );
+    }else if(workId!=null){
+      return this.http.post(this.apiUrl+"?work="+workId, dto, {headers: headers, observe: 'response', responseType: 'text'})
+      .pipe(
+        map(response => { return response}),
+        catchError(this.handleError)
+      );
+    }
+  }
+
+
+  uploadQuotationImage(file: File, quoteId:string){
+    let formdata: FormData = new FormData();
+    formdata.append('file', file);
+    let params = new HttpParams().set('quote',quoteId);
+    return this.http.post<String>(this.apiUrl+"/images",formdata, {params: params})
+    .pipe(
+      map(response => { return response;}),
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError (error: Response) {
+    console.log("Se esta manejando un error");
+      return Observable.throw(error.status);        
+  }
 
 }
