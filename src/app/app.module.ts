@@ -21,6 +21,7 @@ import { SearchService } from './_services/search.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './_services/auth.service';
 import { VisitService } from './_services/visit.service';
+import { WorkService } from './_services/work.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AccountCreatedComponent } from './account-created/account-created.component';
@@ -83,6 +84,7 @@ import { DetailsContractModalComponent } from './details-contract-modal/details-
 import { UserManageContractComponent } from './user-manage-contract/user-manage-contract.component';
 import { ProviderManageContractComponent } from './provider-manage-contract/provider-manage-contract.component';
 import { ExtensionModalComponent } from './extension-modal/extension-modal.component';
+import { InlineEditComponent } from './inline-edit/inline-edit.component';
 
 @NgModule({
   declarations: [
@@ -145,7 +147,8 @@ import { ExtensionModalComponent } from './extension-modal/extension-modal.compo
     DetailsContractModalComponent,
     UserManageContractComponent,
     ProviderManageContractComponent,
-    ExtensionModalComponent
+    ExtensionModalComponent,
+    InlineEditComponent
   ],
   imports: [
     BrowserModule,
@@ -174,7 +177,7 @@ import { ExtensionModalComponent } from './extension-modal/extension-modal.compo
     },
     AccountService, UserService, ProviderService, CityService, DataService,
     DataProviderService,ProfessionService, SearchService, 
-    AuthGuard, AuthService,VisitService],
+    AuthGuard, AuthService,VisitService,WorkService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

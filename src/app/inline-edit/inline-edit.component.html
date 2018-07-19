@@ -1,0 +1,19 @@
+<div>
+  <div *ngIf="!editing">
+    <label>{{mText}}</label><img src="../../assets/pencil-edit-button.svg" width="10" height="10" (click)="edit()">
+  </div>
+  <div *ngIf="editing">
+    <div class="input-group">
+      <input 
+      type="text" 
+      [(ngModel)]="mText" 
+      name="text" 
+      #text="ngModel"
+      class="form-control" aria-describedby="button-addon4">
+        <div class="input-group-append" id="button-addon4">
+          <button class="btn btn-outline-secondary btn-xs" type="button"(click)="confirm()">✔</button>
+          <button class="btn btn-outline-secondary btn-xs" type="button" (click)="cancel()">X</button>
+        </div>
+    </div>
+  </div>
+</div>

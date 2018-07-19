@@ -1,3 +1,44 @@
-<p>
-  user-dashboard-negotiation-pending works!
-</p>
+<div class="space"></div>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+    <div class="container">
+        <!--<app-alert [dismissible]="true" [type]="notificationType" [message]="notificationMessage" [(staticAlertClosed)]="hideNotification"></app-alert>-->
+      <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Etiqueta</th>
+                <th scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let work of pendingWorks'>
+                <td>{{work.creationDate  | date: 'dd/MM/yyyy'}}</td>
+                <td><app-inline-edit [value]='work.userLabel' (newValue)="newLabelChange($event,work)"></app-inline-edit></td>
+                <td class="d-options">
+                  <button type="button"
+                  *ngIf='work.state=="PENDING_BY_VISIT"'
+                  class="btn btn-outline-dark">Nueva Visita</button>
+                  <div class="my-1"></div>
+                  <div class="mx-1"></div>
+                  <button type="button"
+                  *ngIf='work.state=="PENDING_BY_VISIT"' 
+                  class="btn btn-outline-danger">No Hubo Acuerdo</button>
+                  <div 
+                  *ngIf='false' 
+                  class="btn-group dropleft">
+                    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Responder
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item" type="button" (click)="acceptVisit(visit)">Aceptar solicitud</button>
+                        <button class="dropdown-item" type="button" (click)="deferVisit(visit)">Proponer nueva fecha</button>
+                        <button class="dropdown-item" type="button" (click)="cancelVisit(visit)">No quiero la visita</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>

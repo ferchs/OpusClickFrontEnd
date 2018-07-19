@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-dashboard-negotiation-concreted.component.css']
 })
 export class UserDashboardNegotiationConcretedComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {

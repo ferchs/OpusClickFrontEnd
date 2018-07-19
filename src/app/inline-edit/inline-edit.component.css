@@ -1,0 +1,22 @@
+.form-control{
+    padding: 0px;
+    text-decoration: none;
+    border-bottom: #444 dashed 1px;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    border-radius: 0;
+    cursor: pointer;
+    text-align: left;
+    background-color:transparent;
+    color: #444 !important;
+    width: auto; 
+}
+
+.btn{
+    padding:0.4rem;
+}
+
+img{
+    margin-left: 6px;
+}
