@@ -1,0 +1,126 @@
+<div class="space"></div> 
+<div id="hello">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="intro-text col-lg-10">
+                <h4>¿Qué experto necesitas?</h4>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+        <div class="my-2"></div>
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="input-group mb-3 col-lg-10">
+                <input type="text" 
+                    class="form-control" 
+                    placeholder="{{placeholder}}" 
+                    aria-label="¿Qué experto necesitas?" 
+                    aria-describedby="basic-addon2"
+                    autocomplete="off"
+                    [(ngModel)]="mSearch"
+                    name="search" 
+                    #search="ngModel"
+                    (click)='toggleDropDown()'
+                    clickOutside (clickOutside)="closeDropDown()">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="find()">Buscar</button>
+                </div>
+                <div *ngIf='showDropDown' class="container-dropdown">
+                    <div>
+                        <div (click)='selectValue(pro)' class='dropdown-content' *ngFor='let pro of professions | searchFilter:getSearchValue()'>
+                            {{pro.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 centered">
+            <h4>Encuentra expertos por categorías</h4>
+        </div>
+    </div>
+</div>
+<hr class="star-light">   
+<div class="categories-grid container-fluid" id="categories">
+    <div class="container">
+        <ul class="row">
+            <li>
+                <a class="mobile-navbar-brand" href="">
+                    <img src="../../assets/builder.svg" width="60" height="60">
+                    <span>Albañiles</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['expertos']" [queryParams]="{profession: 'Carpintería'}" class="category">
+                    <img src="../../assets/metal-saw.svg" width="60" height="60">
+                    <span>Carpinteros</span>
+                </a>
+            </li>
+            <li>
+                <a class="category">
+                    <img src="../../assets/idea.svg" width="40" height="40">
+                    <span>Diseñador de espacios interiores</span>
+                </a>
+            </li>
+            <li>
+                <a class="category" href="">
+                    <img src="../../assets/flash.svg" width="60" height="60">
+                    <span>Eléctricos</span>
+                </a>
+            </li>
+            <li>
+                <a class="category" href="">
+                    <img src="../../assets/air-conditioner.svg" width="60" height="60">
+                    <span>Expertos climatización</span>
+                </a>
+            </li>
+            <li>
+                <a class="category" href="">
+                    <img src="../../assets/gas-mask.svg" width="60" height="60">
+                    <span>Fumigadores</span>
+                </a>
+            </li>
+            <li>
+                <a class="category" href="">
+                    <img src="../../assets/cosmetics.svg" width="60" height="60">
+                    <span>Maquilladores</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['expertos']" [queryParams]="{profession: 'Pintura'}" class="category">
+                    <img src="../../assets/paint-roller.svg" width="60" height="60">
+                    <span>Pintores</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['expertos']" [queryParams]="{profession: 'Plomería'}" class="category">
+                    <img src="../../assets/pipe.svg" width="60" height="60">
+                    <span>Plomeros</span>
+                </a>
+            </li>
+            <li>
+                <a class="category" href="">
+                    <img src="../../assets/sprout.svg" width="60" height="60">
+                    <span>Jardineros</span>
+                </a>
+            </li>
+            <li>
+                <a class="category" href="">
+                    <img src="../../assets/welder.svg" width="60" height="60">
+                    <span>Soldadores</span>
+                </a>
+            </li>
+            <li>
+                <a class="category" href="">
+                    <img src="../../assets/armchair.svg" width="60" height="60">
+                    <span>Tapiceros</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

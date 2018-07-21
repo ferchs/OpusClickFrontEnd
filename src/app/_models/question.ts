@@ -1,11 +1,11 @@
 export class Question {
     id:string;
     description:string;
-    page:number;
+    last:boolean
 
-    constructor(id:string, description:string, page:number){
+    constructor(id:string, description:string, last:boolean){
       this.id=id;
       this.description= description;
-      this.page= page;
+      this.last= last;
     }
 }

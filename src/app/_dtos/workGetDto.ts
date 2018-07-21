@@ -11,5 +11,7 @@ export class WorkGetDto {
     public creationDate:Date; 
     
     public state:string;
+
+    public comment:string;
 	
 }

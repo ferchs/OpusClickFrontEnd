@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgreementModalComponent } from './agreement-modal.component';
+import { NoAgreementModalComponent } from './no-agreement-modal.component';
 
-describe('AgreementModalComponent', () => {
-  let component: AgreementModalComponent;
-  let fixture: ComponentFixture<AgreementModalComponent>;
+describe('NoAgreementModalComponent', () => {
+  let component: NoAgreementModalComponent;
+  let fixture: ComponentFixture<NoAgreementModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AgreementModalComponent ]
+      declarations: [ NoAgreementModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AgreementModalComponent);
+    fixture = TestBed.createComponent(NoAgreementModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

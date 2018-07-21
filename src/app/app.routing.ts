@@ -42,7 +42,7 @@ const appRoutes: Routes = [
     {path:'confirmar_registro', component: ConfirmRegistrationComponent},
     {path:'dashboard_usuario', component: UserDashboardComponent,
         children: [
-            { path: '', component: UserDashboardHomeComponent },
+            { path: 'cuenta', component: UserDashboardHomeComponent },
             { path: 'perfil', component:  UserDashboardProfileComponent},
             { path: 'perfil/editar', component: UserDashboardProfileEditComponent},
             { path: 'visitas/pendientes', component: UserDashboardVisitPendingComponent},
@@ -54,7 +54,7 @@ const appRoutes: Routes = [
     },
     {path:'dashboard_experto', component: ProviderDashboardComponent,
         children: [
-            { path: '', component: ProviderDashboardHomeComponent },
+            { path: 'cuenta', component: ProviderDashboardHomeComponent },
             { path: 'perfil', component:  ProviderDashboardProfileComponent},
             { path: 'perfil/editar', component: ProviderDashboardProfileEditComponent},
             { path: 'visitas/nuevas', component: ProviderDashboardVisitPendingComponent},

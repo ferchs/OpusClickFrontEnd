@@ -8,6 +8,7 @@ import {Router, ActivatedRoute, Params, RoutesRecognized, NavigationEnd} from '@
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/pairwise';
 import {Location} from '@angular/common';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-request-visit',
@@ -36,19 +37,24 @@ export class RequestVisitComponent implements OnInit {
   mAlternativeSelectedStartLimit:number;
   userId:string;
   providerId:string;
+  workId:string;
   loading:boolean;
   submited:boolean;
+  loggedIn:boolean;
   private myDatePickerOptions: IMyDpOptions;
   private altMyDatePickerOptions: IMyDpOptions;
 
   constructor(private visitService: VisitService, private router: Router, 
-    private activatedRoute: ActivatedRoute, private location:Location) { }
+    private activatedRoute: ActivatedRoute, private location:Location,
+    private authService: AuthService) { }
 
   ngOnInit() {
+    this.loggedIn=this.authService.isLoggedIn();
     this.loading=true;
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.userId=params['user'];
       this.providerId=params['provider'];
+      this.workId=params['work'];
       this.loading=false;
     });
     let now:Date= new Date();
@@ -100,10 +106,17 @@ export class RequestVisitComponent implements OnInit {
     alternativeDate.setHours(this.mAlternativeEndTime.getNumberHour());
     alternativeDate.setMinutes(this.mAlternativeEndTime.getNumberMinute());
     this.visitScheduleDto.alternativeDate=alternativeDate.getTime();
-    this.visitService.createVisit(this.visitScheduleDto,this.userId,this.providerId,null).subscribe(resp=>{
-      this.submited=true;
-      this.loading=false;
-    });
+    if(this.workId != undefined){
+      this.visitService.createVisit(this.visitScheduleDto,null,null,this.workId).subscribe(resp=>{
+        this.submited=true;
+        this.loading=false;
+      });
+    }else{
+      this.visitService.createVisit(this.visitScheduleDto,this.userId,this.providerId,null).subscribe(resp=>{
+        this.submited=true;
+        this.loading=false;
+      });
+    }
   }
 
   updateAlternativeDate(){

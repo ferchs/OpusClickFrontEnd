@@ -55,7 +55,7 @@ export class DynamicFormService {
     .subscribe(items => 
       {
        items.map(item => {
-         let q:Question= new Question(item.key,item.description,item.page);
+         let q:Question= new Question(item.key,item.description,item.last);
          dataList.push(q) 
         });
        subject.next(dataList);
@@ -86,7 +86,7 @@ export class DynamicFormService {
             order: item.order
           }));
           break;
-          case "radio_texbox":
+          case "radio_textbox":
           answers.push(
           new RadioTextboxQuestion({
             controlName: item.controlName,

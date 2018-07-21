@@ -7,7 +7,9 @@ export class ProviderByProfessionDto {
 	
 	public accountLastname:string;
 	
-	public photo:string;
+    public photo:string;
+    
+    public professionFormId:string;
 	
     public globalRatingGlobalSatisfactionLevel:number;
     

@@ -36,7 +36,6 @@ import { UserRegistryComponent } from './user-registry/user-registry.component';
 import { ConfirmRegistrationComponent } from './confirm-registration/confirm-registration.component';
 import { ProviderListComponent } from './provider-list/provider-list.component';
 import { RequestVisitComponent } from './request-visit/request-visit.component';
-import { OnlineQuoteComponent } from './online-quote/online-quote.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { DynamicFormQuestionComponent } from './dynamic-form-question/dynamic-form-question.component';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
@@ -76,7 +75,6 @@ import { UserDashboardNegotiationPendingComponent } from './user-dashboard-negot
 import { UserDashboardNegotiationConcretedComponent } from './user-dashboard-negotiation-concreted/user-dashboard-negotiation-concreted.component';
 import { ProviderDashboardNegotiationConcretedComponent } from './provider-dashboard-negotiation-concreted/provider-dashboard-negotiation-concreted.component';
 import { ProviderDashboardNegotiationPendingComponent } from './provider-dashboard-negotiation-pending/provider-dashboard-negotiation-pending.component';
-import { AgreementModalComponent } from './agreement-modal/agreement-modal.component';
 import { DetailsWorkModalComponent } from './details-work-modal/details-work-modal.component';
 import { UserOnlineQuoteComponent } from './user-online-quote/user-online-quote.component';
 import { ProviderOnlineQuoteComponent } from './provider-online-quote/provider-online-quote.component';
@@ -85,6 +83,7 @@ import { UserManageContractComponent } from './user-manage-contract/user-manage-
 import { ProviderManageContractComponent } from './provider-manage-contract/provider-manage-contract.component';
 import { ExtensionModalComponent } from './extension-modal/extension-modal.component';
 import { InlineEditComponent } from './inline-edit/inline-edit.component';
+import { NoAgreementModalComponent } from './no-agreement-modal/no-agreement-modal.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +104,6 @@ import { InlineEditComponent } from './inline-edit/inline-edit.component';
     ProviderDashboardComponent,
     ProviderListComponent,
     RequestVisitComponent,
-    OnlineQuoteComponent,
     DynamicFormQuestionComponent,
     DynamicFormComponent,
     DynamicFormTestComponent,
@@ -140,7 +138,6 @@ import { InlineEditComponent } from './inline-edit/inline-edit.component';
     UserDashboardNegotiationConcretedComponent,
     ProviderDashboardNegotiationConcretedComponent,
     ProviderDashboardNegotiationPendingComponent,
-    AgreementModalComponent,
     DetailsWorkModalComponent,
     UserOnlineQuoteComponent,
     ProviderOnlineQuoteComponent,
@@ -148,7 +145,8 @@ import { InlineEditComponent } from './inline-edit/inline-edit.component';
     UserManageContractComponent,
     ProviderManageContractComponent,
     ExtensionModalComponent,
-    InlineEditComponent
+    InlineEditComponent,
+    NoAgreementModalComponent
   ],
   imports: [
     BrowserModule,
@@ -168,7 +166,9 @@ import { InlineEditComponent } from './inline-edit/inline-edit.component';
     PostponeModalComponent, 
     DetailsVisitModalComponent,
     AcceptVisitModalComponent,
-    UnfulfilledModalComponent],
+    UnfulfilledModalComponent,
+    DetailsWorkModalComponent,
+    NoAgreementModalComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

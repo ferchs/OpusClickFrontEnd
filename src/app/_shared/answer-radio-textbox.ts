@@ -1,7 +1,7 @@
 import { AnswerBase } from './answer-base';
 
 export class RadioTextboxQuestion extends AnswerBase<string> {
-  controlType = 'radio_texbox';
+  controlType = 'radio_textbox';
   type: string;
 
   constructor(options: {} = {}) {

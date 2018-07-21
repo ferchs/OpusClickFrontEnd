@@ -1,5 +1,5 @@
 <div class="container-fluid fixed-top w-100 p-0">
-    <app-navbar></app-navbar>
+    <app-navbar [loggedIn]=loggedIn></app-navbar>
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
     <div class="search-bar-container">
       <div class="row">
@@ -75,7 +75,7 @@
             <div class="my-4"></div>
             <button class="btn btn-outline-provider" 
             type="button"
-            [routerLink]="['/cotizacion_virtual']" [queryParams]="{user:userId,provider: provider.id}">
+            [routerLink]="['/cotizacion_virtual']" [queryParams]="{user:userId,provider: provider.id,form:provider.professionFormId}">
             Cotización en línea
             </button>
             <div class="my-2"></div>

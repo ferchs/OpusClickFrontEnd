@@ -6,7 +6,7 @@ import { SearchService } from '../_services/search.service';
 import { ProviderByProfessionDto} from "../_dtos/providerByProfession";
 import { Profession } from '../_models/profession';
 import { Search } from '../_models/search';
-
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-provider-list',
@@ -22,13 +22,16 @@ export class ProviderListComponent implements OnInit {
   mSearch:string;
   showDropDown:boolean;
   userId:number;
+  formId:string;
   loading:boolean;
+  loggedIn:boolean;
 
   constructor(private providerService: ProviderService, private activatedRoute: ActivatedRoute,
      private router: Router, private professionService: ProfessionService, 
-     private searchService: SearchService) { }
+     private searchService: SearchService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.loggedIn=this.authService.isLoggedIn();
     this.loading=true;
     this.userId=+localStorage.getItem("id_user");
     this.providers= new Array<ProviderByProfessionDto>();

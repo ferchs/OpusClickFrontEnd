@@ -23,18 +23,16 @@
                     <input [formControlName]="answer.controlName" [id]="answer.id" type="radio" [value]="answer.label" (click)="next(null,answer.child)">
                       <label [for]="answer.id" class="button-label">
                         {{answer.label}}  
-                        {{answer.id}}                    
                       </label>
                   </div>
                 </div>
               </div>
-              <div *ngSwitchCase="'radio_texbox'">
+              <div *ngSwitchCase="'radio_textbox'">
                 <div class="radios checkbox-group">
                   <div [hidden]="!(currentQuestion.id===answer.parent)" class="col-lg-12">
                     <input [formControlName]="answer.controlName" [id]="answer.id" type="radio" (click)="showTextbox ? showTextbox = false : showTextbox = true;">
                       <label [for]="answer.id" class="button-label">
                         {{answer.label}}  
-                        {{answer.id}}                                    
                       </label>
                   </div>
                 </div>
@@ -162,7 +160,7 @@
                 Atrás
               </button>
               <button 
-                [hidden]="actualPage!==totalPage"
+                [hidden]="currentQuestion.last==false"
                 [disabled]="form.invalid"
                 type="submit"
                 class="btn btn-outline-success"
@@ -176,6 +174,18 @@
   </div>
 </div>
 </div>
-<div *ngIf="submitted===true" class="container centered">
-  <h3>¡Se ha enviado la cotización!</h3>
+<div *ngIf="submitted==true" class="container">
+  <div class="space">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-10 justify">
+                <p>Tu solicitud se ha enviado correctamente, debes esperar que el experto elabore una cotización
+                  de acuerdo a tus requerimientos.
+                <p>
+              </div>
+              <div class="col-lg-1"></div>
+          </div>
+      </div>
+  </div>
 </div>

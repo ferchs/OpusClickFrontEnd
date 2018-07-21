@@ -35,6 +35,7 @@ export class DynamicFormComponent implements OnInit {
   nextDisable:boolean;
   userId:string;
   providerId:string;
+  formId:string;
   submitted:boolean;
 
 
@@ -47,21 +48,22 @@ export class DynamicFormComponent implements OnInit {
     this.fileName="Seleccionar un archivo";
     this.nextDisable=true;
     this.backwardQuestions= new Array();
-    this.currentQuestion=new Question('','',0);
+    this.currentQuestion=new Question('','',false);
     this.form= new FormGroup({});
     this.questionsList= new Map<string, Question>();
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.userId=params['user'];
       this.providerId=params['provider'];
-        this.dynamicFormervice.getTotalPages("CAR00PR").subscribe(total => {
+      this.formId=params['form'];
+        this.dynamicFormervice.getTotalPages(this.formId).subscribe(total => {
           this.totalPage=total;
           this.actualPage=1;
           this.calculateAdvancePercentage();
-            this.dynamicFormervice.getQuestions("CAR00PR").subscribe(items =>{
+            this.dynamicFormervice.getQuestions(this.formId).subscribe(items =>{
               items.map(item =>{
                 this.questionsList.set(item.id,item);
               });
-            this.dynamicFormervice.getInitialQuestionId("CAR00PR").subscribe(id =>{
+            this.dynamicFormervice.getInitialQuestionId(this.formId).subscribe(id =>{
               this.currentQuestion=this.questionsList.get(id);
               this.previousQuestion=this.currentQuestion;
               this.loading=false;
@@ -105,14 +107,22 @@ export class DynamicFormComponent implements OnInit {
        this.nextDisable=false;
        this.backwardQuestions.push(this.currentQuestion.id);
        this.currentQuestion=this.questionsList.get(childId);
-       this.actualPage=(this.actualPage+1);
-       this.calculateAdvancePercentage();
+       if(this.currentQuestion.last==true){
+        this.percentageCompletion=100;
+       }else{
+        this.actualPage=(this.actualPage+1);
+        this.calculateAdvancePercentage();
+       }
      }
     }else{
       this.backwardQuestions.push(this.currentQuestion.id);
       this.currentQuestion=this.questionsList.get(childId);
-      this.actualPage=(this.actualPage+1);
-      this.calculateAdvancePercentage();
+      if(this.currentQuestion.last==true){
+        this.percentageCompletion=100;
+      }else{
+       this.actualPage=(this.actualPage+1);
+       this.calculateAdvancePercentage();
+      }
     }
   }
 

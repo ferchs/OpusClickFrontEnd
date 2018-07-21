@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
       if(this.userLogin){
         localStorage.setItem('email_user', this.mEmail);
         if(this.previousUrl==null){
-          this.router.navigate(['dashboard_usuario'])
+          this.router.navigate(['dashboard_usuario/cuenta'])
         }
         else{
           this.router.navigate([this.previousUrl])
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
       }else{
         localStorage.setItem('email_provider', this.mEmail);
         if(this.previousUrl==null){
-          this.router.navigate(['dashboard_experto'])
+          this.router.navigate(['dashboard_experto/cuenta'])
         }
         else{
           this.router.navigate([this.previousUrl])

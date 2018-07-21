@@ -85,3 +85,8 @@ p{
 .custom-file-input ~ .custom-file-label::after {
   content: "Elegir";
 }
+
+.justify{
+  text-align: justify!important;
+  font-size: 18px!important;
+}

@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form #noAgreementForm="ngForm">
+        <div class="form-group">
+             <label for="description">¿Porqué no has llegado a un acuerdo?</label>
+                <textarea 
+                    class="form-control" 
+                    id="description" 
+                    rows="3"
+                    required 
+                    [(ngModel)]="mText" 
+                    name="workDescription"
+                    #workDescription="ngModel"
+                    [ngClass]="{'is-valid': workDescription.valid && workDescription.touched, 'is-invalid': workDescription.invalid && workDescription.touched}">
+                </textarea>
+                <small *ngIf="workDescription.untouched || workDescription.valid && workDescription.touched" class="form-text text-muted">Describe brevemente la causa por la cúal no has llegado a un acuerdo.</small>
+                <small *ngIf="workDescription.invalid && workDescription.touched" class="form-text text-muted-error">Este campo es necesario.</small>
+        </div> 
+      </form>
+  </div>
+  <div class="modal-footer">
+      <button [disabled]="noAgreementForm.invalid" type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click');confirm()">Confirmar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancelar</button>
+  </div>

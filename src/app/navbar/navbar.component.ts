@@ -21,10 +21,10 @@ export class NavbarComponent implements OnInit {
 
   goToDashboard(){
     if(localStorage.getItem("email_provider")!=null){
-      this.router.navigate(['/dashboard_experto']);
+      this.router.navigate(['/dashboard_experto/cuenta']);
     }
     else{
-      this.router.navigate(['/dashboard_usuario']);
+      this.router.navigate(['/dashboard_usuario/cuenta']);
     }
   }
 

@@ -7,5 +7,7 @@ export class WorkUpdateDto {
     public userLabel:string;
 	    
     public state:string;
+
+    public comment:string;
 	
 }
