@@ -53,7 +53,6 @@ import { UserDashboardProfileComponent } from './user-dashboard-profile/user-das
 import { UserDashboardProfileEditComponent } from './user-dashboard-profile-edit/user-dashboard-profile-edit.component';
 import { UserDashboardVisitComponent } from './user-dashboard-visit/user-dashboard-visit.component';
 import { ProviderDashboardVisitComponent } from './provider-dashboard-visit/provider-dashboard-visit.component';
-import { ProviderDashboardQuotationComponent } from './provider-dashboard-quotation/provider-dashboard-quotation.component';
 import { ProviderDashboardNegotiationComponent } from './provider-dashboard-negotiation/provider-dashboard-negotiation.component';
 import { UserDashboardNegotiationComponent } from './user-dashboard-negotiation/user-dashboard-negotiation.component';
 import { UserDashboardQuotationComponent } from './user-dashboard-quotation/user-dashboard-quotation.component';
@@ -77,13 +76,18 @@ import { ProviderDashboardNegotiationConcretedComponent } from './provider-dashb
 import { ProviderDashboardNegotiationPendingComponent } from './provider-dashboard-negotiation-pending/provider-dashboard-negotiation-pending.component';
 import { DetailsWorkModalComponent } from './details-work-modal/details-work-modal.component';
 import { UserOnlineQuoteComponent } from './user-online-quote/user-online-quote.component';
-import { ProviderOnlineQuoteComponent } from './provider-online-quote/provider-online-quote.component';
 import { DetailsContractModalComponent } from './details-contract-modal/details-contract-modal.component';
 import { UserManageContractComponent } from './user-manage-contract/user-manage-contract.component';
 import { ProviderManageContractComponent } from './provider-manage-contract/provider-manage-contract.component';
 import { ExtensionModalComponent } from './extension-modal/extension-modal.component';
 import { InlineEditComponent } from './inline-edit/inline-edit.component';
 import { NoAgreementModalComponent } from './no-agreement-modal/no-agreement-modal.component';
+import { ReviewComponent } from './review/review.component';
+import { NouisliderModule } from 'ng2-nouislider';
+import { ProviderQuotationComponent } from './provider-quotation/provider-quotation.component';
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import { UserViewQuotationComponent } from './user-view-quotation/user-view-quotation.component';
+import { DetailsQuotationModalComponent } from './details-quotation-modal/details-quotation-modal.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +121,6 @@ import { NoAgreementModalComponent } from './no-agreement-modal/no-agreement-mod
     UserDashboardProfileEditComponent,
     UserDashboardVisitComponent,
     ProviderDashboardVisitComponent,
-    ProviderDashboardQuotationComponent,
     ProviderDashboardNegotiationComponent,
     UserDashboardNegotiationComponent,
     UserDashboardQuotationComponent,
@@ -140,13 +143,16 @@ import { NoAgreementModalComponent } from './no-agreement-modal/no-agreement-mod
     ProviderDashboardNegotiationPendingComponent,
     DetailsWorkModalComponent,
     UserOnlineQuoteComponent,
-    ProviderOnlineQuoteComponent,
     DetailsContractModalComponent,
     UserManageContractComponent,
     ProviderManageContractComponent,
     ExtensionModalComponent,
     InlineEditComponent,
-    NoAgreementModalComponent
+    NoAgreementModalComponent,
+    ReviewComponent,
+    ProviderQuotationComponent,
+    UserViewQuotationComponent,
+    DetailsQuotationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -159,6 +165,8 @@ import { NoAgreementModalComponent } from './no-agreement-modal/no-agreement-mod
     TextMaskModule,
     LoadingModule,
     MyDatePickerModule,
+    NouisliderModule,
+    CurrencyMaskModule,
     NgbModule.forRoot()
   ],
   entryComponents: [
@@ -168,6 +176,7 @@ import { NoAgreementModalComponent } from './no-agreement-modal/no-agreement-mod
     AcceptVisitModalComponent,
     UnfulfilledModalComponent,
     DetailsWorkModalComponent,
+    DetailsQuotationModalComponent,
     NoAgreementModalComponent],
   providers: [
     {

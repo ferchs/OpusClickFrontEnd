@@ -1,3 +1,133 @@
-<p>
-  user-manage-contract works!
-</p>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+<div class="space"></div>
+  <div *ngIf="submited==false" class="container">
+    <div class="row">
+      <div class="col-lg-12">
+          <div class="progress">
+              <div class="progress-bar" role="progressbar" [style.width]="percentageCompletion + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          <div>
+            <p class="p-style" *ngIf="actualPage===1">¡Advertencia!</p>
+            <p class="p-style" *ngIf="actualPage===2">Elige los items que deseas contratar</p>
+            <p class="p-style" *ngIf="actualPage===3">¿Hace falta algo para proceder a contratar?</p>
+            <p class="p-style" *ngIf="actualPage===4">Imágenes o comentarios adicionales</p>
+          </div>
+          <hr>
+      </div>
+    </div>
+    <div [hidden]="actualPage!==1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 justify">
+                  <p>Asegúrate de que todos los detalles e información concretada con el experto acerca del trabajo, se encuentre depositada en este contrato;
+                     en caso de reclamación por garantía nuestro equipo se regirá de manera estricta en la información almacenada en este documento. 
+                     Si contratas, estarás aceptando todas las condiciones de trabajo presentes en este contrato
+                  <p>
+                </div>
+                <div class="col-lg-1"></div>
+                <hr class="col-lg-12">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">He leído y entiendo</label>
+                  </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+    </div>
+    <div [hidden]="actualPage!==2">
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col"> </th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Valor</th>
+                      <th scope="col">Duración</th>
+                      <th scope="col">Garantía</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor='let item of items'>
+                      <td>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1"></label>
+                        </div>
+                      </td>
+                      <td>{{item.name}} <button type="button" (click)="detailsItem(item)" class="btn btn-outline-dark btn-sm">Detalles</button></td>
+                      <td>$ {{item.value | number:0}}</td>
+                      <td>{{item.durationValue}} {{item.durationTime}}</td>
+                      <td>{{item.warrantyValue}} {{item.warrantyTime}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div> 
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-12">
+                  <ngb-accordion #acc="ngbAccordion">
+                      <ngb-panel title="Imágenes de referencia y modificaciones al diseño">
+                        <ng-template ngbPanelContent>
+                          <div class="row">
+                            <div class="col-lg-2">
+                                <img 
+                                data-src="holder.js/200x200" 
+                                class="rounded mx-auto d-block" 
+                                alt="100x100" 
+                                src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_164e3f66702%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_164e3f66702%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2274.4296875%22%20y%3D%22104.5%22%3E200x200%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" 
+                                data-holder-rendered="true" 
+                                style="width: 150px; height: 150px; margin:5px;">
+                            </div>
+                            <div class="col-lg-10">
+                                <label for="modifications">Modificaciones al diseño</label>
+                                <textarea 
+                                  class="form-control" 
+                                  id="modifications" 
+                                  rows="4"
+                                  required 
+                                  [(ngModel)]="mModifications" 
+                                  name="modifications"
+                                  #modifications="ngModel"
+                                  [ngClass]="{'is-valid': modifications.valid && modifications.touched, 'is-invalid': modifications.invalid && modifications.touched}">
+                                </textarea>
+                                <small *ngIf="modifications.untouched || modifications.valid && modifications.touched" class="form-text text-muted">Se conciso en la descripción, esto ayuda a nuestros expertos a estar preparados el día de la visita.</small>
+                                <small *ngIf="modifications.invalid && modifications.touched" class="form-text text-muted-error">Debes describir el trabajo a realizar</small>
+                            </div>
+                        </div>          
+                        </ng-template>
+                      </ngb-panel>
+                    </ngb-accordion>
+              </div>
+        </div>
+    </div>
+    <div [hidden]="actualPage!==3">
+        <div class="text-center">
+            <button type="button" class="btn"
+            [ngClass]="{'btn-outline-yes-selected': mFinalize && touched, 'btn-outline-success': !touched || !mFinalize && touched}"
+            (click)="finalize(true)">SI</button>
+            <button type="button" class="btn"
+            [ngClass]="{'btn-outline-no-selected': !mFinalize && touched, 'btn-outline-danger': !touched || mFinalize && touched}"
+            (click)="finalize(false)">NO</button>
+          </div>
+    </div>
+    <div class="my-4"></div>
+      <div class="text-center">
+        <button 
+          (click)='back()' 
+          class="btn btn btn-outline-secondary">
+            Atrás
+        </button>
+        <button 
+          [hidden]="actualPage===totalPage"
+          (click)='next()'
+          class="btn btn-outline-secondary">
+            Siguiente
+        </button>
+      </div>

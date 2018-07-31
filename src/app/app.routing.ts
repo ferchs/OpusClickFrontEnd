@@ -28,6 +28,10 @@ import { RequestVisitComponent } from './request-visit/request-visit.component';
 import { UserOnlineQuoteComponent } from './user-online-quote/user-online-quote.component';
 import { UserDashboardVisitUnfulfilledComponent } from './user-dashboard-visit-unfulfilled/user-dashboard-visit-unfulfilled.component';
 import { ProviderDashboardVisitUnfulfilledComponent } from './provider-dashboard-visit-unfulfilled/provider-dashboard-visit-unfulfilled.component';
+import { ReviewComponent } from './review/review.component';
+import { ProviderQuotationComponent } from './provider-quotation/provider-quotation.component';
+import { UserViewQuotationComponent } from './user-view-quotation/user-view-quotation.component';
+import { UserManageContractComponent } from './user-manage-contract/user-manage-contract.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 const appRoutes: Routes = [
@@ -67,6 +71,10 @@ const appRoutes: Routes = [
     {path:'expertos', component: ProviderListComponent},
     {path:'visitas', component: RequestVisitComponent, canActivate: [AuthGuard]},
     {path:'cotizacion_virtual', component: UserOnlineQuoteComponent},
+    {path:'review', component: ReviewComponent},
+    {path:'cotizar', component: ProviderQuotationComponent},
+    {path:'ver_cotizacion', component: UserViewQuotationComponent},
+    {path:'contratar', component: UserManageContractComponent},
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

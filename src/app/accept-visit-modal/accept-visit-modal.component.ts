@@ -9,6 +9,7 @@ import * as moment from "moment";
   templateUrl: './accept-visit-modal.component.html',
   styleUrls: ['./accept-visit-modal.component.css']
 })
+
 export class AcceptVisitModalComponent implements OnInit {
 
   @Input() title;

@@ -1,0 +1,77 @@
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {  
+    .space {
+      padding-top: 23%;
+    }  
+  }
+  
+  /* Small devices (landscape phones, 576px and up)*/
+  @media (min-width: 576px) and (max-width: 767.98px) { 
+    .space {
+      padding-top: 23%;
+    }  
+  }
+  
+  /*Medium devices (tablets, 768px and up)*/
+  @media (min-width: 768px) and (max-width: 991.98px) { 
+    .space {
+      padding-top: 14%;
+    }  
+   }
+  
+  /*Large devices (desktops, 992px and up)*/
+  @media (min-width: 992px) and (max-width: 1199.98px) { 
+    .space {
+      padding-top: 7%; 
+    }  
+   }
+  
+  /*Extra large devices (large desktops, 1200px and up)*/
+  @media (min-width: 1200px) { 
+    .space {
+      padding-top: 7%;
+    }   
+   }
+   
+  .progress-bar{
+    background-color:#008d98;
+  }
+
+  .btn-outline-yes-selected {
+    color:white;
+    background-color: #28a745;
+    background-image: none;
+    border-color: rgb(40, 167, 69);
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(40, 167, 69,.5);
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69,.5);
+  }
+  
+  .btn-outline-no-selected {
+    color:white;
+    background-color: rgb(220, 53, 69);
+    background-image: none;
+    border-color: rgb(220, 53, 69);
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(220, 53, 69,.5);
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69,.5);
+  }
+
+  td{
+    white-space: nowrap;
+   }
+
+  .p-style{
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .text-muted-error{
+    color: #FF3741!important;
+  }
+
+  .justify{
+  text-align: justify!important;
+  font-size: 16px!important;
+  }

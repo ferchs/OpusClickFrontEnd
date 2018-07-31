@@ -1,6 +1,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@ng-bootstrap/ng-bootstrap": ["../src/index"]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -15,5 +18,8 @@
       "es2017",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "./src/**/*.ts"
+  ]
 }

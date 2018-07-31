@@ -1,0 +1,84 @@
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {  
+    .space {
+      padding-top: 23%;
+    }  
+  }
+  
+  /* Small devices (landscape phones, 576px and up)*/
+  @media (min-width: 576px) and (max-width: 767.98px) { 
+    .space {
+      padding-top: 23%;
+    }  
+  }
+  
+  /*Medium devices (tablets, 768px and up)*/
+  @media (min-width: 768px) and (max-width: 991.98px) { 
+    .space {
+      padding-top: 14%;
+    }  
+   }
+  
+  /*Large devices (desktops, 992px and up)*/
+  @media (min-width: 992px) and (max-width: 1199.98px) { 
+    .space {
+      padding-top: 7%; 
+    }  
+   }
+  
+  /*Extra large devices (large desktops, 1200px and up)*/
+  @media (min-width: 1200px) { 
+    .space {
+      padding-top: 7%;
+    }   
+   }
+
+.progress-bar{
+  background-color:#294664;
+}
+
+.p-style{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 1%;
+    margin-bottom: 0%;
+}
+
+.centered {
+  text-align: center;
+}
+
+h5{
+  margin-right: 8px;
+  margin-left: 4px;
+}
+
+.vcenter {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin-left: 4px;
+  }
+
+img{
+  cursor:pointer;
+}
+
+.row{
+  margin-bottom: 15px;
+}
+
+.custom-file-input ~ .custom-file-label::after {
+  content: "Elegir";
+}
+
+strong{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:bold;
+}
+
+td{
+  white-space: nowrap;
+ }

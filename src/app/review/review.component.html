@@ -1,0 +1,122 @@
+<app-navbar [loggedIn]=loggedIn></app-navbar>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+<div class="space">
+<div *ngIf="submited==false" class="container">
+  <div class="row">
+  <div class="col-lg-3">
+    <div class="mx-3"></div>
+  </div>
+  <div class="col-lg-6">
+      <div class="progress">
+          <div class="progress-bar" role="progressbar" [style.width]="percentageCompletion + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      <div >
+        <p class="p-style" *ngIf="actualPage===1">¿Cúal es tu nivel de satisfacción con el servicio contratado?</p>
+        <p class="p-style" *ngIf="actualPage===2">Escribe un comentario acerca de la experiencia de servicio recibida</p>
+        <p class="p-style" *ngIf="actualPage===3">Sube una imagen del trabajo realizado</p>
+        <p class="p-style" *ngIf="actualPage===4">¿Recomendarías este experto a otra persona?</p>
+      </div>
+      <hr>
+      <form #reviewForm="ngForm">
+        <div [hidden]="actualPage!==1" class="form-group">
+          <div class="space_medium"></div>
+          <div class="container">
+            <nouislider 
+              required
+              [min]="0" 
+              [max]="100" 
+              [step]="1" 
+              [config]="someRange2config" 
+              [(ngModel)]="mSatisfactionLevel" 
+              name="satisfactionLevel" 
+              #satisfactionLevel="ngModel"
+              [disabled]="false"
+              [ngModelOptions]="{standalone: true}">
+            </nouislider>  
+          </div>  
+         </div>
+        <div [hidden]="actualPage!==2" class="form-group">
+          <textarea 
+            class="form-control" 
+            id="description" 
+            rows="3"
+            required 
+            [(ngModel)]="mDescription" 
+            name="workDescription"
+            #workDescription="ngModel"
+            [ngClass]="{'is-valid': workDescription.valid && workDescription.touched, 'is-invalid': workDescription.invalid && workDescription.touched}">
+          </textarea>
+          <small *ngIf="workDescription.untouched || workDescription.valid && workDescription.touched" class="form-text text-muted">Escribe tus apreciaciones generales acerca del servicio contratado.</small>
+          <small *ngIf="workDescription.invalid && workDescription.touched" class="form-text text-muted-error">Debes describir el trabajo a realizar</small>
+        </div>
+          <div [hidden]="actualPage!==3" class="form-group">
+            <div class="form-group">
+              <label for="file">Elige una imagen para subir</label>
+                <div class="custom-file">
+                  <input 
+                  type="file" 
+                  class="custom-file-input" 
+                  id="file" 
+                  lang="es" 
+                  (change)="onFileChange($event)">
+                    <label class="custom-file-label" for="customFileLang">{{fileName}}</label>
+                </div>
+            </div>              
+          </div>
+          <div [hidden]="actualPage!==4" class="form-group">
+            <div class="text-center">
+              <button type="button" class="btn"
+              [ngClass]="{'btn-outline-yes-selected': mRecommend && touched, 'btn-outline-success': !touched || !mRecommend && touched}"
+              (click)="recommend(true)">SI</button>
+              <button type="button" class="btn"
+              [ngClass]="{'btn-outline-no-selected': !mRecommend && touched, 'btn-outline-danger': !touched || mRecommend && touched}"
+              (click)="recommend(false)">NO</button>
+            </div>
+          </div>
+            <div class="summary" *ngIf="actualPage===totalPage">
+              
+            </div>
+            <div class="my-4"></div>
+            <div class="text-center">
+              <button 
+                (click)='back()' 
+                class="btn btn btn-outline-secondary">
+                Atrás
+              </button>
+              <button 
+                [hidden]="actualPage===totalPage"
+                (click)='next()'
+                class="btn btn-outline-secondary">
+                Siguiente
+              </button>
+              <button 
+                [disabled]="!touched && reviewForm.invalid"
+                [hidden]="actualPage!==totalPage"
+                (click)='submit()' 
+                class="btn btn-outline-secondary">
+                Terminar
+              </button>
+            </div>
+      </form>
+  </div>
+  <div class="col-lg-3">
+      <div class="mx-3"></div>
+  </div>
+</div>
+</div>
+<div *ngIf="submited==true" class="container">
+    <div class="space">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 justify">
+                  <p>Tu solicitud se ha enviado correctamente, debes esperar que sea aceptada por el experto.
+                      En caso contrario, el experto revisará su disponibilidad y te enviará las fechas en que puede visitarte
+                      para que tú elijas la que mejor se ajuste a tu tiempo
+                  <p>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+    </div>
+</div>
