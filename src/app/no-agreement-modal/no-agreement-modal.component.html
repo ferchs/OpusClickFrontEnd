@@ -7,7 +7,7 @@
   <div class="modal-body">
       <form #noAgreementForm="ngForm">
         <div class="form-group">
-             <label for="description">¿Porqué no has llegado a un acuerdo?</label>
+             <label for="description">¿Por qué cancelas la negociación?</label>
                 <textarea 
                     class="form-control" 
                     id="description" 
@@ -18,7 +18,7 @@
                     #workDescription="ngModel"
                     [ngClass]="{'is-valid': workDescription.valid && workDescription.touched, 'is-invalid': workDescription.invalid && workDescription.touched}">
                 </textarea>
-                <small *ngIf="workDescription.untouched || workDescription.valid && workDescription.touched" class="form-text text-muted">Describe brevemente la causa por la cúal no has llegado a un acuerdo.</small>
+                <small *ngIf="workDescription.untouched || workDescription.valid && workDescription.touched" class="form-text text-muted">Describe brevemente el motivo por el cúal has tomado esta decisión.</small>
                 <small *ngIf="workDescription.invalid && workDescription.touched" class="form-text text-muted-error">Este campo es necesario.</small>
         </div> 
       </form>

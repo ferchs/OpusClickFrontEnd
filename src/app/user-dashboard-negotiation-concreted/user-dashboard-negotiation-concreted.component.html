@@ -1,2 +1,100 @@
 <div class="space"></div>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+    <div class="container">
+        <app-alert [dismissible]="true" [type]="notificationType" [message]="notificationMessage" [(staticAlertClosed)]="hideNotification"></app-alert>
+        <label>Negociaciones concretadas</label>
+        <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Etiqueta</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let work of pendingWorks'>
+                <td>{{work.creationDate  | date: 'dd/MM/yyyy'}}</td>
+                <td><app-inline-edit [value]='work.userLabel' (newValue)="newLabelChange($event,work)"></app-inline-edit></td>
+                <td class="d-options">
+                    <button type="button"
+                    class="btn btn-outline-info"
+                    *ngIf='work.state=="PENDING_BY_VISIT" || work.state=="PENDING_BY_QUOTATION"' 
+                    (click)="detailsWork(work)">Ver Detalles</button>
+                    <div *ngIf='work.state=="PENDING_BY_VISIT" || work.state=="PENDING_BY_QUOTATION"' class="my-1"></div>
+                    <div *ngIf='work.state=="PENDING_BY_VISIT" || work.state=="PENDING_BY_QUOTATION"' class="mx-1"></div>
+                    
+                    <button type="button"
+                    class="btn btn-outline-info"
+                    *ngIf='work.state=="QUOTE_MADE"' 
+                    [routerLink]="['/ver_propuesta']" 
+                    [queryParams]="{work:work.id}">Ver Propuesta</button>
+                    <div *ngIf='work.state=="QUOTE_MADE"' class="my-1"></div>
+                    <div *ngIf='work.state=="QUOTE_MADE"' class="mx-1"></div>
 
+                    <button type="button"
+                    class="btn btn-outline-info"
+                    *ngIf='work.state=="CONTRACT_MODIFIED_BY_USER"' 
+                    [routerLink]="['/ver_contrato']" 
+                    [queryParams]="{contract:work.contractId}">Ver Contrato</button>
+                    <div *ngIf='work.state=="CONTRACT_MODIFIED_BY_USER"' class="my-1"></div>
+                    <div *ngIf='work.state=="CONTRACT_MODIFIED_BY_USER"' class="mx-1"></div>
+
+                    <div *ngIf='work.state=="CONTRACT_ACCEPTED_BY_PROVIDER"'
+                      class="btn-group dropleft">
+                    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Opciones
+                    </button>
+                    <div class="dropdown-menu">
+                      <button class="dropdown-item" 
+                      type="button" 
+                      [routerLink]="['/ver_contrato']" 
+                      [queryParams]="{contract:work.contractId}">
+                        Ver Contrato
+                      </button>
+                      <button class="dropdown-item" type="button" (click)="makePayment()">Realizar Pago</button>
+                      <button class="dropdown-item" type="button" (click)="terminateWork(work)">Terminar</button>
+                    </div>
+                    </div>
+                    <div *ngIf='work.state=="CONTRACT_MODIFIED_BY_PROVIDER"'
+                      class="btn-group dropleft">
+                    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Opciones
+                    </button>
+                    <div class="dropdown-menu">
+                      <button class="dropdown-item" 
+                      type="button" 
+                      [routerLink]="['/redefinir_contrato']" 
+                      [queryParams]="{contract:work.contractId}">
+                       Concretar Contrato
+                      </button>
+                      <button class="dropdown-item" type="button" (click)="terminateWork(work)">Terminar</button>
+                    </div>
+                    </div>
+
+                    <div *ngIf='work.state=="PENDING_BY_PAYMENT"'
+                      class="btn-group dropleft">
+                    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Opciones
+                    </button>
+                    <div class="dropdown-menu">
+                      <button class="dropdown-item" 
+                      type="button"
+                      (click)="makePayment(work)">
+                       Realizar Pago
+                      </button>
+                      <button class="dropdown-item" type="button" (click)="terminateWork(work)">Terminar</button>
+                    </div>
+                    </div>
+
+                    <button type="button" 
+                    *ngIf='work.state!="CONTRACT_ACCEPTED_BY_PROVIDER" && work.state!="CONTRACT_MODIFIED_BY_PROVIDER" && work.state!="PENDING_BY_PAYMENT"'
+                    class="btn btn-outline-danger" (click)="terminateWork(work)">Terminar</button>
+                    <div class="my-1"></div>
+                    <div class="mx-1"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>

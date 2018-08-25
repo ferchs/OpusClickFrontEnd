@@ -13,5 +13,6 @@ export class WorkGetDto {
     public state:string;
 
     public comment:string;
-	
+    
+    public contractId:number;
 }

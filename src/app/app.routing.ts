@@ -23,6 +23,8 @@ import { ProviderDashboardVisitPendingComponent } from './provider-dashboard-vis
 import { ProviderDashboardVisitAcceptedComponent } from './provider-dashboard-visit-accepted/provider-dashboard-visit-accepted.component';
 import { ProviderDashboardNegotiationPendingComponent } from './provider-dashboard-negotiation-pending/provider-dashboard-negotiation-pending.component';
 import { ProviderDashboardNegotiationConcretedComponent } from './provider-dashboard-negotiation-concreted/provider-dashboard-negotiation-concreted.component';
+import { ViewContractComponent } from './view-contract/view-contract.component';
+import { ViewSignedContractComponent } from './view-signed-contract/view-signed-contract.component';
 import { ProviderListComponent } from './provider-list/provider-list.component';
 import { RequestVisitComponent } from './request-visit/request-visit.component';
 import { UserOnlineQuoteComponent } from './user-online-quote/user-online-quote.component';
@@ -31,7 +33,10 @@ import { ProviderDashboardVisitUnfulfilledComponent } from './provider-dashboard
 import { ReviewComponent } from './review/review.component';
 import { ProviderQuotationComponent } from './provider-quotation/provider-quotation.component';
 import { UserViewQuotationComponent } from './user-view-quotation/user-view-quotation.component';
+import { ProviderViewQuotationComponent } from './provider-view-quotation/provider-view-quotation.component';
 import { UserManageContractComponent } from './user-manage-contract/user-manage-contract.component';
+import { ProviderManageContractComponent } from './provider-manage-contract/provider-manage-contract.component';
+import { UserSpecifyContractComponent } from './user-specify-contract/user-specify-contract.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 const appRoutes: Routes = [
@@ -52,7 +57,7 @@ const appRoutes: Routes = [
             { path: 'visitas/pendientes', component: UserDashboardVisitPendingComponent},
             { path: 'visitas/aceptadas', component: UserDashboardVisitAcceptedComponent},
             { path: 'visitas/incumplidas', component: UserDashboardVisitUnfulfilledComponent},
-            { path: 'negociaciones/en_progreso', component: UserDashboardNegotiationPendingComponent},
+            { path: 'negociaciones/en_proceso', component: UserDashboardNegotiationPendingComponent},
             { path: 'negociaciones/concretadas', component: UserDashboardNegotiationConcretedComponent}
         ], canActivate: [AuthGuard]
     },
@@ -64,7 +69,7 @@ const appRoutes: Routes = [
             { path: 'visitas/nuevas', component: ProviderDashboardVisitPendingComponent},
             { path: 'visitas/aceptadas', component: ProviderDashboardVisitAcceptedComponent},
             { path: 'visitas/incumplidas', component: ProviderDashboardVisitUnfulfilledComponent},
-            { path: 'negociaciones/en_progreso', component: ProviderDashboardNegotiationPendingComponent},
+            { path: 'negociaciones/en_proceso', component: ProviderDashboardNegotiationPendingComponent},
             { path: 'negociaciones/concretadas', component: ProviderDashboardNegotiationConcretedComponent}
         ], canActivate: [AuthGuard]
     },
@@ -73,8 +78,13 @@ const appRoutes: Routes = [
     {path:'cotizacion_virtual', component: UserOnlineQuoteComponent},
     {path:'review', component: ReviewComponent},
     {path:'cotizar', component: ProviderQuotationComponent},
-    {path:'ver_cotizacion', component: UserViewQuotationComponent},
-    {path:'contratar', component: UserManageContractComponent},
+    {path:'ver_propuesta', component: UserViewQuotationComponent},
+    {path:'ver_cotizacion', component: ProviderViewQuotationComponent},
+    {path:'definir_contrato', component: UserManageContractComponent},
+    {path:'concretar_contrato', component: ProviderManageContractComponent},
+    {path:'redefinir_contrato', component: UserSpecifyContractComponent},
+    {path:'ver_contrato', component: ViewContractComponent},
+    {path:'ver_detalles_contrato', component: ViewSignedContractComponent},
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

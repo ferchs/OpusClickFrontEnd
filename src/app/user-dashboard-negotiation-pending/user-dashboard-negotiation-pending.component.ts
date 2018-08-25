@@ -14,6 +14,7 @@ import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
 })
 export class UserDashboardNegotiationPendingComponent implements OnInit {
 
+  worksList:string="PENDING_BY_VISIT,PENDING_BY_QUOTATION,QUOTE_MADE,CONTRACT_MODIFIED_BY_PROVIDER,CONTRACT_MODIFIED_BY_USER,CONTRACT_ACCEPTED_BY_PROVIDER,PENDING_BY_PAYMENT";
   pendingWorks:WorkGetDto[];
   loading:boolean;
   hideNotification:boolean;
@@ -26,7 +27,7 @@ export class UserDashboardNegotiationPendingComponent implements OnInit {
   ngOnInit() {
     this.loading=true;
     this.hideNotification=true;
-    this.workService.getWork("user",localStorage.getItem("id_user"),"PENDING_BY_VISIT,PENDING_BY_QUOTATION,QUOTE_MADE,NEGOTIATED_BY_PROVIDER").subscribe((works:WorkGetDto[])=>{
+    this.workService.getWork("user",localStorage.getItem("id_user"),this.worksList).subscribe((works:WorkGetDto[])=>{
       this.pendingWorks=works;
       this.loading=false;
       this.now= new Date();
@@ -37,7 +38,7 @@ export class UserDashboardNegotiationPendingComponent implements OnInit {
     let dto:WorkUpdateDto = new WorkUpdateDto();
     dto.id=work.id;
     dto.providerLabel=work.providerLabel;
-    dto.state=work.state;
+    dto.state="LABEL_CHANGE";
     dto.userLabel=event;
     dto.comment=work.comment;
     this.workService.updateWork(dto).subscribe();
@@ -49,46 +50,19 @@ export class UserDashboardNegotiationPendingComponent implements OnInit {
     modalRef.componentInstance.work=work;
   }
 
-  terminateWork(work:WorkGetDto) {
-    const modalRef = this.modalService.open(ConfirmModalComponent);
-    modalRef.componentInstance.title = '¿Estas seguro de terminar esta negociación?';
-    modalRef.componentInstance.content = 'Si terminas esta negociación se cancelaran todas las visitas, cotizaciones e hitos pendientes.';
-    modalRef.componentInstance.result.subscribe(response=>{
-      if(response==true){
-        this.loading=true;
-        let dto:WorkUpdateDto = new WorkUpdateDto();
-        dto.id=work.id;
-        dto.providerLabel=work.providerLabel;
-        dto.state="REJECTED_BY_USER";
-        dto.userLabel=work.userLabel;
-        dto.comment=work.comment;
-        this.workService.updateWork(dto).subscribe(res=>{
-          this.workService.getWork("user",localStorage.getItem("id_user"),"PENDING_BY_VISIT,PENDING_BY_QUOTATION,QUOTE_MADE,NEGOTIATED_BY_PROVIDER").subscribe((works:WorkGetDto[])=>{
-            this.pendingWorks=works;
-            this.loading=false;
-            this.now= new Date();
-            this.notificationMessage="¡La negociación ha sido terminada!";
-            this.notificationType="info";
-            this.hideNotification=false;
-          });
-        });
-      }
-    });
-  }
-
-  noAgreement(work){
+  terminateWork(work){
     const modalRef = this.modalService.open(NoAgreementModalComponent);
-    modalRef.componentInstance.title = 'Razón Desacuerdo';
+    modalRef.componentInstance.title = 'Terminar Negociación';
     modalRef.componentInstance.result.subscribe((reason:string)=>{
       this.loading=true;
       let dto:WorkUpdateDto = new WorkUpdateDto();
       dto.id=work.id;
       dto.providerLabel=work.providerLabel;
-      dto.state="NO_AGREEMENT_BY_USER";
+      dto.state="CANCELLED_BY_USER";
       dto.userLabel=work.userLabel;
       dto.comment=reason;
       this.workService.updateWork(dto).subscribe(res=>{
-        this.workService.getWork("user",localStorage.getItem("id_user"),"PENDING_BY_VISIT,PENDING_BY_QUOTATION,QUOTE_MADE,NEGOTIATED_BY_PROVIDER").subscribe((works:WorkGetDto[])=>{
+        this.workService.getWork("user",localStorage.getItem("id_user"),this.worksList).subscribe((works:WorkGetDto[])=>{
           this.pendingWorks=works;
           this.loading=false;
           this.now= new Date();
@@ -98,6 +72,16 @@ export class UserDashboardNegotiationPendingComponent implements OnInit {
         });
       });
     });
+  }
+
+  makePayment(work){
+    let dto:WorkUpdateDto = new WorkUpdateDto();
+    dto.id=work.id;
+    dto.providerLabel=work.providerLabel;
+    dto.userLabel=work.providerLabel;
+    dto.comment=work.comment;
+    dto.state="IN_PROGRESS";
+    this.workService.updateWork(dto).subscribe();
   }
 
 }

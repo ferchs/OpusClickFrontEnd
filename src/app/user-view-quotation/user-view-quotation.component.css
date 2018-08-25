@@ -56,3 +56,11 @@
   .vcenter {
     display: flex;
   }
+
+  .link-popover{
+    color:#007bff;
+  }
+
+  .link-popover:hover{
+    text-decoration: underline;
+  }

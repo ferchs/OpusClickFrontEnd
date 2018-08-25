@@ -79,9 +79,10 @@ export class DynamicFormComponent implements OnInit {
   onSubmit() {
     this.loading=true;
     this.payLoad=JSON.stringify(this.form.value);
+    console.log(this.payLoad);
     let quote:QuoteDto = new QuoteDto();
     quote.requirements= this.payLoad;
-    this.dynamicFormervice.createQuote(quote,this.userId,this.providerId,null).subscribe((resp:HttpResponse<String>)=>{
+    this.dynamicFormervice.createQuote(quote,this.userId,this.providerId).subscribe((resp:HttpResponse<String>)=>{
       this.dynamicFormervice.uploadQuotationImage(this.photo,resp.body.substring(resp.body.indexOf(':')+1,resp.body.lastIndexOf('"'))).
       subscribe(resp => {
         this.submitted=true;

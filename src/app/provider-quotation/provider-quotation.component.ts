@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { Item } from '../_models/item';
+import { ProviderQuoteDto } from '../_dtos/providerQuoteDto';
 import {Location} from '@angular/common';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { DomSanitizer} from '@angular/platform-browser';
+import { ProviderQuoteService } from '../_services/provider-quote.service';
 
 @Component({
   selector: 'app-provider-quotation',
@@ -20,28 +23,35 @@ export class ProviderQuotationComponent implements OnInit {
   durationTimes:string[];
   warrantyTimes:string[];
   mValue:number;
-  items:Array<Item>=[];
   mModifications:string;
-  administrationAmount:number;
-  subtotalAmount:number;
-  totalAmount:number;
+  workId:string;
+  quote:ProviderQuoteDto;
+  photo:File;
+  image:any;
 
-  constructor(private authService: AuthService, private location:Location) { }
+  constructor(private authService: AuthService, private location:Location,
+    private router: Router, private activatedRoute: ActivatedRoute,
+    private domSanitizer: DomSanitizer, private providerQuoteService:ProviderQuoteService) { }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe((params: Params) => {
+      this.workId=params['work'];
+    });
+    this.quote= new ProviderQuoteDto();
+    this.quote.items=[];
     this.loading=false;
     this.submited=false;
     this.loggedIn=this.authService.isLoggedIn();
-    this.totalPage=4;
+    this.totalPage=5;
     this.actualPage=1;
-    this.administrationAmount=0;
-    this.subtotalAmount=0;
-    this.totalAmount=0;
+    this.quote.administrationFee=0;
+    this.quote.subtotal=0;
+    this.quote.total=0;
     this.calculateAdvancePercentage();
     this.durationTimes=['Hora(s)','Día(s)','Mes(es)','Año(s)'];
     this.warrantyTimes=['Día(s)','Mes(es)','Año(s)'];
     let element:Item= new Item();
-    this.items.push(element);
+    this.quote.items.push(element);
     this.mModifications=null;
   }
 
@@ -66,20 +76,20 @@ export class ProviderQuotationComponent implements OnInit {
 
   addItem(){
     let item:Item=new Item();
-    this.items.push(item)
+    this.quote.items.push(item)
   }
 
   calculatePrice(){
-    this.subtotalAmount=0;
-    this.items.forEach((element:Item) => {
-      this.subtotalAmount+=element.value;
+    this.quote.subtotal=0;
+    this.quote.items.forEach((element:Item) => {
+      this.quote.subtotal+=element.value;
     });
-    this.administrationAmount=Math.trunc(this.subtotalAmount*0.05);
-    this.totalAmount=this.subtotalAmount+this.administrationAmount;
+    this.quote.administrationFee=Math.trunc(this.quote.subtotal*0.05);
+    this.quote.total=this.quote.subtotal+this.quote.administrationFee;
   }
 
   removeItem(index){
-    this.items.splice(index, 1);
+    this.quote.items.splice(index, 1);
   }
 
   private fieldArray: Array<any> = [];
@@ -94,4 +104,32 @@ export class ProviderQuotationComponent implements OnInit {
         this.fieldArray.splice(index, 1);
     }
 
+    onFileChange(event, item:Item) {
+      this.loading=true;
+      let reader = new FileReader();
+      if(event.target.files && event.target.files.length > 0) {
+        this.photo = event.target.files[0];
+        reader.readAsDataURL(this.photo);
+        reader.onload = (event: any) => {
+          let pos:number=this.quote.items.indexOf(item);
+          let newItem:Item=this.quote.items[pos];
+          newItem.imageQuote=event.target.result;
+          this.quote.items[pos]=newItem;
+          this.loading=false;
+        }
+      }
+    }
+
+    makeTrustedImage(item) {
+      const style = 'url(' + item + ')';
+      return this.domSanitizer.bypassSecurityTrustStyle(style);
+    }
+
+    sendQuote(){
+      this.loading=true;
+      this.providerQuoteService.createProviderQuote(this.quote,this.workId).subscribe(res=> {
+        this.loading=false;
+        this.submited=true;
+      });
+    }
 }

@@ -15,11 +15,12 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
 import { QuoteDto } from "../_dtos/quoteDto";
+import { OnlineQuoteGetDto } from "../_dtos/onlineQuoteGetDto";
 
 @Injectable()
 export class DynamicFormService {
 
-  private apiUrl = environment.devApiUrl+"/quotes";
+  private apiUrl = environment.devApiUrl+"/online_quotes";
   total:number;
 
   constructor(private firebase:AngularFireDatabase, private http:HttpClient){
@@ -230,7 +231,7 @@ export class DynamicFormService {
   }
 
 
-  createQuote(dto:QuoteDto, userId?:string, providerId?:string, workId?:string){
+  createQuote(dto:QuoteDto, userId?:string, providerId?:string){
     const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'}); 
     if(userId!=null && providerId!=null){
       return this.http.post(this.apiUrl+"?user="+userId+"&provider="+providerId, dto, {headers: headers, observe: 'response', responseType: 'text'})
@@ -238,15 +239,18 @@ export class DynamicFormService {
         map(response => {return response}),
         catchError(this.handleError)
       );
-    }else if(workId!=null){
-      return this.http.post(this.apiUrl+"?work="+workId, dto, {headers: headers, observe: 'response', responseType: 'text'})
-      .pipe(
-        map(response => { return response}),
-        catchError(this.handleError)
-      );
     }
   }
 
+  getQuote(id:number){
+    return this.http.get<OnlineQuoteGetDto>(this.apiUrl+"/"+id)
+    .pipe(
+      map((quoteInfo:OnlineQuoteGetDto)=> { 
+        return quoteInfo
+      }),
+      catchError(this.handleError)
+    );
+  }
 
   uploadQuotationImage(file: File, quoteId:string){
     let formdata: FormData = new FormData();

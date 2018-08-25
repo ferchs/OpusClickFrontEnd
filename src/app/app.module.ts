@@ -22,6 +22,9 @@ import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './_services/auth.service';
 import { VisitService } from './_services/visit.service';
 import { WorkService } from './_services/work.service';
+import { DynamicFormService } from './_services/dynamic-form.service';
+import { ProviderQuoteService } from './_services/provider-quote.service';
+import { ContractService } from './_services/contract.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AccountCreatedComponent } from './account-created/account-created.component';
@@ -88,6 +91,13 @@ import { ProviderQuotationComponent } from './provider-quotation/provider-quotat
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { UserViewQuotationComponent } from './user-view-quotation/user-view-quotation.component';
 import { DetailsQuotationModalComponent } from './details-quotation-modal/details-quotation-modal.component';
+import { DetailsOnlineQuoteModalComponent } from './details-online-quote-modal/details-online-quote-modal.component';
+import { ProviderViewQuotationComponent } from './provider-view-quotation/provider-view-quotation.component';
+import { UserViewContractComponent } from './user-view-contract/user-view-contract.component';
+import { ProviderViewContractComponent } from './provider-view-contract/provider-view-contract.component';
+import { ViewContractComponent } from './view-contract/view-contract.component';
+import { UserSpecifyContractComponent } from './user-specify-contract/user-specify-contract.component';
+import { ViewSignedContractComponent } from './view-signed-contract/view-signed-contract.component';
 
 @NgModule({
   declarations: [
@@ -152,7 +162,14 @@ import { DetailsQuotationModalComponent } from './details-quotation-modal/detail
     ReviewComponent,
     ProviderQuotationComponent,
     UserViewQuotationComponent,
-    DetailsQuotationModalComponent
+    DetailsQuotationModalComponent,
+    DetailsOnlineQuoteModalComponent,
+    ProviderViewQuotationComponent,
+    UserViewContractComponent,
+    ProviderViewContractComponent,
+    ViewContractComponent,
+    UserSpecifyContractComponent,
+    ViewSignedContractComponent
   ],
   imports: [
     BrowserModule,
@@ -177,7 +194,8 @@ import { DetailsQuotationModalComponent } from './details-quotation-modal/detail
     UnfulfilledModalComponent,
     DetailsWorkModalComponent,
     DetailsQuotationModalComponent,
-    NoAgreementModalComponent],
+    NoAgreementModalComponent,
+    DetailsOnlineQuoteModalComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -186,7 +204,8 @@ import { DetailsQuotationModalComponent } from './details-quotation-modal/detail
     },
     AccountService, UserService, ProviderService, CityService, DataService,
     DataProviderService,ProfessionService, SearchService, 
-    AuthGuard, AuthService,VisitService,WorkService],
+    AuthGuard, AuthService,VisitService,WorkService, DynamicFormService,
+    ProviderQuoteService,ContractService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
