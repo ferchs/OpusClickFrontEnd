@@ -94,6 +94,15 @@
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69,.5);
 }
 
+.btn-outline-neutral-selected {
+  color:white;
+  background-color: #6c757d;
+  background-image: none;
+  border-color: rgb(108, 117, 125);
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(108, 117, 125,.5);
+  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125,.5);
+}
+
 .btn-outline-no-selected {
   color:white;
   background-color: rgb(220, 53, 69);
@@ -106,4 +115,9 @@
 .custom-file-input ~ .custom-file-label::after {
   content: "Elegir";
 }
+
+textarea{
+  margin-top: 10px;
+}
+
 

@@ -11,7 +11,6 @@ export class MilestoneGetDto {
 	public state:string;
 	
 	public item:ItemGetDto;
-	
 
 	constructor(){
 		this.id=0;

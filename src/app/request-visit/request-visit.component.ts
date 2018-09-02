@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {IMyDpOptions} from 'mydatepicker';
 import { Time } from '../_models/time';
 import { VisitScheduleDto } from '../_dtos/visitScheduleDto';
-import { DatePipe } from '@angular/common';
 import { VisitService } from '../_services/visit.service';
 import {Router, ActivatedRoute, Params, RoutesRecognized, NavigationEnd} from '@angular/router';
 import 'rxjs/add/operator/filter';

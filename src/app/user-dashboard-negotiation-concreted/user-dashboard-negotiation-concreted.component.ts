@@ -13,7 +13,7 @@ import { NoAgreementModalComponent } from '../no-agreement-modal/no-agreement-mo
 })
 export class UserDashboardNegotiationConcretedComponent implements OnInit {
   
-  worksList:string="IN_PROGRESS,FINALIZED,PAID_OUT,REPROBATE,UNFULFILLED";
+  worksList:string="IN_PROGRESS,PARTIALLY_FINISHED,FINALIZED,PAID_OUT,REPROBATE,UNFULFILLED";
   pendingWorks:WorkGetDto[];
   loading:boolean;
   hideNotification:boolean;

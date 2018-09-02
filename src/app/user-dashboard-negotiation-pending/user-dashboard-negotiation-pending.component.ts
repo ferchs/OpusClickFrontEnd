@@ -81,7 +81,10 @@ export class UserDashboardNegotiationPendingComponent implements OnInit {
     dto.userLabel=work.providerLabel;
     dto.comment=work.comment;
     dto.state="IN_PROGRESS";
-    this.workService.updateWork(dto).subscribe();
+    this.workService.updateWork(dto).subscribe(res =>
+      {
+        console.log(res)
+      });
   }
 
 }

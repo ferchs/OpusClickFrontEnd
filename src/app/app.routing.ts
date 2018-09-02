@@ -23,6 +23,7 @@ import { ProviderDashboardVisitPendingComponent } from './provider-dashboard-vis
 import { ProviderDashboardVisitAcceptedComponent } from './provider-dashboard-visit-accepted/provider-dashboard-visit-accepted.component';
 import { ProviderDashboardNegotiationPendingComponent } from './provider-dashboard-negotiation-pending/provider-dashboard-negotiation-pending.component';
 import { ProviderDashboardNegotiationConcretedComponent } from './provider-dashboard-negotiation-concreted/provider-dashboard-negotiation-concreted.component';
+import { ProviderRequestPaymentComponent } from './provider-request-payment/provider-request-payment.component';
 import { ViewContractComponent } from './view-contract/view-contract.component';
 import { ViewSignedContractComponent } from './view-signed-contract/view-signed-contract.component';
 import { ProviderListComponent } from './provider-list/provider-list.component';
@@ -37,6 +38,7 @@ import { ProviderViewQuotationComponent } from './provider-view-quotation/provid
 import { UserManageContractComponent } from './user-manage-contract/user-manage-contract.component';
 import { ProviderManageContractComponent } from './provider-manage-contract/provider-manage-contract.component';
 import { UserSpecifyContractComponent } from './user-specify-contract/user-specify-contract.component';
+import { UserApprovePaymentComponent } from './user-approve-payment/user-approve-payment.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 const appRoutes: Routes = [
@@ -76,7 +78,6 @@ const appRoutes: Routes = [
     {path:'expertos', component: ProviderListComponent},
     {path:'visitas', component: RequestVisitComponent, canActivate: [AuthGuard]},
     {path:'cotizacion_virtual', component: UserOnlineQuoteComponent},
-    {path:'review', component: ReviewComponent},
     {path:'cotizar', component: ProviderQuotationComponent},
     {path:'ver_propuesta', component: UserViewQuotationComponent},
     {path:'ver_cotizacion', component: ProviderViewQuotationComponent},
@@ -85,6 +86,9 @@ const appRoutes: Routes = [
     {path:'redefinir_contrato', component: UserSpecifyContractComponent},
     {path:'ver_contrato', component: ViewContractComponent},
     {path:'ver_detalles_contrato', component: ViewSignedContractComponent},
+    {path:'solicitar_pago', component: ProviderRequestPaymentComponent},
+    {path:'autorizar_pagos', component: UserApprovePaymentComponent},
+    {path:'calificar', component: ReviewComponent},
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { WorkUpdateDto } from "../_dtos/workUpdateDto";
 import { DetailsWorkModalComponent } from '../details-work-modal/details-work-modal.component';
 import { NoAgreementModalComponent } from '../no-agreement-modal/no-agreement-modal.component';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 import { DetailsOnlineQuoteModalComponent } from '../details-online-quote-modal/details-online-quote-modal.component';
 import { OnlineQuoteGetDto } from "../_dtos/onlineQuoteGetDto";
 import { Router, Params } from '@angular/router';
@@ -17,7 +18,7 @@ import { Router, Params } from '@angular/router';
 })
 export class ProviderDashboardNegotiationConcretedComponent implements OnInit {
 
-  worksList:string="IN_PROGRESS,FINALIZED,PAID_OUT,REPROBATE,UNFULFILLED";
+  worksList:string="IN_PROGRESS,PARTIALLY_FINISHED,FINALIZED,PAID_OUT,REPROBATE,UNFULFILLED";
   pendingWorks:WorkGetDto[];
   loading:boolean;
   hideNotification:boolean;
@@ -60,6 +61,12 @@ export class ProviderDashboardNegotiationConcretedComponent implements OnInit {
       modalRef.componentInstance.title = 'Detalles de la solicitud';
       modalRef.componentInstance.values=quote.requirements;
     });
+  }
+
+  requestExtension(){
+    const modalRef = this.modalService.open(ConfirmModalComponent);
+    modalRef.componentInstance.title = 'Solicitar Prórroga';
+    modalRef.componentInstance.content="Llámanos o escríbenos al (321)-832-37-68";
   }
 
   terminateWork(work){

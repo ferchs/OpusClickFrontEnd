@@ -27,11 +27,11 @@ export class UserManageContractComponent implements OnInit {
   totalPage:number;
   actualPage:number;
   percentageCompletion:number;
-  mFinalize:boolean;
-  touched:boolean;
+  mFinalize:string;
   accepted:boolean;
   selected:boolean;
   fileName:string;
+  canContnue:boolean;
   photo:File;
   image:any;
   contract:ContractDto;
@@ -60,14 +60,13 @@ export class UserManageContractComponent implements OnInit {
       this.loading=false;
     });
     this.submited=false;
-    this.selected=true;
+    this.selected=false;
     this.loggedIn=this.authService.isLoggedIn();
     this.fileName="Seleccionar una imagen";
-    this.totalPage=5;
+    this.totalPage=6;
     this.actualPage=1;
     this.calculateAdvancePercentage();
-    this.touched=false;
-    this.mFinalize=false;
+    this.mFinalize=null;
     this.accepted=false;
   }
 
@@ -75,10 +74,22 @@ export class UserManageContractComponent implements OnInit {
     this.percentageCompletion=(this.actualPage/this.totalPage)*100;
   }
 
+  canContinue(){
+    this.verifySelectedItems();
+    if(this.selected){
+      this.actualPage=(this.actualPage+1);
+      this.calculateAdvancePercentage();
+      this.canContnue=true;
+    }
+    else{
+      this.canContnue=false;
+    }
+  }
+
   next(){
-    if(this.mFinalize==true){
+    if(this.mFinalize=='yes'){
       this.percentageCompletion=100;
-      this.actualPage=4;
+      this.actualPage=(this.actualPage+1);
     }else{
       this.actualPage=(this.actualPage+1);
       this.calculateAdvancePercentage();
@@ -90,11 +101,11 @@ export class UserManageContractComponent implements OnInit {
       this.location.back();
     }
     else{
-    this.actualPage=(this.actualPage-1);
-    this.calculateAdvancePercentage();
-    if(this.mFinalize==true){
-      this.mFinalize=false;
-    }
+      this.actualPage=(this.actualPage-1);
+      this.calculateAdvancePercentage();
+      if(this.actualPage==3){
+        this.mFinalize=null;
+      }
     }
   }
 
@@ -135,15 +146,14 @@ export class UserManageContractComponent implements OnInit {
     return this.domSanitizer.bypassSecurityTrustStyle(style);
   }
 
-  finalize(resp:boolean){
-    this.touched=true;
-    if(resp==true){
+  finalize(resp:string){
+    this.mFinalize=resp;
+    if(resp=='yes'){
       this.percentageCompletion=75;
     }
     else{
       this.calculateAdvancePercentage();
     }
-    this.mFinalize=resp;
   }
 
   generateContract(contractState:string,milestoneState:string){

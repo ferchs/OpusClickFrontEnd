@@ -25,6 +25,7 @@ import { WorkService } from './_services/work.service';
 import { DynamicFormService } from './_services/dynamic-form.service';
 import { ProviderQuoteService } from './_services/provider-quote.service';
 import { ContractService } from './_services/contract.service';
+import { ReviewService } from './_services/review.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AccountCreatedComponent } from './account-created/account-created.component';
@@ -98,6 +99,8 @@ import { ProviderViewContractComponent } from './provider-view-contract/provider
 import { ViewContractComponent } from './view-contract/view-contract.component';
 import { UserSpecifyContractComponent } from './user-specify-contract/user-specify-contract.component';
 import { ViewSignedContractComponent } from './view-signed-contract/view-signed-contract.component';
+import { ProviderRequestPaymentComponent } from './provider-request-payment/provider-request-payment.component';
+import { UserApprovePaymentComponent } from './user-approve-payment/user-approve-payment.component';
 
 @NgModule({
   declarations: [
@@ -169,7 +172,9 @@ import { ViewSignedContractComponent } from './view-signed-contract/view-signed-
     ProviderViewContractComponent,
     ViewContractComponent,
     UserSpecifyContractComponent,
-    ViewSignedContractComponent
+    ViewSignedContractComponent,
+    ProviderRequestPaymentComponent,
+    UserApprovePaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -205,7 +210,7 @@ import { ViewSignedContractComponent } from './view-signed-contract/view-signed-
     AccountService, UserService, ProviderService, CityService, DataService,
     DataProviderService,ProfessionService, SearchService, 
     AuthGuard, AuthService,VisitService,WorkService, DynamicFormService,
-    ProviderQuoteService,ContractService],
+    ProviderQuoteService,ContractService,ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

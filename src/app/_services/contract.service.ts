@@ -42,6 +42,15 @@ export class ContractService {
         );
       }
     
+    updateContractMilestones(contractId:number,chargedContract:ContractGetDto){
+        const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});          
+        return this.http.put(this.apiUrl+"/"+contractId+"/milestones",chargedContract,{headers: headers, observe: 'response', responseType: 'text'})
+        .pipe(
+          map(response => { return response.status;}),
+          catchError(this.handleError)
+        );
+      }
+    
     private handleError (error: Response) {
         console.log("Se esta manejando un error");
         return Observable.throw(error.status);        

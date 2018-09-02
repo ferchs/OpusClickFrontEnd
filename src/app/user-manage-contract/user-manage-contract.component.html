@@ -11,8 +11,8 @@
             <p class="p-style" *ngIf="actualPage===1">¡Advertencia!</p>
             <p class="p-style" *ngIf="actualPage===2">Elige los items que deseas contratar y verifica las aclaraciones o imágenes de referencia</p>
             <p class="p-style" *ngIf="actualPage===3">¿Hace falta algo para proceder a contratar?</p>
-            <p class="p-style" *ngIf="actualPage===4 && mFinalize">Resumen</p>
-            <p class="p-style" *ngIf="actualPage===4 && !mFinalize">Imágenes de referencia</p>
+            <p class="p-style" *ngIf="actualPage===4 && mFinalize=='yes'">Resumen</p>
+            <p class="p-style" *ngIf="actualPage===4 && mFinalize=='no'">Imágenes de referencia</p>
             <p class="p-style" *ngIf="actualPage===5">Aclaraciones o comentarios</p>
             <p class="p-style" *ngIf="actualPage===6">Resumen</p>
           </div>
@@ -55,7 +55,6 @@
             Atrás
         </button>
         <button 
-          [hidden]="mFinalize==true"
           [disabled]="!accepted"
           (click)='next()'
           class="btn btn-outline-secondary">
@@ -80,7 +79,7 @@
                   <tbody>
                     <tr *ngFor="let item of providerQuote.items; let i = index">
                       <td>
-                        <div (click)="verifySelectedItems()" class="form-check">
+                        <div class="form-check">
                           <input type="checkbox" 
                           class="form-check-input" 
                           [(ngModel)]="item.selected" 
@@ -147,15 +146,16 @@
             </div>
             <div class="my-4"></div>
             <div class="text-center">
+                <small *ngIf="canContnue==false">Debes seleccionar un item para poder continuar</small>
+            </div>
+            <div class="text-center">
               <button 
                 (click)='back()' 
                 class="btn btn btn-outline-secondary">
                   Atrás
               </button>
               <button 
-                [hidden]="mFinalize==true"
-                [disabled]="selected"
-                (click)='next()'
+                (click)='canContinue()'
                 class="btn btn-outline-secondary">
                   Siguiente
               </button>
@@ -163,12 +163,12 @@
     </div>
     <div [hidden]="actualPage!==3">
         <div class="text-center">
-            <button type="button" class="btn"
-            [ngClass]="{'btn-outline-yes-selected': !mFinalize && touched, 'btn-outline-success': !touched || mFinalize && touched}"
-            (click)="finalize(false);generateContract('CONTRACT_MODIFIED_BY_USER','CREATED')">SI</button>
-            <button type="button" class="btn"
-            [ngClass]="{'btn-outline-no-selected': mFinalize && touched, 'btn-outline-danger': !touched || !mFinalize && touched}"
-            (click)="finalize(true);generateContract('PENDING_PAYMENT','CREATED')">NO</button>
+            <button type="button" class="btn btn-outline-success"
+            [ngClass]="{'btn-outline-yes-selected': mFinalize=='no'}"
+            (click)="finalize('no');generateContract('CONTRACT_MODIFIED_BY_USER','CREATED')">SI</button>
+            <button type="button" class="btn btn-outline-danger"
+            [ngClass]="{'btn-outline-no-selected': mFinalize=='yes'}"
+            (click)="finalize('yes');generateContract('PENDING_PAYMENT','CREATED')">NO</button>
           </div>
           <hr class="col-lg-12">
           <div class="my-4"></div>
@@ -179,14 +179,14 @@
             Atrás
         </button>
         <button 
-          [disabled]="!touched"
+          [disabled]="mFinalize==null"
           (click)='next()'
           class="btn btn-outline-secondary">
             Siguiente
         </button>
       </div>
     </div>
-    <div [hidden]="actualPage!==4 || (actualPage===4 && !mFinalize)">
+    <div [hidden]="actualPage!==4 || (actualPage===4 && mFinalize=='no') || mFinalize==null">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -235,7 +235,6 @@
               Atrás
           </button>
           <button 
-            [disabled]="mFinalize==false"
             (click)='submit()' 
             class="btn btn-outline-success">
               Pasar al pago
@@ -243,7 +242,7 @@
         </div>
       </div>
     </div>
-    <div [hidden]="actualPage!==4 || (actualPage===4 && mFinalize)">
+    <div [hidden]="actualPage!==4 || (actualPage===4 && mFinalize=='yes') || mFinalize==null">
         <div class="container">
             <div *ngFor="let milestone of contract.milestones; let i = index">
               <div class="col-lg-6">

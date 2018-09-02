@@ -27,7 +27,7 @@
               [max]="100" 
               [step]="1" 
               [config]="someRange2config" 
-              [(ngModel)]="mSatisfactionLevel" 
+              [(ngModel)]="review.satisfactionLevel"
               name="satisfactionLevel" 
               #satisfactionLevel="ngModel"
               [disabled]="false"
@@ -36,12 +36,24 @@
           </div>  
          </div>
         <div [hidden]="actualPage!==2" class="form-group">
+            <p>Tipo de comentario:</p>
+            <div>
+                <button type="button" class="btn"
+                [ngClass]="{'btn-outline-yes-selected': review.type=='POSITIVE', 'btn-outline-success': !touched || review.type!='positive'}"
+                (click)="setCommentType('POSITIVE')">Positivo</button>
+                <button type="button" class="btn"
+                [ngClass]="{'btn-outline-neutral-selected': review.type=='NEUTRAL', 'btn-outline-secondary': !touched || review.type!='neutral'}"
+                (click)="setCommentType('NEUTRAL')">Neutral</button>
+                <button type="button" class="btn"
+                [ngClass]="{'btn-outline-no-selected': review.type=='NEGATIVE', 'btn-outline-danger': !touched || review.type!='negative'}"
+                (click)="setCommentType('NEGATIVE')">Negativo</button>
+            </div>
           <textarea 
             class="form-control" 
             id="description" 
             rows="3"
             required 
-            [(ngModel)]="mDescription" 
+            [(ngModel)]="review.comment"
             name="workDescription"
             #workDescription="ngModel"
             [ngClass]="{'is-valid': workDescription.valid && workDescription.touched, 'is-invalid': workDescription.invalid && workDescription.touched}">
@@ -78,25 +90,27 @@
             </div>
             <div class="my-4"></div>
             <div class="text-center">
-              <button 
-                (click)='back()' 
-                class="btn btn btn-outline-secondary">
-                Atrás
-              </button>
-              <button 
-                [hidden]="actualPage===totalPage"
-                (click)='next()'
-                class="btn btn-outline-secondary">
-                Siguiente
-              </button>
-              <button 
-                [disabled]="!touched && reviewForm.invalid"
-                [hidden]="actualPage!==totalPage"
-                (click)='submit()' 
-                class="btn btn-outline-secondary">
-                Terminar
-              </button>
-            </div>
+                <button 
+                  (click)='back()'
+                  [hidden]="actualPage==1" 
+                  class="btn btn btn-outline-secondary">
+                  Atrás
+                </button>
+                <button 
+                  [hidden]="actualPage===totalPage"
+                  [disabled]="commentType!=null && review.comment==null"
+                  (click)='next()'
+                  class="btn btn-outline-secondary">
+                  Siguiente
+                </button>
+                <button 
+                  [disabled]="touched==false || reviewForm.invalid"
+                  [hidden]="actualPage!==totalPage"
+                  (click)='submit()' 
+                  class="btn btn-outline-secondary">
+                  Terminar
+                </button>
+              </div>
       </form>
   </div>
   <div class="col-lg-3">
@@ -110,9 +124,7 @@
             <div class="row">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10 justify">
-                  <p>Tu solicitud se ha enviado correctamente, debes esperar que sea aceptada por el experto.
-                      En caso contrario, el experto revisará su disponibilidad y te enviará las fechas en que puede visitarte
-                      para que tú elijas la que mejor se ajuste a tu tiempo
+                  <p>Gracias por usar nuestros servicios, estas aportando a la sabiduría colectiva para que esto ya no sea un problema
                   <p>
                 </div>
                 <div class="col-lg-1"></div>

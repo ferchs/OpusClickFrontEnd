@@ -175,9 +175,12 @@
     opacity: 0;
     cursor: pointer;
   }
+  
+  .unselectable{
+    background-color: #ddd;
+    cursor: not-allowed;
+}
 
-  small{
-    color:red;
-  }
-  
-  
+small{
+  color:red;
+}

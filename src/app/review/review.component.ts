@@ -4,7 +4,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/pairwise';
 import {Location} from '@angular/common';
 import { AuthService } from '../_services/auth.service';
-
+import { ReviewService } from '../_services/review.service';
+import {ReviewDto} from '../_dtos/reviewDto';
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
@@ -15,8 +16,7 @@ export class ReviewComponent implements OnInit {
   totalPage:number;
   actualPage:number;
   percentageCompletion:number;
-  mSatisfactionLevel:number;
-  mDescription:string;
+  review:ReviewDto;
   image:any;
   fileName:string;
   photo:File;
@@ -37,16 +37,16 @@ export class ReviewComponent implements OnInit {
     }
   };
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, 
-    private location:Location, private authService: AuthService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private location:Location,
+     private authService: AuthService, private reviewService: ReviewService) { }
 
   ngOnInit() {
     this.loggedIn=this.authService.isLoggedIn();
+    this.review= new ReviewDto();
     this.fileName="Seleccionar un archivo";
     this.loading=true;
     this.touched=false;
     this.mRecommend=true;
-    this.mSatisfactionLevel=0;
     this.totalPage=4;
     this.actualPage=1;
     this.calculateAdvancePercentage();
@@ -60,7 +60,11 @@ export class ReviewComponent implements OnInit {
   }
 
   submit(){
-    //this.loading=true;
+    this.loading=true;
+    this.reviewService.createReview(this.review,this.workId).subscribe(res=>{
+      this.loading=false;
+      this.submited=true;
+    });
   }
 
   calculateAdvancePercentage(){
@@ -69,7 +73,7 @@ export class ReviewComponent implements OnInit {
 
   recommend(resp:boolean){
     this.touched=true;
-    this.mRecommend=resp;
+    this.review.recommend=resp;
   }
 
   next(){
@@ -96,9 +100,14 @@ export class ReviewComponent implements OnInit {
       reader.readAsDataURL(this.photo);
       reader.onload = (event: any) => {
         this.image=event.target.result;
+        this.review.image=event.target.result;
         this.loading=false;
       }
     }
+  }
+
+  setCommentType(comment:string){
+    this.review.type=comment;
   }
 
 }

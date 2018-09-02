@@ -1,37 +1,52 @@
 /*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {  
-    .space {
-      padding-top: 23%;
-    }  
+  .space {
+    padding-top: 21%;
   }
-  
-  /* Small devices (landscape phones, 576px and up)*/
-  @media (min-width: 576px) and (max-width: 767.98px) { 
-    .space {
-      padding-top: 23%;
-    }  
+  .d-options{
+    display:inline-block;
   }
-  
-  /*Medium devices (tablets, 768px and up)*/
-  @media (min-width: 768px) and (max-width: 991.98px) { 
-    .space {
-      padding-top: 14%;
-    }  
-   }
-  
-  /*Large devices (desktops, 992px and up)*/
-  @media (min-width: 992px) and (max-width: 1199.98px) { 
-    .space {
-      padding-top: 7%; 
-    }  
-   }
-  
-  /*Extra large devices (large desktops, 1200px and up)*/
-  @media (min-width: 1200px) { 
-    .space {
-      padding-top: 7%;
-    }   
-   }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  .space {
+    padding-top: 21%;
+  }
+  .d-options{
+    display:inline-block;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  .space {
+    padding-top: 14%;
+  }
+  .d-options{
+    display:inline-block;
+  } 
+ }
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+  .space {
+    padding-top: 7%; 
+  }  
+  .d-options{
+    display:flex;
+  }
+ }
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+  .space {
+    padding-top: 7%;
+  } 
+  .d-options{
+    display:flex;
+  }
+ }
    
   .progress-bar{
     background-color:#008d98;
@@ -175,9 +190,8 @@
     opacity: 0;
     cursor: pointer;
   }
-
-  small{
-    color:red;
-  }
   
-  
+  .unselectable{
+    background-color: #ddd;
+    cursor: not-allowed;
+}

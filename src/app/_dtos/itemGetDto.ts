@@ -23,6 +23,8 @@ export class ItemGetDto {
 		
 	public commentContract:string;
 
+	public selected:boolean;
+	
 	constructor(){
 		this.id=0;
 		this.name="";
@@ -35,5 +37,6 @@ export class ItemGetDto {
 		this.warrantyDescription="";
 		this.imageContract="";
 		this.commentContract="";
+		this.selected=false;
 	}
 }

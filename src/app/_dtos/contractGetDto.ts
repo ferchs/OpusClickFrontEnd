@@ -24,6 +24,9 @@ export class ContractGetDto {
 	
 	public milestones:Array<MilestoneGetDto>;
 
+	public workId:number;
+
+
 	constructor(){
 		this.id=0;
 		this.contractNumber="";
@@ -36,5 +39,6 @@ export class ContractGetDto {
 		this.administrationFee=0;
 		this.totalValue=0;
 		this.milestones=new Array<MilestoneGetDto>();
+		this.workId=0;
 	}
 }
