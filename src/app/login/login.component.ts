@@ -52,10 +52,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.mEmail,this.mPassword, this.userLogin).subscribe(httpCode => {
       this.loading = false;
       this.error=false;
-      this.dataService.changeMessage(this.mEmail);
       if(this.userLogin){
         localStorage.setItem('email_user', this.mEmail);
-        if(this.previousUrl==null){
+        this.dataService.changeMessage(this.mEmail);
+        if(this.previousUrl==undefined){
           this.router.navigate(['dashboard_usuario/cuenta'])
         }
         else{

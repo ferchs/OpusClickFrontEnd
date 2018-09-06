@@ -72,7 +72,7 @@ export class UserApprovePaymentComponent implements OnInit {
             this.notificationType="success";
             this.hideNotification=false;
             if(this.proceedToQualify()){
-              this.router.navigate(['calificar', {work: this.contract.workId}])
+              this.router.navigate(['calificar'],{ queryParams: { work: this.contract.workId } })
             }
           });
         });

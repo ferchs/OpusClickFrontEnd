@@ -7,6 +7,7 @@ import { ProviderByProfessionDto} from "../_dtos/providerByProfession";
 import { Profession } from '../_models/profession';
 import { Search } from '../_models/search';
 import { AuthService } from '../_services/auth.service';
+import {DomSanitizer} from '@angular/platform-browser'
 
 @Component({
   selector: 'app-provider-list',
@@ -28,7 +29,7 @@ export class ProviderListComponent implements OnInit {
 
   constructor(private providerService: ProviderService, private activatedRoute: ActivatedRoute,
      private router: Router, private professionService: ProfessionService, 
-     private searchService: SearchService, private authService: AuthService) { }
+     private searchService: SearchService, private authService: AuthService, private domSanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.loggedIn=this.authService.isLoggedIn();
@@ -89,6 +90,11 @@ export class ProviderListComponent implements OnInit {
       this.router.navigate(['expertos'],{ queryParams: { profession: this.mSearch } })
       this.loading=false;
     }
+  }
+
+  makeTrustedImage(item) {
+    const style = 'url(' + item + ')';
+    return this.domSanitizer.bypassSecurityTrustStyle(style);
   }
 
 }

@@ -5,7 +5,7 @@ import { DataProviderService } from "../_services/data-provider.service";
 import { ProviderService } from '../_services/provider.service';
 import { ProfessionService } from '../_services/profession.service';
 import { CityService } from '../_services/city.service';
-import { Provider } from '../_models/provider';
+import { ProviderGetProfileDto } from "../_dtos/providerGetProfileDto";
 import { City } from '../_models/city';
 import { Location } from '../_models/location';
 import { Profession } from '../_models/profession';
@@ -18,7 +18,7 @@ import { ProviderUpdateProfileDto } from "../_dtos/providerUpdateDto";
 })
 export class ProviderDashboardProfileEditComponent implements OnInit {
 
-  provider:Provider;
+  provider:ProviderGetProfileDto;
   dto:ProviderUpdateProfileDto;
   email:string;
   public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
@@ -34,9 +34,9 @@ export class ProviderDashboardProfileEditComponent implements OnInit {
 
   ngOnInit() {
     this.image="../../assets/profile.svg";
-    this.dataProviderService.currentMessage.subscribe((provider:Provider)=>{
-    this.provider=provider;
-    this.email=provider.account.email;
+    this.providerService.getProvider(localStorage.getItem("id_provider")).subscribe((provider:ProviderGetProfileDto)=>{
+      this.provider=provider;
+    this.email=provider.accountEmail;
     this.image=provider.photo;
     this.cityService.getAllCities().subscribe(allCities=>
       {
@@ -48,8 +48,9 @@ export class ProviderDashboardProfileEditComponent implements OnInit {
       this.proffesions=allProfessions;
       provider.profession=allProfessions.find(profession=>profession.name===provider.profession.name);
       });
-    this.loading=false;
-    })
+      this.loading=false;
+    });
+    
   }
 
   makeTrustedImage(item) {
@@ -62,8 +63,8 @@ export class ProviderDashboardProfileEditComponent implements OnInit {
     this.dto= new ProviderUpdateProfileDto();
     this.dto.id=this.provider.id;
     this.dto.email=this.email;
-    this.dto.accountName=this.provider.account.name;
-    this.dto.accountLastname=this.provider.account.lastname;
+    this.dto.accountName=this.provider.accountName;
+    this.dto.accountLastname=this.provider.accountLastname;
     this.dto.identificationNumber=this.provider.identificationNumber;
     this.dto.phone=this.provider.phone;
     this.dto.profession=this.provider.profession;

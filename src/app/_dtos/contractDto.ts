@@ -2,7 +2,9 @@ import { Milestone } from "../_models/milestone";
 
 export class ContractDto {
 
-    public clarifications:string ;
+	public name:string;
+
+    public clarifications:string;
 	
 	public state:string;
 		

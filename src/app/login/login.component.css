@@ -84,6 +84,8 @@ small{
   border-color:#008d98;
   color: #FFFFFF;
   font-size: 14px;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(0,141,152,0.5);
+  box-shadow: 0 0 0 0.2rem rgba(0,141,152,0.5);
 }
 
 .form button.user-selector.focus, .form button.user-selector:focus {
@@ -96,6 +98,8 @@ small{
   border-color:#294664;
   color: #FFFFFF;
   font-size: 14px;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(41,70,101,.5);
+  box-shadow: 0 0 0 0.2rem rgba(41,70,101,.5);
 }
 
 .form button.provider-selector.focus, .form button.provider-selector:focus {

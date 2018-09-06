@@ -34,6 +34,7 @@ export class UserManageContractComponent implements OnInit {
   canContnue:boolean;
   photo:File;
   image:any;
+  mName:string;
   contract:ContractDto;
   milestones:Array<Milestone>;
   sendContractProvider:boolean;
@@ -59,11 +60,12 @@ export class UserManageContractComponent implements OnInit {
       this.providerQuote=quote;
       this.loading=false;
     });
+    this.mName=null;
     this.submited=false;
     this.selected=false;
     this.loggedIn=this.authService.isLoggedIn();
     this.fileName="Seleccionar una imagen";
-    this.totalPage=6;
+    this.totalPage=7;
     this.actualPage=1;
     this.calculateAdvancePercentage();
     this.mFinalize=null;
@@ -103,7 +105,7 @@ export class UserManageContractComponent implements OnInit {
     else{
       this.actualPage=(this.actualPage-1);
       this.calculateAdvancePercentage();
-      if(this.actualPage==3){
+      if(this.actualPage==4){
         this.mFinalize=null;
       }
     }
@@ -182,6 +184,7 @@ export class UserManageContractComponent implements OnInit {
         this.milestones.push(milestone);
       }
     }
+    this.contract.name=this.mName;
     this.contract.milestones=this.milestones;
     this.contract.administrationFee=Math.trunc(this.contract.subtotal*0.05);
     this.contract.totalValue=this.contract.subtotal+this.contract.administrationFee; 

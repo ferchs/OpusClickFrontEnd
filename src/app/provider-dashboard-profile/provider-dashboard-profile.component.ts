@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {BrowserModule, DomSanitizer} from '@angular/platform-browser'
-import { Provider } from "../_models/provider";
-import { Location } from "../_models/location";
+import { ProviderGetProfileDto } from "../_dtos/providerGetProfileDto";
 import { DataService } from "../_services/data.service";
 import { DataProviderService } from "../_services/data-provider.service";
 import { ProviderService } from "../_services/provider.service";
-import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 
@@ -16,9 +14,8 @@ import { Router } from '@angular/router';
 })
 export class ProviderDashboardProfileComponent implements OnInit {
 
-  provider:Provider;
+  provider:ProviderGetProfileDto;
   photo:File;
-  email:string;
   image:any;
   imageToShow: any;
   loading:boolean;
@@ -29,16 +26,12 @@ export class ProviderDashboardProfileComponent implements OnInit {
   ngOnInit() {
     this.loading=true;
     this.image="../../assets/profile.svg";
-    this.dataService.currentMessage.subscribe(message =>{
-      this.loading=false;
-      this.email = message
-      this.dataProviderService.currentMessage.subscribe((provider:Provider)=>{
-        this.provider=provider;
-        console.log(provider);
-        if(provider.photo!=undefined){
+    this.providerService.getProvider(localStorage.getItem("id_provider")).subscribe((provider:ProviderGetProfileDto)=>{
+      this.provider=provider;
+        if(provider.photo!=undefined || provider.photo==null || provider.photo.length<1){
           this.image=provider.photo;
         }
-      })
+        this.loading=false;
     });
   }
 
@@ -55,7 +48,7 @@ export class ProviderDashboardProfileComponent implements OnInit {
       reader.readAsDataURL(this.photo);
       reader.onload = (event: any) => {
         this.image=event.target.result;
-        this.providerService.setProviderPhoto(this.photo,this.email)
+        this.providerService.setProviderPhoto(this.photo,this.provider.id)
         .subscribe((url:string)=>{
           this.image=url;
           this.provider.photo=url;

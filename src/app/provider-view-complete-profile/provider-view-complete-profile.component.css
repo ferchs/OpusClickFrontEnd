@@ -1,107 +1,39 @@
+/*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {  
-  .search-bar-container {
-    width: 95%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 21%;
-    padding-top: 1%;
-    background-color:#ffffff;
+    .space {
+      padding-top: 23%;
+    }  
   }
-
-  .result-container {
-    margin-top: 33%;
-    padding-top:10px;
+  
+  /* Small devices (landscape phones, 576px and up)*/
+  @media (min-width: 576px) and (max-width: 767.98px) { 
+    .space {
+      padding-top: 23%;
+    }  
   }
+  
+  /*Medium devices (tablets, 768px and up)*/
+  @media (min-width: 768px) and (max-width: 991.98px) { 
+    .space {
+      padding-top: 14%;
+    }  
+   }
+  
+  /*Large devices (desktops, 992px and up)*/
+  @media (min-width: 992px) and (max-width: 1199.98px) { 
+    .space {
+      padding-top: 7%; 
+    }  
+   }
+  
+  /*Extra large devices (large desktops, 1200px and up)*/
+  @media (min-width: 1200px) { 
+    .space {
+      padding-top: 7%;
+    }   
+   }
 
-  .profile-image {
-    width: 130px;
-    height: 130px;
-    text-align: center;
-    line-height: 130px;
-    background-color: rgb(236, 237, 239);
-    background-size:  130px 130px;
-    border-color: rgb(217, 219, 224);
-    border-image: initial;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
-.title{
-  text-align: center;
-  font-size:16px;
-  color: #333;
-  display: block;
-  padding: 0;
-  margin-bottom: 10px;
-  font-weight: 600;
-  line-height: 1;
-}
-}
-
-/* Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) and (max-width: 767.98px) { 
-  .search-bar-container {
-    width: 95%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 6%;
-    padding-top: 1%;
-    background-color:#ffffff;
-  }
-}
-
-/*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) and (max-width: 991.98px) { 
-  .search-bar-container {
-    width: 95%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 6%;
-    padding-top: 1%;
-    background-color:#ffffff;
-  }
- }
-
-/*Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) and (max-width: 1199.98px) { 
-  .search-bar-container {
-    width: 95%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 6%;
-    padding-top: 1%;
-    background-color:#ffffff;
-  }
- }
-
-/*Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) { 
-  .search-bar-container {
-    width: 95%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 6%;
-    padding-top: 1%;
-    background-color:#ffffff;
-  }
- }
-
- .result-container {
-  margin-top: 10%;
-  padding-top:10px;
-}
-
-/* resolver duda porqué en este caso el orden influye si coloco .center debajo de .profile-image no funciona*/
+   /* resolver duda porqué en este caso el orden influye si coloco .center debajo de .profile-image no funciona*/
 .center {
   width: 50%;
   margin: 0 auto;
@@ -152,6 +84,10 @@
   margin-top:20px;
 }
 
+h2{
+  font-size:18px;
+}
+
 p{
   margin-top: 15px;
   margin-bottom: 10px;
@@ -163,7 +99,6 @@ strong{
   display: inline;
   font-size: 16px!important;
   font-weight: 400;
-  text-transform: lowercase;
   min-height: 30px;
 }
 
@@ -179,6 +114,10 @@ img{
   display: block;
   margin-left: auto;
   margin-right: auto 
+}
+
+textarea{
+  margin-left: 6px;
 }
 
 .description{
@@ -244,11 +183,25 @@ img{
   box-shadow: 0 0 0 0.2rem rgba(41,70,101,.5);
 }
 
-/*.container-fluid {
-	background-color: rgb(255, 255, 255);
-	border-bottom: 1px solid #e9eced;
-	padding-top: 5rem;
+.btn-outline-secondary {
+  vertical-align: middle!important; 
+  font-size: 14px;
+  padding: 11px;
+  width: 100%;
+}
+
+/*.btn-outline-secondary:hover {
+  color: #fff;
+  background-color: rgb(0, 141, 152);  
+  border-color: #008d98;  
+  font-size: 14px;
+}
+
+.btn-outline-secondary.focus, .btn-outline-secondary:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(0,141,152,0.5);
+  box-shadow: 0 0 0 0.2rem rgba(0,141,152,0.5);
 }*/
+
 .container-dropdown{
 	position: absolute;
 	top:39px;
@@ -275,4 +228,8 @@ img{
   font-size: .775rem;
   line-height: 1.4;
   border-radius: .2rem;
+}
+
+.nobreak{
+  white-space: nowrap;
 }

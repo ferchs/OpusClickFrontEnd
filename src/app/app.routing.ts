@@ -24,6 +24,7 @@ import { ProviderDashboardVisitAcceptedComponent } from './provider-dashboard-vi
 import { ProviderDashboardNegotiationPendingComponent } from './provider-dashboard-negotiation-pending/provider-dashboard-negotiation-pending.component';
 import { ProviderDashboardNegotiationConcretedComponent } from './provider-dashboard-negotiation-concreted/provider-dashboard-negotiation-concreted.component';
 import { ProviderRequestPaymentComponent } from './provider-request-payment/provider-request-payment.component';
+import { ProviderViewCompleteProfileComponent } from './provider-view-complete-profile/provider-view-complete-profile.component';
 import { ViewContractComponent } from './view-contract/view-contract.component';
 import { ViewSignedContractComponent } from './view-signed-contract/view-signed-contract.component';
 import { ProviderListComponent } from './provider-list/provider-list.component';
@@ -77,6 +78,7 @@ const appRoutes: Routes = [
     },
     {path:'expertos', component: ProviderListComponent},
     {path:'visitas', component: RequestVisitComponent, canActivate: [AuthGuard]},
+    {path:'ver_perfil', component: ProviderViewCompleteProfileComponent},
     {path:'cotizacion_virtual', component: UserOnlineQuoteComponent},
     {path:'cotizar', component: ProviderQuotationComponent},
     {path:'ver_propuesta', component: UserViewQuotationComponent},

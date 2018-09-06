@@ -32,9 +32,18 @@
   <div class="container result-container">
       <div class="row" *ngFor='let provider of providers'>
           <div class="col-lg-3 title">{{provider.accountName}} {{provider.accountLastname}}</div>
-          <div class="col-lg-7"></div>
+          <div class="col-lg-9"></div>
           <div class="col-lg-3">
-            <img class="profile-image" src={{provider.photo}}>
+              <div class="profile-image center" [style.background-image]="makeTrustedImage(provider.photo)"></div>
+            <div class="my-1"></div>
+            <div class="text-center">
+              <button type="button" 
+                [routerLink]="['/ver_perfil']" 
+                [queryParams]="{experto: provider.id}" 
+                class="btn btn-outline-dark btn-sm">
+                Ver Perfil
+              </button>
+            </div>
           </div>
           <div class="col-lg-6">
               <div class="row">
@@ -61,7 +70,7 @@
                     </div>
                   </div>
                   <div style="text-align:center" class="col-6 col-sm-6 col-md-6 col-lg-6">
-                    <strong>{{provider.globalNoRecommend}}%</strong>
+                    <strong>{{(100-provider.globalRatingGlobalRecommend)}}%</strong>
                     <img class="simbol" src="../../assets/dislike.svg" height="30" width="30">
                     <div class="description">
                       <span>

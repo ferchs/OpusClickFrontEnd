@@ -101,6 +101,8 @@ import { UserSpecifyContractComponent } from './user-specify-contract/user-speci
 import { ViewSignedContractComponent } from './view-signed-contract/view-signed-contract.component';
 import { ProviderRequestPaymentComponent } from './provider-request-payment/provider-request-payment.component';
 import { UserApprovePaymentComponent } from './user-approve-payment/user-approve-payment.component';
+import { ProviderViewCompleteProfileComponent } from './provider-view-complete-profile/provider-view-complete-profile.component';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 @NgModule({
   declarations: [
@@ -174,7 +176,8 @@ import { UserApprovePaymentComponent } from './user-approve-payment/user-approve
     UserSpecifyContractComponent,
     ViewSignedContractComponent,
     ProviderRequestPaymentComponent,
-    UserApprovePaymentComponent
+    UserApprovePaymentComponent,
+    ProviderViewCompleteProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -189,6 +192,7 @@ import { UserApprovePaymentComponent } from './user-approve-payment/user-approve
     MyDatePickerModule,
     NouisliderModule,
     CurrencyMaskModule,
+    NgxGalleryModule,
     NgbModule.forRoot()
   ],
   entryComponents: [

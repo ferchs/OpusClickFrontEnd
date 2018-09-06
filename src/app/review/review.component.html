@@ -30,8 +30,7 @@
               [(ngModel)]="review.satisfactionLevel"
               name="satisfactionLevel" 
               #satisfactionLevel="ngModel"
-              [disabled]="false"
-              [ngModelOptions]="{standalone: true}">
+              [disabled]="false">
             </nouislider>  
           </div>  
          </div>
@@ -39,13 +38,13 @@
             <p>Tipo de comentario:</p>
             <div>
                 <button type="button" class="btn"
-                [ngClass]="{'btn-outline-yes-selected': review.type=='POSITIVE', 'btn-outline-success': !touched || review.type!='positive'}"
+                [ngClass]="{'btn-outline-yes-selected': review.type=='POSITIVE', 'btn-outline-success': !touched || review.type!='POSITIVE'}"
                 (click)="setCommentType('POSITIVE')">Positivo</button>
                 <button type="button" class="btn"
-                [ngClass]="{'btn-outline-neutral-selected': review.type=='NEUTRAL', 'btn-outline-secondary': !touched || review.type!='neutral'}"
+                [ngClass]="{'btn-outline-neutral-selected': review.type=='NEUTRAL', 'btn-outline-secondary': !touched || review.type!='NEUTRAL'}"
                 (click)="setCommentType('NEUTRAL')">Neutral</button>
                 <button type="button" class="btn"
-                [ngClass]="{'btn-outline-no-selected': review.type=='NEGATIVE', 'btn-outline-danger': !touched || review.type!='negative'}"
+                [ngClass]="{'btn-outline-no-selected': review.type=='NEGATIVE', 'btn-outline-danger': !touched || review.type!='NEGATIVE'}"
                 (click)="setCommentType('NEGATIVE')">Negativo</button>
             </div>
           <textarea 
@@ -77,11 +76,11 @@
           </div>
           <div [hidden]="actualPage!==4" class="form-group">
             <div class="text-center">
-              <button type="button" class="btn"
-              [ngClass]="{'btn-outline-yes-selected': mRecommend && touched, 'btn-outline-success': !touched || !mRecommend && touched}"
+              <button type="button" class="btn btn-outline-success"
+              [ngClass]="{'btn-outline-yes-selected': review.recommend && touched }"
               (click)="recommend(true)">SI</button>
-              <button type="button" class="btn"
-              [ngClass]="{'btn-outline-no-selected': !mRecommend && touched, 'btn-outline-danger': !touched || mRecommend && touched}"
+              <button type="button" class="btn btn-outline-danger"
+              [ngClass]="{'btn-outline-no-selected': !review.recommend && touched }"
               (click)="recommend(false)">NO</button>
             </div>
           </div>
@@ -98,7 +97,7 @@
                 </button>
                 <button 
                   [hidden]="actualPage===totalPage"
-                  [disabled]="commentType!=null && review.comment==null"
+                  [disabled]="(review.type!=null && (review.comment==null || review.comment==undefined) && actualPage==2)"
                   (click)='next()'
                   class="btn btn-outline-secondary">
                   Siguiente

@@ -1,0 +1,121 @@
+<app-navbar [loggedIn]=loggedIn></app-navbar>
+<div class="space"></div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+  <div id="stats">
+    <div class="container">
+      <div class="row">
+          <div class="col-sm-3 title">{{provider.accountName}} {{provider.accountLastname}}</div>
+          <div class="col-sm-9"></div>
+          <div class="col-sm-3">
+              <div class="profile-image center" [style.background-image]="makeTrustedImage(provider.photo)"></div>
+            <div class="my-1"></div>
+            <div class="text-center">
+              <p><strong>Trabajos realizados:</strong> {{provider.globalRating.worksDone}}</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+              <div class="row">
+                  <div class="col-sm-12">
+                    <p>Nivel de satisfacción de clientes</p>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-12">
+                    <div class="progress">
+                      <div class="progress-bar bg-success" role="progressbar" [style.width]="provider.globalRating.globalSatisfactionLevel + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{provider.globalRating.globalSatisfactionLevel}}%</div>
+                    </div>
+                  </div>
+              </div>
+              <div class="my-4"></div>
+              <div class="row">
+                  <div style="text-align:center" class="col-6 col-sm-6 col-md-6 col-sm-6">
+                    <strong>{{provider.globalRating.globalRecommend}}%</strong>
+                    <img class="simbol" src="../../assets/like.svg" height="30" width="30">
+                    <div class="description">
+                      <span>
+                        De sus clientes lo recomiendan
+                      </span>
+                    </div>
+                  </div>
+                  <div style="text-align:center" class="col-6 col-sm-6 col-md-6 col-sm-6">
+                    <strong>{{(100-provider.globalRating.globalRecommend)}}%</strong>
+                    <img class="simbol" src="../../assets/dislike.svg" height="30" width="30">
+                    <div class="description">
+                      <span>
+                        De sus clientes no lo recomiendan
+                      </span>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-3 center-items">
+            <div class="my-4"></div>
+            <button class="btn btn-outline-provider" 
+            type="button"
+            [routerLink]="['/cotizacion_virtual']" 
+            [queryParams]="{user:userId,provider: provider.id,form:provider.profession.formId}">
+            Cotización en línea
+            </button>
+            <div class="my-2"></div>
+            <button class="centered btn btn-outline-user" 
+            type="button"
+            [routerLink]="['/visitas']" [queryParams]="{user:userId,provider: provider.id}">
+            Planear una visita
+          </button>
+          <div class="my-2"></div>
+            <button class="centered btn btn-outline-secondary" 
+            type="button"
+            (click)="back()">
+            Atras
+          </button>
+          </div>
+        <hr class="col-sm-12">
+      </div>
+    </div>
+  </div>
+  <div id="work_history">
+      <div class="container">
+          <h5>Historial De Trabajos</h5>
+          <div class="my-4"></div>
+          <div class="row" *ngFor='let providerReview of providerReviews'>
+              <div class="col-sm-8">
+                <h2>{{providerReview.contractName}}</h2>
+              </div>
+              <div class="col-sm-4">
+                  <div class="row nobreak">
+                      <div class="col-sm-7">
+                          <img class="simbol" src="../../assets/user-silhouette.svg" height="16" width="16">
+                          <small>{{providerReview.userName}} {{providerReview.userLastname}}</small>
+                      </div>
+                      <div class="col-sm-5">
+                          <small class="text-right">Fecha: {{providerReview.date | date: 'dd/MM/yyyy'}}</small>
+                      </div>                      
+                  </div>
+              </div>
+              <div class="col-sm-8">
+                  <label for="comment">Comentarios:</label>
+                  <textarea 
+                    class="form-control" 
+                    id="comment" 
+                    rows="2"
+                    value="{{providerReview.reviewComment}}"
+                    disabled>
+                  </textarea>
+              </div>
+              <div class="col-sm-4">
+                  <div class="row">
+                      <div class="col-sm-12">
+                        <p>Nivel de satisfacción del cliente</p>
+                        <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" [style.width]="providerReview.reviewSatisfactionLevel + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{providerReview.reviewSatisfactionLevel}}%</div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-12" *ngIf="providerReview.reviewImage!=undefined || providerReview.reviewImage!=null">
+                  <ngx-gallery [options]="galleryOptions" [images]="getImageGallery(providerReview.contractName+''+providerReview.date)"></ngx-gallery>
+              </div>
+            <hr class="col-sm-12">
+          </div>
+      </div>
+  </div>

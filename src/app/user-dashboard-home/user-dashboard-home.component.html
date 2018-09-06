@@ -24,7 +24,11 @@
                     (click)='toggleDropDown()'
                     clickOutside (clickOutside)="closeDropDown()">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" (click)="find()">Buscar</button>
+                    <button 
+                    class="btn btn-outline-secondary" 
+                    type="button" 
+                    [disabled]='mSearch.lenght<4'
+                    (click)="find()">Buscar</button>
                 </div>
                 <div *ngIf='showDropDown' class="container-dropdown">
                     <div>

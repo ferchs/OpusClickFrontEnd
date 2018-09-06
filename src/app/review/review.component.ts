@@ -20,7 +20,6 @@ export class ReviewComponent implements OnInit {
   image:any;
   fileName:string;
   photo:File;
-  mRecommend:boolean;
   touched:boolean;
   userId:string;
   providerId:string;
@@ -30,6 +29,7 @@ export class ReviewComponent implements OnInit {
   loggedIn:boolean;
   someRange2config: any = {
     behaviour: 'drag',
+    connect: [true, false],
     tooltips: {
       to (value: number){
         return value+'%';
@@ -46,7 +46,6 @@ export class ReviewComponent implements OnInit {
     this.fileName="Seleccionar un archivo";
     this.loading=true;
     this.touched=false;
-    this.mRecommend=true;
     this.totalPage=4;
     this.actualPage=1;
     this.calculateAdvancePercentage();
@@ -82,6 +81,7 @@ export class ReviewComponent implements OnInit {
   }
 
   back(){
+    this.touched=false;
     if(this.actualPage==1){
       this.location.back();
     }
@@ -106,8 +106,8 @@ export class ReviewComponent implements OnInit {
     }
   }
 
-  setCommentType(comment:string){
-    this.review.type=comment;
+  setCommentType(commentType:string){
+    this.review.type=commentType;
   }
 
 }

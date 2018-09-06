@@ -17,7 +17,7 @@ import { Router, Params } from '@angular/router';
 })
 export class ProviderDashboardNegotiationPendingComponent implements OnInit {
 
-  worksList:string="PENDING_BY_VISIT,PENDING_BY_QUOTATION,QUOTE_MADE,CONTRACT_MODIFIED_BY_PROVIDER,CONTRACT_MODIFIED_BY_USER,CONTRACT_ACCEPTED_BY_PROVIDER,PENDING_BY_PAYMENT";
+  worksList:string="PENDING_BY_QUOTATION,QUOTE_MADE,CONTRACT_MODIFIED_BY_PROVIDER,CONTRACT_MODIFIED_BY_USER,CONTRACT_ACCEPTED_BY_PROVIDER,PENDING_BY_PAYMENT";
   pendingWorks:WorkGetDto[];
   loading:boolean;
   hideNotification:boolean;

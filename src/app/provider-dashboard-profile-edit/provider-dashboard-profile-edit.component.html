@@ -63,7 +63,7 @@
                         required
                         minlength="3"
                         pattern="[a-zA-Zóáéíú ]*"
-                        [(ngModel)]="provider.account.name"
+                        [(ngModel)]="provider.accountName"
                         name="name" 
                         #name="ngModel"
                         [ngClass]="{'is-valid': name.valid && name.touched, 'is-invalid': name.invalid && name.touched}">
@@ -77,7 +77,7 @@
                         required 
                         minlength="3"
                         pattern="[a-zA-Zóáéíú ]*"
-                        [(ngModel)]="provider.account.lastname" 
+                        [(ngModel)]="provider.accountLastname" 
                         name="lastname" 
                         #lastname="ngModel"
                         [ngClass]="{'is-valid': lastname.valid && lastname.touched, 'is-invalid': lastname.invalid && lastname.touched}">
@@ -157,7 +157,7 @@
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" placeholder="" value={{provider.account.email}} required="false" disabled>
+                    <input type="text" class="form-control" id="email" placeholder="" value={{provider.accountEmail}} required="false" disabled>
                   </div>
                 </div>
               </form>

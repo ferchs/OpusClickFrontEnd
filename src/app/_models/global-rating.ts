@@ -1,9 +1,9 @@
 export class GlobalRating {
 
-    public globalRatingId:number;
+    public id:number;
     public globalSatisfactionLevel:number;
     public globalRecommend:number;
-    public score:number;
+    public worksDone:number;
     constructor(){}
     
   }

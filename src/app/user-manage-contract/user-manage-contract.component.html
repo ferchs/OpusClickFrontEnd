@@ -9,12 +9,13 @@
             </div>
           <div>
             <p class="p-style" *ngIf="actualPage===1">¡Advertencia!</p>
-            <p class="p-style" *ngIf="actualPage===2">Elige los items que deseas contratar y verifica las aclaraciones o imágenes de referencia</p>
-            <p class="p-style" *ngIf="actualPage===3">¿Hace falta algo para proceder a contratar?</p>
-            <p class="p-style" *ngIf="actualPage===4 && mFinalize=='yes'">Resumen</p>
-            <p class="p-style" *ngIf="actualPage===4 && mFinalize=='no'">Imágenes de referencia</p>
-            <p class="p-style" *ngIf="actualPage===5">Aclaraciones o comentarios</p>
-            <p class="p-style" *ngIf="actualPage===6">Resumen</p>
+            <p class="p-style" *ngIf="actualPage===2">Elige un nombre que describa este trabajo</p>
+            <p class="p-style" *ngIf="actualPage===3">Elige los items que deseas contratar y verifica las aclaraciones o imágenes de referencia</p>
+            <p class="p-style" *ngIf="actualPage===4">¿Hace falta algo para proceder a contratar?</p>
+            <p class="p-style" *ngIf="actualPage===5 && mFinalize=='yes'">Resumen</p>
+            <p class="p-style" *ngIf="actualPage===5 && mFinalize=='no'">Imágenes de referencia</p>
+            <p class="p-style" *ngIf="actualPage===6">Aclaraciones o comentarios</p>
+            <p class="p-style" *ngIf="actualPage===7">Resumen</p>
           </div>
           <hr>
       </div>
@@ -63,6 +64,44 @@
       </div>
     </div>
     <div [hidden]="actualPage!==2">
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-3 centered"></div>
+              <div class="col-lg-6 centered">
+                <div class="form-group">
+                    <input class="form-control"
+                      id="nameContract"
+                      type="text" 
+                      placeholder="Elige un nombre corto que describa este trabajo" 
+                      required 
+                      minlength="4" 
+                      pattern="[a-zA-Zóáéíú ]*"
+                      [(ngModel)]="mName" 
+                      name="name" 
+                      #name="ngModel"
+                      [ngClass]="{'is-valid': name.valid && name.touched, 'is-invalid': name.invalid && name.touched}">
+                    <small *ngIf="name.invalid && name.touched" class="form-text text-muted-error">El nombre ingresado no es válido</small>
+                 </div>
+              </div>
+              <div class="col-lg-3 centered"></div>
+            </div>
+        </div>
+        <div class="my-4"></div>
+        <div class="text-center">
+          <button 
+            (click)='back()' 
+            class="btn btn btn-outline-secondary">
+              Atrás
+          </button>
+          <button 
+            [disabled]="mName==null || this.mName.length < 4"
+            (click)='next()'
+            class="btn btn-outline-secondary">
+              Siguiente
+          </button>
+        </div>
+    </div>
+    <div [hidden]="actualPage!==3">
         <div class="row">
             <div class="col-lg-12">
               <div class="table-responsive">
@@ -161,7 +200,7 @@
               </button>
             </div>
     </div>
-    <div [hidden]="actualPage!==3">
+    <div [hidden]="actualPage!==4">
         <div class="text-center">
             <button type="button" class="btn btn-outline-success"
             [ngClass]="{'btn-outline-yes-selected': mFinalize=='no'}"
@@ -186,7 +225,7 @@
         </button>
       </div>
     </div>
-    <div [hidden]="actualPage!==4 || (actualPage===4 && mFinalize=='no') || mFinalize==null">
+    <div [hidden]="actualPage!==5 || (actualPage===5 && mFinalize=='no') || mFinalize==null">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -242,7 +281,7 @@
         </div>
       </div>
     </div>
-    <div [hidden]="actualPage!==4 || (actualPage===4 && mFinalize=='yes') || mFinalize==null">
+    <div [hidden]="actualPage!==5 || (actualPage===5 && mFinalize=='yes') || mFinalize==null">
         <div class="container">
             <div *ngFor="let milestone of contract.milestones; let i = index">
               <div class="col-lg-6">
@@ -292,7 +331,7 @@
         </div>
       </div>
     </div>
-    <div [hidden]="actualPage!==5">
+    <div [hidden]="actualPage!==6">
       <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -324,7 +363,7 @@
         </div>
       </div>
     </div>
-    <div [hidden]="actualPage!==6">
+    <div [hidden]="actualPage!==7">
         <div class="container">
             <div class="row">
               <div class="col-lg-12">
