@@ -25,6 +25,7 @@ export class ProviderDashboardProfileComponent implements OnInit {
 
   ngOnInit() {
     this.loading=true;
+    this.provider= new ProviderGetProfileDto();
     this.image="../../assets/profile.svg";
     this.providerService.getProvider(localStorage.getItem("id_provider")).subscribe((provider:ProviderGetProfileDto)=>{
       this.provider=provider;

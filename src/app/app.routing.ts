@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { InjectionToken } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
@@ -41,6 +42,8 @@ import { ProviderManageContractComponent } from './provider-manage-contract/prov
 import { UserSpecifyContractComponent } from './user-specify-contract/user-specify-contract.component';
 import { UserApprovePaymentComponent } from './user-approve-payment/user-approve-payment.component';
 import { AuthGuard } from './_guards/auth.guard';
+
+const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
@@ -91,6 +94,14 @@ const appRoutes: Routes = [
     {path:'solicitar_pago', component: ProviderRequestPaymentComponent},
     {path:'autorizar_pagos', component: UserApprovePaymentComponent},
     {path:'calificar', component: ReviewComponent},
+    {path: 'externalRedirect',
+        resolve: {
+            url: externalUrlProvider,
+        },
+        // We need a component here because we cannot define the route otherwise 
+        //Aqui va NotFound component
+        component: HomeComponent,
+    },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

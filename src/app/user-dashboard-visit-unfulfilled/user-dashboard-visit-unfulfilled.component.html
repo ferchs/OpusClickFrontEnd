@@ -2,6 +2,7 @@
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
     <div class="container">
         <app-alert [dismissible]="true" [type]="notificationType" [message]="notificationMessage" [(staticAlertClosed)]="hideNotification"></app-alert>
+      <label>Visitas Incumplidas</label>
       <div class="table-responsive">
         <table class="table table-hover">
             <thead>
@@ -21,6 +22,10 @@
                   <button type="button" class="btn btn-outline-dark" (click)="reportBreach(visit)">Reportar Incumplimiento</button>
                 </td>
               </tr>
+              <div *ngIf="unfulfilledVisits==null">
+                  <div class="my-1"></div>
+                  <label>No hay visitas incumplidas</label>
+                </div>
             </tbody>
           </table>
       </div>

@@ -23,6 +23,7 @@ export class UserDashboardVisitUnfulfilledComponent implements OnInit {
 
   ngOnInit() {
     this.hideNotification=true;
+    this.unfulfilledVisits=null;
     this.visitService.getVisit("user",localStorage.getItem("id_user"),null,"ACCEPTED_BY_USER,ACCEPTED_BY_PROVIDER,POSTPONE_BY_USER,PENDING_BY_PROVIDER_ACCEPT,PENDING_BY_USER_ACCEPT,POSTPONE_BY_PROVIDER,UNFULFILLED_VISIT_BY_USER")
     .subscribe((visits:VisitGetDto[])=>{
       this.unfulfilledVisits=visits;

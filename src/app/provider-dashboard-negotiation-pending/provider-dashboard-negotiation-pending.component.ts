@@ -30,6 +30,7 @@ export class ProviderDashboardNegotiationPendingComponent implements OnInit {
 
   ngOnInit() {
     this.loading=true;
+    this.pendingWorks=null;
     this.hideNotification=true;
     this.workService.getWork("provider",localStorage.getItem("id_provider"),this.worksList).subscribe((works:WorkGetDto[])=>{
       this.pendingWorks=works;
@@ -84,5 +85,17 @@ export class ProviderDashboardNegotiationPendingComponent implements OnInit {
         });
       });
     });
+  }
+  
+  isEmptyWorks(){
+    let empty:boolean=false;
+    if(this.pendingWorks==null || this.pendingWorks==undefined){
+      empty=true;
+    }else{
+      if(this.pendingWorks.length < 1){
+        empty=true;
+      }
+    }
+    return empty;
   }
 }

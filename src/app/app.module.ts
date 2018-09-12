@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routing } from './app.routing';
 import { EqualValidator } from './_directives/equal-validator.directive';
 import { ClickOutsideDirective } from './_directives/dropdown.directive';
+import { OpenLinkInNewWindowDirective } from './_directives/external-url.directive';
 import { SearchFilterPipe } from './_shared/filter-pipe';
 import { TextMaskModule } from 'angular2-text-mask';
 import { LoadingModule } from 'ngx-loading';
@@ -103,6 +104,8 @@ import { ProviderRequestPaymentComponent } from './provider-request-payment/prov
 import { UserApprovePaymentComponent } from './user-approve-payment/user-approve-payment.component';
 import { ProviderViewCompleteProfileComponent } from './provider-view-complete-profile/provider-view-complete-profile.component';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { ProviderDashboardNegotiationFinishedComponent } from './provider-dashboard-negotiation-finished/provider-dashboard-negotiation-finished.component';
+import { UserDashboardNegotiationFinishedComponent } from './user-dashboard-negotiation-finished/user-dashboard-negotiation-finished.component';
 
 @NgModule({
   declarations: [
@@ -177,7 +180,10 @@ import { NgxGalleryModule } from 'ngx-gallery';
     ViewSignedContractComponent,
     ProviderRequestPaymentComponent,
     UserApprovePaymentComponent,
-    ProviderViewCompleteProfileComponent
+    OpenLinkInNewWindowDirective,
+    ProviderViewCompleteProfileComponent,
+    ProviderDashboardNegotiationFinishedComponent,
+    UserDashboardNegotiationFinishedComponent
   ],
   imports: [
     BrowserModule,

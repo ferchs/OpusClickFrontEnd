@@ -14,10 +14,19 @@
             </thead>
             <tbody>
               <tr *ngFor='let work of pendingWorks'>
-                <td>{{work.creationDate  | date: 'dd/MM/yyyy'}}</td>
-                <td><app-inline-edit [value]='work.providerLabel' (newValue)="newLabelChange($event,work)"></app-inline-edit></td>
+                <td>
+                    <p>{{work.creationDate  | date: 'dd/MM/yyyy'}}</p>
+                    <span *ngIf='work.state=="PENDING_BY_QUOTATION"' class="badge badge-primary">Solicitud de cotización</span>
+                    <span *ngIf='work.state=="QUOTE_MADE"' class="badge badge-info">Cotización realizada</span>
+                    <span *ngIf='work.state=="CONTRACT_MODIFIED_BY_USER"' class="badge badge-warning">Propuesta de contrato</span>
+                    <span *ngIf='work.state=="CONTRACT_ACCEPTED_BY_PROVIDER"' class="badge badge-success">Contrato aceptado</span>
+                    <span *ngIf='work.state=="CONTRACT_MODIFIED_BY_PROVIDER"' class="badge badge-info">Contrato modificado</span>
+                </td>
+                <td>
+                  <app-inline-edit [value]='work.providerLabel' (newValue)="newLabelChange($event,work)"></app-inline-edit>
+                </td>
                 <td class="d-options">
-                  <div *ngIf='work.state=="PENDING_BY_VISIT"'
+                  <!--<div *ngIf='work.state=="PENDING_BY_VISIT"'
                   class="btn-group dropleft">
                   <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Opciones
@@ -30,8 +39,7 @@
                     [queryParams]="{work:work.id}">Realizar Cotización</button>
                     <button class="dropdown-item" type="button" (click)="terminateWork(work)">No Hubo Acuerdo</button>
                   </div>
-                  </div>
-
+                  </div>-->
                   <div *ngIf='work.state=="PENDING_BY_QUOTATION"'
                   class="btn-group dropleft">
                   <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,9 +104,12 @@
                       <button class="dropdown-item" type="button" (click)="terminateWork(work)">Terminar</button>
                     </div>
                     </div>
-
                 </td>
               </tr>
+              <div *ngIf="isEmptyWorks()">
+                  <div class="my-1"></div>
+                  <label>No hay negociaciones pendientes</label>
+              </div>
             </tbody>
           </table>
       </div>

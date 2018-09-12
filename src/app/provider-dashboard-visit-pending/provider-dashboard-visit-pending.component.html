@@ -1,7 +1,8 @@
 <div class="space"></div>
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+    <app-alert [dismissible]="true" [type]="notificationType" [message]="notificationMessage" [(staticAlertClosed)]="hideNotification"></app-alert>
     <div class="container">
-        <app-alert [dismissible]="true" [type]="notificationType" [message]="notificationMessage" [(staticAlertClosed)]="hideNotification"></app-alert>
+      <label>Visitas nuevas</label>
       <div class="table-responsive">
         <table class="table table-hover">
             <thead>
@@ -14,7 +15,13 @@
             </thead>
             <tbody>
               <tr *ngFor='let visit of pendingVisits'>
-                <td *ngIf="visit.alternativeDate-now.getTime() > 0">{{visit.code}}</td>
+                <td *ngIf="visit.alternativeDate-now.getTime() > 0">
+                  <p>{{visit.code}}</p>
+                  <span *ngIf='visit.state=="PENDING_BY_PROVIDER_ACCEPT"' class="badge badge-primary">Solicitud de visita</span>
+                  <span *ngIf='visit.state=="PENDING_BY_USER_ACCEPT"' class="badge badge-info">Esperando aprobación</span>
+                  <span *ngIf='visit.state=="POSTPONE_BY_USER"' class="badge badge-warning">Pospuesta por cliente</span>
+                </td>
+                <!--visit.alternativeDate Almacena la fecha de visita aceptada-->
                 <td *ngIf="visit.alternativeDate-now.getTime() > 0">{{visit.securityPin}}</td>
                 <td *ngIf="visit.alternativeDate-now.getTime() > 0">{{visit.description}}</td>
                 <td *ngIf="visit.alternativeDate-now.getTime() > 0" class="d-options">
@@ -45,6 +52,10 @@
                   </div>
                 </td>
               </tr>
+              <div *ngIf="isEmptyWorks()">
+                  <div class="my-1"></div>
+                  <label>No hay visitas pendientes</label>
+              </div>
             </tbody>
           </table>
       </div>

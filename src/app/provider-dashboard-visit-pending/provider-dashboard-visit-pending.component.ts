@@ -32,6 +32,11 @@ export class ProviderDashboardVisitPendingComponent implements OnInit {
     this.visitService.getVisit("provider",localStorage.getItem("id_provider"),null,"PENDING_BY_PROVIDER_ACCEPT,PENDING_BY_USER_ACCEPT,POSTPONE_BY_USER").subscribe((visits:VisitGetDto[])=>{
       this.pendingVisits=visits;
       this.now= new Date();
+      if(this.pendingVisits!=null){
+        if(this.pendingVisits.length==0){
+          this.pendingVisits=null;
+        }
+      }
       this.loading=false;
     });
   }
@@ -127,6 +132,18 @@ export class ProviderDashboardVisitPendingComponent implements OnInit {
     const modalRef = this.modalService.open(DetailsVisitModalComponent);
     modalRef.componentInstance.title = 'Detalles de visita';
     modalRef.componentInstance.visit = visit;
+  }
+
+  isEmptyWorks(){
+    let empty:boolean=false;
+    if(this.pendingVisits==null || this.pendingVisits==undefined){
+      empty=true;
+    }else{
+      if(this.pendingVisits.length < 1){
+        empty=true;
+      }
+    }
+    return empty;
   }
 
 }

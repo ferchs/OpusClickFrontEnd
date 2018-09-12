@@ -14,8 +14,18 @@
             </thead>
             <tbody>
               <tr *ngFor='let work of pendingWorks'>
-                <td>{{work.creationDate  | date: 'dd/MM/yyyy'}}</td>
-                <td><app-inline-edit [value]='work.providerLabel' (newValue)="newLabelChange($event,work)"></app-inline-edit></td>
+                <td>
+                  <p>{{work.creationDate  | date: 'dd/MM/yyyy'}}</p>
+                  <span *ngIf='work.state=="IN_PROGRESS"' class="badge badge-info">En ejecución</span>
+                  <span *ngIf='work.state=="PARTIALLY_FINISHED"' class="badge badge-info">Parcialmente finalizado</span>
+                  <span *ngIf='work.state=="FINALIZED"' class="badge badge-secondary">Finalizado</span>
+                  <span *ngIf='work.state=="PAID_OUT"' class="badge badge-success">Pagado</span>
+                  <span *ngIf='work.state=="REPROBATE"' class="badge badge-danger">Reprobado</span>
+                  <span *ngIf='work.state=="UNFULFILLED"' class="badge badge-danger">Incumplido</span>
+                </td>
+                <td>
+                  <app-inline-edit [value]='work.providerLabel' (newValue)="newLabelChange($event,work)"></app-inline-edit>
+                </td>
                 <td class="d-options">
 
                   <div *ngIf='work.state=="IN_PROGRESS" || work.state=="PARTIALLY_FINISHED"'
@@ -34,6 +44,10 @@
                   </div>
                 </td>
               </tr>
+              <div *ngIf="isEmptyWorks()">
+                  <div class="my-1"></div>
+                  <label>No hay negociaciones concretadas</label>
+              </div>
             </tbody>
           </table>
       </div>

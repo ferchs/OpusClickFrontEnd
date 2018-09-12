@@ -13,6 +13,16 @@ export class WorkService {
 
     constructor(private http: HttpClient) { }
 
+    getWorkById(id:string){
+      return this.http.get<WorkGetDto>(this.apiUrl+"/"+id)
+      .pipe(
+        map((work:WorkGetDto)=> { 
+          return work;
+        }),
+        catchError(this.handleError)
+      );
+    }
+
     getWork(rol?:string, id?:string, state?:string){
         let params = new HttpParams()
             .set('rol',rol)

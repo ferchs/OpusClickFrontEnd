@@ -24,7 +24,8 @@ export class UserDashboardNegotiationConcretedComponent implements OnInit {
   constructor(private workService:WorkService, private modalService: NgbModal) { }
 
   ngOnInit() {
-    this.loading=true;
+    this.loading=null;
+    this.pendingWorks=null;
     this.hideNotification=true;
     this.workService.getWork("user",localStorage.getItem("id_user"),this.worksList).subscribe((works:WorkGetDto[])=>{
       this.pendingWorks=works;
@@ -77,10 +78,22 @@ export class UserDashboardNegotiationConcretedComponent implements OnInit {
     let dto:WorkUpdateDto = new WorkUpdateDto();
     dto.id=work.id;
     dto.providerLabel=work.providerLabel;
-    dto.userLabel=work.providerLabel;
+    dto.userLabel=work.userLabel;
     dto.comment=work.comment;
     dto.state="IN_PROGRESS";
     this.workService.updateWork(dto).subscribe();
+  }
+
+  isEmptyWorks(){
+    let empty:boolean=false;
+    if(this.pendingWorks==null || this.pendingWorks==undefined){
+      empty=true;
+    }else{
+      if(this.pendingWorks.length < 1){
+        empty=true;
+      }
+    }
+    return empty;
   }
 
 }

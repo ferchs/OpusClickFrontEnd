@@ -76,6 +76,7 @@ export class ProviderRequestPaymentComponent implements OnInit {
       this.contractService.updateContractMilestones(this.contract.id,this.chargedContract).subscribe(res=>{
         this.contractService.getContract(this.contractId).subscribe((contract:ContractGetDto)=>
         {
+          this.contract=contract;
           this.loading=false;
           this.notificationMessage="¡Se ha solicitado el pago, debes esperar a que el cliente lo apruebe!";
           this.notificationType="info";
@@ -89,5 +90,13 @@ export class ProviderRequestPaymentComponent implements OnInit {
 
   back(){
     this.location.back();
+  }
+
+  disableRequestPayment(){
+    let disable:boolean=false;
+    if(this.contract.state=="FINALIZED"){
+      disable=true;
+    }
+    return disable;
   }
 }

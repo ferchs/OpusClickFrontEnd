@@ -11,6 +11,9 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer} from '@angular/platform-browser';
 import { ContractService } from '../_services/contract.service';
 import { ContractDto } from '../_dtos/contractDto';
+import { WorkUpdateDto } from "../_dtos/workUpdateDto";
+import { WorkService } from "../_services/work.service";
+import { WorkGetDto } from "../_dtos/workGetDto";
 
 @Component({
   selector: 'app-user-manage-contract',
@@ -41,7 +44,7 @@ export class UserManageContractComponent implements OnInit {
 
   constructor(private authService: AuthService, private providerQuoteService:ProviderQuoteService,
     private location:Location, private activatedRoute: ActivatedRoute,private modalService: NgbModal,
-    private domSanitizer: DomSanitizer, private contractService:ContractService) { 
+    private domSanitizer: DomSanitizer, private contractService:ContractService,private workService:WorkService) { 
   }
 
   ngOnInit() {
@@ -201,7 +204,21 @@ export class UserManageContractComponent implements OnInit {
   }
 
   makePayment(){
-    this.contract;
+    this.loading=true;
+    this.contractService.createContract(this.contract,this.workId).subscribe(res=>{
+      this.workService.getWorkById(this.workId).subscribe((work:WorkGetDto)=>{
+        let dto:WorkUpdateDto = new WorkUpdateDto();
+        dto.id=+this.workId;
+        dto.providerLabel=work.providerLabel;
+        dto.userLabel=work.providerLabel;
+        dto.comment=work.comment;
+        dto.state="IN_PROGRESS";
+        this.workService.updateWork(dto).subscribe(res=>{
+          this.loading=false
+          this.sendContractProvider=true;
+        });
+      });
+    });
   }
 
 }

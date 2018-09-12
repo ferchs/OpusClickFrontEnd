@@ -114,3 +114,7 @@ small{
   text-align: center;
   margin: 0 0 4px;
 }
+
+.justify {
+  text-align: justify;
+}

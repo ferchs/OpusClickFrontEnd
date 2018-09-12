@@ -28,6 +28,7 @@ export class UserDashboardVisitPendingComponent implements OnInit {
 
   ngOnInit() {
     this.loading=true;
+    this.pendingVisits=null;
     this.hideNotification=true;
     this.visitService.getVisit("user",localStorage.getItem("id_user"),null,"PENDING_BY_PROVIDER_ACCEPT,PENDING_BY_USER_ACCEPT,POSTPONE_BY_PROVIDER").subscribe((visits:VisitGetDto[])=>{
       this.pendingVisits=visits;
@@ -127,6 +128,18 @@ export class UserDashboardVisitPendingComponent implements OnInit {
     const modalRef = this.modalService.open(DetailsVisitModalComponent);
     modalRef.componentInstance.title = 'Detalles de visita';
     modalRef.componentInstance.visit = visit;
+  }
+
+  isEmptyWorks(){
+    let empty:boolean=false;
+    if(this.pendingVisits==null || this.pendingVisits==undefined){
+      empty=true;
+    }else{
+      if(this.pendingVisits.length < 1){
+        empty=true;
+      }
+    }
+    return empty;
   }
 
 }

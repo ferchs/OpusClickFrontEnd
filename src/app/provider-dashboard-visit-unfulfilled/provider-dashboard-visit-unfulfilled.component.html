@@ -2,7 +2,8 @@
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
     <div class="container">
         <app-alert [dismissible]="true" [type]="notificationType" [message]="notificationMessage" [(staticAlertClosed)]="hideNotification"></app-alert>
-      <div class="table-responsive">
+        <label>Visitas incumplidas</label>
+        <div class="table-responsive">
         <table class="table table-hover">
             <thead>
               <tr>
@@ -18,9 +19,13 @@
                 <td *ngIf="now.getTime()-visit.alternativeDate > 0 && 10080 > (now.getTime()-visit.alternativeDate)/60000">{{visit.securityPin}}</td>
                 <td *ngIf="now.getTime()-visit.alternativeDate > 0 && 10080 > (now.getTime()-visit.alternativeDate)/60000">{{visit.description}}</td>
                 <td *ngIf="now.getTime()-visit.alternativeDate > 0 && 10080 > (now.getTime()-visit.alternativeDate)/60000" class="d-options">
-                  <button type="button" class="btn btn-outline-dark" (click)="reportBreach(visit)">Reportar Incumplimiento</button>
+                  <!--<button type="button" class="btn btn-outline-dark" (click)="reportBreach(visit)">Reportar Incumplimiento</button>-->
                 </td>
               </tr>
+              <div *ngIf="unfulfilledVisits==null">
+                  <div class="my-1"></div>
+                  <label>No hay visitas incumplidas</label>
+              </div>
             </tbody>
           </table>
       </div>

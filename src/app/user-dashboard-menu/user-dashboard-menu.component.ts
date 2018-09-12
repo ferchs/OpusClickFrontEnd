@@ -18,7 +18,7 @@ export class UserDashboardMenuComponent implements OnInit {
   toggle(){
     $('.offcanvas-collapse').toggleClass('open');
   }
-
+  
   exit(){
     this.authService.logout();
     localStorage.removeItem("email_user");

@@ -122,6 +122,7 @@
 
               <button 
                 (click)='requestPayment()'
+                [disabled]='disableRequestPayment()'
                 class="btn btn-outline-success">
                   Solicitar Pago
               </button>

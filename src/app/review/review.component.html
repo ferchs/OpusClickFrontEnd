@@ -103,7 +103,7 @@
                   Siguiente
                 </button>
                 <button 
-                  [disabled]="touched==false || reviewForm.invalid"
+                  [disabled]="touched==false"
                   [hidden]="actualPage!==totalPage"
                   (click)='submit()' 
                   class="btn btn-outline-secondary">

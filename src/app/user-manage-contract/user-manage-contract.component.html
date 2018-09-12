@@ -207,7 +207,7 @@
             (click)="finalize('no');generateContract('CONTRACT_MODIFIED_BY_USER','CREATED')">SI</button>
             <button type="button" class="btn btn-outline-danger"
             [ngClass]="{'btn-outline-no-selected': mFinalize=='yes'}"
-            (click)="finalize('yes');generateContract('PENDING_PAYMENT','CREATED')">NO</button>
+            (click)="finalize('yes');generateContract('PENDING_BY_PAYMENT','CREATED')">NO</button>
           </div>
           <hr class="col-lg-12">
           <div class="my-4"></div>
@@ -274,7 +274,7 @@
               Atrás
           </button>
           <button 
-            (click)='submit()' 
+            (click)='makePayment()' 
             class="btn btn-outline-success">
               Pasar al pago
         </button>

@@ -110,7 +110,10 @@
                             <small [hidden]="confirmPassword.valid || (confirmPassword.pristine)" class="form-text text-muted-error">
                             La contraseña debe coincidir
                             </small>
-                        </div>         
+                        </div> 
+                        <div class="justify">
+                            <small>Al proceder, acepto los <a routerLink="https://www.google.com" appExternalUrl>Términos de uso</a> de OpusClick y reconozco haber leído la <a routerLink="https://www.google.com" appExternalUrl>Política de privacidad</a>.</small>        
+                        </div>
                         <button type="submit"
                         class="btn btn-md btn-block"
                         [ngClass]="{enable: userRegisterForm.form.valid, disable: !userRegisterForm.form.valid}" 

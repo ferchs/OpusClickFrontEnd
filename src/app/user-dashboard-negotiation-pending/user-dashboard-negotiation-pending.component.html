@@ -2,7 +2,7 @@
   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
     <div class="container">
         <app-alert [dismissible]="true" [type]="notificationType" [message]="notificationMessage" [(staticAlertClosed)]="hideNotification"></app-alert>
-        <label>Negociaciones en proceso</label>
+        <label>Negociaciones En Proceso</label>
         <div class="table-responsive">
         <table class="table table-hover">
             <thead>
@@ -14,8 +14,17 @@
             </thead>
             <tbody>
               <tr *ngFor='let work of pendingWorks'>
-                <td>{{work.creationDate  | date: 'dd/MM/yyyy'}}</td>
-                <td><app-inline-edit [value]='work.userLabel' (newValue)="newLabelChange($event,work)"></app-inline-edit></td>
+                <td>
+                  <p>{{work.creationDate  | date: 'dd/MM/yyyy'}}</p>
+                  <span *ngIf='work.state=="PENDING_BY_QUOTATION"' class="badge badge-info">Esperando cotización</span>
+                  <span *ngIf='work.state=="QUOTE_MADE"' class="badge badge-info">Cotización realizada</span>
+                  <span *ngIf='work.state=="CONTRACT_MODIFIED_BY_USER"' class="badge badge-warning">Contrato Modificado</span>
+                  <span *ngIf='work.state=="CONTRACT_ACCEPTED_BY_PROVIDER"' class="badge badge-success">Contrato Aceptado</span>
+                  <span *ngIf='work.state=="PENDING_BY_PAYMENT"' class="badge badge-success">Pendiente por pago</span>
+                </td>
+                <td>
+                  <app-inline-edit [value]='work.userLabel' (newValue)="newLabelChange($event,work)"></app-inline-edit>
+                </td>
                 <td class="d-options">
                     <button type="button"
                     class="btn btn-outline-info"
@@ -94,6 +103,10 @@
                     <div class="mx-1"></div>
                 </td>
               </tr>
+              <div *ngIf="isEmptyWorks()">
+                  <div class="my-1"></div>
+                  <label>No hay negociaciones pendientes</label>
+              </div>
             </tbody>
           </table>
       </div>

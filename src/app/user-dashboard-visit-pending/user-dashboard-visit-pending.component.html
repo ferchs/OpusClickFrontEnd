@@ -2,7 +2,8 @@
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
     <div class="container">
         <app-alert [dismissible]="true" [type]="notificationType" [message]="notificationMessage" [(staticAlertClosed)]="hideNotification"></app-alert>
-      <div class="table-responsive">
+        <label>Visitas En Espera</label>
+        <div class="table-responsive">
         <table class="table table-hover">
             <thead>
               <tr>
@@ -14,7 +15,12 @@
             </thead>
             <tbody>
               <tr *ngFor='let visit of pendingVisits'>
-                <td *ngIf="visit.alternativeDate-now.getTime() > 0">{{visit.code}}</td>
+                <td *ngIf="visit.alternativeDate-now.getTime() > 0">
+                  <p>{{visit.code}}</p>
+                  <span *ngIf='visit.state=="PENDING_BY_PROVIDER_ACCEPT"' class="badge badge-info">Esperando confirmación</span>
+                  <span *ngIf='visit.state=="PENDING_BY_USER_ACCEPT"' class="badge badge-warning">Esperando aprobación</span>
+                  <span *ngIf='visit.state=="POSTPONE_BY_PROVIDER"' class="badge badge-warning">Pospuesta</span>
+                </td>
                 <td *ngIf="visit.alternativeDate-now.getTime() > 0">{{visit.securityPin}}</td>
                 <td *ngIf="visit.alternativeDate-now.getTime() > 0">{{visit.description}}</td>
                 <td *ngIf="visit.alternativeDate-now.getTime() > 0" class="d-options">
@@ -45,6 +51,10 @@
                   </div>
                 </td>
               </tr>
+              <div *ngIf="isEmptyWorks()">
+                <div class="my-1"></div>
+                <label>No hay visitas pendientes</label>
+              </div>
             </tbody>
           </table>
       </div>
