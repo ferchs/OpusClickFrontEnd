@@ -13,7 +13,7 @@ small{
 @media (max-width: 575.98px) {  
   .hello {
     padding-top: 30%;
-    padding-bottom: 15%;
+    padding-bottom: 80%;
     background: url('../../assets/jaroslaw-ceborski-250955-unsplash.jpg') no-repeat;  
     background-size: cover;  
   }  
@@ -23,7 +23,7 @@ small{
 @media (min-width: 576px) and (max-width: 767.98px) { 
   .hello {
     padding-top: 14%;
-    padding-bottom: 4%;
+    padding-bottom: 100% auto;
     background: url('../../assets/jaroslaw-ceborski-250955-unsplash.jpg') no-repeat;  
     background-size: cover;  
   }  
@@ -33,7 +33,7 @@ small{
 @media (min-width: 768px) and (max-width: 991.98px) { 
   .hello {
     padding-top: 16%;
-    padding-bottom: 8%;
+    padding-bottom: 70%;
     background: url('../../assets/jaroslaw-ceborski-250955-unsplash.jpg') no-repeat;  
     background-size: cover;  
   }  
@@ -43,7 +43,7 @@ small{
 @media (min-width: 992px) and (max-width: 1199.98px) { 
   .hello {
     padding-top: 11%;
-    padding-bottom: 3%;
+    padding-bottom: 25%;
     background: url('../../assets/jaroslaw-ceborski-250955-unsplash.jpg') no-repeat;  
     background-size: cover;  
   }  
@@ -53,7 +53,7 @@ small{
 @media (min-width: 1200px) { 
   .hello {
     padding-top: 11%;
-    padding-bottom: 8%;
+    padding-bottom: 25%;
     background: url('../../assets/jaroslaw-ceborski-250955-unsplash.jpg') no-repeat;  
     background-size: cover;  
   }  

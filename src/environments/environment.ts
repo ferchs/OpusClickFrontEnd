@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  appUrl: 'localhost:4200',
-  devApiUrl: 'http://localhost:8083/v1',
+  apiUrlBase: 'http://localhost:8083/v1',
+  loginUrl: 'http://localhost:8083/login',
   firebase :{
     apiKey: "AIzaSyDESia3jwf8z6wH8U2drp6tJdMExAegOl0",
     authDomain: "ng-opus.firebaseapp.com",

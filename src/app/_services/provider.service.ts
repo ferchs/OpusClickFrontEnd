@@ -12,7 +12,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class ProviderService {
   
-  private apiUrl = environment.devApiUrl+"/providers";
+  private apiUrl = environment.apiUrlBase+"/providers";
 
 
   constructor(private http: HttpClient) {

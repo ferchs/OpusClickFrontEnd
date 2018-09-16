@@ -13,8 +13,8 @@
                 [(ngModel)]="mSearch"
                 name="search" 
                 #search="ngModel"
-                (click)='toggleDropDown()'
-                clickOutside (clickOutside)="closeDropDown()">
+                (click)='openDropDown()'
+                (clickOutside)="closeDropDown()">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button" (click)="find()">Buscar</button>
                 </div>
@@ -30,7 +30,11 @@
     </div>
   </div>
   <div class="container result-container">
-      <div class="row" *ngFor='let provider of providers'>
+      <div class='justify-content-center d-flex' *ngIf='!providersFound && !loading'>
+        <div class="my-4"></div>
+        <label>No se encontraron expertos para esta categoría</label>
+      </div>
+      <div  class="row" *ngFor='let provider of providers'>
           <div class="col-lg-3 title">{{provider.accountName}} {{provider.accountLastname}}</div>
           <div class="col-lg-9"></div>
           <div class="col-lg-3">

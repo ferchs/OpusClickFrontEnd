@@ -27,8 +27,8 @@ export class PostponeModalComponent implements OnInit {
   mAlternativeSelectedStartLimit:number;
   loading:boolean;
   submited:boolean;
-  private myDatePickerOptions: IMyDpOptions;
-  private altMyDatePickerOptions: IMyDpOptions;
+  public myDatePickerOptions: IMyDpOptions;
+  public altMyDatePickerOptions: IMyDpOptions;
 
   @Input() title;
   @Input() content;

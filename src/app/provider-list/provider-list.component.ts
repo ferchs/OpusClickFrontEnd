@@ -26,6 +26,7 @@ export class ProviderListComponent implements OnInit {
   formId:string;
   loading:boolean;
   loggedIn:boolean;
+  providersFound:boolean;
 
   constructor(private providerService: ProviderService, private activatedRoute: ActivatedRoute,
      private router: Router, private professionService: ProfessionService, 
@@ -40,6 +41,11 @@ export class ProviderListComponent implements OnInit {
       this.mSearch= params['profession'];
       this.providerService.getProvidersByProfession(this.mSearch).subscribe(result=>{
         this.providers=result;
+        if(this.providers.length >= 1){
+          this.providersFound=true;
+        }else{
+          this.providersFound=false;
+        }
         this.loading=false;
       });
     });
@@ -55,8 +61,8 @@ export class ProviderListComponent implements OnInit {
     this.showDropDown=false;
   }
 
-  toggleDropDown() {
-    this.showDropDown = !this.showDropDown;
+  openDropDown() {
+    this.showDropDown = true;
   }
   closeDropDown(){
     this.showDropDown = false;

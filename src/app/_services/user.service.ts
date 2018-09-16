@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class UserService {
 
-  private apiUrl = environment.devApiUrl+"/users";
+  private apiUrl = environment.apiUrlBase+"/users";
 
   constructor(private http: HttpClient) {
   }

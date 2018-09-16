@@ -41,8 +41,8 @@ export class HomeComponent implements OnInit {
     this.showCategories=false;
   }
 
-  toggleDropDown() {
-    this.showDropDown = !this.showDropDown;
+  openDropDown() {
+    this.showDropDown = true;
   }
   closeDropDown(){
     this.showDropDown = false;

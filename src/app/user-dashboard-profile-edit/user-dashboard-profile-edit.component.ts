@@ -104,6 +104,23 @@ export class UserDashboardProfileEditComponent implements OnInit {
   savechanges(){
   }
 
+  onFileChange(event) {
+    this.loading=true;
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      this.photo = event.target.files[0];
+      reader.readAsDataURL(this.photo);
+      reader.onload = (event: any) => {
+        this.image=event.target.result;
+        this.userService.setUserPhoto(this.photo,this.email)
+        .subscribe((url:string)=>{
+          this.image=url;
+          this.loading=false;
+        });
+      }
+    }
+  }
+  
   cancel(){
     this.router.navigateByUrl('/dashboard_usuario/perfil');
   }

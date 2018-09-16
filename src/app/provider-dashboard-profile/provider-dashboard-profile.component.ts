@@ -6,7 +6,6 @@ import { DataProviderService } from "../_services/data-provider.service";
 import { ProviderService } from "../_services/provider.service";
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-provider-dashboard-profile',
   templateUrl: './provider-dashboard-profile.component.html',

@@ -41,6 +41,7 @@ export class UserManageContractComponent implements OnInit {
   contract:ContractDto;
   milestones:Array<Milestone>;
   sendContractProvider:boolean;
+  paymentMade:boolean;
 
   constructor(private authService: AuthService, private providerQuoteService:ProviderQuoteService,
     private location:Location, private activatedRoute: ActivatedRoute,private modalService: NgbModal,
@@ -50,6 +51,7 @@ export class UserManageContractComponent implements OnInit {
   ngOnInit() {
     this.loading=true;
     this.sendContractProvider=false;
+    this.paymentMade=false;
     this.providerQuote=new ProviderQuoteDto();
     this.contract= new ContractDto();
     this.providerQuote.items=[];
@@ -215,7 +217,7 @@ export class UserManageContractComponent implements OnInit {
         dto.state="IN_PROGRESS";
         this.workService.updateWork(dto).subscribe(res=>{
           this.loading=false
-          this.sendContractProvider=true;
+          this.paymentMade=true;
         });
       });
     });

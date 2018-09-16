@@ -8,7 +8,7 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable()
 export class ProviderQuoteService {
 
-    private apiUrl = environment.devApiUrl+"/provider_quotes";
+    private apiUrl = environment.apiUrlBase+"/provider_quotes";
 
     constructor(private http: HttpClient) {
     }

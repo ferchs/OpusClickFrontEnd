@@ -792,3 +792,7 @@ span{
   line-height: 1.4;
   border-radius: .2rem;
 }
+
+label{
+  font-size: 1rem;
+}

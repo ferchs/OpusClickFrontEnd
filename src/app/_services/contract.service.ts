@@ -9,7 +9,7 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable()
 export class ContractService {
 
-    private apiUrl = environment.devApiUrl+"/contracts";
+    private apiUrl = environment.apiUrlBase+"/contracts";
 
     constructor(private http: HttpClient) {
     }

@@ -22,7 +22,7 @@ small{
 @media (max-width: 575.98px) {  
   .hello {
     padding-top: 30%;
-    padding-bottom: 15%;
+    padding-bottom: 28%;
     background: url('../../assets/handshake.jpg') no-repeat;  
     background-size: cover;  
   }      
@@ -43,7 +43,7 @@ small{
 @media (min-width: 768px) and (max-width: 991.98px) { 
   .hello {
     padding-top: 14%;
-    padding-bottom: 8%;
+    padding-bottom: 42%;
     background: url('../../assets/handshake.jpg') no-repeat;  
     background-size:cover;  
   }
@@ -53,7 +53,7 @@ small{
 @media (min-width: 992px) and (max-width: 1199.98px) { 
   .hello {
     padding-top: 10%;
-    padding-bottom: 3%;
+    padding-bottom: 14%;
     background: url('../../assets/handshake.jpg') no-repeat;  
     background-size:cover; 
   }
@@ -63,7 +63,7 @@ small{
 @media (min-width: 1200px) { 
   .hello {
     padding-top: 8%;
-    padding-bottom: 3%;
+    padding-bottom: 14%;
     background: url('../../assets/handshake.jpg') no-repeat;  
     background-size:cover;
   }

@@ -20,7 +20,7 @@ import { OnlineQuoteGetDto } from "../_dtos/onlineQuoteGetDto";
 @Injectable()
 export class DynamicFormService {
 
-  private apiUrl = environment.devApiUrl+"/online_quotes";
+  private apiUrl = environment.apiUrlBase+"/online_quotes";
   total:number;
 
   constructor(private firebase:AngularFireDatabase, private http:HttpClient){

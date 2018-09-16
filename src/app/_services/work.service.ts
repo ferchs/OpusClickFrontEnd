@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class WorkService {
 
-    private apiUrl = environment.devApiUrl+"/works";
+    private apiUrl = environment.apiUrlBase+"/works";
 
     constructor(private http: HttpClient) { }
 

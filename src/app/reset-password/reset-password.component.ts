@@ -39,7 +39,7 @@ export class ResetPasswordComponent implements OnInit {
   this.loading=true;
   let password=this.mPassword;
   let matchingPassword=this.mConfirmPassword;
-  this.http.post(environment.devApiUrl+"/resetPassword?email="+this.email+"&verifyCode="+this.token,
+  this.http.post(environment.apiUrlBase+"/resetPassword?email="+this.email+"&verifyCode="+this.token,
   {password,matchingPassword},
   { observe: 'response', responseType: 'text' })
   .subscribe(response => {

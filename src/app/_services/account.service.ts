@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class AccountService {
 
-  private apiUrl = environment.devApiUrl+"/accounts";
+  private apiUrl = environment.apiUrlBase+"/accounts";
 
   constructor(private http: HttpClient) {
   }

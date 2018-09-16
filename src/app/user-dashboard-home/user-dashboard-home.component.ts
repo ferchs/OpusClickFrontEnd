@@ -36,8 +36,8 @@ export class UserDashboardHomeComponent implements OnInit {
       this.showDropDown=false;
     }
   
-    toggleDropDown() {
-      this.showDropDown = !this.showDropDown;
+    openDropDown() {
+      this.showDropDown = true;
     }
     closeDropDown(){
       this.showDropDown = false;

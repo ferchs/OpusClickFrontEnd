@@ -9,7 +9,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class CityService {
     
-    private apiUrl = environment.devApiUrl+"/cities";
+    private apiUrl = environment.apiUrlBase+"/cities";
     
     constructor(private http: HttpClient) {
 

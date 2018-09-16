@@ -10,6 +10,6 @@ export class SearchService {
 
   saveAnother(newProfession: Search):void{
     const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});          
-    this.http.post(environment.devApiUrl+"/searches", newProfession, {headers: headers}).subscribe();
+    this.http.post(environment.apiUrlBase+"/searches", newProfession, {headers: headers}).subscribe();
   }
 }

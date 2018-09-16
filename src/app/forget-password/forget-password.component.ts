@@ -29,7 +29,7 @@ export class ForgetPasswordComponent implements OnInit {
     this.loading = true;
     let email=this.mEmail;
     console.log(email);
-    this.http.post(environment.devApiUrl+"/sendResetPasswordEmail",email,{ observe: 'response', responseType: 'text' })
+    this.http.post(environment.apiUrlBase+"/sendResetPasswordEmail",email,{ observe: 'response', responseType: 'text' })
     .subscribe(response => {
       this.loading = false;
       if(response.status === 200){

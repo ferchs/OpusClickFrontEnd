@@ -31,7 +31,7 @@ export class ConfirmRegistrationComponent implements OnInit {
       this.expired=false;
       this.error=false;
     });
-    this.http.get(environment.devApiUrl+"/registrationConfirm?type="+this.type+"&verifyCode="+this.token,{ observe: 'response', responseType: 'text' })
+    this.http.get(environment.apiUrlBase+"/registrationConfirm?type="+this.type+"&verifyCode="+this.token,{ observe: 'response', responseType: 'text' })
     .subscribe(response => {
       if(response.status === 200){
         this.sucess=true;

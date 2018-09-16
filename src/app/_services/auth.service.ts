@@ -18,7 +18,7 @@ export class AuthService {
     constructor(private http: HttpClient) { }
     
     login(email:string, password:string, userLogin:boolean):Observable<number>{
-        return this.http.post('http://localhost:8083/login',{email, password, userLogin},{observe: 'response'})
+        return this.http.post(environment.loginUrl,{email, password, userLogin},{observe: 'response'})
         .pipe(
             map((res:HttpResponse<Token>) => {  
                 this.setSession(res,userLogin);

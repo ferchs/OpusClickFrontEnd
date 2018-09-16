@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class VisitService {
 
-  private apiUrl = environment.devApiUrl+"/visits";
+  private apiUrl = environment.apiUrlBase+"/visits";
 
   constructor(private http: HttpClient) { }
 

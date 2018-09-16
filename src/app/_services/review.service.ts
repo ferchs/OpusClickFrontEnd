@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ReviewService {
 
-    private apiUrl = environment.devApiUrl+"/reviews";
+    private apiUrl = environment.apiUrlBase+"/reviews";
 
     constructor(private http: HttpClient) { }
 

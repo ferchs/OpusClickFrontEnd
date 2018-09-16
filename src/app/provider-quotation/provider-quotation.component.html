@@ -170,8 +170,8 @@
                     #workDescription="ngModel"
                     [ngClass]="{'is-valid': workDescription.valid && workDescription.touched, 'is-invalid': workDescription.invalid && workDescription.touched}">
                   </textarea>
-                  <small *ngIf="workDescription.untouched || workDescription.valid && workDescription.touched" class="form-text text-muted">Se conciso en la descripción, esto ayuda a nuestros expertos a estar preparados el día de la visita.</small>
-                  <small *ngIf="workDescription.invalid && workDescription.touched" class="form-text text-muted-error">Debes describir el trabajo a realizar</small>
+                  <small *ngIf="workDescription.untouched || workDescription.valid && workDescription.touched" class="form-text text-muted">Describe detalladamente el trabajo que vas a realizar incluyendo el tipo de materiales a utilizar.</small>
+                  <small *ngIf="workDescription.invalid && workDescription.touched" class="form-text text-muted-error">Debes describir el trabajo a realizar.</small>
                 </div>
                 <div class="col-lg-6">
                   <label for="description">Condiciones de garantía</label>
@@ -185,8 +185,8 @@
                     #warrantyDescription="ngModel"
                     [ngClass]="{'is-valid': warrantyDescription.valid && warrantyDescription.touched, 'is-invalid': warrantyDescription.invalid && warrantyDescription.touched}">
                   </textarea>
-                  <small *ngIf="warrantyDescription.untouched || warrantyDescription.valid && warrantyDescription.touched" class="form-text text-muted">Se conciso en la descripción, esto ayuda a nuestros expertos a estar preparados el día de la visita.</small>
-                  <small *ngIf="warrantyDescription.invalid && warrantyDescription.touched" class="form-text text-muted-error">Debes describir el trabajo a realizar</small>
+                  <small *ngIf="warrantyDescription.untouched || warrantyDescription.valid && warrantyDescription.touched" class="form-text text-muted">Indica las condiciones principales por las cúales puedes dar garantía por tu trabajo.</small>
+                  <small *ngIf="warrantyDescription.invalid && warrantyDescription.touched" class="form-text text-muted-error">Debes describir las condiciones de garantía.</small>
                 </div>
                 <hr class="col-lg-12">
               </div>
@@ -238,7 +238,7 @@
                   name="comment{{i}}"
                   #comment="ngModel">
                 </textarea>
-                <small class="form-text text-muted">Se conciso en la descripción, esto ayuda a nuestros expertos a estar preparados el día de la visita.</small>
+                <small class="form-text text-muted">Si debes hacer modificaciones al diseño, debes describirlas por ejemplo: cambio de color, adición al diseño etc.</small>
             </div>
         </div>
         <hr class="col-lg-12">
@@ -274,7 +274,7 @@
                 name="clarifications"
                 #clarifications="ngModel">
               </textarea>
-              <small class="form-text text-muted">Se conciso en la descripción, esto ayuda a nuestros expertos a estar preparados el día de la visita.</small>
+              <small class="form-text text-muted">Si deseas agregar comentarios adicionales o aclaraciones sobre la cotización debes indicarlos.</small>
             </div>
           </div>
           <hr class="col-lg-12">
