@@ -34,7 +34,8 @@ export class AuthService {
       }
 
     private setSession(authResult:HttpResponse<Token>,userLogin:boolean) {
-        const expiresAt = moment().add(authResult.body.expiresIn,'milliseconds');
+        //const expiresAt = moment().add(authResult.body.expiresIn,'milliseconds');
+        const expiresAt = moment(authResult.body.expiresIn);
         localStorage.setItem('id_token', authResult.headers.get('Authorization'));
         localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
         if(userLogin){
@@ -66,7 +67,16 @@ export class AuthService {
     }
 
     public isLoggedIn() {
-        return moment().isBefore(this.getExpiration());
+        if(this.getExpiration()!=null){
+            if(moment().isBefore(this.getExpiration())){
+                return true;
+            }else{
+                this.logout();
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
     isLoggedOut() {
@@ -74,8 +84,12 @@ export class AuthService {
     }
 
     getExpiration() {
-        const expiration = localStorage.getItem("expires_at");
-        const expiresAt = JSON.parse(expiration);
-        return moment(expiresAt);
+        if(localStorage.getItem("expires_at")!= null){
+            const expiration = localStorage.getItem("expires_at");
+            const expiresAt = JSON.parse(expiration);
+            return moment(expiresAt);
+        } else{
+            return null;
+        }
     }   
 }

@@ -76,10 +76,10 @@ export class LoginComponent implements OnInit {
       if(error===409){
         this.error=true;
         if(this.userLogin){
-          this.errorMessage="Email no asociado al rol usuario";
+          this.errorMessage="Haz click en el boton Expertos para iniciar sesion";
         }
         else{
-          this.errorMessage="Email no asociado al rol experto";
+          this.errorMessage="Haz click en el boton Usuarios para iniciar sesion";
         }
        }
        else if(error===404){

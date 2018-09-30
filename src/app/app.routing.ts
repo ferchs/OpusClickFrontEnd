@@ -56,8 +56,9 @@ const appRoutes: Routes = [
     {path:'entrar', component: LoginComponent},
     {path:'confirmar_registro', component: ConfirmRegistrationComponent},
     {path:'dashboard_usuario', component: UserDashboardComponent,
+    canActivateChild: [AuthGuard],
         children: [
-            { path: 'cuenta', component: UserDashboardHomeComponent },
+            { path: 'cuenta', component: UserDashboardHomeComponent},
             { path: 'perfil', component:  UserDashboardProfileComponent},
             { path: 'perfil/editar', component: UserDashboardProfileEditComponent},
             { path: 'visitas/pendientes', component: UserDashboardVisitPendingComponent},
@@ -65,9 +66,10 @@ const appRoutes: Routes = [
             { path: 'visitas/incumplidas', component: UserDashboardVisitUnfulfilledComponent},
             { path: 'negociaciones/en_proceso', component: UserDashboardNegotiationPendingComponent},
             { path: 'negociaciones/concretadas', component: UserDashboardNegotiationConcretedComponent}
-        ], canActivate: [AuthGuard]
+        ]
     },
     {path:'dashboard_experto', component: ProviderDashboardComponent,
+    canActivateChild: [AuthGuard],
         children: [
             { path: 'cuenta', component: ProviderDashboardHomeComponent },
             { path: 'perfil', component:  ProviderDashboardProfileComponent},
@@ -77,23 +79,23 @@ const appRoutes: Routes = [
             { path: 'visitas/incumplidas', component: ProviderDashboardVisitUnfulfilledComponent},
             { path: 'negociaciones/en_proceso', component: ProviderDashboardNegotiationPendingComponent},
             { path: 'negociaciones/concretadas', component: ProviderDashboardNegotiationConcretedComponent}
-        ], canActivate: [AuthGuard]
+        ]
     },
     {path:'expertos', component: ProviderListComponent},
     {path:'visitas', component: RequestVisitComponent, canActivate: [AuthGuard]},
-    {path:'ver_perfil', component: ProviderViewCompleteProfileComponent},
-    {path:'cotizacion_virtual', component: UserOnlineQuoteComponent},
-    {path:'cotizar', component: ProviderQuotationComponent},
-    {path:'ver_propuesta', component: UserViewQuotationComponent},
-    {path:'ver_cotizacion', component: ProviderViewQuotationComponent},
-    {path:'definir_contrato', component: UserManageContractComponent},
-    {path:'concretar_contrato', component: ProviderManageContractComponent},
-    {path:'redefinir_contrato', component: UserSpecifyContractComponent},
-    {path:'ver_contrato', component: ViewContractComponent},
-    {path:'ver_detalles_contrato', component: ViewSignedContractComponent},
-    {path:'solicitar_pago', component: ProviderRequestPaymentComponent},
-    {path:'autorizar_pagos', component: UserApprovePaymentComponent},
-    {path:'calificar', component: ReviewComponent},
+    {path:'ver_perfil', component: ProviderViewCompleteProfileComponent, canActivate: [AuthGuard]},
+    {path:'cotizacion_virtual', component: UserOnlineQuoteComponent, canActivate: [AuthGuard]},
+    {path:'cotizar', component: ProviderQuotationComponent, canActivate: [AuthGuard]},
+    {path:'ver_propuesta', component: UserViewQuotationComponent, canActivate: [AuthGuard]},
+    {path:'ver_cotizacion', component: ProviderViewQuotationComponent, canActivate: [AuthGuard]},
+    {path:'definir_contrato', component: UserManageContractComponent, canActivate: [AuthGuard]},
+    {path:'concretar_contrato', component: ProviderManageContractComponent, canActivate: [AuthGuard]},
+    {path:'redefinir_contrato', component: UserSpecifyContractComponent, canActivate: [AuthGuard]},
+    {path:'ver_contrato', component: ViewContractComponent, canActivate: [AuthGuard]},
+    {path:'ver_detalles_contrato', component: ViewSignedContractComponent, canActivate: [AuthGuard]},
+    {path:'solicitar_pago', component: ProviderRequestPaymentComponent, canActivate: [AuthGuard]},
+    {path:'autorizar_pagos', component: UserApprovePaymentComponent, canActivate: [AuthGuard]},
+    {path:'calificar', component: ReviewComponent, canActivate: [AuthGuard]},
     {path: 'externalRedirect',
         resolve: {
             url: externalUrlProvider,

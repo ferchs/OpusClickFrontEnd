@@ -42,13 +42,21 @@ export class ContractService {
         );
       }
     
-    updateContractMilestones(contractId:number,chargedContract:ContractGetDto){
-        const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});          
+    updateContractMilestones(contractId:number,chargedContract:ContractGetDto,operation:string){
+      const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'}); 
+      if(operation!=null || operation!=undefined ){
+        return this.http.put(this.apiUrl+"/"+contractId+"/milestones?operation="+operation,chargedContract,{headers: headers, observe: 'response', responseType: 'text'})
+        .pipe(
+          map(response => { return response.status;}),
+          catchError(this.handleError)
+        );
+      }else{
         return this.http.put(this.apiUrl+"/"+contractId+"/milestones",chargedContract,{headers: headers, observe: 'response', responseType: 'text'})
         .pipe(
           map(response => { return response.status;}),
           catchError(this.handleError)
         );
+      }
       }
     
     private handleError (error: Response) {

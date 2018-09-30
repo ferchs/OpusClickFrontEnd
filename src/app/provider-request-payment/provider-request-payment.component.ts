@@ -73,7 +73,7 @@ export class ProviderRequestPaymentComponent implements OnInit {
           milestone.state="FINALIZED";
         }
       }
-      this.contractService.updateContractMilestones(this.contract.id,this.chargedContract).subscribe(res=>{
+      this.contractService.updateContractMilestones(this.contract.id,this.chargedContract,"requestPayment").subscribe(res=>{
         this.contractService.getContract(this.contractId).subscribe((contract:ContractGetDto)=>
         {
           this.contract=contract;

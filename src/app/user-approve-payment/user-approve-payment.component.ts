@@ -63,7 +63,7 @@ export class UserApprovePaymentComponent implements OnInit {
     modalRef.componentInstance.result.subscribe(response=>{
       if(response==true){
         milestone.state="PAID_OUT";
-        this.contractService.updateContractMilestones(+this.contractId,this.contract).subscribe(response=>{
+        this.contractService.updateContractMilestones(+this.contractId,this.contract,"authorizePayment").subscribe(response=>{
           this.contractService.getContract(this.contractId).subscribe((contract:ContractGetDto)=>
           {
             this.contract=contract;
@@ -87,7 +87,7 @@ export class UserApprovePaymentComponent implements OnInit {
     modalRef.componentInstance.result.subscribe(response=>{
       if(response==true){
         milestone.state="DENIED";
-        this.contractService.updateContractMilestones(+this.contractId,this.contract).subscribe(response=>{
+        this.contractService.updateContractMilestones(+this.contractId,this.contract,"denyPayment").subscribe(response=>{
           this.contractService.getContract(this.contractId).subscribe((contract:ContractGetDto)=>
             {
               this.contract=contract;
