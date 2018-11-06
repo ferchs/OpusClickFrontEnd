@@ -84,7 +84,7 @@ export class ProviderQuotationComponent implements OnInit {
     this.quote.items.forEach((element:Item) => {
       this.quote.subtotal+=element.value;
     });
-    this.quote.administrationFee=Math.trunc(this.quote.subtotal*0.05);
+    this.quote.administrationFee=Math.trunc(this.quote.subtotal*0.1);
     this.quote.total=this.quote.subtotal+this.quote.administrationFee;
   }
 

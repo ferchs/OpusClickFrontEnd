@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/observable/throw';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class UserService {
@@ -75,6 +76,14 @@ export class UserService {
       map(response => { return response.status;}),
       catchError(this.handleError)
     );
+  }
+
+  isFirtsService(idUser:number){
+    let firtsService= new Subject<boolean>();
+    this.http.get(this.apiUrl+`/${idUser}/bills`).subscribe((res:boolean)=>{
+      firtsService.next(!res);
+    });
+    return firtsService.asObservable();
   }
 
 }

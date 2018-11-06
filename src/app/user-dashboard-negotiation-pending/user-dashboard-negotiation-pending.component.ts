@@ -6,6 +6,10 @@ import { WorkUpdateDto } from "../_dtos/workUpdateDto";
 import { DetailsWorkModalComponent } from '../details-work-modal/details-work-modal.component';
 import { NoAgreementModalComponent } from '../no-agreement-modal/no-agreement-modal.component';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
+import { PaymentService } from '../_services/payment.service';
+import { ContractService } from '../_services/contract.service';
+import { Router } from '@angular/router';
+import { ContractGetDto } from '../_dtos/contractGetDto';
 
 @Component({
   selector: 'app-user-dashboard-negotiation-pending',
@@ -22,7 +26,11 @@ export class UserDashboardNegotiationPendingComponent implements OnInit {
   notificationType:string;
   now:Date;
 
-  constructor(private workService:WorkService, private modalService: NgbModal) { }
+  constructor(private workService:WorkService,
+    private paymentService:PaymentService,
+    private contractService:ContractService,
+    private router: Router,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.loading=true;
@@ -76,16 +84,10 @@ export class UserDashboardNegotiationPendingComponent implements OnInit {
   }
 
   makePayment(work){
-    let dto:WorkUpdateDto = new WorkUpdateDto();
-    dto.id=work.id;
-    dto.providerLabel=work.providerLabel;
-    dto.userLabel=work.providerLabel;
-    dto.comment=work.comment;
-    dto.state="IN_PROGRESS";
-    this.workService.updateWork(dto).subscribe(res =>
-      {
-        console.log(res)
-      });
+    this.loading=true;
+    this.contractService.getContract(work.contractId).subscribe((contract:ContractGetDto)=>{
+      this.paymentService.makePayment(work.id,contract.totalValue,contract.name);
+    });
   }
 
   isEmptyWorks(){
@@ -98,6 +100,17 @@ export class UserDashboardNegotiationPendingComponent implements OnInit {
       }
     }
     return empty;
+  }
+
+  cancelContract(idContract:string){
+    this.contractService.deleteContract(idContract).subscribe(()=>{
+      this.notificationMessage="¡El contrato ha sido cancelado!";
+      this.notificationType="info";
+      this.hideNotification=false;
+      setTimeout(()=>{ this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["/dashboard_usuario/negociaciones/en_proceso"])); }, 3000)
+    });
+
   }
 
 }

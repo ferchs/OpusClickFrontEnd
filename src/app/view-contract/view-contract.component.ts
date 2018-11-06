@@ -7,6 +7,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ContractService } from '../_services/contract.service';
 import { ContractGetDto } from '../_dtos/contractGetDto';
 import {Location} from '@angular/common';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-view-contract',
@@ -20,9 +21,13 @@ export class ViewContractComponent implements OnInit {
   loggedIn:boolean;
   contractId:string;
   contract:ContractGetDto;
+  isFirtsService:boolean;
 
-  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
-    private modalService: NgbModal, private contractService:ContractService,
+
+  constructor(private authService: AuthService, 
+    private activatedRoute: ActivatedRoute,
+    private modalService: NgbModal, 
+    private contractService:ContractService,
     private location:Location) { 
   }
 
@@ -47,6 +52,14 @@ export class ViewContractComponent implements OnInit {
     const modalRef = this.modalService.open(DetailsQuotationModalComponent);
     modalRef.componentInstance.title = 'Detalles de item';
     modalRef.componentInstance.item = item;
+  }
+
+  isFirstService(){
+    if((this.contract.subtotal+this.contract.administrationFee)!=this.contract.totalValue){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   back(){

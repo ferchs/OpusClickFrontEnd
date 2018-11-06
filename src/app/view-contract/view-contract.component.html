@@ -81,17 +81,63 @@
       <div class="my-2"></div>
       <div class="container">
           <div class="row">
-            <div class="col-lg-12">
-                <p><strong>Subtotal:</strong>   $ {{contract.subtotal | number:0}}</p>
+            <div class="col-1 col-lg-8"></div>
+            <div class="col-11 col-lg-4">
+                <div class="row">
+                    <div class="col-7 col-lg-7">
+                        <p class="text-left"><strong>Subtotal:</strong></p>
+                    </div>
+                    <div class="col-5 col-lg-5">
+                        <p class="text-right">$ {{contract.subtotal | number:'1.0-2'}}</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-12">
-                <p><strong>Costo administración:</strong>  $ {{contract.administrationFee | number:0}}</p>
+            <div class="col-1 col-lg-8"></div>
+            <div class="col-11 col-lg-4">
+                <div class="row">
+                    <div class="col-7 col-lg-7">
+                        <p class="text-left"><strong>Tarifa de servicio:</strong></p>
+                    </div>
+                    <div class="col-5 col-lg-5">
+                        <p class="text-right">$ {{contract.administrationFee | number:'1.0-2'}}</p>
+                    </div>
+                </div>
+            </div> 
+            <div *ngIf="isFirstService()" class="col-1 col-lg-8"></div>
+            <div *ngIf="isFirstService()"class="col-11 col-lg-4">
+                <div class="row">
+                    <div class="col-7 col-lg-7 d-inline">
+                        <div class="d-inline">
+                          <p class="text-left no-line-break"><strong>Descuento:</strong> (8%)</p>
+                          <p class="info">Servicio inicial</p>
+                        </div>
+                    </div>
+                    <div class="col-5 col-lg-5">
+                        <p class="text-right green-text">
+                          - $ {{(contract.subtotal+contract.administrationFee)*0.08 | number:'1.0-2'}}
+                        </p>
+                    </div>
+                </div>
+            </div>            
+            <div class="col-1 col-lg-8">
             </div>
-            <div class="col-lg-12">
-                <p><strong>Valor total:</strong>  $ {{contract.totalValue | number:0}}</p>
+            <div class="col-11 col-lg-4">
+                <hr>
+            </div>
+            <div class="col-1 col-lg-8"></div>
+            <div class="col-11 col-lg-4">
+                <div class="row">
+                    <div class="col-7 col-lg-7">
+                        <p class="text-left"><strong>Valor total:</strong></p>
+                    </div>
+                    <div class="col-5 col-lg-5">
+                        <p class="text-right">$ {{contract.totalValue | number:'1.0-2'}}</p>
+                    </div>
+                </div>
             </div>
           </div>
       </div>
+      <div class="my-3"></div>
         <div class="text-center">
             <button 
                 (click)='back()' 

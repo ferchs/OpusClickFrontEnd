@@ -187,3 +187,13 @@ td{
   text-align: justify!important;
   font-size: 20px!important;
 }
+
+
+p{
+  margin-bottom: 0px;
+}
+
+hr {
+ margin-top: 0.3rem;
+ margin-bottom: 0.3rem;
+} 

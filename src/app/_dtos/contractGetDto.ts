@@ -6,6 +6,8 @@ export class ContractGetDto {
 	
 	public contractNumber:string;
 	
+	public name:string;
+
 	public creationDate:number;
 	
 	public startDate:number;
@@ -30,6 +32,7 @@ export class ContractGetDto {
 	constructor(){
 		this.id=0;
 		this.contractNumber="";
+		this.name="";
 		this.creationDate=0;
 		this.startDate=0;
 		this.endDate=0;

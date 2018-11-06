@@ -21,6 +21,7 @@
                     <span *ngIf='work.state=="CONTRACT_MODIFIED_BY_USER"' class="badge badge-warning">Propuesta de contrato</span>
                     <span *ngIf='work.state=="CONTRACT_ACCEPTED_BY_PROVIDER"' class="badge badge-success">Contrato aceptado</span>
                     <span *ngIf='work.state=="CONTRACT_MODIFIED_BY_PROVIDER"' class="badge badge-info">Contrato modificado</span>
+                    <span *ngIf='work.state=="PENDING_BY_PAYMENT"' class="badge badge-success">Pendiente por pago</span>
                 </td>
                 <td>
                   <app-inline-edit [value]='work.providerLabel' (newValue)="newLabelChange($event,work)"></app-inline-edit>
@@ -103,7 +104,22 @@
                       </button>
                       <button class="dropdown-item" type="button" (click)="terminateWork(work)">Terminar</button>
                     </div>
+                  </div>
+                  <div *ngIf='work.state=="PENDING_BY_PAYMENT"'
+                      class="btn-group dropleft">
+                    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Opciones
+                    </button>
+                    <div class="dropdown-menu">
+                      <button class="dropdown-item" 
+                      type="button" 
+                      [routerLink]="['/ver_contrato']" 
+                      [queryParams]="{contract:work.contractId}">
+                        Ver Contrato
+                      </button>
+                      <button class="dropdown-item" type="button" (click)="terminateWork(work)">Terminar</button>
                     </div>
+                  </div>
                 </td>
               </tr>
               <div *ngIf="isEmptyWorks()">

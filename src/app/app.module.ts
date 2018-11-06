@@ -27,6 +27,7 @@ import { DynamicFormService } from './_services/dynamic-form.service';
 import { ProviderQuoteService } from './_services/provider-quote.service';
 import { ContractService } from './_services/contract.service';
 import { ReviewService } from './_services/review.service';
+import { PaymentService } from './_services/payment.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AccountCreatedComponent } from './account-created/account-created.component';
@@ -106,6 +107,7 @@ import { ProviderViewCompleteProfileComponent } from './provider-view-complete-p
 import { NgxGalleryModule } from 'ngx-gallery';
 import { ProviderDashboardNegotiationFinishedComponent } from './provider-dashboard-negotiation-finished/provider-dashboard-negotiation-finished.component';
 import { UserDashboardNegotiationFinishedComponent } from './user-dashboard-negotiation-finished/user-dashboard-negotiation-finished.component';
+import { UserPaymentSummaryComponent } from './user-payment-summary/user-payment-summary.component';
 
 @NgModule({
   declarations: [
@@ -183,7 +185,8 @@ import { UserDashboardNegotiationFinishedComponent } from './user-dashboard-nego
     OpenLinkInNewWindowDirective,
     ProviderViewCompleteProfileComponent,
     ProviderDashboardNegotiationFinishedComponent,
-    UserDashboardNegotiationFinishedComponent
+    UserDashboardNegotiationFinishedComponent,
+    UserPaymentSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -220,7 +223,7 @@ import { UserDashboardNegotiationFinishedComponent } from './user-dashboard-nego
     AccountService, UserService, ProviderService, CityService, DataService,
     DataProviderService,ProfessionService, SearchService, 
     AuthGuard, AuthService,VisitService,WorkService, DynamicFormService,
-    ProviderQuoteService,ContractService,ReviewService],
+    ProviderQuoteService,ContractService,ReviewService,PaymentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

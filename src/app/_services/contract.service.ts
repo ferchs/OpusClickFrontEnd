@@ -58,6 +58,10 @@ export class ContractService {
         );
       }
       }
+
+    deleteContract(id:string){
+      return this.http.delete(this.apiUrl+"/"+id);
+    }
     
     private handleError (error: Response) {
         console.log("Se esta manejando un error");

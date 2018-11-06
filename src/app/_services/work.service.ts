@@ -5,6 +5,8 @@ import { WorkGetDto } from "../_dtos/workGetDto";
 import { WorkUpdateDto } from "../_dtos/workUpdateDto";
 import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
+import { ContractGetDto } from '../_dtos/contractGetDto';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class WorkService {
@@ -46,4 +48,15 @@ export class WorkService {
         );
       }
 
+      existsContractInWork(idWork:number){ 
+        let subject = new Subject<boolean>();
+        this.http.get(this.apiUrl+'/'+idWork+''+'/contracts').subscribe(contract=>{
+          if(contract==null || contract==undefined){
+            subject.next(false);
+          }else{
+            subject.next(true);
+          }
+        });
+        return subject.asObservable();
+      }
 }

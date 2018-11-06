@@ -42,6 +42,7 @@ import { ProviderManageContractComponent } from './provider-manage-contract/prov
 import { UserSpecifyContractComponent } from './user-specify-contract/user-specify-contract.component';
 import { UserApprovePaymentComponent } from './user-approve-payment/user-approve-payment.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { UserPaymentSummaryComponent } from './user-payment-summary/user-payment-summary.component';
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
@@ -96,6 +97,7 @@ const appRoutes: Routes = [
     {path:'solicitar_pago', component: ProviderRequestPaymentComponent, canActivate: [AuthGuard]},
     {path:'autorizar_pagos', component: UserApprovePaymentComponent, canActivate: [AuthGuard]},
     {path:'calificar', component: ReviewComponent, canActivate: [AuthGuard]},
+    {path:'resumen_pago', component: UserPaymentSummaryComponent, canActivate: [AuthGuard]},
     {path: 'externalRedirect',
         resolve: {
             url: externalUrlProvider,

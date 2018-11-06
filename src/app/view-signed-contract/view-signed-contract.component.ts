@@ -49,6 +49,14 @@ export class ViewSignedContractComponent implements OnInit {
     modalRef.componentInstance.item = item;
   }
 
+  isFirstService(){
+    if((this.contract.subtotal+this.contract.administrationFee)!=this.contract.totalValue){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  
   back(){
     this.location.back();
   }

@@ -14,6 +14,9 @@ import { ContractDto } from '../_dtos/contractDto';
 import { WorkUpdateDto } from "../_dtos/workUpdateDto";
 import { WorkService } from "../_services/work.service";
 import { WorkGetDto } from "../_dtos/workGetDto";
+import { PaymentService } from '../_services/payment.service';
+import { ContractGetDto } from '../_dtos/contractGetDto';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-user-manage-contract',
@@ -25,6 +28,7 @@ export class UserManageContractComponent implements OnInit {
   loading:boolean;
   submited:boolean;
   loggedIn:boolean;
+  isUserFirtsService:boolean;
   workId:string;
   providerQuote:ProviderQuoteDto;
   totalPage:number;
@@ -43,9 +47,16 @@ export class UserManageContractComponent implements OnInit {
   sendContractProvider:boolean;
   paymentMade:boolean;
 
-  constructor(private authService: AuthService, private providerQuoteService:ProviderQuoteService,
-    private location:Location, private activatedRoute: ActivatedRoute,private modalService: NgbModal,
-    private domSanitizer: DomSanitizer, private contractService:ContractService,private workService:WorkService) { 
+  constructor(private authService: AuthService, 
+    private providerQuoteService:ProviderQuoteService,
+    private location:Location, 
+    private activatedRoute: ActivatedRoute,
+    private modalService: NgbModal,
+    private domSanitizer: DomSanitizer, 
+    private contractService:ContractService,
+    private workService:WorkService,
+    private userService:UserService,
+    private paymentService:PaymentService) { 
   }
 
   ngOnInit() {
@@ -58,6 +69,10 @@ export class UserManageContractComponent implements OnInit {
     this.milestones= new Array<Milestone>();
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.workId=params['work'];
+    });
+    this.userService.isFirtsService(+localStorage.getItem("id_user")).subscribe(firtsService=>{
+      console.log(firtsService)
+      this.isUserFirtsService=firtsService;
     });
     this.providerQuoteService.getProviderQuote(this.workId)
     .subscribe((quote:ProviderQuoteDto)=>
@@ -163,6 +178,7 @@ export class UserManageContractComponent implements OnInit {
     }
   }
 
+
   generateContract(contractState:string,milestoneState:string){
     this.contract=new ContractDto();
     this.milestones= new Array<Milestone>();
@@ -191,15 +207,20 @@ export class UserManageContractComponent implements OnInit {
     }
     this.contract.name=this.mName;
     this.contract.milestones=this.milestones;
-    this.contract.administrationFee=Math.trunc(this.contract.subtotal*0.05);
-    this.contract.totalValue=this.contract.subtotal+this.contract.administrationFee; 
+    this.contract.administrationFee=+(this.contract.subtotal*0.1).toFixed(2);
+    let partialTotal=this.contract.subtotal+this.contract.administrationFee;
+    this.contract.totalValue=this.isFirstService()?+(partialTotal-(partialTotal*0.08)).toFixed(2):+partialTotal.toFixed(2); 
     this.contract.clarifications=this.providerQuote.clarifications;
     this.contract.state=contractState;
   }
 
+  isFirstService(){
+    return this.isUserFirtsService;
+  }
+
   sendContract(){
     this.loading=true;
-    this.contractService.createContract(this.contract,this.workId).subscribe(res=>{
+    this.contractService.createContract(this.contract,this.workId).subscribe(()=>{
       this.loading=false;
       this.sendContractProvider=true;
     });
@@ -207,7 +228,12 @@ export class UserManageContractComponent implements OnInit {
 
   makePayment(){
     this.loading=true;
-    this.contractService.createContract(this.contract,this.workId).subscribe(res=>{
+    this.contractService.createContract(this.contract,this.workId).subscribe(()=>{
+    this.paymentService.makePayment(this.workId,this.contract.totalValue,this.contract.name);
+    })
+  }
+
+  /*this.contractService.createContract(this.contract,this.workId).subscribe(()=>{
       this.workService.getWorkById(this.workId).subscribe((work:WorkGetDto)=>{
         let dto:WorkUpdateDto = new WorkUpdateDto();
         dto.id=+this.workId;
@@ -215,12 +241,11 @@ export class UserManageContractComponent implements OnInit {
         dto.userLabel=work.providerLabel;
         dto.comment=work.comment;
         dto.state="IN_PROGRESS";
-        this.workService.updateWork(dto).subscribe(res=>{
+        this.workService.updateWork(dto).subscribe(()=>{
           this.loading=false
           this.paymentMade=true;
         });
       });
-    });
-  }
+    }); */
 
 }

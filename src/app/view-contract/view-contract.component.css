@@ -37,9 +37,21 @@
     white-space: nowrap;
    }
 
-   p{
-     margin-bottom: 0px;
-   }
+  p{
+    margin-bottom: 0px;
+  }
+
+  hr {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .info{
+    color:#99979c;
+    font-size: 11px;
+    margin-top: 0;
+    margin-bottom: 0;
+  } 
 
   .btn-sm {
     padding: .20rem .5rem;
@@ -63,4 +75,8 @@
 
   .link-popover:hover{
     text-decoration: underline;
+  }
+
+  .green-text{
+    color:#28a745;
   }

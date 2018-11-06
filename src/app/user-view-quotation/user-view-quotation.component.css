@@ -64,3 +64,8 @@
   .link-popover:hover{
     text-decoration: underline;
   }
+
+  hr {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+  }

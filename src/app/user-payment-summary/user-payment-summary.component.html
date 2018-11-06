@@ -1,0 +1,80 @@
+<app-navbar [loggedIn]=loggedIn></app-navbar>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+<div class="space"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h5 class="text-center">Resumen de la transacción</h5>
+      </div>
+    </div> 
+    <div class="my-2"></div>
+    <div *ngIf="transactionState==1" class="col-lg-12 text-center">
+      <img src="../../assets/success.svg" width="25" height="25">
+      <span class="text-center">Exitosa</span>
+    </div>
+
+    <div *ngIf="transactionState==0" class="col-lg-12 text-center">
+      <img src="../../assets/warning.svg" width="25" height="25">
+      <span class="text-center">Pendiente</span>
+    </div>
+
+    <div *ngIf="transactionState==-1 || transactionState==2 || transactionState==3" class="col-lg-12 text-center">
+        <img src="../../assets/error.svg" width="25" height="25">
+        <span class="text-center">Fallida</span>
+    </div>
+    <div class="my-5"></div>
+    <div class="row">
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-2 text-center">
+        <p>Fecha:</p>
+      </div>
+      <div class="col-lg-2 text-center">
+        <p>{{now | date:'dd-MM-yyyy'}}</p>
+      </div>
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-2 text-center">
+        <p>Factura No.:</p>
+      </div>
+      <div class="col-lg-2 text-center">
+        <p>{{billCode}}</p>
+      </div>
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-2 text-center">
+        <p>Valor:</p>
+      </div>
+      <div class="col-lg-2 text-center">
+        <p>$ {{billValue}}</p>
+      </div>
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-2 text-center">
+        <p>Medio de pago:</p>
+      </div>
+      <div class="col-lg-2 text-center">
+        <p>{{paymentMethod}}</p>
+      </div>
+      <div class="col-lg-4">
+      </div>
+    </div>
+    <div class="my-4"></div>
+    <div class="row">
+      <div *ngIf="transactionState!=1" class="col-lg-12 text-center">
+        <button type="button" class="btn btn-outline-dark" [routerLink]="['/dashboard_usuario/negociaciones/en_proceso']">Volver a mis negociaciones</button>
+      </div>
+      <div *ngIf="transactionState==1" class="col-lg-12 text-center">
+          <button type="button" class="btn btn-outline-dark" [routerLink]="['/dashboard_usuario/negociaciones/concretadas']">Volver a mis negociaciones</button>
+      </div>
+    </div>
+  </div>
+
+
+

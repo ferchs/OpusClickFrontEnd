@@ -38,8 +38,13 @@
    }
 
    p{
-     margin-bottom: 0px;
-   }
+    margin-bottom: 0px;
+  }
+
+  hr {
+   margin-top: 0.3rem;
+   margin-bottom: 0.3rem;
+ } 
 
   .btn-sm {
     padding: .20rem .5rem;

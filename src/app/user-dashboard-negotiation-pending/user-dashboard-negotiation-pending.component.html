@@ -88,9 +88,20 @@
                     </button>
                     <div class="dropdown-menu">
                       <button class="dropdown-item" 
+                        type="button" 
+                        [routerLink]="['/ver_contrato']" 
+                        [queryParams]="{contract:work.contractId}">
+                          Ver Contrato
+                      </button>
+                      <button class="dropdown-item" 
                       type="button"
                       (click)="makePayment(work)">
-                       Realizar Pago
+                       Reintentar Pago
+                      </button>
+                      <button class="dropdown-item" 
+                      type="button"
+                      (click)="cancelContract(work.contractId)">
+                       Cancelar Contrato
                       </button>
                       <button class="dropdown-item" type="button" (click)="terminateWork(work)">Terminar</button>
                     </div>

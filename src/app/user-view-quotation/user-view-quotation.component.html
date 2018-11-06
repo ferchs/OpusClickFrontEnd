@@ -80,14 +80,43 @@
       <div class="my-2"></div>
       <div class="container">
           <div class="row">
-            <div class="col-lg-12">
-                <p><strong>Subtotal:</strong>   $ {{providerQuote.subtotal | number:0}}</p>
+            <div class="col-2 col-lg-8"></div>
+            <div class="col-10 col-lg-4">
+                <div class="row">
+                    <div class="col-7 col-lg-7">
+                        <p class="text-left"><strong>Subtotal:</strong></p>
+                    </div>
+                    <div class="col-5 col-lg-5">
+                        <p class="text-right">$ {{providerQuote.subtotal | number:0}}</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-12">
-                <p><strong>Costo administración:</strong>  $ {{providerQuote.administrationFee | number:0}}</p>
+            <div class="col-2 col-lg-8"></div>
+            <div class="col-10 col-lg-4">
+                <div class="row">
+                    <div class="col-7 col-lg-7">
+                        <p class="text-left"><strong>Tarifa de servicio:</strong></p>
+                    </div>
+                    <div class="col-5 col-lg-5">
+                        <p class="text-right">$ {{providerQuote.administrationFee | number:0}}</p>
+                    </div>
+                </div>
+            </div>            
+            <div class="col-2 col-lg-8">
             </div>
-            <div class="col-lg-12">
-                <p><strong>Valor total:</strong>  $ {{providerQuote.total | number:0}}</p>
+            <div class="col-10 col-lg-4">
+                <hr>
+            </div>
+            <div class="col-2 col-lg-8"></div>
+            <div class="col-10 col-lg-4">
+                <div class="row">
+                    <div class="col-7 col-lg-7">
+                        <p class="text-left"><strong>Valor total:</strong></p>
+                    </div>
+                    <div class="col-5 col-lg-5">
+                        <p class="text-right">$ {{providerQuote.total | number:0}}</p>
+                    </div>
+                </div>
             </div>
           </div>
       </div>
