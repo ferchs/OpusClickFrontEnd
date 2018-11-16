@@ -108,7 +108,7 @@ export class UserDashboardNegotiationPendingComponent implements OnInit {
       this.notificationType="info";
       this.hideNotification=false;
       setTimeout(()=>{ this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
-      this.router.navigate(["/dashboard_usuario/negociaciones/en_proceso"])); }, 3000)
+      this.router.navigate(["/dashboard_usuario/negociaciones/en_proceso"])); }, 2000)
     });
 
   }

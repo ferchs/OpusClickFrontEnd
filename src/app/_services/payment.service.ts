@@ -15,12 +15,15 @@ export class PaymentService {
     }
 
     makePayment(workId:string,value:number,description:string){
+        let char = / /gi; 
+        let desc = description.replace(char, "%"); 
         $('body').append("<form action='https://gateway2.tucompra.com.co/tc/app/inputs/compra.jsp' method='post' id='payment_form'>"
         +"<input type='hidden' name='usuario' value="+environment.terminalUser+" >"
         +"<input type='hidden' name='factura' value="+this.generateBillNumber()+" >"
         +"<input type='hidden' name='valor' value="+value+" >"
         +"<input type='hidden' name='descripcionFactura' value="+"'"+description+"'"+" >"
         +"<input type='hidden' name='campoExtra1' value="+workId+" >"
+        +"<input type='hidden' name='campoExtra2' value="+desc+" >"
         +"</form>");
         $('#payment_form').submit();
     }

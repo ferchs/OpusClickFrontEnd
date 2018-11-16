@@ -391,6 +391,30 @@ text-align: center;
 	transition:background-color .4s ease-out
 }
 
+.categories-grid li a.not-active{
+	display:block;
+	padding:30px 8px 0;
+	text-align:center;
+	background-color:#f3f3f3!important;
+	height:142px;
+	line-height:18px;
+	text-decoration:none!important;
+	opacity: 0.5!important;
+	pointer-events: none;
+  	cursor: default;
+}
+
+.categories-grid li a.not-active:hover span{
+	color:#404040!important;
+	pointer-events: none;
+  	cursor: default;
+}
+
+span.soon{
+	margin-top:0px!important;
+	font-size: 10px!important;
+}
+
 .categories-grid li a i{
 	display:block;
 	font-size:50px;

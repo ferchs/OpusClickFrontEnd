@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
-  apiUrlBase: 'http://localhost:8083/v1',
-  loginUrl: 'http://localhost:8083/login',
-  //apiUrlBase: 'http://ec2-52-67-210-226.sa-east-1.compute.amazonaws.com:8083/v1',
-  //loginUrl: 'http://ec2-52-67-210-226.sa-east-1.compute.amazonaws.com:8083/login',
+  //apiUrlBase: 'http://localhost:8083/v1',
+  //loginUrl: 'http://localhost:8083/login',
+  apiUrlBase: 'http://ec2-18-228-95-134.sa-east-1.compute.amazonaws.com:8083/v1',
+  loginUrl: 'http://ec2-18-228-95-134.sa-east-1.compute.amazonaws.com:8083/login',
   terminalUser:'c4o1nkdy0zw7hvp5',
   firebase :{
     apiKey: "AIzaSyDESia3jwf8z6wH8U2drp6tJdMExAegOl0",

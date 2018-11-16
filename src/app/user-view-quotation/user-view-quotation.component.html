@@ -123,16 +123,16 @@
       <div class="my-4"></div>
         <div class="text-center">
             <button 
+            (click)='back()' 
+            class="btn btn btn-outline-secondary">
+                Atrás
+            </button>
+            <button 
             [disabled]="providerQuote.items.length < 1"
             [routerLink]="['/definir_contrato']"
             [queryParams]="{work:workId}"
             class="btn btn-outline-success">
               Definir Contrato
-          </button>
-          <button 
-            (click)='back()' 
-            class="btn btn btn-outline-danger">
-              Rechazar
           </button>
         </div>
         <div class="my-1"></div>
@@ -141,14 +141,14 @@
                 ¿Quieres contratar pero tienes alguna duda en esta cotización?
             </p>    
         </div>
-        <div class="my-2"></div>
+        <!--<div class="my-2"></div>
         <div class="text-center">
             <button 
                 (click)='back()' 
                 class="btn btn btn-outline-secondary">
                 Atrás
               </button>
-        </div>
+        </div>-->
     </div>
   
 <!--<div *ngIf="submited==false" class="container">
