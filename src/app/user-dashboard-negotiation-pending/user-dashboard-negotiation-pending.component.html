@@ -19,6 +19,7 @@
                   <span *ngIf='work.state=="PENDING_BY_QUOTATION"' class="badge badge-info">Esperando cotización</span>
                   <span *ngIf='work.state=="QUOTE_MADE"' class="badge badge-info">Cotización realizada</span>
                   <span *ngIf='work.state=="CONTRACT_MODIFIED_BY_USER"' class="badge badge-warning">Contrato Modificado</span>
+                  <span *ngIf='work.state=="CONTRACT_MODIFIED_BY_PROVIDER"' class="badge badge-warning">Propuesta de contrato</span>
                   <span *ngIf='work.state=="CONTRACT_ACCEPTED_BY_PROVIDER"' class="badge badge-success">Contrato Aceptado</span>
                   <span *ngIf='work.state=="PENDING_BY_PAYMENT"' class="badge badge-success">Pendiente por pago</span>
                 </td>

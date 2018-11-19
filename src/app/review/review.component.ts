@@ -60,7 +60,7 @@ export class ReviewComponent implements OnInit {
 
   submit(){
     this.loading=true;
-    this.reviewService.createReview(this.review,this.workId).subscribe(res=>{
+    this.reviewService.createReview(this.review,this.workId).subscribe(()=>{
       this.loading=false;
       this.submited=true;
     });

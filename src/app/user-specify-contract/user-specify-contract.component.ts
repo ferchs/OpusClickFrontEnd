@@ -11,6 +11,7 @@ import { ContractService } from '../_services/contract.service';
 import { DetailsQuotationModalComponent } from '../details-quotation-modal/details-quotation-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
+import { PaymentService } from '../_services/payment.service';
 
 @Component({
   selector: 'app-user-specify-contract',
@@ -37,7 +38,8 @@ export class UserSpecifyContractComponent implements OnInit {
 
   constructor(private authService: AuthService, private location:Location,
     private router: Router, private activatedRoute: ActivatedRoute,private modalService: NgbModal,
-    private domSanitizer: DomSanitizer, private contractService:ContractService) { }
+    private domSanitizer: DomSanitizer, private contractService:ContractService,
+    private paymentService:PaymentService) { }
 
     ngOnInit() {
       this.durationTimes=['Hora(s)','Día(s)','Mes(es)','Año(s)'];
@@ -131,8 +133,7 @@ export class UserSpecifyContractComponent implements OnInit {
           this.loading=true;
           this.contract.state="PENDING_BY_PAYMENT";
           this.contractService.updateContract(this.contract).subscribe(res=>{
-            this.loading=false
-            this.accepted=true;
+            this.paymentService.makePayment(this.workId,this.contract.totalValue,this.contract.name);
           });
         }
       });

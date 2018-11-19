@@ -7,6 +7,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProviderQuoteService } from '../_services/provider-quote.service';
 import { ProviderQuoteDto } from '../_dtos/providerQuoteDto';
 import {Location} from '@angular/common';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-user-view-quotation',
@@ -20,6 +22,7 @@ export class UserViewQuotationComponent implements OnInit {
   loggedIn:boolean;
   workId:string;
   providerQuote:ProviderQuoteDto;
+  supportPhone:string;
 
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
     private modalService: NgbModal, private providerQuoteService:ProviderQuoteService,
@@ -41,6 +44,7 @@ export class UserViewQuotationComponent implements OnInit {
       this.loading=false;
     });
     this.submited=false;
+    this.supportPhone="Número: "+environment.supportPhone;
   }
 
   detailsItem(item:Item){
