@@ -95,9 +95,6 @@ export class UserApprovePaymentComponent implements OnInit {
               this.notificationMessage="¡Se ha denegado el pago del item!";
               this.notificationType="info";
               this.hideNotification=false;
-              if(this.proceedToQualify()){
-                this.router.navigate(['calificar', {work: this.contract.workId}])
-              }
             });
           });
       }

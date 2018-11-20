@@ -27,8 +27,14 @@ export class UserService {
     );
   }
 
-  findById(id: number): Observable<User> {
-    return null;
+  getUserById(id:string): Observable<User> {
+    return this.http.get<UserInformationDto>(this.apiUrl+"/"+id)
+    .pipe(
+      map((userInfo:UserInformationDto)=> { 
+        return userInfo
+      }),
+      catchError(this.handleError)
+    );
   }
 
    //.map(response => {

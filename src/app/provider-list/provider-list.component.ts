@@ -8,6 +8,9 @@ import { Profession } from '../_models/profession';
 import { Search } from '../_models/search';
 import { AuthService } from '../_services/auth.service';
 import {DomSanitizer} from '@angular/platform-browser'
+import { UserService } from '../_services/user.service';
+import { UserInformationDto } from '../_dtos/userInformationDto';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-provider-list',
@@ -27,13 +30,20 @@ export class ProviderListComponent implements OnInit {
   loading:boolean;
   loggedIn:boolean;
   providersFound:boolean;
+  canHire:boolean;
 
-  constructor(private providerService: ProviderService, private activatedRoute: ActivatedRoute,
-     private router: Router, private professionService: ProfessionService, 
-     private searchService: SearchService, private authService: AuthService, private domSanitizer: DomSanitizer) { }
+  constructor(private providerService: ProviderService, 
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router, 
+    private professionService: ProfessionService, 
+    private searchService: SearchService, 
+    private authService: AuthService, 
+    private domSanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.loggedIn=this.authService.isLoggedIn();
+    this.canHire=true;
     this.loading=true;
     this.userId=+localStorage.getItem("id_user");
     this.providers= new Array<ProviderByProfessionDto>();
@@ -59,6 +69,15 @@ export class ProviderListComponent implements OnInit {
     this.profession=new Profession();
     this.placeholder="¿Qué servicio necesitas?";
     this.showDropDown=false;
+    /*
+    Esto que está comentado es para determinar si un usuario puede contratar, ya que como inicialmente
+    se planteó no se puede contratar si un usuario no tiene toda su información completa, es decir 
+    numero de telefono y dirección
+    this.userService.getUser(localStorage.getItem("email_user")).subscribe((userInfo:UserInformationDto)=>{
+      if(userInfo.state!="READY"){
+        this.canHire=false;
+      }
+    });*/
   }
 
   openDropDown() {

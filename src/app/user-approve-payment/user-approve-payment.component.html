@@ -1,6 +1,6 @@
 <app-navbar [loggedIn]=loggedIn></app-navbar>
 <div class="space"></div>
-<!--<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>-->
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
     <div class="container">
       <app-alert [dismissible]="true" [type]="notificationType" [message]="notificationMessage" [(staticAlertClosed)]="hideNotification"></app-alert>
         <div class="row">

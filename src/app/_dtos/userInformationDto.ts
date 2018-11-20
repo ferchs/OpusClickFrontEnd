@@ -20,6 +20,8 @@ export class UserInformationDto {
 
     public opusCoins:number;
 
+    public state:string;
+
     public locations:Array<Location>;
 
     constructor(){
@@ -32,6 +34,7 @@ export class UserInformationDto {
        this.phone="";
        this.photo="";
        this.opusCoins=0;
+       this.state="";
        this.locations= new Array<Location>();
     }
     

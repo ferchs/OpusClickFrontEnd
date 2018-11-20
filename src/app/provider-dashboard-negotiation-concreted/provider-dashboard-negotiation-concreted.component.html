@@ -20,7 +20,7 @@
                   <span *ngIf='work.state=="PARTIALLY_FINISHED"' class="badge badge-info">Parcialmente finalizado</span>
                   <span *ngIf='work.state=="FINALIZED"' class="badge badge-secondary">Finalizado</span>
                   <span *ngIf='work.state=="PAID_OUT"' class="badge badge-success">Pagado</span>
-                  <span *ngIf='work.state=="REPROBATE"' class="badge badge-danger">Reprobado</span>
+                  <span *ngIf='work.state=="DENIED"' class="badge badge-danger">Pago no aprobado</span>
                   <span *ngIf='work.state=="UNFULFILLED"' class="badge badge-danger">Incumplido</span>
                 </td>
                 <td>
@@ -40,6 +40,16 @@
                     [queryParams]="{contract:work.contractId}">Solicitar Pago</button>
                     <button class="dropdown-item" type="button" (click)="requestExtension()">Solicitar Prórroga</button>
                     <button class="dropdown-item" type="button" (click)="terminateWork(work)">Terminar Contrato</button>
+                  </div>
+                  </div>
+
+                  <div *ngIf='work.state=="DENIED"'
+                  class="btn-group dropleft">
+                  <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Opciones
+                  </button>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" type="button" (click)="resolvedDisagreement(work)">He resuelto la inconformidad</button>
                   </div>
                   </div>
                 </td>

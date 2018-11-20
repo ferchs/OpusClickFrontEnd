@@ -18,7 +18,7 @@ import { Router, Params } from '@angular/router';
 })
 export class ProviderDashboardNegotiationConcretedComponent implements OnInit {
 
-  worksList:string="IN_PROGRESS,PARTIALLY_FINISHED,FINALIZED,PAID_OUT,REPROBATE,UNFULFILLED";
+  worksList:string="IN_PROGRESS,PARTIALLY_FINISHED,FINALIZED,PAID_OUT,DENIED,UNFULFILLED";
   pendingWorks:WorkGetDto[];
   loading:boolean;
   hideNotification:boolean;
@@ -91,6 +91,32 @@ export class ProviderDashboardNegotiationConcretedComponent implements OnInit {
           this.hideNotification=false;
         });
       });
+    });
+  }
+
+  resolvedDisagreement(work){
+    const modalRef = this.modalService.open(ConfirmModalComponent);
+    modalRef.componentInstance.title = 'Resolver Inconformidad';
+    modalRef.componentInstance.content="¿Estas seguro de que has resuelto el inconveniente?";
+    modalRef.componentInstance.result.subscribe(ok=>{
+      if(ok){
+        this.loading=true;
+        let dto:WorkUpdateDto = new WorkUpdateDto();
+        dto.id=work.id;
+        dto.providerLabel=work.providerLabel;
+        dto.state="PARTIALLY_FINISHED";
+        dto.userLabel=work.userLabel;
+        this.workService.updateWork(dto).subscribe(res=>{
+          this.workService.getWork("provider",localStorage.getItem("id_provider"),this.worksList).subscribe((works:WorkGetDto[])=>{
+            this.pendingWorks=works;
+            this.loading=false;
+            this.now= new Date();
+            this.notificationMessage="¡Se ha enviado la novedad!";
+            this.notificationType="info";
+            this.hideNotification=false;
+          });
+        });
+      }
     });
   }
 
