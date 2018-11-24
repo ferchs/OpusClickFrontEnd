@@ -1,4 +1,4 @@
-import { Component, Input, OnInit }  from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef }  from '@angular/core';
 import { FormGroup }                 from '@angular/forms';
 import { AnswerBase }              from '../_shared/answer-base';
 import { AnswerControlService }    from '../_services/answer-control.service';
@@ -39,8 +39,10 @@ export class DynamicFormComponent implements OnInit {
   submitted:boolean;
 
 
-  constructor(private qcs: AnswerControlService, private dynamicFormervice: DynamicFormService,
-    private activatedRoute: ActivatedRoute, private location:Location) {  }
+  constructor(private qcs: AnswerControlService, 
+    private dynamicFormervice: DynamicFormService,
+    private activatedRoute: ActivatedRoute, 
+    private location:Location) {  }
 
   ngOnInit() {
     this.loading=true;
@@ -79,7 +81,6 @@ export class DynamicFormComponent implements OnInit {
   onSubmit() {
     this.loading=true;
     this.payLoad=JSON.stringify(this.form.value);
-    console.log(this.payLoad);
     let quote:QuoteDto = new QuoteDto();
     quote.requirements= this.payLoad;
     this.dynamicFormervice.createQuote(quote,this.userId,this.providerId).subscribe((resp:HttpResponse<String>)=>{
@@ -141,17 +142,11 @@ export class DynamicFormComponent implements OnInit {
 
   onFileChange(event) {
     this.loading=true;
-    let reader = new FileReader();
     if(event.target.files && event.target.files.length > 0) {
       this.photo = event.target.files[0];
       this.fileName=this.photo.name;
-      reader.readAsDataURL(this.photo);
-      reader.onload = (event: any) => {
-        this.image=event.target.result;
-        this.loading=false;
-      }
     }
+    this.loading=false;
   }
-
 }
 

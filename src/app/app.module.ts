@@ -108,6 +108,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { ProviderDashboardNegotiationFinishedComponent } from './provider-dashboard-negotiation-finished/provider-dashboard-negotiation-finished.component';
 import { UserDashboardNegotiationFinishedComponent } from './user-dashboard-negotiation-finished/user-dashboard-negotiation-finished.component';
 import { UserPaymentSummaryComponent } from './user-payment-summary/user-payment-summary.component';
+import { FileValidator } from './_directives/file-validator';
+import { FileValueAccessor } from './_directives/file-value';
 
 @NgModule({
   declarations: [
@@ -183,6 +185,8 @@ import { UserPaymentSummaryComponent } from './user-payment-summary/user-payment
     ProviderRequestPaymentComponent,
     UserApprovePaymentComponent,
     OpenLinkInNewWindowDirective,
+    FileValidator,
+    FileValueAccessor,
     ProviderViewCompleteProfileComponent,
     ProviderDashboardNegotiationFinishedComponent,
     UserDashboardNegotiationFinishedComponent,

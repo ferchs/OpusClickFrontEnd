@@ -1,7 +1,7 @@
 import { Injectable }   from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AnswerBase } from '../_shared/answer-base';
-import { Subject } from 'rxjs/Subject';
+import { FileValidator } from '../_directives/file-validator';
 
 @Injectable()
 export class AnswerControlService {
@@ -10,8 +10,14 @@ export class AnswerControlService {
   toFormGroup(answers: AnswerBase<any>[] ) {
     let group: any = {};
     answers.forEach(answer => {
-      group[answer.controlName] = answer.required ? new FormControl(answer.value || '', Validators.required)
-                                              : new FormControl(answer.value || '');
+      if(answer.controlType=="file"){
+        group[answer.controlName] = answer.required ? new FormControl(answer.value || '',  [FileValidator.validate])
+        : new FormControl(answer.value || '');
+      }else{
+        group[answer.controlName] = answer.required ? new FormControl(answer.value || '', Validators.required)
+        : new FormControl(answer.value || '');
+      }
+     
     });
     return new FormGroup(group);
   }

@@ -80,22 +80,18 @@ export class ProviderDashboardProfileEditComponent implements OnInit {
        });
     }
 
+
     onFileChange(event) {
       this.loading=true;
-      let reader = new FileReader();
       if(event.target.files && event.target.files.length > 0) {
-        this.photo = event.target.files[0];
-        reader.readAsDataURL(this.photo);
-        reader.onload = (event: any) => {
-          this.image=event.target.result;
-          this.providerService.setProviderPhoto(this.photo,this.provider.id)
+      let image:File = event.target.files[0];
+      this.providerService.setProviderPhoto(image,this.provider.id)
           .subscribe((url:string)=>{
             this.image=url;
             this.provider.photo=url;
             this.dataProviderService.changeMessage(this.provider);
             this.loading=false;
           });
-        }
       }
     }
     
