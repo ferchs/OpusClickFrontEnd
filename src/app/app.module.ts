@@ -96,8 +96,6 @@ import { UserViewQuotationComponent } from './user-view-quotation/user-view-quot
 import { DetailsQuotationModalComponent } from './details-quotation-modal/details-quotation-modal.component';
 import { DetailsOnlineQuoteModalComponent } from './details-online-quote-modal/details-online-quote-modal.component';
 import { ProviderViewQuotationComponent } from './provider-view-quotation/provider-view-quotation.component';
-import { UserViewContractComponent } from './user-view-contract/user-view-contract.component';
-import { ProviderViewContractComponent } from './provider-view-contract/provider-view-contract.component';
 import { ViewContractComponent } from './view-contract/view-contract.component';
 import { UserSpecifyContractComponent } from './user-specify-contract/user-specify-contract.component';
 import { ViewSignedContractComponent } from './view-signed-contract/view-signed-contract.component';
@@ -177,8 +175,6 @@ import { FileValueAccessor } from './_directives/file-value';
     DetailsQuotationModalComponent,
     DetailsOnlineQuoteModalComponent,
     ProviderViewQuotationComponent,
-    UserViewContractComponent,
-    ProviderViewContractComponent,
     ViewContractComponent,
     UserSpecifyContractComponent,
     ViewSignedContractComponent,

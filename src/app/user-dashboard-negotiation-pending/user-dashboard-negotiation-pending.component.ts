@@ -103,14 +103,20 @@ export class UserDashboardNegotiationPendingComponent implements OnInit {
   }
 
   cancelContract(idContract:string){
-    this.contractService.deleteContract(idContract).subscribe(()=>{
-      this.notificationMessage="¡El contrato ha sido cancelado!";
-      this.notificationType="info";
-      this.hideNotification=false;
-      setTimeout(()=>{ this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
-      this.router.navigate(["/dashboard_usuario/negociaciones/en_proceso"])); }, 2000)
+    const modalRef = this.modalService.open(ConfirmModalComponent);
+    modalRef.componentInstance.title = 'Cancelar Contrato';
+    modalRef.componentInstance.content='¿Estas seguro de cancelar este contrato?'
+    modalRef.componentInstance.result.subscribe((resp:boolean)=>{
+      if(resp){
+        this.contractService.deleteContract(idContract).subscribe(()=>{
+          this.notificationMessage="¡El contrato ha sido cancelado!";
+          this.notificationType="info";
+          this.hideNotification=false;
+          setTimeout(()=>{ this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
+          this.router.navigate(["/dashboard_usuario/negociaciones/en_proceso"])); }, 2000)
+        });
+      }
     });
-
   }
 
 }

@@ -93,18 +93,12 @@ export class RequestVisitComponent implements OnInit {
 
   submit(){
     this.loading=true;
-    let date:Date=this.mDate.jsdate;
     this.visitScheduleDto.lowerLimit=this.mStartTime.getHour();
     this.visitScheduleDto.upperLimit=this.mEndTime.getHour();
-    date.setHours(this.mEndTime.getNumberHour());
-    date.setMinutes(this.mEndTime.getNumberMinute());
-    this.visitScheduleDto.date=date.getTime();
-    let alternativeDate:Date=this.mAlternativeDate.jsdate;
+    this.visitScheduleDto.date=this.getUTCMilliseconds(this.mDate.jsdate,this.mEndTime.getNumberHour(),this.mEndTime.getNumberMinute());
     this.visitScheduleDto.alternativeLowerLimit=this.mAlternativeStartTime.getHour();
     this.visitScheduleDto.alternativeUpperLimit=this.mAlternativeEndTime.getHour();
-    alternativeDate.setHours(this.mAlternativeEndTime.getNumberHour());
-    alternativeDate.setMinutes(this.mAlternativeEndTime.getNumberMinute());
-    this.visitScheduleDto.alternativeDate=alternativeDate.getTime();
+    this.visitScheduleDto.alternativeDate=this.getUTCMilliseconds(this.mAlternativeDate.jsdate,this.mAlternativeEndTime.getNumberHour(),this.mAlternativeEndTime.getNumberMinute());
     if(this.workId != undefined){
       this.visitService.createVisit(this.visitScheduleDto,null,null,this.workId).subscribe(resp=>{
         this.submited=true;
@@ -116,6 +110,12 @@ export class RequestVisitComponent implements OnInit {
         this.loading=false;
       });
     }
+  }
+
+  private getUTCMilliseconds(jsdate:Date,hours:number,minutes:number){
+    let date:Date= new Date(jsdate.getFullYear(),jsdate.getMonth(),jsdate.getDate());
+    date.setHours(hours,minutes);
+    return date.getTime();
   }
 
   updateAlternativeDate(){

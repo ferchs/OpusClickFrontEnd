@@ -83,5 +83,5 @@ export class HomeComponent implements OnInit {
   hideCategories(){
     this.showCategories=false;
   }
-
+  
 }
