@@ -69,6 +69,9 @@ export class UserDashboardProfileComponent implements OnInit {
           this.loading=false;
         });
     }
+    else{
+      this.loading=false;
+    }
   }
 
   editInformation(){

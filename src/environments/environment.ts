@@ -5,10 +5,10 @@
 
 export const environment = {
   production: false,
-  apiUrlBase: 'http://18.228.218.255:8083/v1',
-  loginUrl: 'http://18.228.218.255:8083/login',
-  //apiUrlBase: 'http://localhost:8083/v1',
-  //loginUrl: 'http://localhost:8083/login',
+  apiUrlBase: 'http://localhost:8083/v1',
+  loginUrl: 'http://localhost:8083/login',
+  //apiUrlBase: 'https://awseb-e-m-AWSEBLoa-KZUE0LPFYPPZ-1995786846.us-east-1.elb.amazonaws.com:443/v1',
+  //loginUrl: 'https://awseb-e-m-AWSEBLoa-KZUE0LPFYPPZ-1995786846.us-east-1.elb.amazonaws.com:443/login',
   supportPhone:'(321)-832-3768',
   terminalUser:'c4o1nkdy0zw7hvp5',
   firebase :{

@@ -58,6 +58,28 @@
                   <div class="my-4"></div>
                 </div>
               </div>    
+              <div *ngSwitchCase="'file_next'">
+                <div [hidden]="!(currentQuestion.id===answer.parent)" class="col-lg-12">
+                    <div class="form-group">
+                        <label [for]="answer.id">{{answer.label}}</label>
+                        <div class="custom-file">
+                            <input [formControlName]="answer.controlName" type="file" class="custom-file-input" [id]="answer.id" lang="es" (change)="onFileChange($event)" #fileInput>
+                            <label class="custom-file-label" for="customFileLang">{{fileName}}</label>
+                        </div>
+                        <div *ngIf="answer.required===true">
+                          <small *ngIf="form.get(answer.controlName).status=='INVALID'" class="form-text text-muted-error">Debes tener una imagen de referencia para poder continuar</small>
+                        </div>
+                    </div>
+                    <div class="my-4"></div>
+                    <div class="text-center">
+                      <button
+                        (click)='next(answer.validations,answer.next)'
+                        class="btn btn-outline-secondary">
+                        Siguiente
+                      </button>
+                    </div>
+                </div>
+              </div>
               <div *ngSwitchCase="'textbox'" [hidden]="!(currentQuestion.id===answer.parent)" class="col-md-6 mb-3">
                 <label [for]="answer.id">{{answer.label}}</label>
                 <input [formControlName]="answer.controlName" type="text" class="form-control" [id]="answer.id" [placeholder]="answer.placeholder">
@@ -155,19 +177,25 @@
       <div class="my-4"></div>
       <div class="text-center">
         <button 
-                (click)='back()' 
-                class="btn btn btn-outline-secondary">
-                Atrás
-              </button>
-              <button 
-                [hidden]="currentQuestion.last==false"
-                [disabled]="form.invalid"
-                type="submit"
-                class="btn btn-outline-success"
-                (click)="onSubmit()">
-                Enviar Solicitud
-              </button>
-            </div>
+          (click)='back()' 
+          class="btn btn btn-outline-secondary">
+            Atrás
+        </button>
+        <button 
+          [hidden]="currentQuestion.last==true"
+          (click)='cancel()' 
+          class="btn btn btn-outline-secondary">
+            Cancelar
+        </button>
+        <button 
+          [hidden]="currentQuestion.last==false"
+          [disabled]="form.invalid"
+          type="submit"
+          class="btn btn-outline-success"
+          (click)="onSubmit()">
+            Enviar Solicitud
+        </button>
+      </div>
   </div>
   <div class="col-lg-2">
       <div class="mx-2"></div>

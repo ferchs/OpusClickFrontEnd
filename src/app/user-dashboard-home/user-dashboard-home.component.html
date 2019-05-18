@@ -52,79 +52,85 @@
 <hr class="star-light">   
 <div class="categories-grid container-fluid" id="categories">
     <div class="container">
-            <ul class="row">
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Albañilería'}" class="category">
-                        <img src="../../assets/builder.svg" width="60" height="60">
-                        <span>Albañiles</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Carpintería'}" class="category">
-                            <img src="../../assets/metal-saw.svg" width="60" height="60">
-                            <span>Carpinteros</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Diseño de espacios interiores'}" class="category">
-                            <img src="../../assets/idea.svg" width="40" height="40">
-                            <span>Diseñador de espacios interiores</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Eléctricos'}" class="category">
-                            <img src="../../assets/flash.svg" width="60" height="60">
-                            <span>Eléctricos</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Expertos climatización'}" class="category">
-                            <img src="../../assets/air-conditioner.svg" width="60" height="60">
-                            <span>Expertos climatización</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Fumigadores'}" class="category">
-                            <img src="../../assets/gas-mask.svg" width="60" height="60">
-                            <span>Fumigadores</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Maquillaje'}" class="category">
-                            <img src="../../assets/cosmetics.svg" width="60" height="60">
-                            <span>Maquilladores</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Pintura'}" class="category">
-                            <img src="../../assets/paint-roller.svg" width="60" height="60">
-                            <span>Pintores</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Plomería'}" class="category">
-                            <img src="../../assets/pipe.svg" width="60" height="60">
-                            <span>Plomeros</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Jardinería'}" class="category">
-                            <img src="../../assets/sprout.svg" width="60" height="60">
-                            <span>Jardineros</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Soladadura'}" class="category">
-                            <img src="../../assets/welder.svg" width="60" height="60">
-                            <span>Soldadores</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Tapicería'}" class="category">
-                            <img src="../../assets/armchair.svg" width="60" height="60">
-                            <span>Tapiceros</span>
-                        </a>
-                    </li>
-                </ul>
+        <ul class="row">
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Albañilería'}" class="not-active">
+                <img src="../../assets/builder.svg" width="60" height="60">
+                <span>Albañiles</span>
+                <span class="soon">Muy Pronto</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Carpintería'}">
+                    <img src="../../assets/metal-saw.svg" width="60" height="60">
+                    <span>Carpinteros</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Diseño de espacios interiores'}" class="not-active">
+                    <img src="../../assets/idea.svg" width="40" height="40">
+                    <span>Diseñador de espacios interiores</span>
+                    <span class="soon">Muy Pronto</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Eléctricos'}">
+                    <img src="../../assets/flash.svg" width="60" height="60">
+                    <span>Eléctricos</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Expertos climatización'}" class="not-active">
+                    <img src="../../assets/air-conditioner.svg" width="60" height="60">
+                    <span>Expertos climatización</span>
+                    <span class="soon">Muy Pronto</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Fumigadores'}" class="not-active">
+                    <img src="../../assets/gas-mask.svg" width="60" height="60">
+                    <span>Fumigadores</span>
+                    <span class="soon">Muy Pronto</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Maquillaje'}" class="not-active">
+                    <img src="../../assets/cosmetics.svg" width="60" height="60">
+                    <span>Maquilladores</span>
+                    <span class="soon">Muy Pronto</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Pintura'}">
+                    <img src="../../assets/paint-roller.svg" width="60" height="60">
+                    <span>Pintores</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Plomería'}">
+                    <img src="../../assets/pipe.svg" width="60" height="60">
+                    <span>Plomeros</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Jardinería'}" class="not-active">
+                    <img src="../../assets/sprout.svg" width="60" height="60">
+                    <span>Jardineros</span>
+                    <span class="soon">Muy Pronto</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Soldadura'}">
+                    <img src="../../assets/welder.svg" width="60" height="60">
+                    <span>Soldadores</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['../../expertos']" [queryParams]="{profession: 'Tapicería'}">
+                    <img src="../../assets/armchair.svg" width="60" height="60">
+                    <span>Tapiceros</span>
+                </a>
+            </li>
+        </ul>
     </div>
 </div>

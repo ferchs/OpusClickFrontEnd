@@ -42,6 +42,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h4>Selecciona expertos por categorías</h4>
+                <small>click aquí abajo</small>
                 <a href="#categories" (click)="seeCategories()">
                     <img src="../../assets/down-arrow.svg" width="80" height="80">
                 </a>
@@ -120,7 +121,7 @@
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Soladadura'}">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Soldadura'}">
                 <img src="../../assets/welder.svg" width="60" height="60">
                 <span>Soldadores</span>
             </a>
@@ -145,27 +146,27 @@
             </div>
             <hr>
             <div class="col-lg-4 centered">
-                <h3>Respaldamos las negociaciones</h3>
-                <p>Cuando contratas por OpusClick tu tienes el control, porque no pagas hasta que estes
-                conforme con el trabajo realizado. Gracias a nuestros contratos virtuales, se pueden especificar
-                cada una de las características de la negociación realizadas a través de nuestra plataforma, permitiendo así 
-                un ambiente donde siempre se cumplan las condiciones pactadas. Por lo anterior, En OpusClick nos 
-                preocupamos por el antes, el durante y después de las negociaciones.</p>
+                <h3>Respaldamos tus negociaciones</h3>
+                <p>Cuando contratas por OpusClick obtienes hasta 3 meses de garantía por los servicios contratados a través de nuestra plataforma.
+                    Gracias a nuestros contratos virtuales, se pueden especificar cada uno de los detalles de la negociación realizada, permitiendo así 
+                    que OpusClick pueda hacer cumplir las condiciones de negocio pactadas. Además, no efectúas pagos hasta que estes conforme con el trabajo realizado.
+                    En OpusClick nos preocupamos por el antes, el durante y después de las negociaciones. 
+                </p>
             </div>
             <div class="col-lg-4 centered">
                 <h3>Sabemos el significado del tiempo y el dinero</h3>
                 <p>La sabiduría colectiva nos permite determinar de manera realista y acertada el comportamiento
-                de los expertos, ya que esta se constuye a partir de la experiencia de todos. Por lo anterior, evita perder
-                el tiempo buscando a esa persona que no encuentras o dinero pagando varias veces por un mismo trabajo. En 
-                OpusClick con una simple búsqueda podrás elegir entre los mejores, basandote en la experiencia de los
-                demás, las personas más idóneas para resolver tus necesidades oportunamente.</p>
+                de los expertos que hacen parte de nuestra plataforma, ya que se construye a partir de las experiencias 
+                de servicio compartida por todos. Así que, evita perder el tiempo buscando a ese experto que no encuentras 
+                o malgastar tu dinero en trabajos que no son de tu agrado. Con una simple búsqueda podrás elegir entre los mejores, 
+                basandote en la experiencia de los demás, a los expertos más idóneos para resolver tus necesidades de servicio oportunamente.</p>
             </div>
             <div class="col-lg-4 centered">
                 <h3>La seguridad no tiene precio</h3>
-                <p>No te arriesgues contratando a un completo desconocido. Cada uno de los expertos que hacen parte de
-                OpusClick son personas que previamente han sido estudiadas y evaluadas, desde aspectos tan fundamentales como 
-                lo es que no tengan ninguna deuda con la justicia, hasta llegar a revisar los historicos de sus trabajos realizados
-                a otros clientes. Todo esto con la finalidad de brindarte la tranquilidad de contratar a un desconocido.</p>
+                <p>No te arriesgues contratando los servicios de un completo desconocido. Cada uno de los expertos que hacen parte de
+                OpusClick, son personas que previamente han sido rigurosamente estudiadas y evaluadas, desde aspectos tan fundamentales como 
+                lo es que no tengan ninguna deuda con la justicia, hasta llegar a investigar el historial de sus trabajos realizados
+                a otros clientes. Todo esto con la finalidad de poder brindarte la tranquilidad de contratar a un desconocido.</p>
             </div>
         </div>
     </div>
@@ -195,8 +196,8 @@
                 <div class="col-lg-3 centered">
                     <img src="../../assets/guarantee.svg" width="100" height="100">
                     <h3>Contrata</h3>
-                    <p>Un contrato virtual especifíca las condiciones de la negociación con el objetivo de que siempre sepas porqué estas pagando.
-                    Al final, realiza una calificación del servicio recibido para ayudar a construir la sabiduría colectiva.</p>
+                    <p>Un contrato virtual especifíca las condiciones de la negociación con el objetivo de que siempre sepas porqué estas pagando. Realiza el
+                        pago del contrato y al final, haz una calificación del servicio recibido para ayudar a construir la sabiduría colectiva.</p>
                 </div>
             </div>
         </div>
@@ -230,6 +231,24 @@
 
 <div id="f">
     <div class="container">
-        <div class="row"></div>
+        <div class="row">
+            <div class="col-lg-12 centered">
+                <img src="../../assets/pata-web-fase-Descubrimiento-01.png" width="100%" height="100%">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
+                <h5>Información de Interés</h5>
+                <a routerLink="https://s3.amazonaws.com/opusclick.com/Terminos+OpusClick.pdf" appExternalUrl>Términos y condiciones</a>
+                <a routerLink="https://s3.amazonaws.com/opusclick.com/POLI%CC%81TICA+PRIVACIDAD+Y+TRATAMIENTO+DE+DATOS+OPUSCLICK.pdf" appExternalUrl>Política de privacidad</a>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
+                <h5>Contacto</h5>
+                <!--<p>Telefono: (321)-832-3769</p>-->
+                <p>Email: pqropusclick@gmail.com</p>
+            </div>
+        </div>
     </div>
 </div>

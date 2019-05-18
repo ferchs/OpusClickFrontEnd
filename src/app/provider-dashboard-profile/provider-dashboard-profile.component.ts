@@ -52,6 +52,9 @@ export class ProviderDashboardProfileComponent implements OnInit {
           this.loading=false;
         });
     }
+    else{
+      this.loading=false;
+    }
   }
   
   editInformation(){

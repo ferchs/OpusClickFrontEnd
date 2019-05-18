@@ -224,19 +224,23 @@ hr[_ngcontent-c1] {
 /* Footer */
 #f {
 	width: 100%;
-	padding-top: 125px;
+	padding-top: 20px;
 	padding-bottom: 125px;
-	background: url('../../assets/pata-web-fase-Descubrimiento-01.png') no-repeat;
-    color: #fff;
-    text-align: center;
-	background-position: center; 
-	background-size: contain; 
+    color:#353A3F;
 	background-color: white;
 }
 
 #f p {
-	color: white;
-	text-align: right;
+	color:#353A3F;
+	text-align: left;
+	margin-bottom: 2px;
+	font-weight: 400;
+}
+
+#f a {
+	color:#353A3F;
+	text-align: left;
+	margin-bottom: 2px;
 	font-weight: 400;
 }
 

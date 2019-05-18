@@ -17,7 +17,7 @@
                         placeholder="Nombre" 
                         required 
                         minlength="3" 
-                        pattern="[a-zA-Zóáéíú ]*"
+                        pattern="[a-zA-Zóáéíúñ ]*"
                         [(ngModel)]="dto.name" 
                         name="name" 
                         #name="ngModel"
@@ -30,7 +30,7 @@
                             placeholder="Apellido" 
                             required 
                             minlength="3"
-                            pattern="[a-zA-Zóáéíú ]*"
+                            pattern="[a-zA-Zóáéíúñ ]*"
                             [(ngModel)]="dto.lastname" 
                             name="lastname" 
                             #lastname="ngModel"
@@ -112,7 +112,7 @@
                             </small>
                         </div> 
                         <div class="justify">
-                            <small>Al proceder, acepto los <a routerLink="https://www.google.com" appExternalUrl>Términos de uso</a> de OpusClick y reconozco haber leído la <a routerLink="https://www.google.com" appExternalUrl>Política de privacidad</a>.</small>        
+                            <small>Al proceder, acepto los <a routerLink="https://s3.amazonaws.com/opusclick.com/Terminos+OpusClick.pdf" appExternalUrl>Términos y condiciones</a> de OpusClick y reconozco haber leído la <a routerLink="https://s3.amazonaws.com/opusclick.com/POLI%CC%81TICA+PRIVACIDAD+Y+TRATAMIENTO+DE+DATOS+OPUSCLICK.pdf" appExternalUrl>Política de privacidad</a>.</small>        
                         </div>
                         <button type="submit"
                         class="btn btn-md btn-block"

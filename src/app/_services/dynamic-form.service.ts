@@ -7,6 +7,7 @@ import { TextboxButtonsQuestion }  from '../_shared/answer-textbox-buttons';
 import { RadioQuestion }  from '../_shared/answer-radio';
 import { RadioTextboxQuestion }  from '../_shared/answer-radio-textbox';
 import { FileQuestion }  from '../_shared/answer-file';
+import { FileButtonsQuestion }  from '../_shared/answer-file-buttons';
 import { TextareaQuestion }  from '../_shared/answer-textarea';
 import { Question } from '../_models/question';
 import { Subject } from 'rxjs/Subject';
@@ -113,6 +114,22 @@ export class DynamicFormService {
               child: item.child,
               required: item.required,
               order: item.order
+            }));
+          break;
+          case "file_next":
+          answers.push(
+            new FileButtonsQuestion({
+              controlName: item.controlName,
+              id: item.id,
+              label: item.label,
+              name: item.name,
+              value: item.value,
+              parent: item.parent,
+              child: item.child,
+              required: item.required,
+              order: item.order,
+              next: item.next,
+              validations: item.validations
             }));
           break;
           case "textarea":

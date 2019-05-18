@@ -10,7 +10,7 @@ export class AnswerControlService {
   toFormGroup(answers: AnswerBase<any>[] ) {
     let group: any = {};
     answers.forEach(answer => {
-      if(answer.controlType=="file"){
+      if(answer.controlType=="file" || answer.controlType=="file_next"){
         group[answer.controlName] = answer.required ? new FormControl(answer.value || '',  [FileValidator.validate])
         : new FormControl(answer.value || '');
       }else{

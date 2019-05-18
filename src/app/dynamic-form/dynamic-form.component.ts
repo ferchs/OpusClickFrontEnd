@@ -42,7 +42,8 @@ export class DynamicFormComponent implements OnInit {
   constructor(private qcs: AnswerControlService, 
     private dynamicFormervice: DynamicFormService,
     private activatedRoute: ActivatedRoute, 
-    private location:Location) {  }
+    private location:Location,
+    private router:Router) {  }
 
   ngOnInit() {
     this.loading=true;
@@ -138,6 +139,35 @@ export class DynamicFormComponent implements OnInit {
       this.actualPage=(this.actualPage-1);
       this.calculateAdvancePercentage();
     }
+  }
+
+  cancel(){
+    this.navegateToProfessionForm();
+  }
+
+  navegateToProfessionForm(){
+    switch (this.formId) {
+      case 'CAR00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: 'Carpintería' } });
+        break;
+      case 'ELE00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: 'Eléctricos' } });
+        break;
+      case 'PIN00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: 'Pintura' } });
+        break;
+      case 'PLO00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: 'Plomería' } });
+        break;
+      case 'SOL00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: 'Soldadura' } });
+        break;
+      case 'TAP00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: 'Tapicería' } });
+        break;
+      default:
+
+  }
   }
 
   onFileChange(event) {
