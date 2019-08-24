@@ -55,79 +55,78 @@
     <div class="space"></div>
     <ul class="row">
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Albañilería'}" class="not-active">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '1'}">
             <img src="../../assets/builder.svg" width="60" height="60">
             <span>Albañiles</span>
-            <span class="soon">Muy Pronto</span>
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Carpintería'}">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '2'}">
                 <img src="../../assets/metal-saw.svg" width="60" height="60">
                 <span>Carpinteros</span>
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Diseño de espacios interiores'}" class="not-active">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '3'}" class="not-active">
                 <img src="../../assets/idea.svg" width="40" height="40">
                 <span>Diseñador de espacios interiores</span>
                 <span class="soon">Muy Pronto</span>
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Eléctricos'}">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '4'}">
                 <img src="../../assets/flash.svg" width="60" height="60">
                 <span>Eléctricos</span>
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Expertos climatización'}" class="not-active">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '5'}" class="not-active">
                 <img src="../../assets/air-conditioner.svg" width="60" height="60">
                 <span>Expertos climatización</span>
                 <span class="soon">Muy Pronto</span>
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Fumigadores'}" class="not-active">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '6'}" class="not-active">
                 <img src="../../assets/gas-mask.svg" width="60" height="60">
                 <span>Fumigadores</span>
                 <span class="soon">Muy Pronto</span>
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Maquillaje'}" class="not-active">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '7'}" class="not-active">
                 <img src="../../assets/cosmetics.svg" width="60" height="60">
                 <span>Maquilladores</span>
                 <span class="soon">Muy Pronto</span>
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Pintura'}">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '8'}">
                 <img src="../../assets/paint-roller.svg" width="60" height="60">
                 <span>Pintores</span>
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Plomería'}">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '9'}">
                 <img src="../../assets/pipe.svg" width="60" height="60">
                 <span>Plomeros</span>
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Jardinería'}" class="not-active">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '10'}" class="not-active">
                 <img src="../../assets/sprout.svg" width="60" height="60">
                 <span>Jardineros</span>
                 <span class="soon">Muy Pronto</span>
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Soldadura'}">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '11'}">
                 <img src="../../assets/welder.svg" width="60" height="60">
-                <span>Soldadores</span>
+                <span>Cerrajeros</span>
             </a>
         </li>
         <li>
-            <a [routerLink]="['expertos']" [queryParams]="{profession: 'Tapicería'}">
+            <a [routerLink]="['expertos']" [queryParams]="{profession: '12'}">
                 <img src="../../assets/armchair.svg" width="60" height="60">
                 <span>Tapiceros</span>
             </a>
@@ -202,7 +201,70 @@
             </div>
         </div>
     </div>
-
+<div id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 centered">
+                <h2>Servicios</h2>
+            </div>
+            <div class="my-2"></div>
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top" src="../../assets/carpenter-hands-indoors-374861.jpg" alt="Carpinteria Cali">
+                    <div class="card-body">
+                        <a [routerLink]="['carpintero']" class="card-title">Carpinteria</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="../../assets/adult-blur-brown-982657.jpg" alt="Tapiceria Cali">
+                    <div class="card-body">
+                        <a [routerLink]="['tapicero']" class="card-title">Tapiceria</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="../../assets/image-from-rawpixel-id-386916-jpeg.jpg" alt="Plomeria Cali">
+                    <div class="card-body">
+                        <a [routerLink]="['plomero']" class="card-title">Plomeria</a>
+                    </div>
+                </div>
+            </div>
+            <div class="my-2"></div>
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top" src="../../assets/daniel-wiadro-GAEvM4qvlBk-unsplash.jpg" alt="Cerrajeria Cali">
+                    <div class="card-body">
+                        <a [routerLink]="['cerrajero']" class="card-title">Cerrajeria</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="../../assets/daniel-chekalov-A8rbSO0s9YY-unsplash.jpg" alt="Pintura Cali">
+                    <div class="card-body">
+                        <a [routerLink]="['pintor']" class="card-title">Pintura</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="../../assets/image-from-rawpixel-id-102018-jpeg.jpg" alt="Electricidad Cali">
+                    <div class="card-body">
+                        <a [routerLink]="['electricista']" class="card-title">Electricidad</a>
+                    </div>
+                </div>
+            </div>
+            <div class="my-2"></div>
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top" src="../../assets/image-from-rawpixel-id-102152-jpeg.jpg" alt="Albañileria Cali">
+                    <div class="card-body">
+                        <a [routerLink]="['albañil']" class="card-title">Albañileria</a>
+                    </div>
+                </div>
+                <div class="card">
+                </div>
+                <div class="card">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="social">
     <div class="container">
         <div class="row">

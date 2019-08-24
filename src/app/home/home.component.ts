@@ -61,7 +61,9 @@ export class HomeComponent implements OnInit {
     else{
       this.placeholder="¿Qué servicio necesitas?";
       this.mSearch=value.name;
-      this.profession=value;
+      this.profession.id=value.professionId;
+      this.profession.name=value.name;
+      this.profession.formId=value.formId;
     }
     this.showDropDown = false;
   }
@@ -72,7 +74,7 @@ export class HomeComponent implements OnInit {
       this.searchService.saveAnother(search);
     }
     else{
-      this.router.navigate(['expertos'],{ queryParams: { profession: this.mSearch } })
+      this.router.navigate(['expertos'],{ queryParams: { profession: this.profession.id } })
     }
   }
 

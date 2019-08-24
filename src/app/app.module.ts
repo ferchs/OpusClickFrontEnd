@@ -108,6 +108,13 @@ import { UserDashboardNegotiationFinishedComponent } from './user-dashboard-nego
 import { UserPaymentSummaryComponent } from './user-payment-summary/user-payment-summary.component';
 import { FileValidator } from './_directives/file-validator';
 import { FileValueAccessor } from './_directives/file-value';
+import { InfoCarpinterosComponent } from './info-carpinteros/info-carpinteros.component';
+import { InfoPlomerosComponent } from './info-plomeros/info-plomeros.component';
+import { InfoPintoresComponent } from './info-pintores/info-pintores.component';
+import { InfoTapicerosComponent } from './info-tapiceros/info-tapiceros.component';
+import { InfoElectricistasComponent } from './info-electricistas/info-electricistas.component';
+import { InfoSoldadoresComponent } from './info-soldadores/info-soldadores.component';
+import { InfoAlbanilesComponent } from './info-albaniles/info-albaniles.component';
 
 @NgModule({
   declarations: [
@@ -186,7 +193,14 @@ import { FileValueAccessor } from './_directives/file-value';
     ProviderViewCompleteProfileComponent,
     ProviderDashboardNegotiationFinishedComponent,
     UserDashboardNegotiationFinishedComponent,
-    UserPaymentSummaryComponent
+    UserPaymentSummaryComponent,
+    InfoCarpinterosComponent,
+    InfoPlomerosComponent,
+    InfoPintoresComponent,
+    InfoTapicerosComponent,
+    InfoElectricistasComponent,
+    InfoSoldadoresComponent,
+    InfoAlbanilesComponent
   ],
   imports: [
     BrowserModule,

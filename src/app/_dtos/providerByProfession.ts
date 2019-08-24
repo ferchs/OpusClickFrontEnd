@@ -8,6 +8,8 @@ export class ProviderByProfessionDto {
 	public accountLastname:string;
 	
     public photo:string;
+
+    public professionName:string;
     
     public professionFormId:string;
 	

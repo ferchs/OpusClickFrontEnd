@@ -1,0 +1,72 @@
+<app-navbar [loggedIn]=loggedIn></app-navbar>
+<div id="hello">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="intro-text col-lg-10">
+                <h1>Pintores</h1>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="why">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>¿Buscas la mejor remodelación de pintura en Cali?</h1>
+                        <p class="text-justify">
+                            <a [routerLink]="['']">OpusClick</a> te ofrece los mejores y más confiables pintores en Cali,
+                            permitiendote elegir, cotizar en linea y contratar al al pintor de tu preferencia,
+                            con la tranquilidad de que tu dinero estará protegido por <a [routerLink]="['']">OpusClick</a> y que las condiciones de trabajo quedarán 
+                            establecidas bajo un contrato virtual ante cualquier incumplimiento. <a [routerLink]="['']">Mas Info</a>
+                        </p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-center">
+                                        <button type="button" [routerLink]="['../expertos']" [queryParams]="{profession: '8'}" class="btn btn-outline-dark">Encúentralos Aquí</button>
+                                </div>
+                            </div>
+                        </div>
+                    <h2>¿Que hacer en caso de incumplimiento, inconformidad o garantía?</h2>
+                        <p class="text-justify">
+                            Nuestro contrato virtual es la figura que nos permite hacer cumplir las condiciones de negocio 
+                            pactadas entre las partes. En <a [routerLink]="['']">OpusClick</a> no haces efectivo un pago 
+                            hasta que no se cumplan las condiciones del contrato virtual. Adicionalmente, te ofrecemos hasta
+                            3 meses de garantía por cualquier servicio de carpinteria o ebanisteria contratado a través de la 
+                            plataforma. Por ende, lo que debes hacer ante un incumplimiento, inconformidad o garantía debes reportar 
+                            dicha novedad a través de nuestra plataforma, la cual estudiamos y gestionamos con base en el contrato virtual. <a routerLink="https://s3.amazonaws.com/opusclick.com/Terminos+OpusClick.pdf" appExternalUrl>Términos y condiciones</a>
+                        </p>
+                </div>
+                <div class="col-lg-12">
+                    <h1>Pinturas en Cali para remodelacion, reforma y decoracion de interiores</h1>
+                    <p class="text-justify">
+                        <a [routerLink]="['']">OpusClick</a> es la plataforma web que se encarga de reunir los expertos mejor calificados de pintura, remodelacion, 
+                        estuco, servicio de pintura en general y pintores en Cali, para toda clase de proyectos, decoración o diseño de 
+                        interiores, reformas, reparaciones o mantenimiento del hogar, oficina o inmueble de cualquier tipo. A sólo un click 
+                        de distancia encuentras la mejor oferta de profesionales de pintura en cali, distribuidos por zona, pintores cali sur 
+                        y pintores cali norte, que te ayudarán en todas las reparaciones locativas o del hogar, donde podrás agendar una visita, 
+                        solicitar una cotización y contratar sus servicios con la seguridad de que recibirás un servicio de alta calidad.
+                    </p>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center">
+                                <button type="button" [routerLink]="['../expertos']" [queryParams]="{profession: '8'}" class="btn btn-outline-dark">Elige Tu Pintor</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                    <h1>Colores para pintar una casa</h1>
+                    <p class="text-justify">
+                            Si estás pensando en pintar tu casa, oficina o inmueble, con <a [routerLink]="['']">OpusClick</a> tienes la seguridad de poder contratar 
+                            los pintores en cali más calificados para tu remodelacion, que te ayudarán a elegir los mejores colores y te 
+                            acompañarán en todo el proceso de principio a fin según tus necesidades.
+                    </p>
+            </div>
+        </div>
+    </div>
+</div>

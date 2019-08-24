@@ -48,10 +48,10 @@ export class ProviderListComponent implements OnInit {
     this.userId=+localStorage.getItem("id_user");
     this.providers= new Array<ProviderByProfessionDto>();
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.mSearch= params['profession'];
-      this.providerService.getProvidersByProfession(this.mSearch).subscribe(result=>{
+      this.providerService.getProvidersByProfession(params['profession']).subscribe(result=>{
         this.providers=result;
         if(this.providers.length >= 1){
+          this.mSearch= this.providers[0].professionName;
           this.providersFound=true;
         }else{
           this.providersFound=false;

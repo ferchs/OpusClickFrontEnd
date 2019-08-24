@@ -1,0 +1,66 @@
+<app-navbar [loggedIn]=loggedIn></app-navbar>
+<div id="hello">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="intro-text col-lg-10">
+                <h1>Carpinteros - Ebanistas </h1>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="why">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>¿Estas buscando una Carpinteria o Ebanisteria en Cali?</h1>
+                        <p class="text-justify">
+                            <a [routerLink]="['']">OpusClick</a> te ofrece los mejores y más confiables carpinteros o ebanistas en Cali,
+                            permitiendote elegir, cotizar en linea y contratar al carpintero o ebanista que prefieras,
+                            con la tranquilidad de que tu dinero estará protegido por <a [routerLink]="['']">OpusClick</a> y que las condiciones de trabajo quedarán 
+                            establecidas bajo un contrato virtual ante cualquier incumplimiento. <a [routerLink]="['']">Mas Info</a>
+                        </p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-center">
+                                        <button type="button" [routerLink]="['../expertos']" [queryParams]="{profession: '2'}" class="btn btn-outline-dark">Encúentralos Aquí</button>
+                                </div>
+                            </div>
+                        </div>
+                    <h2>¿Que hacer en caso de incumplimiento, inconformidad o garantía?</h2>
+                        <p class="text-justify">
+                            Nuestro contrato virtual es la figura que nos permite hacer cumplir las condiciones de negocio 
+                            pactadas entre las partes. En <a [routerLink]="['']">OpusClick</a> no haces efectivo un pago 
+                            hasta que no se cumplan las condiciones del contrato virtual. Adicionalmente, te ofrecemos hasta
+                            3 meses de garantía por cualquier servicio de carpinteria o ebanisteria contratado a través de la 
+                            plataforma. Por ende, lo que debes hacer ante un incumplimiento, inconformidad o garantía debes reportar 
+                            dicha novedad a través de nuestra plataforma, la cual estudiamos y gestionamos con base en el contrato virtual. <a routerLink="https://s3.amazonaws.com/opusclick.com/Terminos+OpusClick.pdf" appExternalUrl>Términos y condiciones</a>
+                        </p>
+                </div>
+                <div class="col-lg-12">
+                    <h1>Carpintero o Ebanista en Cali</h1>
+                    <p class="text-justify">
+                        Encuentra los expertos mejor calificados en carpinteria, ebanisteria, fabricación de muebles, cocinas integrales, 
+                        cocinas modernas, closets, puertas de madera, comedores, sillas, armarios, ventanas, camas, muebles o juegos de sala en Cali, 
+                        para todas las remodelaciones, reformas, reparaciones o mantenimiento del hogar. 
+
+                        A sólo un click de distancia encuentras la mejor oferta de profesionales de carpinteria en cali, 
+                        distribuidos por zona, cali sur, cali norte, que te ayudarán en todas las reparaciones locativas 
+                        o del hogar, donde podrás agendar una visita, solicitar una cotización y contratar sus servicios 
+                        con la seguridad de que recibirás un servicio de alta calidad.
+                    </p>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center">
+                                <button type="button" [routerLink]="['../expertos']" [queryParams]="{profession: '2'}" class="btn btn-outline-dark">Elige Tu Carpintero</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

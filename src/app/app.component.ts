@@ -15,4 +15,8 @@ export class AppComponent {
   ngOnInit() {
   }
 
+  scrollTop(event) {
+    window.scroll(0,0);
+  }
+
 }
