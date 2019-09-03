@@ -43,16 +43,18 @@
             <div class="col-lg-12">
                 <h4>Selecciona expertos por categorías</h4>
                 <small>click aquí abajo</small>
-                <a href="#categories" (click)="seeCategories()">
+                <a href="#categories">
                     <img src="../../assets/down-arrow.svg" width="80" height="80">
                 </a>
             </div>
         </div>
     </div>
 </div>
-<div *ngIf="showCategories" class="categories-grid container-fluid" id="categories">
+<div class="categories-grid container-fluid" id="categories">
 <div class="container">
-    <div class="space"></div>
+    <div class="col-lg-12 centered">
+        <h2>Servicios</h2>
+    </div>
     <ul class="row">
         <li>
             <a [routerLink]="['expertos']" [queryParams]="{profession: '1'}">
@@ -132,10 +134,25 @@
             </a>
         </li>
     </ul>
-    <a class="centered" href="#hello" (click)="hideCategories()">
+    <a class="centered" href="#hello">
         <img src="../../assets/up-arrow.svg" width="70" height="70">
     </a>
 </div>
+</div>
+<div *ngIf="false" id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 centered">
+                <a [routerLink]="['carpintero']">carpintero</a>
+                <a [routerLink]="['tapicero']">tapicero</a>
+                <a [routerLink]="['plomero']">plomero</a>
+                <a [routerLink]="['cerrajero']">cerrajero</a>
+                <a [routerLink]="['pintor']">pintor</a>
+                <a [routerLink]="['electricista']">electricista</a>
+                <a [routerLink]="['albañil']">albañil</a>
+            </div>
+        </div>
+    </div>
 </div>
 <div id="why">
     <div class="container">
@@ -201,70 +218,7 @@
             </div>
         </div>
     </div>
-<div id="services">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 centered">
-                <h2>Servicios</h2>
-            </div>
-            <div class="my-2"></div>
-            <div class="card-deck">
-                <div class="card">
-                    <img class="card-img-top" src="../../assets/carpenter-hands-indoors-374861.jpg" alt="Carpinteria Cali">
-                    <div class="card-body">
-                        <a [routerLink]="['carpintero']" class="card-title">Carpinteria</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="../../assets/adult-blur-brown-982657.jpg" alt="Tapiceria Cali">
-                    <div class="card-body">
-                        <a [routerLink]="['tapicero']" class="card-title">Tapiceria</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="../../assets/image-from-rawpixel-id-386916-jpeg.jpg" alt="Plomeria Cali">
-                    <div class="card-body">
-                        <a [routerLink]="['plomero']" class="card-title">Plomeria</a>
-                    </div>
-                </div>
-            </div>
-            <div class="my-2"></div>
-            <div class="card-deck">
-                <div class="card">
-                    <img class="card-img-top" src="../../assets/daniel-wiadro-GAEvM4qvlBk-unsplash.jpg" alt="Cerrajeria Cali">
-                    <div class="card-body">
-                        <a [routerLink]="['cerrajero']" class="card-title">Cerrajeria</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="../../assets/daniel-chekalov-A8rbSO0s9YY-unsplash.jpg" alt="Pintura Cali">
-                    <div class="card-body">
-                        <a [routerLink]="['pintor']" class="card-title">Pintura</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="../../assets/image-from-rawpixel-id-102018-jpeg.jpg" alt="Electricidad Cali">
-                    <div class="card-body">
-                        <a [routerLink]="['electricista']" class="card-title">Electricidad</a>
-                    </div>
-                </div>
-            </div>
-            <div class="my-2"></div>
-            <div class="card-deck">
-                <div class="card">
-                    <img class="card-img-top" src="../../assets/image-from-rawpixel-id-102152-jpeg.jpg" alt="Albañileria Cali">
-                    <div class="card-body">
-                        <a [routerLink]="['albañil']" class="card-title">Albañileria</a>
-                    </div>
-                </div>
-                <div class="card">
-                </div>
-                <div class="card">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div id="social">
     <div class="container">
         <div class="row">

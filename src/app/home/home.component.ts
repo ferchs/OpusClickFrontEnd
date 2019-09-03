@@ -77,13 +77,4 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['expertos'],{ queryParams: { profession: this.profession.id } })
     }
   }
-
-  seeCategories(){
-    this.showCategories=true;
-  }
-
-  hideCategories(){
-    this.showCategories=false;
-  }
-  
 }

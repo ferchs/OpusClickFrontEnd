@@ -6,12 +6,12 @@
     <div class="mx-2"></div>
   </div>
   <div class="col-lg-8">
+    <div>
+      <p>{{currentQuestion.description}}</p>
+    </div>
     <div class="progress">
       <div class="progress-bar" role="progressbar" [style.width]="percentageCompletion + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-      <div>
-        <p>{{currentQuestion.description}}</p>
-      </div>
       <hr> 
       <div>
         <form [formGroup]="form">

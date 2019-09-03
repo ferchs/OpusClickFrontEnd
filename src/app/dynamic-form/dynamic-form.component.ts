@@ -147,26 +147,43 @@ export class DynamicFormComponent implements OnInit {
 
   navegateToProfessionForm(){
     switch (this.formId) {
+      case 'ALB00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: '1' } });
+        break;
       case 'CAR00PR':
-        this.router.navigate(['/expertos'], { queryParams: { profession: 'Carpintería' } });
+        this.router.navigate(['/expertos'], { queryParams: { profession: '2' } });
+        break;
+      case 'DIS00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: '3' } });
         break;
       case 'ELE00PR':
-        this.router.navigate(['/expertos'], { queryParams: { profession: 'Eléctricos' } });
+        this.router.navigate(['/expertos'], { queryParams: { profession: '4' } });
+        break;  
+      case 'CLI00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: '5' } });
+        break;
+      case 'FUM00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: '6' } });
+        break;
+      case 'MAQ00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: '7' } });
         break;
       case 'PIN00PR':
-        this.router.navigate(['/expertos'], { queryParams: { profession: 'Pintura' } });
+        this.router.navigate(['/expertos'], { queryParams: { profession: '8' } });
         break;
       case 'PLO00PR':
-        this.router.navigate(['/expertos'], { queryParams: { profession: 'Plomería' } });
+        this.router.navigate(['/expertos'], { queryParams: { profession: '9' } });
+        break;
+      case 'JAR00PR':
+        this.router.navigate(['/expertos'], { queryParams: { profession: '10' } });
         break;
       case 'SOL00PR':
-        this.router.navigate(['/expertos'], { queryParams: { profession: 'Soldadura' } });
+        this.router.navigate(['/expertos'], { queryParams: { profession: '11' } });
         break;
       case 'TAP00PR':
-        this.router.navigate(['/expertos'], { queryParams: { profession: 'Tapicería' } });
+        this.router.navigate(['/expertos'], { queryParams: { profession: '12' } });
         break;
       default:
-
   }
   }
 

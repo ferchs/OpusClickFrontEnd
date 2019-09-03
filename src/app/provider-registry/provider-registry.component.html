@@ -97,7 +97,7 @@
                             [(ngModel)]="mProffesion"
                             #profession="ngModel"
                             [ngClass]="{'is-valid': profession.valid && profession.touched, 'is-invalid': profession.invalid && profession.touched}">
-                            <option [ngValue]="null" disabled  selected>Selecciona una profesión</option>
+                            <option [ngValue]="null" disabled  selected>Selecciona tu profesión</option>
                             <option *ngFor="let item of proffesions" [ngValue]="item"> {{ item.name }} </option>
                             </select>
                             <small *ngIf="profession.invalid && profession.touched"
@@ -113,7 +113,7 @@
                             [(ngModel)]="mCity"
                             #city="ngModel"
                             [ngClass]="{'is-valid': city.valid && city.touched, 'is-invalid': city.invalid && city.touched}">
-                                    <option [ngValue]="null" disabled  selected>Selecciona una ciudad</option>
+                                    <option [ngValue]="null" disabled  selected>Selecciona tu ciudad</option>
                                     <option *ngFor="let item of cities" [ngValue]="item"> {{ item.name }} </option>
                             </select>
                             <small *ngIf="city.invalid && city.touched"

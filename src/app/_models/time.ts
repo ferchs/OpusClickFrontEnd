@@ -73,29 +73,17 @@ export class Time {
     getDefaultTimeList(){
         this.defaultList=new Array<Time>();
         this.defaultList.push(new Time("08:00:00","08:00 AM"));
-        this.defaultList.push(new Time("08:30:00","08:30 AM"));
         this.defaultList.push(new Time("09:00:00","09:00 AM"));
-        this.defaultList.push(new Time("09:30:00","09:30 AM"));
         this.defaultList.push(new Time("10:00:00","10:00 AM"));
-        this.defaultList.push(new Time("10:30:00","10:30 AM"));
         this.defaultList.push(new Time("11:00:00","11:00 AM"));
-        this.defaultList.push(new Time("11:30:00","11:30 AM"));
         this.defaultList.push(new Time("12:00:00","12:00 PM"));
-        this.defaultList.push(new Time("12:30:00","12:30 PM"));
         this.defaultList.push(new Time("13:00:00","01:00 PM"));
-        this.defaultList.push(new Time("13:30:00","01:30 PM"));
         this.defaultList.push(new Time("14:00:00","02:00 PM"));
-        this.defaultList.push(new Time("14:30:00","02:30 PM"));
         this.defaultList.push(new Time("15:00:00","03:00 PM"));
-        this.defaultList.push(new Time("15:30:00","03:30 PM"));
         this.defaultList.push(new Time("16:00:00","04:00 PM"));
-        this.defaultList.push(new Time("16:30:00","04:30 PM"));
         this.defaultList.push(new Time("17:00:00","05:00 PM"));
-        this.defaultList.push(new Time("17:30:00","05:30 PM"));
         this.defaultList.push(new Time("18:00:00","06:00 PM"));
-        this.defaultList.push(new Time("18:30:00","06:30 PM"));
         this.defaultList.push(new Time("19:00:00","07:00 PM"));
-        this.defaultList.push(new Time("19:30:00","07:30 PM"));
         this.defaultList.push(new Time("20:00:00","08:00 PM"));
         return this.defaultList;
     }
