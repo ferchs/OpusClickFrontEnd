@@ -1,10 +1,73 @@
-.navbar {
-    font-size: 14px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    background-color: #fdfdfd !important;
-    height: 82px;
-}
+@media (min-width: 50px) { 
+    .navbar {
+        font-size: 2px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        background-color: #fdfdfd !important;
+        height: 82px;
+        padding-right: 0.2rem;
+        padding-left: 0.6rem;
+    }
+
+    .portrait-mobile-navbar-brand {
+        display: inline-block;
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+        margin-right: 0rem;
+        font-size: 0rem;
+        text-align: center;
+        line-height: inherit;
+        color: rgb(44, 43, 43);
+        white-space: nowrap;
+    }
+    
+ }
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) { 
+    .navbar {
+        font-size: 10px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        background-color: #fdfdfd !important;
+        height: 82px;
+    }
+ }
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) { 
+    .navbar {
+        font-size: 12px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        background-color: #fdfdfd !important;
+        height: 100px;
+        padding-right: 1rem;
+    }
+ }
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) { 
+    .navbar {
+        font-size: 14px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        background-color: #fdfdfd !important;
+        height: 82px;
+        padding-right: 1rem;
+    }
+ }
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+    .navbar {
+        font-size: 14px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        background-color: #fdfdfd !important;
+        height: 82px;
+        padding-right: 1rem;
+    }
+ }
 
 .mobile-navbar-brand {
     display: inline-block;

@@ -5,7 +5,7 @@ import { Profession } from '../_models/profession';
 import { Search } from '../_models/search';
 import { AuthService } from '../_services/auth.service';
 import { Router} from '@angular/router';
-
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,10 +20,11 @@ export class HomeComponent implements OnInit {
   showDropDown:boolean;
   showCategories:boolean;
   public loggedIn:boolean;
+  safeSrc: SafeResourceUrl;
 
 
   constructor(private professionService: ProfessionService, private searchService: SearchService,
-    private authService: AuthService, private router: Router) { }
+    private authService: AuthService, private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.loggedIn=this.authService.isLoggedIn();
@@ -77,4 +78,9 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['expertos'],{ queryParams: { profession: this.profession.id } })
     }
   }
+
+  getVideoIframe() {
+    return this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/TegmJ8WGR8I?vq=hd1080&autoplay=0&controls=0&rel=0&showinfo=0");
+}
+
 }

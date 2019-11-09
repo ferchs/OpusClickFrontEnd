@@ -52,7 +52,7 @@ export class UserRegistryComponent implements OnInit {
      },
      error=> {
       this.loading = false;
-       if(error===409){
+       if(error.status===409){
         this.registeredEmailError=true;
        }
      });

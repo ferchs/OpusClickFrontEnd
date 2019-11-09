@@ -161,29 +161,15 @@
                 <h2>¿Porqué usar OpusClick?</h2>
             </div>
             <hr>
-            <div class="col-lg-4 centered">
-                <h3>Respaldamos tus negociaciones</h3>
-                <p>Cuando contratas por OpusClick obtienes hasta 3 meses de garantía por los servicios contratados a través de nuestra plataforma.
-                    Gracias a nuestros contratos virtuales, se pueden especificar cada uno de los detalles de la negociación realizada, permitiendo así 
-                    que OpusClick pueda hacer cumplir las condiciones de negocio pactadas. Además, no efectúas pagos hasta que estes conforme con el trabajo realizado.
-                    En OpusClick nos preocupamos por el antes, el durante y después de las negociaciones. 
-                </p>
-            </div>
-            <div class="col-lg-4 centered">
-                <h3>Sabemos el significado del tiempo y el dinero</h3>
-                <p>La sabiduría colectiva nos permite determinar de manera realista y acertada el comportamiento
-                de los expertos que hacen parte de nuestra plataforma, ya que se construye a partir de las experiencias 
-                de servicio compartida por todos. Así que, evita perder el tiempo buscando a ese experto que no encuentras 
-                o malgastar tu dinero en trabajos que no son de tu agrado. Con una simple búsqueda podrás elegir entre los mejores, 
-                basandote en la experiencia de los demás, a los expertos más idóneos para resolver tus necesidades de servicio oportunamente.</p>
-            </div>
-            <div class="col-lg-4 centered">
-                <h3>La seguridad no tiene precio</h3>
-                <p>No te arriesgues contratando los servicios de un completo desconocido. Cada uno de los expertos que hacen parte de
-                OpusClick, son personas que previamente han sido rigurosamente estudiadas y evaluadas, desde aspectos tan fundamentales como 
-                lo es que no tengan ninguna deuda con la justicia, hasta llegar a investigar el historial de sus trabajos realizados
-                a otros clientes. Todo esto con la finalidad de poder brindarte la tranquilidad de contratar a un desconocido.</p>
-            </div>
+            <div class="col-lg-12 centered">
+                <div class='embed-container'>
+                    <iframe 
+                        [src]="getVideoIframe()"
+                        frameborder='0' 
+                        allowfullscreen="allowfullscreen">
+                    </iframe>
+                </div>
+            </div>            
         </div>
     </div>
 </div>
@@ -267,4 +253,9 @@
             </div>
         </div>
     </div>
+</div>
+
+
+<div id="mybutton">
+    <a class="feedback" routerLink="https://api.whatsapp.com/send?phone=573218323768" appExternalUrl>¿Dudas?</a>
 </div>
