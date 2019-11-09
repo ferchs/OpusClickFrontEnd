@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
   }
 
   getVideoIframe() {
-    return this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/TegmJ8WGR8I?vq=hd1080&autoplay=0&controls=0&rel=0&showinfo=0");
+    return this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/-X7BZs8wWjw?controls=1&rel=0");
 }
 
 }

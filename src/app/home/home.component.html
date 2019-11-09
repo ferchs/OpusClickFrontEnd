@@ -166,7 +166,12 @@
                     <iframe 
                         [src]="getVideoIframe()"
                         frameborder='0' 
-                        allowfullscreen="allowfullscreen">
+                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen="allowfullscreen"
+                        mozallowfullscreen="mozallowfullscreen" 
+                        msallowfullscreen="msallowfullscreen" 
+                        oallowfullscreen="oallowfullscreen" 
+                        webkitallowfullscreen="webkitallowfullscreen">
                     </iframe>
                 </div>
             </div>            
