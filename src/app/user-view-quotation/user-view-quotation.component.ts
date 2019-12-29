@@ -44,7 +44,7 @@ export class UserViewQuotationComponent implements OnInit {
       this.loading=false;
     });
     this.submited=false;
-    this.supportPhone="Número: "+environment.supportPhone;
+    this.supportPhone=environment.supportPhone;
   }
 
   detailsItem(item:Item){

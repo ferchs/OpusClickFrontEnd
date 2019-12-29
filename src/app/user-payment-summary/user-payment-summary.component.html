@@ -13,12 +13,12 @@
       <span class="text-center">Exitosa</span>
     </div>
 
-    <div *ngIf="transactionState=='0'" class="col-lg-12 text-center">
+    <div *ngIf="transactionState=='3'" class="col-lg-12 text-center">
       <img src="../../assets/warning.svg" width="25" height="25">
       <span class="text-center">Pendiente</span>
     </div>
 
-    <div *ngIf="transactionState=='-1' || transactionState=='2' || transactionState=='3'" class="col-lg-12 text-center">
+    <div *ngIf="transactionState=='4' || transactionState=='2' || transactionState=='6' || transactionState=='10'" class="col-lg-12 text-center">
         <img src="../../assets/error.svg" width="25" height="25">
         <span class="text-center">Fallida</span>
     </div>

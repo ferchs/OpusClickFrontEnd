@@ -1,10 +1,11 @@
 export const environment = {
   production: true,
- 
+  //apiUrlBase: 'http://localhost:8083/v1',
+  //loginUrl: 'http://localhost:8083/login',
   apiUrlBase: 'https://api.opusclick.com/v1',
   loginUrl: 'https://api.opusclick.com/login',
-  supportPhone:'(321)-832-3768',
-  terminalUser:'c4o1nkdy0zw7hvp5',
+  supportPhone:'573222268918',
+  terminalPublicKey:'a597deebb3d553b008824a39fccf1c2f',
   firebase :{
     apiKey: "AIzaSyDESia3jwf8z6wH8U2drp6tJdMExAegOl0",
     authDomain: "ng-opus.firebaseapp.com",

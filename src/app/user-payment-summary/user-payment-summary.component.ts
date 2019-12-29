@@ -28,10 +28,14 @@ export class UserPaymentSummaryComponent implements OnInit {
       this.transactionState=params['estado'];
       this.billCode=params['codigoFactura'];
       this.description=params['descripcion'];
-      this.billValue=params['valorFactura'];
+      this.billValue=this.formatValue(params['valorFactura']);
       this.paymentMethod=params['medio'];
       this.loading=false;
     });
+  }
+
+  formatValue(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
 
 }

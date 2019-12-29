@@ -28,6 +28,7 @@ import { ProviderQuoteService } from './_services/provider-quote.service';
 import { ContractService } from './_services/contract.service';
 import { ReviewService } from './_services/review.service';
 import { PaymentService } from './_services/payment.service';
+import { EPaycoService } from './_services/epayco.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AccountCreatedComponent } from './account-created/account-created.component';
@@ -237,7 +238,7 @@ import { InfoAlbanilesComponent } from './info-albaniles/info-albaniles.componen
     AccountService, UserService, ProviderService, CityService, DataService,
     DataProviderService,ProfessionService, SearchService, 
     AuthGuard, AuthService,VisitService,WorkService, DynamicFormService,
-    ProviderQuoteService,ContractService,ReviewService,PaymentService],
+    ProviderQuoteService,ContractService,ReviewService,PaymentService,EPaycoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

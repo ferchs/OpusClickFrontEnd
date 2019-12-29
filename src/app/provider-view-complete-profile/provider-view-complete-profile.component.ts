@@ -62,8 +62,6 @@ export class ProviderViewCompleteProfileComponent implements OnInit {
 }
 
   getImageGallery(key:string){
-    console.log(key);
-    console.log(this.metaGalleryImages);
     if(key!=null && key!=undefined){
       return this.metaGalleryImages.get(key);
     }

@@ -135,11 +135,12 @@
               Definir Contrato
           </button>
         </div>
-        <div class="my-1"></div>
+        <div class="my-2"></div>
         <div class="text-center">
-            <p class="link-popover" ngbPopover={{supportPhone}} triggers="mousedown:mousedown" popoverTitle="Llámanos o Escríbenos">
+            <a class="feedback" routerLink="https://api.whatsapp.com/send?phone={{supportPhone}}" appExternalUrl>¿Quieres Contratar Pero Tienes Dudas?</a>
+            <!--<p class="link-popover" ngbPopover={{supportPhone}} triggers="mousedown:mousedown" popoverTitle="Llámanos o Escríbenos">
                 ¿Quieres contratar pero tienes alguna duda en esta cotización?
-            </p>    
+            </p>-->
         </div>
         <!--<div class="my-2"></div>
         <div class="text-center">
