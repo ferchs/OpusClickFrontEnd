@@ -38,7 +38,7 @@
                     type="button"
                     [routerLink]="['/solicitar_pago']" 
                     [queryParams]="{contract:work.contractId}">Solicitar Pago</button>
-                    <button class="dropdown-item" type="button" (click)="requestExtension()">Solicitar Prórroga</button>
+                    <button class="dropdown-item" type="button" (click)="requestExtension(work)">Solicitar Prórroga</button>
                     <button class="dropdown-item" type="button" (click)="terminateWork(work)">Terminar Contrato</button>
                   </div>
                   </div>

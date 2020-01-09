@@ -23,6 +23,14 @@
     <div *ngIf="error" class="alert alert-danger alert-properties">
         {{errorMessage}}
     </div>
+    <div *ngIf="resendEmail" class="alert alert-danger alert-properties">
+      <p>Debes confirmar tu cuenta para iniciar sesion.</p>
+      <button type="button" (click)="resendConfirmationEmail()" 
+      class="btn btn-outline-dark btn-sm">Reenviar email de confirmación</button>
+    </div>
+    <div *ngIf="confirmationEmailResent" class="alert alert-success alert-properties">
+      <p>¡Se ha enviado un nuevo correo para confirmar tu cuenta!</p>
+    </div>
     <hr/>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
       <div>
@@ -70,4 +78,3 @@
   </div>
 </div>
 </div>
-

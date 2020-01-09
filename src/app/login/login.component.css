@@ -145,3 +145,11 @@ small{
   margin: 0 0 4px;
 }
 
+div.alert.alert-danger.alert-properties p{
+  margin-bottom: 0rem;
+}
+
+div.alert.alert-success.alert-properties p{
+  margin-bottom: 0rem;
+}
+

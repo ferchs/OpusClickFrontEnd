@@ -64,10 +64,14 @@ export class ProviderDashboardNegotiationConcretedComponent implements OnInit {
     });
   }
 
-  requestExtension(){
-    const modalRef = this.modalService.open(ConfirmModalComponent);
+  requestExtension(work:WorkGetDto){
+    console.log(work)
+    let wn=work.workNumber;
+    let link='https://api.whatsapp.com/send?phone=573222268918&text=Solicito prórroga para el trabajo No.'+wn;
+    window.open(link, '_blank');
+    /*const modalRef = this.modalService.open(ConfirmModalComponent);
     modalRef.componentInstance.title = 'Solicitar Prórroga';
-    modalRef.componentInstance.content="Llámanos o escríbenos al (321)-832-37-68";
+    modalRef.componentInstance.content="Escríbenos al (322)-226-89-18";*/
   }
 
   terminateWork(work){
