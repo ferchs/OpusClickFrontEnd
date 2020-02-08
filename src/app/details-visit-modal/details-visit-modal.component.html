@@ -7,10 +7,10 @@
   <div class="modal-body">
     <strong>Código:</strong><p>{{visit.code}}</p>
     <strong>Pin de seguridad:</strong><p>{{visit.securityPin}}</p>
-    <strong>Fecha:</strong><p>{{visit.date | date:'MM/dd/yyyy'}}</p>
-    <strong>Hora:</strong><p>{{visit.lowerLimit}}</p>
-    <strong>Fecha alternativa:</strong><p>{{visit.alternativeDate | date:'MM/dd/yyyy'}}</p>
-    <strong>Hora alternativa:</strong><p>{{visit.alternativeLowerLimit}}</p>
+    <strong>Fecha:</strong><p>{{visit.date | date:'dd/MM/yyyy'}}</p>
+    <strong>Hora:</strong><p>{{visit.lowerLimit}} - {{visit.upperLimit}}</p>
+    <strong>Fecha alternativa:</strong><p>{{visit.alternativeDate | date:'dd/MM/yyyy'}}</p>
+    <strong>Hora alternativa:</strong><p>{{visit.alternativeLowerLimit}} - {{visit.alternativeUpperLimit}}</p>
     <strong>Dirección:</strong><p>{{visit.address}}</p>
     <strong>Barrio:</strong><p>{{visit.neighborhood}}</p>
     <strong>Descripción:</strong><p>{{visit.description}}</p>

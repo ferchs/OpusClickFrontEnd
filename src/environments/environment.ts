@@ -5,10 +5,10 @@
 
 export const environment = {
   production: false,
-  apiUrlBase: 'https://api.opusclick.com/v1',
-  loginUrl: 'https://api.opusclick.com/login',
-  //apiUrlBase: 'http://localhost:8083/v1',
-  //loginUrl: 'http://localhost:8083/login',
+  //apiUrlBase: 'https://api.opusclick.com/v1',
+  //loginUrl: 'https://api.opusclick.com/login',
+  apiUrlBase: 'http://localhost:8083/v1',
+  loginUrl: 'http://localhost:8083/login',
   //apiUrlBase: 'https://awseb-e-m-AWSEBLoa-KZUE0LPFYPPZ-1995786846.us-east-1.elb.amazonaws.com:443/v1',
   //loginUrl: 'https://awseb-e-m-AWSEBLoa-KZUE0LPFYPPZ-1995786846.us-east-1.elb.amazonaws.com:443/login',
   supportPhone:'573222268918',

@@ -1,5 +1,7 @@
 export class ProviderGetContractReviewDto {
-	
+
+	public reviewId:number;
+
 	public contractName:string;
 	
 	public userName:string;
@@ -15,6 +17,9 @@ export class ProviderGetContractReviewDto {
 	public reviewImage:string;
 
 	constructor(){
+
+		this.reviewId=0;
+
 		this.contractName=null;
 	
 		this.userName=null;

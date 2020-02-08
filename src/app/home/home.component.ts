@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
     this.showDropDown=false;
     this.showCategories=false;
     this.supportPhone=environment.supportPhone;
+    this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/-X7BZs8wWjw?controls=1&rel=0");
   }
 
   openDropDown() {
@@ -80,9 +81,5 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['expertos'],{ queryParams: { profession: this.profession.id } })
     }
   }
-
-  getVideoIframe() {
-    return this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/-X7BZs8wWjw?controls=1&rel=0");
-}
 
 }

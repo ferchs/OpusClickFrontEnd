@@ -50,10 +50,10 @@ export class ProviderDashboardVisitAcceptedComponent implements OnInit {
         dto.address=visit.address;
         dto.neighborhood=visit.neighborhood;
         dto.description=visit.description;	
-        dto.lowerLimit=visit.lowerLimit;
-        dto.alternativeLowerLimit=visit.alternativeLowerLimit;
-        dto.upperLimit=visit.upperLimit;
-        dto.alternativeUpperLimit=visit.alternativeUpperLimit;
+        dto.lowerLimit=postponeDto.lowerLimit;
+        dto.alternativeLowerLimit=postponeDto.alternativeLowerLimit;
+        dto.upperLimit=postponeDto.upperLimit;
+        dto.alternativeUpperLimit=postponeDto.alternativeUpperLimit;
         this.visitService.updateVisit(dto).subscribe(res=>{
           this.visitService.getVisit("provider",localStorage.getItem("id_provider"),null,"ACCEPTED_BY_PROVIDER,ACCEPTED_BY_USER,POSTPONE_BY_PROVIDER").subscribe((visits:VisitGetDto[])=>{
             this.acceptedVisits=visits;

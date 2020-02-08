@@ -24,6 +24,7 @@ import { ProviderDashboardVisitPendingComponent } from './provider-dashboard-vis
 import { ProviderDashboardVisitAcceptedComponent } from './provider-dashboard-visit-accepted/provider-dashboard-visit-accepted.component';
 import { ProviderDashboardNegotiationPendingComponent } from './provider-dashboard-negotiation-pending/provider-dashboard-negotiation-pending.component';
 import { ProviderDashboardNegotiationConcretedComponent } from './provider-dashboard-negotiation-concreted/provider-dashboard-negotiation-concreted.component';
+import { ProviderDashboardNegotiationFinishedComponent } from './provider-dashboard-negotiation-finished/provider-dashboard-negotiation-finished.component';
 import { ProviderRequestPaymentComponent } from './provider-request-payment/provider-request-payment.component';
 import { ProviderViewCompleteProfileComponent } from './provider-view-complete-profile/provider-view-complete-profile.component';
 import { ViewContractComponent } from './view-contract/view-contract.component';
@@ -93,7 +94,8 @@ const appRoutes: Routes = [
             { path: 'visitas/aceptadas', component: ProviderDashboardVisitAcceptedComponent},
             { path: 'visitas/incumplidas', component: ProviderDashboardVisitUnfulfilledComponent},
             { path: 'negociaciones/en_proceso', component: ProviderDashboardNegotiationPendingComponent},
-            { path: 'negociaciones/concretadas', component: ProviderDashboardNegotiationConcretedComponent}
+            { path: 'negociaciones/concretadas', component: ProviderDashboardNegotiationConcretedComponent},
+            { path: 'negociaciones/finalizadas', component: ProviderDashboardNegotiationFinishedComponent}
         ]
     },
     {path:'expertos', component: ProviderListComponent},
