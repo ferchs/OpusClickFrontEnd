@@ -83,7 +83,7 @@ export class UserApprovePaymentComponent implements OnInit {
   denyPayment(milestone:MilestoneGetDto){
     const modalRef = this.modalService.open(ConfirmModalComponent);
     modalRef.componentInstance.title = '¿Estas seguro de denegar este pago?';
-    modalRef.componentInstance.content = 'Si tienes algún problema con este trabajo, llámanos o escribenos al (321)-832-37-68';
+    modalRef.componentInstance.content = 'Si tienes algún problema con este trabajo, escribenos al (322)-226-8918';
     modalRef.componentInstance.result.subscribe(response=>{
       if(response==true){
         milestone.state="DENIED";

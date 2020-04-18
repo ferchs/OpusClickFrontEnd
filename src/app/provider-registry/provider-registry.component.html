@@ -135,7 +135,7 @@
                             [ngClass]="{'is-valid': password.valid && password.touched, 'is-invalid': password.invalid && password.touched}">
                             <small *ngIf="password.invalid && password.touched || password.pristine && password.touched"
                             class="form-text text-muted-error">
-                            La contraseña es requerida
+                            La contraseña es requerida y requiere mínimo 6 caracteres
                         </small>
                         </div>
                         <div>

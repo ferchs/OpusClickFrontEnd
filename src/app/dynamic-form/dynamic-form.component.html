@@ -83,11 +83,17 @@
               <div *ngSwitchCase="'textbox'" [hidden]="!(currentQuestion.id===answer.parent)" class="col-md-6 mb-3">
                 <label [for]="answer.id">{{answer.label}}</label>
                 <input [formControlName]="answer.controlName" type="text" class="form-control" [id]="answer.id" [placeholder]="answer.placeholder">
+                <div *ngIf="answer.required===true">
+                  <small *ngIf="form.get(answer.controlName).status=='INVALID'" class="form-text text-muted-error">Este campo es obligatorio</small>
+                </div>
               </div>
               <div *ngSwitchCase="'textbox_next'" [hidden]="!(currentQuestion.id===answer.parent)">
                 <div class="col-md-6 mb-3">
                   <label [for]="answer.id">{{answer.label}}</label>
                   <input [formControlName]="answer.controlName" type="text" class="form-control" [id]="answer.id" [placeholder]="answer.placeholder">
+                  <div *ngIf="answer.required===true">
+                    <small *ngIf="form.get(answer.controlName).status=='INVALID'" class="form-text text-muted-error">Este campo es obligatorio</small>
+                  </div>
                 </div>
                 <div class="my-4"></div>
                 <div class="text-center">
