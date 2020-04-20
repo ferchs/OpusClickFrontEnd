@@ -6,6 +6,9 @@
   .d-options{
     display:inline-block;
   }
+  p.summary{
+    font-size:0.83rem;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up)*/
@@ -15,6 +18,9 @@
   }
   .d-options{
     display:inline-block;
+  }
+  p.summary{
+    font-size:1rem;
   }
 }
 
@@ -26,6 +32,9 @@
   .d-options{
     display:inline-block;
   } 
+  p.summary{
+    font-size:1rem;
+  }
  }
 
 /*Large devices (desktops, 992px and up)*/
@@ -36,6 +45,9 @@
   .d-options{
     display:flex;
   }
+  p.summary{
+    font-size:1rem;
+  }
  }
 
 /*Extra large devices (large desktops, 1200px and up)*/
@@ -45,6 +57,9 @@
   } 
   .d-options{
     display:flex;
+  }
+  p.summary{
+    font-size:1rem;
   }
  }
    
@@ -194,4 +209,13 @@
   .unselectable{
     background-color: #ddd;
     cursor: not-allowed;
+}
+
+p{
+  margin-bottom: 0px;
+}
+
+hr {
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
 }

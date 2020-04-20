@@ -209,7 +209,7 @@ export class UserManageContractComponent implements OnInit {
     this.contract.milestones=this.milestones;
     this.contract.administrationFee=+(this.contract.subtotal*0.1).toFixed(2);
     let partialTotal=this.contract.subtotal+this.contract.administrationFee;
-    this.contract.totalValue=this.isFirstService()?+(partialTotal-(partialTotal*0.08)).toFixed(2):+partialTotal.toFixed(2); 
+    this.contract.totalValue=this.isFirstService()?+(partialTotal-(partialTotal*0.1)).toFixed(2):+partialTotal.toFixed(2); 
     this.contract.clarifications=this.providerQuote.clarifications;
     this.contract.state=contractState;
   }

@@ -2,6 +2,9 @@
 @media (max-width: 575.98px) {  
     .space {
       padding-top: 23%;
+    }
+    p.summary{
+      font-size:0.83rem;
     }  
   }
   
@@ -9,21 +12,30 @@
   @media (min-width: 576px) and (max-width: 767.98px) { 
     .space {
       padding-top: 23%;
-    }  
+    }
+    p.summary{
+      font-size:1rem;
+    }
   }
   
   /*Medium devices (tablets, 768px and up)*/
   @media (min-width: 768px) and (max-width: 991.98px) { 
     .space {
       padding-top: 14%;
-    }  
+    }
+    p.summary{
+      font-size:1rem;
+    } 
    }
   
   /*Large devices (desktops, 992px and up)*/
   @media (min-width: 992px) and (max-width: 1199.98px) { 
     .space {
       padding-top: 7%; 
-    }  
+    } 
+    p.summary{
+      font-size:1rem;
+    }
    }
   
   /*Extra large devices (large desktops, 1200px and up)*/
@@ -31,6 +43,9 @@
     .space {
       padding-top: 7%;
     }   
+    p.summary{
+      font-size:1rem;
+    }
    }
    
   .progress-bar{
@@ -178,6 +193,10 @@
 
   small{
     color:red;
+  }
+
+  small.currency{
+    color:#484848;
   }
   
   .discount-info{

@@ -32,7 +32,7 @@
                     <img src="../../assets/minus.svg" width="18" height="18" (click)="removeItem(i)">     
                   </div>
                   <div class="col-lg-4">
-                    <label>Nombre</label>
+                    <label>Item</label>
                       <div class="form-row">
                         <div class="col-md-12">
                           <input class="form-control form-control-sm"
@@ -53,7 +53,7 @@
                       <div class="form-row">
                         <div class="col-md-12">
                           <input class="form-control form-control-sm"
-                            placeholder="Precio" 
+                            placeholder="Precio COP" 
                             currencyMask 
                             [(ngModel)]="item.value" 
                             [options]="{ prefix: '$ ', thousands: ',', precision: 0}"
@@ -68,7 +68,7 @@
                         <div class="col-md-5">
                           <input class="form-control form-control-sm"
                             type="text" 
-                            placeholder="Valor" 
+                            placeholder="Tiempo" 
                             required 
                             minlength="1" 
                             pattern="[0-9]*"
@@ -102,7 +102,7 @@
                       <div class="col-md-5">
                         <input class="form-control form-control-sm"
                           type="text" 
-                          placeholder="Valor" 
+                          placeholder="Tiempo" 
                           required 
                           minlength="1" 
                           pattern="[0-9]*"
@@ -304,7 +304,7 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">Nombre</th>
+                    <th scope="col">Item</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Duración</th>
                     <th scope="col">Garantía</th>
@@ -313,7 +313,7 @@
                 <tbody>
                   <tr *ngFor='let item of quote.items'>
                     <td>{{item.name}}</td>
-                    <td>$ {{item.value | number:0}}</td>
+                    <td>$ {{item.value | number:0}} <small>COP</small></td>
                     <td>{{item.durationValue}} {{item.durationTime}}</td>
                     <td>{{item.warrantyValue}} {{item.warrantyTime}}</td>
                   </tr>
@@ -324,41 +324,45 @@
         </div>
         <div class="container">
           <div class="row">
-            <div class="col-1 col-lg-8"></div>
-            <div class="col-11 col-lg-4">
+            <div class="col-lg-7"></div>
+            <div class="col-12 col-lg-5">
                 <div class="row">
-                    <div class="col-7 col-lg-7">
-                        <p class="text-left"><strong>Subtotal:</strong></p>
+                    <div class="col-6 col-lg-7">
+                        <p class="text-right summary"><strong>Subtotal:</strong></p>
                     </div>
-                    <div class="col-5 col-lg-5">
-                        <p class="text-right">$ {{quote.subtotal | number:'1.0-2'}}</p>
+                    <div class="col-6 col-lg-5">
+                        <p class="text-right summary">$ {{quote.subtotal | number:'1.0-2'}} <small>COP</small></p>
                     </div>
                 </div>
             </div>
-            <div class="col-1 col-lg-8"></div>
-            <div class="col-11 col-lg-4">
+            <div class="col-lg-7"></div>
+            <div class="col-12 col-lg-5">
                 <div class="row">
-                    <div class="col-7 col-lg-7">
-                        <p class="text-left"><strong>Tarifa de servicio:</strong></p>
+                    <div class="col-6 col-lg-7">
+                      <p class="text-right link-popover summary" ngbPopover="Es el valor que OpusClick establece para el mantenimiento de su plataforma y el servicio de administración del dinero" triggers="mousedown:mousedown" popoverTitle="¿Qué significa esta tarifa?"><strong>Tarifa de servicio:</strong>
+                        <svg class="bi bi-info-circle-fill" width="0.8em" height="0.8em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M8 16A8 8 0 108 0a8 8 0 000 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+                        </svg>
+                      </p>        
                     </div>
-                    <div class="col-5 col-lg-5">
-                        <p class="text-right">$ {{quote.administrationFee | number:'1.0-2'}}</p>
+                    <div class="col-6 col-lg-5">
+                        <p class="text-right summary">$ {{quote.administrationFee | number:'1.0-2'}} <small>COP</small></p>
                     </div>
                 </div>
             </div>           
-            <div class="col-1 col-lg-8">
+            <div class="col-lg-7">
             </div>
-            <div class="col-11 col-lg-4">
+            <div class="col-12 col-lg-5">
                 <hr>
             </div>
-            <div class="col-1 col-lg-8"></div>
-            <div class="col-11 col-lg-4">
+            <div class="col-lg-7"></div>
+            <div class="col-12 col-lg-5">
                 <div class="row">
-                    <div class="col-7 col-lg-7">
-                        <p class="text-left"><strong>Valor total:</strong></p>
+                    <div class="col-6 col-lg-7">
+                        <p class="text-right summary"><strong>Valor total:</strong></p>
                     </div>
-                    <div class="col-5 col-lg-5">
-                        <p class="text-right">$ {{quote.total | number:'1.0-2'}}</p>
+                    <div class="col-6 col-lg-5">
+                        <p class="text-right summary">$ {{quote.total | number:'1.0-2'}} <small>COP</small></p>
                     </div>
                 </div>
             </div>
@@ -397,4 +401,3 @@
         </div>
     </div>
   </div>
-        

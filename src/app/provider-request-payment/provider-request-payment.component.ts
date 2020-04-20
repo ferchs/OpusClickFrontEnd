@@ -99,4 +99,12 @@ export class ProviderRequestPaymentComponent implements OnInit {
     }
     return disable;
   }
+
+  isFirstService(){
+    if((this.contract.subtotal+this.contract.administrationFee)!=this.contract.totalValue){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }

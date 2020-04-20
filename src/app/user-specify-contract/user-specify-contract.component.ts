@@ -138,6 +138,14 @@ export class UserSpecifyContractComponent implements OnInit {
         }
       });
     }
+
+    isFirstService(){
+      if((this.contract.subtotal+this.contract.administrationFee)!=this.contract.totalValue){
+        return true;
+      }else{
+        return false;
+      }
+    }
   
     sendQuote(){
       this.loading=true;

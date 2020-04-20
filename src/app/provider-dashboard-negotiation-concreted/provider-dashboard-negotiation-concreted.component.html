@@ -36,10 +36,14 @@
                   <div class="dropdown-menu">
                     <button class="dropdown-item" 
                     type="button"
+                    [routerLink]="['/ver_detalles_contrato']" 
+                    [queryParams]="{contract:work.contractId}">Ver Contrato</button>
+                    <button class="dropdown-item" 
+                    type="button"
                     [routerLink]="['/solicitar_pago']" 
                     [queryParams]="{contract:work.contractId}">Solicitar Pago</button>
                     <button class="dropdown-item" type="button" (click)="requestExtension(work)">Solicitar Prórroga</button>
-                    <button class="dropdown-item" type="button" (click)="terminateWork(work)">Terminar Contrato</button>
+                    <button class="dropdown-item" type="button" (click)="terminateWork(work)">Cancelar Contrato</button>
                   </div>
                   </div>
 

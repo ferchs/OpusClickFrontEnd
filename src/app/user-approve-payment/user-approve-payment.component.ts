@@ -116,4 +116,12 @@ export class UserApprovePaymentComponent implements OnInit {
     this.location.back();
   }
 
+  isFirstService(){
+    if((this.contract.subtotal+this.contract.administrationFee)!=this.contract.totalValue){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 }
