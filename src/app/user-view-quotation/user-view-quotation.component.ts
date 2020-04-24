@@ -8,7 +8,7 @@ import { ProviderQuoteService } from '../_services/provider-quote.service';
 import { ProviderQuoteDto } from '../_dtos/providerQuoteDto';
 import {Location} from '@angular/common';
 import { environment } from '../../environments/environment';
-
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-user-view-quotation',
@@ -23,10 +23,11 @@ export class UserViewQuotationComponent implements OnInit {
   workId:string;
   providerQuote:ProviderQuoteDto;
   supportPhone:string;
+  isUserFirtsService:boolean;
 
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
     private modalService: NgbModal, private providerQuoteService:ProviderQuoteService,
-    private location:Location) { 
+    private userService:UserService, private location:Location) { 
   }
 
   ngOnInit() {
@@ -41,7 +42,11 @@ export class UserViewQuotationComponent implements OnInit {
     .subscribe((quote:ProviderQuoteDto)=>
     {
       this.providerQuote=quote;
-      this.loading=false;
+      this.userService.isFirtsService(+localStorage.getItem("id_user")).subscribe(firtsService=>{
+        this.isUserFirtsService=firtsService;
+        this.loading=false;
+      });
+      
     });
     this.submited=false;
     this.supportPhone=environment.supportPhone;
@@ -53,6 +58,10 @@ export class UserViewQuotationComponent implements OnInit {
     modalRef.componentInstance.item = item;
   }
 
+  isFirstService(){
+    return this.isUserFirtsService;
+  }
+  
   back(){
     this.location.back();
   }

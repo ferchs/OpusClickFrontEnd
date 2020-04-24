@@ -213,3 +213,10 @@ hr {
 small.currency{
   color:#484848;
 }
+
+.info{
+  color:#99979c;
+  font-size: 11px;
+  margin-top: 0;
+  margin-bottom: 0;
+}

@@ -33,19 +33,20 @@ export class ConfirmRegistrationComponent implements OnInit {
     });
     this.http.get(environment.apiUrlBase+"/registrationConfirm?type="+this.type+"&verifyCode="+this.token,{ observe: 'response', responseType: 'text' })
     .subscribe(response => {
-      if(response.status === 200){
+      if(response.status == 200){
         this.sucess=true;
         this.loading=false;
       }
     },
     (error:Response)=> {
-      if(error.status === 401){
+      if(error.status == 401){
         this.expired=true;
         this.loading=false;
       }
       else{
         this.error=true;
         this.loading=false;
+        console.log(error.status)
       }
     });
   }

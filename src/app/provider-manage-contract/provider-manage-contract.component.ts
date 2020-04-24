@@ -108,10 +108,9 @@ export class ProviderManageContractComponent implements OnInit {
     this.contract.milestones.forEach((element:MilestoneGetDto) => {
       this.contract.subtotal+=element.item.value;
     });
-    this.contract.administrationFee=Math.trunc(this.contract.subtotal*0.05);
+    this.contract.administrationFee=Math.trunc(this.contract.subtotal*0.1);
     this.contract.totalValue=this.contract.subtotal+this.contract.administrationFee;
   }
-    
 
   detailsItem(item:Item){
     const modalRef = this.modalService.open(DetailsQuotationModalComponent);

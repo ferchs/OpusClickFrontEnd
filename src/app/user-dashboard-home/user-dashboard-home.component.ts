@@ -5,6 +5,7 @@ import { Profession } from '../_models/profession';
 import { Search } from '../_models/search';
 import { AuthService } from '../_services/auth.service';
 import { Router} from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-user-dashboard-home',
@@ -18,6 +19,7 @@ export class UserDashboardHomeComponent implements OnInit {
   placeholder:string;
   mSearch:string;
   showDropDown:boolean;
+  supportPhone:string;
 
   constructor(private professionService: ProfessionService, private searchService: SearchService,
     private authService: AuthService, private router: Router) { }
@@ -34,6 +36,7 @@ export class UserDashboardHomeComponent implements OnInit {
       this.mSearch="";
       this.placeholder="¿Qué servicio necesitas?";
       this.showDropDown=false;
+      this.supportPhone=environment.supportPhone;
     }
   
     openDropDown() {
