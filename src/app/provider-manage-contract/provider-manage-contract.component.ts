@@ -109,7 +109,12 @@ export class ProviderManageContractComponent implements OnInit {
       this.contract.subtotal+=element.item.value;
     });
     this.contract.administrationFee=Math.trunc(this.contract.subtotal*0.1);
-    this.contract.totalValue=this.contract.subtotal+this.contract.administrationFee;
+    if(this.isFirstService()){
+      this.contract.totalValue=this.contract.subtotal;
+    }
+    else{
+      this.contract.totalValue=this.contract.subtotal+this.contract.administrationFee;
+    }
   }
 
   detailsItem(item:Item){
@@ -153,6 +158,15 @@ export class ProviderManageContractComponent implements OnInit {
         });
       }
     });
+  }
+
+  isFirstService(){
+    if(this.contract.subtotal==this.contract.totalValue){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   sendQuote(){

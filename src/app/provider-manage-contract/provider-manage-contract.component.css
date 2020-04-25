@@ -210,3 +210,14 @@ hr {
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
 }
+
+.row{
+  margin-bottom: 6px;
+}
+
+.info{
+  color:#99979c;
+  font-size: 11px;
+  margin-top: 0;
+  margin-bottom: 0;
+}

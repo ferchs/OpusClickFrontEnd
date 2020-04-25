@@ -12,6 +12,7 @@ import { DetailsQuotationModalComponent } from '../details-quotation-modal/detai
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 import { PaymentService } from '../_services/payment.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-user-specify-contract',
@@ -22,6 +23,7 @@ export class UserSpecifyContractComponent implements OnInit {
 
   loggedIn:boolean;
   loading:boolean;
+  isUserFirtsService:boolean;
   submited:boolean;
   accepted:boolean;
   totalPage:number;
@@ -38,7 +40,7 @@ export class UserSpecifyContractComponent implements OnInit {
 
   constructor(private authService: AuthService, private location:Location,
     private router: Router, private activatedRoute: ActivatedRoute,private modalService: NgbModal,
-    private domSanitizer: DomSanitizer, private contractService:ContractService,
+    private domSanitizer: DomSanitizer, private contractService:ContractService,private userService:UserService,
     private paymentService:PaymentService) { }
 
     ngOnInit() {
@@ -56,6 +58,9 @@ export class UserSpecifyContractComponent implements OnInit {
         });
       this.contractService.getContract(this.workId).subscribe((contract:ContractGetDto)=>{
         this.contract=contract;
+        this.userService.isFirtsService(+localStorage.getItem("id_user")).subscribe(firtsService=>{
+          this.isUserFirtsService=firtsService;
+        });
       });
     }
     
@@ -92,8 +97,13 @@ export class UserSpecifyContractComponent implements OnInit {
       this.contract.milestones.forEach((element:MilestoneGetDto) => {
         this.contract.subtotal+=element.item.value;
       });
-      this.contract.administrationFee=Math.trunc(this.contract.subtotal*0.05);
-      this.contract.totalValue=this.contract.subtotal+this.contract.administrationFee;
+      this.contract.administrationFee=Math.trunc(this.contract.subtotal*0.1);
+      if(this.isFirstService()){
+        this.contract.totalValue=this.contract.subtotal;
+      }
+      else{
+        this.contract.totalValue=this.contract.subtotal+this.contract.administrationFee;
+      }
     }
       
   
@@ -140,11 +150,7 @@ export class UserSpecifyContractComponent implements OnInit {
     }
 
     isFirstService(){
-      if((this.contract.subtotal+this.contract.administrationFee)!=this.contract.totalValue){
-        return true;
-      }else{
-        return false;
-      }
+      return this.isUserFirtsService;
     }
   
     sendQuote(){

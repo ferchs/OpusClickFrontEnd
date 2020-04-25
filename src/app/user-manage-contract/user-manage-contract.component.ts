@@ -71,7 +71,6 @@ export class UserManageContractComponent implements OnInit {
       this.workId=params['work'];
     });
     this.userService.isFirtsService(+localStorage.getItem("id_user")).subscribe(firtsService=>{
-      console.log(firtsService)
       this.isUserFirtsService=firtsService;
     });
     this.providerQuoteService.getProviderQuote(this.workId)
