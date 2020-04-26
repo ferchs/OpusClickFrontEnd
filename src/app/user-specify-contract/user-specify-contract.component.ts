@@ -137,7 +137,7 @@ export class UserSpecifyContractComponent implements OnInit {
     acceptContract(){
       const modalRef = this.modalService.open(ConfirmModalComponent);
       modalRef.componentInstance.title = '¿Estas seguro de aceptar este contrato?';
-      modalRef.componentInstance.content = 'Si aceptas este contrato estas aceptando todas las condiciones descritas.';
+      modalRef.componentInstance.content = 'Si aceptas este contrato, estas indicando que estas de acuerdo con todas las condiciones descritas en él y que procederás realizar el pago.';
       modalRef.componentInstance.result.subscribe(response=>{
         if(response==true){
           this.loading=true;

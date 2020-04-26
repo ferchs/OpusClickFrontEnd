@@ -21,6 +21,7 @@ export class ProviderManageContractComponent implements OnInit {
 
   loggedIn:boolean;
   loading:boolean;
+  wasFirstService:boolean;
   submited:boolean;
   accepted:boolean;
   totalPage:number;
@@ -54,6 +55,7 @@ export class ProviderManageContractComponent implements OnInit {
       });
     this.contractService.getContract(this.workId).subscribe((contract:ContractGetDto)=>{
       this.contract=contract;
+      this.wasFirstService=this.isWasFirstService();
     });
 
     /*this.contract.milestones
@@ -160,13 +162,17 @@ export class ProviderManageContractComponent implements OnInit {
     });
   }
 
-  isFirstService(){
+  isWasFirstService(){
     if(this.contract.subtotal==this.contract.totalValue){
       return true;
     }
     else{
       return false;
     }
+  }
+
+  isFirstService(){
+    return this.wasFirstService;
   }
 
   sendQuote(){

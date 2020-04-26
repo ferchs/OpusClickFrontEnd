@@ -59,7 +59,7 @@ export class UserApprovePaymentComponent implements OnInit {
   approvePayment(milestone:MilestoneGetDto){
     const modalRef = this.modalService.open(ConfirmModalComponent);
     modalRef.componentInstance.title = '¿Estas seguro de aprobar este pago?';
-    modalRef.componentInstance.content = 'Si apruebas, estarás autorizando realizar el pago al experto';
+    modalRef.componentInstance.content = 'Si apruebas, estás autorizando realizar el pago al experto';
     modalRef.componentInstance.result.subscribe(response=>{
       if(response==true){
         milestone.state="PAID_OUT";
