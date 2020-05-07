@@ -8,23 +8,6 @@ import { ProviderRegistryComponent } from './provider-registry/provider-registry
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { AccountCreatedComponent } from './account-created/account-created.component';
 import { ConfirmRegistrationComponent } from './confirm-registration/confirm-registration.component';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { UserDashboardProfileComponent } from './user-dashboard-profile/user-dashboard-profile.component';
-import { UserDashboardHomeComponent } from './user-dashboard-home/user-dashboard-home.component';
-import { UserDashboardProfileEditComponent } from './user-dashboard-profile-edit/user-dashboard-profile-edit.component';
-import { UserDashboardVisitPendingComponent } from './user-dashboard-visit-pending/user-dashboard-visit-pending.component';
-import { UserDashboardVisitAcceptedComponent } from './user-dashboard-visit-accepted/user-dashboard-visit-accepted.component';
-import { UserDashboardNegotiationPendingComponent } from './user-dashboard-negotiation-pending/user-dashboard-negotiation-pending.component';
-import { UserDashboardNegotiationConcretedComponent } from './user-dashboard-negotiation-concreted/user-dashboard-negotiation-concreted.component';
-import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
-import { ProviderDashboardHomeComponent } from './provider-dashboard-home/provider-dashboard-home.component';
-import { ProviderDashboardProfileComponent } from './provider-dashboard-profile/provider-dashboard-profile.component';
-import { ProviderDashboardProfileEditComponent } from './provider-dashboard-profile-edit/provider-dashboard-profile-edit.component';
-import { ProviderDashboardVisitPendingComponent } from './provider-dashboard-visit-pending/provider-dashboard-visit-pending.component';
-import { ProviderDashboardVisitAcceptedComponent } from './provider-dashboard-visit-accepted/provider-dashboard-visit-accepted.component';
-import { ProviderDashboardNegotiationPendingComponent } from './provider-dashboard-negotiation-pending/provider-dashboard-negotiation-pending.component';
-import { ProviderDashboardNegotiationConcretedComponent } from './provider-dashboard-negotiation-concreted/provider-dashboard-negotiation-concreted.component';
-import { ProviderDashboardNegotiationFinishedComponent } from './provider-dashboard-negotiation-finished/provider-dashboard-negotiation-finished.component';
 import { ProviderRequestPaymentComponent } from './provider-request-payment/provider-request-payment.component';
 import { ProviderViewCompleteProfileComponent } from './provider-view-complete-profile/provider-view-complete-profile.component';
 import { ViewContractComponent } from './view-contract/view-contract.component';
@@ -32,8 +15,6 @@ import { ViewSignedContractComponent } from './view-signed-contract/view-signed-
 import { ProviderListComponent } from './provider-list/provider-list.component';
 import { RequestVisitComponent } from './request-visit/request-visit.component';
 import { UserOnlineQuoteComponent } from './user-online-quote/user-online-quote.component';
-import { UserDashboardVisitUnfulfilledComponent } from './user-dashboard-visit-unfulfilled/user-dashboard-visit-unfulfilled.component';
-import { ProviderDashboardVisitUnfulfilledComponent } from './provider-dashboard-visit-unfulfilled/provider-dashboard-visit-unfulfilled.component';
 import { ReviewComponent } from './review/review.component';
 import { ProviderQuotationComponent } from './provider-quotation/provider-quotation.component';
 import { UserViewQuotationComponent } from './user-view-quotation/user-view-quotation.component';
@@ -44,13 +25,6 @@ import { UserSpecifyContractComponent } from './user-specify-contract/user-speci
 import { UserApprovePaymentComponent } from './user-approve-payment/user-approve-payment.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserPaymentSummaryComponent } from './user-payment-summary/user-payment-summary.component';
-import { InfoCarpinterosComponent } from './info-carpinteros/info-carpinteros.component';
-import { InfoPlomerosComponent } from './info-plomeros/info-plomeros.component';
-import { InfoPintoresComponent } from './info-pintores/info-pintores.component';
-import { InfoTapicerosComponent } from './info-tapiceros/info-tapiceros.component';
-import { InfoElectricistasComponent } from './info-electricistas/info-electricistas.component';
-import { InfoSoldadoresComponent } from './info-soldadores/info-soldadores.component';
-import { InfoAlbanilesComponent } from './info-albaniles/info-albaniles.component';
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
@@ -64,41 +38,15 @@ const appRoutes: Routes = [
     {path:'reestablecer_contraseña', component: ResetPasswordComponent},   
     {path:'entrar', component: LoginComponent},
     {path:'confirmar_registro', component: ConfirmRegistrationComponent},
-    {path:'albañil', component: InfoAlbanilesComponent},
-    {path:'carpintero', component: InfoCarpinterosComponent},
-    {path:'plomero', component: InfoPlomerosComponent},
-    {path:'pintor', component: InfoPintoresComponent},
-    {path:'tapicero', component: InfoTapicerosComponent},
-    {path:'electricista', component: InfoElectricistasComponent},
-    {path:'cerrajero', component: InfoSoldadoresComponent},
-    {path:'dashboard_usuario', component: UserDashboardComponent,
-    canActivateChild: [AuthGuard],
-        children: [
-            { path: 'cuenta', component: UserDashboardHomeComponent},
-            { path: 'perfil', component:  UserDashboardProfileComponent},
-            { path: 'perfil/editar', component: UserDashboardProfileEditComponent},
-            { path: 'visitas/pendientes', component: UserDashboardVisitPendingComponent},
-            { path: 'visitas/aceptadas', component: UserDashboardVisitAcceptedComponent},
-            { path: 'visitas/incumplidas', component: UserDashboardVisitUnfulfilledComponent},
-            { path: 'negociaciones/en_proceso', component: UserDashboardNegotiationPendingComponent},
-            { path: 'negociaciones/concretadas', component: UserDashboardNegotiationConcretedComponent}
-        ]
+    {path:'blog', loadChildren: './information-pages/information-pages.module#InformationPagesModule'},
+    {path:'dashboard_usuario', 
+    loadChildren: './dashboard-user/dashboard-user.module#DashboardUserModule',
+    canActivateChild: [AuthGuard]
     },
-    {path:'dashboard_experto', component: ProviderDashboardComponent,
-    canActivateChild: [AuthGuard],
-        children: [
-            { path: 'cuenta', component: ProviderDashboardHomeComponent },
-            { path: 'perfil', component:  ProviderDashboardProfileComponent},
-            { path: 'perfil/editar', component: ProviderDashboardProfileEditComponent},
-            { path: 'visitas/nuevas', component: ProviderDashboardVisitPendingComponent},
-            { path: 'visitas/aceptadas', component: ProviderDashboardVisitAcceptedComponent},
-            { path: 'visitas/incumplidas', component: ProviderDashboardVisitUnfulfilledComponent},
-            { path: 'negociaciones/en_proceso', component: ProviderDashboardNegotiationPendingComponent},
-            { path: 'negociaciones/concretadas', component: ProviderDashboardNegotiationConcretedComponent},
-            { path: 'negociaciones/finalizadas', component: ProviderDashboardNegotiationFinishedComponent}
-        ]
+    {path:'dashboard_experto', 
+    loadChildren: './dashboard-provider/dashboard-provider.module#DashboardProviderModule',
+    canActivateChild: [AuthGuard]
     },
-    {path:'expertos', component: ProviderListComponent},
     {path:'visitas', component: RequestVisitComponent, canActivate: [AuthGuard]},
     {path:'ver_perfil', component: ProviderViewCompleteProfileComponent, canActivate: [AuthGuard]},
     {path:'cotizacion_virtual', component: UserOnlineQuoteComponent, canActivate: [AuthGuard]},

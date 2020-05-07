@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup }        from '@angular/forms';
-import { AnswerBase }     from '../_shared/answer-base';
+import { AnswerBase }     from '../shared/_shared/answer-base';
 import { Question } from '../_models/question';
 import { Observable } from "rxjs/Rx"
 

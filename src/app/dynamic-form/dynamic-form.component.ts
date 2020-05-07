@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ChangeDetectorRef }  from '@angular/core';
 import { FormGroup }                 from '@angular/forms';
-import { AnswerBase }              from '../_shared/answer-base';
+import { AnswerBase }              from '../shared/_shared/answer-base';
 import { AnswerControlService }    from '../_services/answer-control.service';
 import { DynamicFormService } from '../_services/dynamic-form.service';
 import { Question } from '../_models/question';

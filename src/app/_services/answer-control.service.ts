@@ -1,7 +1,7 @@
 import { Injectable }   from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AnswerBase } from '../_shared/answer-base';
-import { FileValidator } from '../_directives/file-validator';
+import { AnswerBase } from '../shared/_shared/answer-base';
+import { FileValidator } from '../shared/_directives/file-validator';
 
 @Injectable()
 export class AnswerControlService {

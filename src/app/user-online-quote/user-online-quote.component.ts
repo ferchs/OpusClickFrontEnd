@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamicFormService } from '../_services/dynamic-form.service';
-import { RadioQuestion }  from '../_shared/answer-radio';
+import { RadioQuestion }  from '../shared/_shared/answer-radio';
 import { Observable } from "rxjs/Rx";
 import { AuthService } from '../_services/auth.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
