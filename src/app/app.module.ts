@@ -66,7 +66,6 @@ import { ViewSignedContractComponent } from './view-signed-contract/view-signed-
 import { ProviderRequestPaymentComponent } from './provider-request-payment/provider-request-payment.component';
 import { UserApprovePaymentComponent } from './user-approve-payment/user-approve-payment.component';
 import { ProviderViewCompleteProfileComponent } from './provider-view-complete-profile/provider-view-complete-profile.component';
-import { NgxGalleryModule } from 'ngx-gallery';
 import { UserPaymentSummaryComponent } from './user-payment-summary/user-payment-summary.component';
 import { NavbarModuleModule } from './navbar-module/navbar-module.module';
 import { SharedModule } from './shared/shared.module';
@@ -124,8 +123,7 @@ import { SharedModule } from './shared/shared.module';
     NavbarModuleModule,
     MyDatePickerModule,
     NouisliderModule,
-    CurrencyMaskModule,
-    NgxGalleryModule
+    CurrencyMaskModule
   ],
   entryComponents: [
     ConfirmModalComponent,

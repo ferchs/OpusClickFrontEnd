@@ -14,6 +14,9 @@ import { NavbarModuleModule } from '../navbar-module/navbar-module.module';
 import { SharedModule } from '../shared/shared.module';
 import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
 import { ProviderDashboardMenuComponent } from './provider-dashboard-menu/provider-dashboard-menu.component';
+import { ProviderDashboardNegotiationComponent } from './provider-dashboard-negotiation/provider-dashboard-negotiation.component';
+import { ProviderDashboardVisitComponent } from './provider-dashboard-visit/provider-dashboard-visit.component';
+import { ProviderDashboardRatingsComponent } from './provider-dashboard-ratings/provider-dashboard-ratings.component';
 
 @NgModule({
   imports: [
@@ -26,7 +29,10 @@ import { ProviderDashboardMenuComponent } from './provider-dashboard-menu/provid
     ProviderDashboardComponent,
     ProviderDashboardMenuComponent,
     ProviderDashboardHomeComponent,
+    ProviderDashboardVisitComponent,
     ProviderDashboardProfileComponent,
+    ProviderDashboardRatingsComponent,
+    ProviderDashboardNegotiationComponent,
     ProviderDashboardProfileEditComponent,
     ProviderDashboardVisitPendingComponent,
     ProviderDashboardVisitAcceptedComponent,

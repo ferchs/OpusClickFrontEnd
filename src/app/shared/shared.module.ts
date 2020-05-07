@@ -13,6 +13,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { AlertComponent } from './alert/alert.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InlineEditComponent } from './inline-edit/inline-edit.component';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { InlineEditComponent } from './inline-edit/inline-edit.component';
     FormsModule,
     LoadingModule,
     TextMaskModule,
+    NgxGalleryModule,
     NgbModule.forRoot()
   ],
   declarations: [
@@ -45,6 +47,7 @@ import { InlineEditComponent } from './inline-edit/inline-edit.component';
     TextMaskModule,
     AlertComponent,
     NgbModule,
+    NgxGalleryModule,
     InlineEditComponent
   ]
 })

@@ -13,6 +13,10 @@ import { NavbarModuleModule } from '../navbar-module/navbar-module.module';
 import { SharedModule } from '../shared/shared.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserDashboardMenuComponent } from './user-dashboard-menu/user-dashboard-menu.component';
+import { UserDashboardNegotiationComponent } from './user-dashboard-negotiation/user-dashboard-negotiation.component';
+import { UserDashboardNegotiationFinishedComponent } from './user-dashboard-negotiation-finished/user-dashboard-negotiation-finished.component';
+import { UserDashboardQuotationComponent } from './user-dashboard-quotation/user-dashboard-quotation.component';
+import { UserDashboardVisitComponent } from './user-dashboard-visit/user-dashboard-visit.component';
 
 @NgModule({
   imports: [
@@ -26,11 +30,15 @@ import { UserDashboardMenuComponent } from './user-dashboard-menu/user-dashboard
     UserDashboardMenuComponent,
     UserDashboardHomeComponent,
     UserDashboardProfileComponent,
+    UserDashboardVisitComponent,
+    UserDashboardQuotationComponent,
     UserDashboardProfileEditComponent,
     UserDashboardVisitPendingComponent,
     UserDashboardVisitAcceptedComponent,
     UserDashboardVisitUnfulfilledComponent,
+    UserDashboardNegotiationComponent,
     UserDashboardNegotiationPendingComponent,
+    UserDashboardNegotiationFinishedComponent,
     UserDashboardNegotiationConcretedComponent
   ]
 })
