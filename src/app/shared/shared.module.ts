@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { OpenLinkInNewWindowDirective } from './_directives/external-url.directive';
 import { ClickOutsideDirective } from './_directives/dropdown.directive';
 import { EqualValidator } from './_directives/equal-validator.directive';
@@ -19,6 +20,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
   imports: [
     CommonModule,
     SharedRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     LoadingModule,
     TextMaskModule,
@@ -37,6 +39,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
   ],
   exports: [
     FormsModule,
+    ReactiveFormsModule,
     OpenLinkInNewWindowDirective,
     ClickOutsideDirective,
     EqualValidator,

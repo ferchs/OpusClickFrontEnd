@@ -70,7 +70,8 @@
                     </select>
                     <small *ngIf="endTime.invalid && endTime.touched" class="form-text text-muted-error">¡Debes seleccionar alguna de las opciones!</small>
                 </div>
-            </div>
+                <small id="dateHelp" class="form-text text-muted">&nbsp;Selecciona el rango horario en cual tengas disponibilidad para recibir la visita.</small>
+              </div>
         </div>
         <div [hidden]="actualPage!==2" class="form-group">
           <label for="inputDate">Fecha alternativa de visita</label>
@@ -124,6 +125,7 @@
                     </select>
                     <small *ngIf="alternativeEndTime.invalid && alternativeEndTime.touched" class="form-text text-muted-error">¡Debes seleccionar alguna de las opciones!</small>
                 </div>
+                <small id="dateHelp" class="form-text text-muted">&nbsp;Selecciona el rango horario alternativo en cual tengas disponibilidad para recibir la visita.</small>
             </div>
         </div>
           <div [hidden]="actualPage!==3" class="form-group">

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routing } from './app.routing';
 import { TokenInterceptor } from './_interceptors/token.interceptor';
@@ -117,7 +116,6 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
-    ReactiveFormsModule,
     HttpClientModule,
     routing,
     NavbarModuleModule,
