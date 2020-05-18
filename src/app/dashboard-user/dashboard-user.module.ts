@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DashboardUserRoutingModule } from './dashboard-user-routing.module';
 import { UserDashboardHomeComponent } from './user-dashboard-home/user-dashboard-home.component';
 import { UserDashboardProfileComponent } from './user-dashboard-profile/user-dashboard-profile.component';
@@ -20,7 +19,6 @@ import { UserDashboardVisitComponent } from './user-dashboard-visit/user-dashboa
 
 @NgModule({
   imports: [
-    CommonModule,
     DashboardUserRoutingModule,
     NavbarModuleModule,
     SharedModule

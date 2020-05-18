@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DashboardProviderRoutingModule } from './dashboard-provider-routing.module';
 import { ProviderDashboardHomeComponent } from './provider-dashboard-home/provider-dashboard-home.component';
 import { ProviderDashboardProfileComponent } from './provider-dashboard-profile/provider-dashboard-profile.component';
@@ -20,7 +19,6 @@ import { ProviderDashboardRatingsComponent } from './provider-dashboard-ratings/
 
 @NgModule({
   imports: [
-    CommonModule,
     DashboardProviderRoutingModule,
     NavbarModuleModule,
     SharedModule

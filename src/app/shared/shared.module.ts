@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { SharedRoutingModule } from './shared-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,10 +21,11 @@ import { NgxGalleryModule } from 'ngx-gallery';
 @NgModule({
   imports: [
     CommonModule,
-    SharedRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     LoadingModule,
+    SharedRoutingModule,
     TextMaskModule,
     NgxGalleryModule,
     NgbModule.forRoot()
@@ -38,7 +41,9 @@ import { NgxGalleryModule } from 'ngx-gallery';
     InlineEditComponent
   ],
   exports: [
+    CommonModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     OpenLinkInNewWindowDirective,
     ClickOutsideDirective,

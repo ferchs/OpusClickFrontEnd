@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BrowserModule, DomSanitizer} from '@angular/platform-browser'
+import { DomSanitizer} from '@angular/platform-browser'
 import { ProviderGetProfileDto } from "../../_dtos/providerGetProfileDto";
 import { DataService } from "../../_services/data.service";
 import { DataProviderService } from "../../_services/data-provider.service";

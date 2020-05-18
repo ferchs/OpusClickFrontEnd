@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamicFormService } from '../_services/dynamic-form.service';
-import { RadioQuestion }  from '../shared/_shared/answer-radio';
 import { Observable } from "rxjs/Rx";
 import { AuthService } from '../_services/auth.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-user-online-quote',
   templateUrl: './user-online-quote.component.html',
   styleUrls: ['./user-online-quote.component.css'],
-  providers:  [DynamicFormService]
+  providers:  [DynamicFormService, AuthService]
 })
 export class UserOnlineQuoteComponent implements OnInit {
   totalPage:number;

@@ -1,6 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routing } from './app.routing';
 import { TokenInterceptor } from './_interceptors/token.interceptor';
 import { UserService } from './_services/user.service';
@@ -116,7 +116,6 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
-    HttpClientModule,
     routing,
     NavbarModuleModule,
     MyDatePickerModule,
