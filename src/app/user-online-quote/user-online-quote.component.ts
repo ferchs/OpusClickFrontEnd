@@ -7,8 +7,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-user-online-quote',
   templateUrl: './user-online-quote.component.html',
-  styleUrls: ['./user-online-quote.component.css'],
-  providers:  [DynamicFormService, AuthService]
+  styleUrls: ['./user-online-quote.component.css']
 })
 export class UserOnlineQuoteComponent implements OnInit {
   totalPage:number;
