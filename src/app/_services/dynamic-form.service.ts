@@ -16,7 +16,6 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
 import { QuoteDto } from "../_dtos/quoteDto";
-import { OnlineQuoteGetDto } from "../_dtos/onlineQuoteGetDto";
 
 @Injectable()
 export class DynamicFormService {
@@ -259,15 +258,7 @@ export class DynamicFormService {
     }
   }
 
-  getQuote(id:number){
-    return this.http.get<OnlineQuoteGetDto>(this.apiUrl+"/"+id)
-    .pipe(
-      map((quoteInfo:OnlineQuoteGetDto)=> { 
-        return quoteInfo
-      }),
-      catchError(this.handleError)
-    );
-  }
+  
 
   uploadQuotationImage(file: File, quoteId:string){
     let formdata: FormData = new FormData();

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkGetDto} from "../../_dtos/workGetDto";
 import { WorkService } from "../../_services/work.service";
-import { DynamicFormService } from '../../_services/dynamic-form.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { WorkUpdateDto } from "../../_dtos/workUpdateDto";
 import { DetailsWorkModalComponent } from '../../details-work-modal/details-work-modal.component';
@@ -10,6 +9,7 @@ import { ConfirmModalComponent } from '../../confirm-modal/confirm-modal.compone
 import { DetailsOnlineQuoteModalComponent } from '../../details-online-quote-modal/details-online-quote-modal.component';
 import { OnlineQuoteGetDto } from "../../_dtos/onlineQuoteGetDto";
 import { Router, Params } from '@angular/router';
+import { ProviderQuoteService } from '../../_services/provider-quote.service';
 
 @Component({
   selector: 'app-provider-dashboard-negotiation-concreted',
@@ -26,7 +26,7 @@ export class ProviderDashboardNegotiationConcretedComponent implements OnInit {
   notificationType:string;
   now:Date;
 
-  constructor(private workService:WorkService, private dynamicFormService:DynamicFormService,
+  constructor(private workService:WorkService, private providerQuoteService:ProviderQuoteService,
      private modalService: NgbModal,private router: Router) { }
 
   ngOnInit() {
@@ -57,7 +57,7 @@ export class ProviderDashboardNegotiationConcretedComponent implements OnInit {
   }
 
   detailsOnlineQuote(workId:number){
-    this.dynamicFormService.getQuote(workId).subscribe((quote:OnlineQuoteGetDto)=>{
+    this.providerQuoteService.getQuote(workId).subscribe((quote:OnlineQuoteGetDto)=>{
       const modalRef = this.modalService.open(DetailsOnlineQuoteModalComponent);
       modalRef.componentInstance.title = 'Detalles de la solicitud';
       modalRef.componentInstance.values=quote.requirements;
