@@ -38,7 +38,7 @@ const appRoutes: Routes = [
     {path:'reestablecer_contraseña', component: ResetPasswordComponent},   
     {path:'entrar', component: LoginComponent},
     {path:'confirmar_registro', component: ConfirmRegistrationComponent},
-    {path:'blog', loadChildren: './information-pages/information-pages.module#InformationPagesModule'},
+    {path:'servicios', loadChildren: './information-pages/information-pages.module#InformationPagesModule'},
     {path:'dashboard_usuario', 
     loadChildren: './dashboard-user/dashboard-user.module#DashboardUserModule',
     canActivateChild: [AuthGuard]
